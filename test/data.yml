@@ -1,0 +1,61 @@
+# Test data
+
+# --- Test Attributes 
+
+Attribute(a1):
+    name:           Colour
+    description:    >
+                    Some descriptions of the Attribute1
+
+Attribute(a2):
+    name:           Transmission
+    description:    >
+                    The transmission
+
+# --- Test Attribute Level
+                                       
+Level(blue):
+    name:           blue
+    description:    >
+                    Thats the blue color
+    attribute:      a1
+
+Level(green):
+    name:           green
+    description:    >
+                    Thats the green color
+    attribute:      a1
+
+Level(red):
+    name:           red
+    description:    >
+                    Thats the red color
+    attribute:      a1
+
+Level(l1):
+    name:           automatic
+    description:    >
+                    Automatic transmission
+    attribute:      a2
+    
+Level(l2):
+    name:           manual
+    description:    >
+                    Manual transmission
+    attribute:      a2
+    
+# --- Test Respondents
+
+Respondent(respondent1):
+    excludedLevels:  [green]
+
+# --- Test Level Rates
+LevelRate(rate1):
+     level:        l1
+     respondent:   respondent1
+     rate:         7.0
+     
+LevelRate(rate2):
+     level:        l2
+     respondent:   respondent1
+     rate:         1.0
