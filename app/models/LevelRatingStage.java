@@ -26,7 +26,6 @@ public class LevelRatingStage extends Stage {
 	}
 	
 	public void addLevelRates(Map<Long, Double> idAndRates) throws Exception{	
-		
 		Level level = null;
 		
 		idAndRates = unitize(center(idAndRates));

@@ -20,6 +20,11 @@ public class Stage {
 	}
 	
 	public Attribute getCurrentAttribute(int index){
-		return attributeIterator.getCurrentAttribute(index);
+		Attribute a = attributeIterator.getCurrentAttribute(index);
+		
+		// remove excluded Levels
+		a.levels.removeAll(result.excludedLevels);
+		
+		return a;
 	}
 }

@@ -20,7 +20,7 @@ import models.*;
  */
 public class Application extends Controller {
 	
-	//private static Logger jlog = Logger.getLogger("de.iwi.uni_leipzig.gilbreth");
+	private static Logger jlog = Logger.getLogger("de.iwi.uni_leipzig.gilbreth");
 	
 	// ----- Start the survey
 	
@@ -55,8 +55,13 @@ public class Application extends Controller {
 		Interview interview = getInterview(interviewId);
 		
 		LevelExclusionStage stage = (LevelExclusionStage) interview.getStage("LevelExclusion");
-	
-		stage.excludeLevels(removeNullEntries(excludeLevelIds));
+		
+		// remove null values i.e. not selected check boxes
+		if (excludeLevelIds != null) {
+			excludeLevelIds.removeAll(Collections.singleton(null));
+		}
+		
+		stage.excludeLevels(excludeLevelIds);
 		
 		excludeLevel(interview.id, ++page);
 	}
@@ -218,27 +223,4 @@ public class Application extends Controller {
 		return interview;
 	}
 	
-	/**
-	 * removes null values from a list
-	 * 
-	 * @param list
-	 * @return
-	 */
-	private static List<Long> removeNullEntries(List<Long> list){
-		// If no Levels excluded the response params do not contain a variable
-		// excludeLevelIds and play cannot map any value to the excludeLevelIds
-		// parameter
-		if (list != null) {
-			for (int i = 0; i < list.size(); i++) {
-				
-				// The array contains entries for all levels of an attribute
-				// if one is not checked, it gets a null value
-				if(list.get(i) == null){
-					list.remove(i);
-				}
-			}
-		}
-		return list;
-	}
-
 }
