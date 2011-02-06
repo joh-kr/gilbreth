@@ -42,8 +42,12 @@ public class Attribute extends Model{
 		this.description = description;
 	}
 	
-	public List<Level> getLevels(){
-		return this.levels;
+	public List<Level> getLevels(List<Level> excludedLevels){
+		List<Level> filteredLevels = this.levels;
+		if (excludedLevels != null) {
+			filteredLevels.removeAll(excludedLevels);
+		}
+		return filteredLevels;
 	}
 	
 }

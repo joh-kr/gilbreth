@@ -233,7 +233,7 @@ public class Result extends Model{
     }
     
     public int getAttributeFrequency(Attribute attribute) throws Exception{
-    	List<Level> levels = attribute.getLevels();
+    	List<Level> levels = attribute.getLevels(excludedLevels);
     	int c = 0;
     	for(Level l : levels){
     		c += getLevelFrequency(l);

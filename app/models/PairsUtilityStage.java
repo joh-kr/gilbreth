@@ -98,7 +98,7 @@ public class PairsUtilityStage extends Stage {
 		List<LevelFrequency> levelFrequencies = new ArrayList();
 		LevelFrequency frequency = null;
 
-		for(Level l : attribute.getLevels()){
+		for(Level l : attribute.getLevels(result.excludedLevels)){
 			frequency = new LevelFrequency();
 			frequency.setFrequency(result.getLevelFrequency(l));
 			frequency.setLevel(l);
