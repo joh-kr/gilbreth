@@ -5,14 +5,11 @@
 
 
 <div class="pairUtilities">
-<p class="description">
-Which of both concepts would you prefer?
-</p>
 <div class="leftProduct">
 	<ul>
 	   %{ i = 0; }%
 	   %{ for(r in pair.getLHS()) { }%       
-        	<li> ${r.getAttribute().getName()}: ${r.getName()} </li>
+        	<li> ${r.getName()} </li>
         	<input type="hidden" name="lhsIds[${i}]" value="${r.getId()}" />
         	%{ i = i + 1; }%
        %{ } }%
@@ -24,7 +21,7 @@ Which of both concepts would you prefer?
 	<ul>
 	   %{ i = 0; }%
 	   %{ for(r in pair.getRHS()) { }%       
-        	<li>${r.getAttribute().getName()}: ${r.getName()} </li>
+        	<li> ${r.getName()} </li>
         	<input type="hidden" name="rhsIds[${i}]" value="${r.getId()}" />
         	%{ i = i + 1; }%
        %{ } }%
@@ -53,6 +50,9 @@ Which of both concepts would you prefer?
 			%{ } }%
           </tr>
         </table>
+
+
+
 </div>
 
 </div>

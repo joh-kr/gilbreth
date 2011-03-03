@@ -3,40 +3,38 @@
 
 	#{form @Application.postLevelRate()}  
 	<input type="hidden" name="interviewId" value="${interviewId}" />
-	<input type="hidden" name="page" value="${page}" />       
- 	<div class="choice-table">
-   		<h2>At attribute ${attribute.name},</h2>
-    	<p class="description">
-    		<br />
-			how desirable are the following levels for you?
-			<br />
-		</p>
-
+	<input type="hidden" name="page" value="${page}" />
+		#{ifErrors}
+			<div class="ErrorMsg">
+				<h1>An Error occured</h1>
+				<p>Fill out all questions</p>				
+			</div>
+		#{/ifErrors}
+        <div class="choice-table">
+        <h2>${attribute.name}</h2>
         <table>
-        %{def label = [" ", "Desirable", " ", " ", " ", " ", " ", "Undesirable"]}%
-         <colgroup width="${600/label.size()}" span="${label.size()}"></colgroup>
-        <tr>
-        %{ for(r in label) { }% 
-        <td>
-        	${r}
-        </td> 
-        %{ } }%
-        </tr>	
-        %{ i = 0; }%
-        #{list items:attribute.levels, as:'level'}
-        <tr>
-      		<td> 
+          <tr>
+          %{
+     			for(r in [" ", "Undesirable", " ", " ", " ", " ", " ", "Desirable"]) { 
+			}%
+            <th>
+             ${r}
+            </th>
+        	%{
+     			}
+			}%     
+          </tr>
+          %{ i = 0; }%
+            #{list items:attribute.levels, as:'level'}
+          <tr>
+        	<td> 
         	   <input type="hidden" name="levelIds[${i}]" value="${level.id}" />   
-        		<p>
-        		${level.name}
-        		</p> 
-       <!-- 	<p>
-        		(${level.description})
-        		</p> --> 	
+        		${level.name} (${level.description})
         	</td>
 			%{
-     			for(r in 1..label.size() - 1) { 
+     			for(r in 1..7) { 
 			}%
+	
         	<td> 
 				 <input type="radio" name="levelRates[${i}]" value="${r}">
         	</td>
@@ -45,10 +43,10 @@
 			}%
           </tr>
           %{ i = i + 1; }%
-         #{/list}  
-        </table>
- 	</div>
-    <p>
+           #{/list}
+        <table>
+        </div>
+        <p>
     <input type="submit" value="Next" />
-	</p>
-    #{/form}
+</p>
+      #{/form}
