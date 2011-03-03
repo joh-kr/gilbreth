@@ -71,7 +71,7 @@ public class Result extends Model{
     		}
     	}
     	this.setFeatureColumnMatching(map);
-    	jlog.log(java.util.logging.Level.INFO, "FeatureColumnMatching initialized with " + map.size() + "entries.");
+    	jlog.log(java.util.logging.Level.INFO, "FeatureColumnMatching initialized with " + map.size() + " entries.");
 	}
 	
 	/**
@@ -140,6 +140,12 @@ public class Result extends Model{
     	return this.R2Difference;
     }
     
+    /**
+     * Sets the difference between old r2 and new r2 given by the parameter.
+     * The difference R2Difference can be used as a measure to decide when
+     * level comparison stage can be ended.
+     * @param value new r2 value
+     */
     public void setR2(double value){
     	this.R2Difference = value - this.R2;
     	this.R2 = value;
@@ -221,6 +227,10 @@ public class Result extends Model{
     	return matrix.getEntry(row, matrix.getColumnDimension() - 1);
     }
     
+    /*
+     * Level frequency is the sum of ??
+     * TODO: find out what level frequency is
+     */
     public int getLevelFrequency(Level level) throws Exception{
     	RealMatrix m = getMatrix();
     	int columnIndex = getColumnFor(level.getConstitutingFeatures());
@@ -232,6 +242,10 @@ public class Result extends Model{
     	return c;
     }
     
+    /*
+     * Attribute frequency is the sum of the frequencies of all 
+     * levels of the attribute
+     */
     public int getAttributeFrequency(Attribute attribute) throws Exception{
     	List<Level> levels = attribute.getLevels(excludedLevels);
     	int c = 0;
