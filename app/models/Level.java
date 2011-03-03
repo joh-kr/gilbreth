@@ -1,12 +1,10 @@
 package models;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 import play.data.validation.Required;
 import play.db.jpa.Model;
@@ -14,13 +12,44 @@ import play.db.jpa.Model;
 @Entity
 public class Level extends Model{
 	
-	@Transient
-	protected static Logger jlog =  Logger.getLogger("de.iwi.uni_leipzig.gilbreth");
-	
     @ManyToOne
     @Required
 	public Attribute attribute;
     
+	public Attribute getAttribute() {
+		return attribute;
+	}
+
+
+	public void setAttribute(Attribute attribute) {
+		this.attribute = attribute;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public String getFeatures() {
+		return features;
+	}
+
+
+	public void setFeatures(String features) {
+		this.features = features;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Required
     public String name;
 	
