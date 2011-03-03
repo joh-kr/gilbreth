@@ -23,7 +23,7 @@ public class AttributeWeightingStage extends Stage {
 		Attribute attribute = getCurrentAttribute(page);
 		// Check whether a level in levels exist
 		Level level = null;
-		for(Level l : attribute.getLevels(result.excludedLevels)){
+		for(Level l : attribute.getLevels()){
 			if(level == null || result.getRateFor(l) > result.getRateFor(level))
 				level = l;
 		}
@@ -34,7 +34,7 @@ public class AttributeWeightingStage extends Stage {
 		Attribute attribute = getCurrentAttribute(page);
 		// Check whether a level in levels exist
 		Level level = null;
-		for(Level l : attribute.getLevels(result.excludedLevels)){
+		for(Level l : attribute.getLevels()){
 			if(level == null || result.getRateFor(l) < result.getRateFor(level))
 				level = l;
 		}
@@ -42,8 +42,7 @@ public class AttributeWeightingStage extends Stage {
 	}
 	
 	public void weightLevelsFor(Attribute attribute, double weight) throws Exception{
-		List<Level> levels = attribute.getLevels(result.excludedLevels);
-		
+		List<Level> levels = attribute.getLevels();
 		RealMatrix matrix = result.getMatrix();
 		int colIndex;
 		double[] column;

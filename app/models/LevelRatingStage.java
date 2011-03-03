@@ -7,8 +7,6 @@ import java.util.Map;
 import org.apache.commons.math.linear.RealMatrix;
 import org.apache.commons.math.stat.StatUtils;
 
-import play.Logger;
-
 /**
  * In that stage, the levels of all attributes are rated in comparison to each other. 
  * Each level gets a rate assigned (e.g. 0-9). However, not the absolute ratings are 
@@ -26,9 +24,10 @@ public class LevelRatingStage extends Stage {
 	}
 	
 	public void addLevelRates(Map<Long, Double> idAndRates) throws Exception{	
-		Level level = null;
 		
+		Level level = null; 
 		idAndRates = unitize(center(idAndRates));
+	
 		
 		for(Long id: idAndRates.keySet()){
 			if(idAndRates.get(id).isInfinite() || idAndRates.get(id).isNaN())
@@ -36,13 +35,9 @@ public class LevelRatingStage extends Stage {
 			
 			level = Level.findById(id);
 			double[] row = new double[result.getNrOfColumns()];
-			
-			jlog.log(java.util.logging.Level.INFO, "Save rates of Level: " + level.getName());
-			
+			System.out.println("Save rates of Level: " + level.getName());
 			// For each feature constituting the level a entry is added to the matrix
 			for(String f : level.getConstitutingFeaturesAsArray()){
-				jlog.log(java.util.logging.Level.INFO, 
-						"Add entry at " + result.getColumnFor(f) + " for feature " + f);
 				row[result.getColumnFor(f)] = 1;
 			}
 			// If the level consists of more than one feature, we add also a interaction parameter
@@ -50,8 +45,6 @@ public class LevelRatingStage extends Stage {
 				row[result.getColumnFor(level.getConstitutingFeatures())] = 1;
 			}
 			// Save the rate as the dependent variable in the matrix
-			jlog.log(java.util.logging.Level.INFO, 
-					"Add entry at " + (row.length - 1) + " for rate " + idAndRates.get(id));			
 			row[row.length - 1] = idAndRates.get(id);
 			
 			result.addNewRow(row);
@@ -87,15 +80,9 @@ public class LevelRatingStage extends Stage {
 		double max = StatUtils.max(val);
 		double min = StatUtils.min(val);
 		double range = Math.abs(max) + Math.abs(min);
-
-		// added case for range of zero
-		// TODO review algorithm
+		
 		for(Long key : values.keySet()){
-			if(range == 0.0) {
-				values.put(key, 0.0);
-			} else { 
-				values.put(key, values.get(key)/range);
-			}
+			values.put(key, values.get(key)/range);
 		}
 		return values;
 	}
