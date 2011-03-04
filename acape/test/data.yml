@@ -19,45 +19,35 @@ Level(blue):
     description:    >
                     Thats the blue color
     attribute:      a1
-    features:       f1
 
 Level(green):
     name:           green
     description:    >
                     Thats the green color
     attribute:      a1
-    features:       f2
 
 Level(red):
     name:           red
     description:    >
                     Thats the red color
     attribute:      a1
-    features:       f5    
 
 Level(l1):
     name:           automatic
     description:    >
                     Automatic transmission
     attribute:      a2
-    features:       f3
     
 Level(l2):
     name:           manual
     description:    >
                     Manual transmission
     attribute:      a2
-    features:       f4
     
 # --- Test Respondents
 
 Respondent(respondent1):
     excludedLevels:  [green]
-    
-# --- Test Interviewee
-Interviewee(interviewee1):
-    name:          TestUser
-    email:         TestUserMail    
 
 # --- Test Level Rates
 LevelRate(rate1):

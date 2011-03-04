@@ -4,16 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.math.linear.Array2DRowRealMatrix;
-import org.apache.commons.math.linear.LUDecompositionImpl;
 import org.apache.commons.math.linear.RealMatrix;
 import org.apache.commons.math.stat.StatUtils;
 import org.apache.commons.math.stat.regression.OLSMultipleLinearRegression;
 import org.apache.commons.math.util.MathUtils;
-
-import Jama.LUDecomposition;
-
-import sun.security.krb5.RealmException;
 
 /**
  * In that stage, iteratively 2 concepts are compared to to each other.
@@ -47,6 +41,8 @@ public class PairsUtilityStage extends Stage {
 		for(List<LevelFrequency> lf : listOfListOfLevelFrequencies){
 			initLevelPair.addToLHS(lf.get(0).getLevel(), lf.get(lf.size() <= 1 ? 0 : 1).getLevel());
 		}
+			
+		
 		
 		// now we have the levels less often used in a concept
 		// next we try to find a lhs and rhs with utility as equal as possible
@@ -71,6 +67,10 @@ public class PairsUtilityStage extends Stage {
 		
 		return levelsPairs.get(0);
 	}
+	
+	
+
+	
 	
 	/**
 	 * 
@@ -98,7 +98,7 @@ public class PairsUtilityStage extends Stage {
 		List<LevelFrequency> levelFrequencies = new ArrayList();
 		LevelFrequency frequency = null;
 
-		for(Level l : attribute.getLevels(result.excludedLevels)){
+		for(Level l : attribute.getLevels()){
 			frequency = new LevelFrequency();
 			frequency.setFrequency(result.getLevelFrequency(l));
 			frequency.setLevel(l);
@@ -110,17 +110,11 @@ public class PairsUtilityStage extends Stage {
 	}
 	
 	public boolean isFinished(){
-		return result.rowCount >= result.getMatrix().getRowDimension();// || result.getR2Difference() < 0.0001d;// Calc of R2 seems to be broken
+		return result.rowCount >= result.getMatrix().getRowDimension() - 1;// || result.getR2Difference() < 0.0001d;// Calc of R2 seems to be broken
 	}
 	
 	// data manipulation section
 	
-	/** 
-	 * add new row for each pair comparison
-	 * element  0 for a level not part of the comparison
-	 * element -1 for a level on the left side
-	 * element  1 for a level on the right side
-	 */
 	public void saveNewObservation(List<Long> lhsIds, List<Long> rhsIds, double preference) throws Exception{
 		double[] x = new double[result.getNrOfColumns()];
 		populate(x, lhsIds, -1.0d);
@@ -128,8 +122,8 @@ public class PairsUtilityStage extends Stage {
 		x[x.length - 1] = preference;
 		
 		result.addNewRow(x);
-		
 		result.setR2(calculateR2());
+		
 	}
 	
 	private class MyOLSMultipleLinearRegression extends OLSMultipleLinearRegression{
@@ -138,11 +132,6 @@ public class PairsUtilityStage extends Stage {
 		}
 	}
 	
-	/**
-	 * Calculate R2 as a measure of the difference between expected results and
-	 * the actual responses
-	 * @return r2 value
-	 */
 	public double calculateR2(){
 		
 		MyOLSMultipleLinearRegression regression = new MyOLSMultipleLinearRegression();
@@ -336,7 +325,6 @@ public class PairsUtilityStage extends Stage {
 			}
 			return 0;
 		}
-		
 		
 	}
 }

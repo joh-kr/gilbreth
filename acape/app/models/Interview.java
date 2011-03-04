@@ -45,6 +45,9 @@ public class Interview extends Model{
 		stages.put("AttributeRatingStage", new LevelRatingStage(this, result));
 		stages.put("StageWeightAttributes", new AttributeWeightingStage(this, result));
 		stages.put("PairsUtilityStage", new PairsUtilityStage(this, result));
+		stages.put("ConceptComparisonStage", new ConceptComparisonStage(this, result));
+		stages.put("PriceEstimationStage", new PriceEstimationStage(this, result));
+		
 	}
 	
 	public static Interview createNewInterview(Interviewee interviewee){

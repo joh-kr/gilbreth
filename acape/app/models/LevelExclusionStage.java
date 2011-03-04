@@ -17,6 +17,8 @@ public class LevelExclusionStage extends Stage{
 		super(interview, result);
 	}
 	
+	
+	
 	public void excludeLevels(List<Long> excludeLevelIds) throws Exception{
 	
 		long levelId = 0l;

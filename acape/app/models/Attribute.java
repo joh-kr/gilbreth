@@ -29,6 +29,14 @@ public class Attribute extends Model{
 	@Required
     public String name;
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Required
 	@Lob
     public String description;
@@ -42,12 +50,8 @@ public class Attribute extends Model{
 		this.description = description;
 	}
 	
-	public List<Level> getLevels(List<Level> excludedLevels){
-		List<Level> filteredLevels = this.levels;
-		if (excludedLevels != null) {
-			filteredLevels.removeAll(excludedLevels);
-		}
-		return filteredLevels;
+	public List<Level> getLevels(){
+		return this.levels;
 	}
 	
 }

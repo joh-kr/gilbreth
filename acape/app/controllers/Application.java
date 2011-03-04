@@ -4,7 +4,6 @@ import play.*;
 import play.mvc.*;
 
 import java.util.*;
-import java.util.logging.Logger;
 
 import models.*;
 
@@ -19,8 +18,6 @@ import models.*;
  *
  */
 public class Application extends Controller {
-	
-	private static Logger jlog = Logger.getLogger("de.iwi.uni_leipzig.gilbreth");
 	
 	// ----- Start the survey
 	
@@ -55,13 +52,8 @@ public class Application extends Controller {
 		Interview interview = getInterview(interviewId);
 		
 		LevelExclusionStage stage = (LevelExclusionStage) interview.getStage("LevelExclusion");
-		
-		// remove null values i.e. not selected check boxes
-		if (excludeLevelIds != null) {
-			excludeLevelIds.removeAll(Collections.singleton(null));
-		}
-		
-		stage.excludeLevels(excludeLevelIds);
+	
+		stage.excludeLevels(removeNullEntries(excludeLevelIds));
 		
 		excludeLevel(interview.id, ++page);
 	}
@@ -84,46 +76,24 @@ public class Application extends Controller {
 
 	public static void postLevelRate(long interviewId, List<Long> levelIds,
 			List<Double> levelRates, int page) throws Exception {
+
+		Interview interview = getInterview(interviewId);
 		
-		// Validation
-		//TODO check interviewId is valid Id
-		validation.required(interviewId);
-		validation.required(levelIds);
-		validation.required(levelRates);
+		if(levelIds.size() != levelRates.size()) 
+			throw new Exception("An number of level IDs and level rates is unequal. Size of Level ID: " + levelIds.size() + ". Size of Level Rates: " + levelRates.size());
+			// Ask the respondent to fill out all questions
 		
-		if(levelIds != null && levelRates != null) {
-			validation.equals(levelIds.size(), levelRates.size());
-			
-			for(int i = 0; i < levelRates.size(); i++){
-				// all levels have to be within the range of possible values
-				//TODO replace magic numbers
-				validation.range(levelRates.get(i), 0, 7);
-			}
+		
+		Map levelIdsAndRates = new Hashtable();
+		for(int i = 0; i < levelIds.size(); i++){
+			levelIdsAndRates.put(levelIds.get(i), levelRates.get(i));
 		}
 		
-		if(validation.hasErrors()) {
-		    params.flash();
-		    validation.keep();
-			levelRate(interviewId, page);
-		} else {
-			/*
-			if(levelRates == null || (levelIds.size() != levelRates.size())) 
-				throw new Exception("An number of level IDs and level rates is unequal. Size of Level ID: " + levelIds.size() + ". Size of Level Rates: " + levelRates.size());
-				// Ask the respondent to fill out all questions
-			*/
-			Interview interview = getInterview(interviewId);
-			
-			Map<Long, Double> levelIdsAndRates = new Hashtable();
-			for(int i = 0; i < levelIds.size(); i++){
-				levelIdsAndRates.put(levelIds.get(i), levelRates.get(i));
-			}
-			
-			LevelRatingStage stage = (LevelRatingStage) interview.getStage("AttributeRatingStage");
-			
-			stage.addLevelRates(levelIdsAndRates);
-			
-			levelRate(interview.id, ++page);
-		}
+		LevelRatingStage stage = (LevelRatingStage) interview.getStage("AttributeRatingStage");
+		
+		stage.addLevelRates(levelIdsAndRates);
+		
+		levelRate(interview.id, ++page);
 	}
 
 	// ------ Attribute Importance Stage -------
@@ -163,12 +133,11 @@ public class Application extends Controller {
 		PairsUtilityStage stage = (PairsUtilityStage) interview.getStage("PairsUtilityStage");
 		
 		PairsUtilityStage.LevelsPair pair = stage.computeLevelsPair(2);
-
 		if (!stage.isFinished()) {
 			render(interviewId, pair);
 
 		} else {
-			index(); // Survey is finished becuase the other stages are not implemented yet
+			conceptComparison(interviewId, false);
 		}
 			
 	}
@@ -180,33 +149,56 @@ public class Application extends Controller {
 		stage.saveNewObservation(lhsIds, rhsIds, preference);
 		
 		pairsUtilities(interviewId);
-		
-		
-		/*
-		Respondent respondent = Respondent.findById(respondentId);
-		
-		List<Level> leftLevels = new ArrayList<Level>();
-		List<Level> rightLevels = new ArrayList<Level>();
-		
-		for(int i = 0; i < leftLevelIds.size(); i++){
-			leftLevels.add( (Level)Level.findById(leftLevelIds.get(i)) );
-			rightLevels.add( (Level)Level.findById(rightLevelIds.get(i)) );
-		}
-		
-		respondent.setPairCompairisonResult(leftLevels, rightLevels, preference);
-		respondent.updateLevelUtilities();
-		*/
-		
+
 	}
 	
 	// ------ Concept Comparison Stage -------
 	
-	// To be Implemented
+	public static void conceptComparison(long interviewId, boolean finished) throws Exception{
+		Interview interview = getInterview(interviewId);
+		ConceptComparisonStage stage = (ConceptComparisonStage) interview.getStage("ConceptComparisonStage");
+		
+		List<Concept> concepts = stage.calculateConcepts();
+
+		if (!finished) {
+			render(interviewId, concepts);
+
+		} else {
+			priceEstimation(interviewId, false);
+		}
+			
+	}
 	
+	public static void postConceptComparison(long interviewId) throws Exception {
+		Interview interview = getInterview(interviewId);
+		
+		conceptComparison(interviewId, true);
+
+	}
 	
 	// ------ Price Estimation Stage -------
 	
-	// To be Implemented
+	public static void priceEstimation(long interviewId, boolean finished) throws Exception{
+		Interview interview = getInterview(interviewId);
+		PriceEstimationStage stage = (PriceEstimationStage) interview.getStage("PriceEstimationStage");
+		
+		PricedConcept concept = stage.getPricedConcept();
+
+		if (!finished) {
+			render(interviewId, concept);
+
+		} else {
+			index(); // Survey is finished becuase the other stages are not implemented yet
+		}
+			
+	}
+	
+	public static void postPriceEstimation(long interviewId) throws Exception {
+		Interview interview = getInterview(interviewId);
+		
+		conceptComparison(interviewId, true);
+
+	}
 	
 	
 	
@@ -223,4 +215,27 @@ public class Application extends Controller {
 		return interview;
 	}
 	
+	/**
+	 * removes null values from a list
+	 * 
+	 * @param list
+	 * @return
+	 */
+	private static List<Long> removeNullEntries(List<Long> list){
+		// If no Levels excluded the response params do not contain a variable
+		// excludeLevelIds and play cannot map any value to the excludeLevelIds
+		// parameter
+		if (list != null) {
+			for (int i = 0; i < list.size(); i++) {
+				
+				// The array contains entries for all levels of an attribute
+				// if one is not checked, it gets a null value
+				if(list.get(i) == null){
+					list.remove(i);
+				}
+			}
+		}
+		return list;
+	}
+
 }

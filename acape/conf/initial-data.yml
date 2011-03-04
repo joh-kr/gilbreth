@@ -1,45 +1,134 @@
 # Test data
 Attribute(a1):
-    name:           Colour
+    name:           Forum
     description:    >
-                    Some descriptions of the Attribute1
+                    A Forum System where customers can exchange information about offered products
 
-Attribute(a2):
-    name:           Transmission
+Level(forumPresent):
+    name:           Present
     description:    >
-                    The transmission
-                                       
-Level(blue):
-    name:           blue
-    description:    >
-                    Thats the blue color
+                    
     features:       f1
     attribute:      a1
 
-Level(green):
-    name:           green
+Level(forumAbsent):
+    name:           Absent
     description:    >
-                    Thats the green color
+                    
     features:       f2
     attribute:      a1
-    
-Level(red):
-    name:           red
-    description:    >
-                    Thats the red color
-    features:       f5
-    attribute:      a1    
 
-Level(l1):
-    name:           automatic
+Attribute(a2):
+    name:           Payment with Fraud Detection
     description:    >
-                    Automatic transmission
+                    Identifies frauds within a payment process
+
+Level(fraudPresent):
+    name:           Present
+    description:    >
+                    
     features:       f3
     attribute:      a2
-    
-Level(l2):
-    name:           manual
+
+Level(fraudAbsent):
+    name:           Absent
     description:    >
-                    Manual transmission
+                    
     features:       f4
     attribute:      a2
+  
+ 
+Attribute(a3):
+    name:           Payment Method
+    description:    >
+                    Methods which can be used to pay products in the web shop
+                                                           
+Level(cc):
+    name:           Credit Card
+    description:    >
+                    
+    features:       f5
+    attribute:      a3
+    
+Level(dc):
+    name:           Debit Card
+    description:    >
+                    
+    features:       f6
+    attribute:      a3
+    
+Level(po):
+    name:           Purchase Order
+    description:    >
+                    
+    features:       f7
+    attribute:      a3    
+    
+Level(ccdc):
+    name:           Debit Card and Credit Card
+    description:    >
+                    
+    features:       f5, f6
+    attribute:      a3
+        
+Level(ccdcpo):
+    name:           Debit Card, Credit Card, and Purchase Order
+    description:    >
+                    
+    features:       f5, f6, f7
+    attribute:      a3
+    
+Level(ccpo):
+    name:           Debit Card and Purchase Order
+    description:    >
+                    
+    features:       f5, f7
+    attribute:      a3
+    
+Level(dcpo):
+    name:           Credit Card and Purchase Order
+    description:    >
+                    
+    features:       f6, f7
+    attribute:      a3
+ 
+Attribute(a4):
+    name:           Customer Management
+    description:    >
+                    Component to manage customers
+
+    
+Level(cmAbsent):
+    name:           Absent
+    description:    >
+                    
+    features:       f8
+    attribute:      a4
+    
+Level(cmPresent):
+    name:           Present
+    description:    >
+                    
+    features:       f9
+    attribute:      a4
+ 
+Attribute(a5):
+    name:           Recommender System
+    description:    >
+                    Recommends products possibly attracting customers
+
+    
+Level(rsAbsent):
+    name:           Absent
+    description:    >
+                    
+    features:       f10
+    attribute:      a5
+    
+Level(rsPresent):
+    name:           Present
+    description:    >
+                    
+    features:       f11
+    attribute:      a5
+    

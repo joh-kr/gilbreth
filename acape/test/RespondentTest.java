@@ -82,17 +82,12 @@ public class RespondentTest extends UnitTest {
 		Attribute a = Attribute.find("byName", "Transmission").first();
 		Respondent r = Respondent.all().first();
 		
-		Level automatic = Level.find("byName", "automatic").first();
-		Level manual = Level.find("byName", "manual").first();
-		
-		LevelRate level1rate = LevelRate.find("byLevel", automatic).first();
-		LevelRate level2rate = LevelRate.find("byLevel", manual).first();
-		
-		double avg = (level1rate.rate + level2rate.rate) / 2;
-		double stdDev = Math.sqrt( (Math.pow(7.0d - avg, 2) + Math.pow(1.0d - avg, 2))/2 );
+		// Hard coded the values from the data.yml LevelRates rate1 and rate2
+		double avg = (7.0d + 1.0d) / 2;
+		double stdDev =Math.sqrt( (Math.pow(7.0d - avg, 2) + Math.pow(1.0d - avg, 2))/2 );
 		double[] vals = new double[2];
-		vals[0] = (level1rate.rate - avg)/stdDev;
-		vals[1] = (level2rate.rate - avg)/stdDev;
+		vals[0] = (7.0d - avg)/stdDev;
+		vals[1] = (1.0d - avg)/stdDev;
 		
 		r.normalizeAndUnitizeLevelUtilityOf(a);
 		
@@ -166,14 +161,6 @@ public class RespondentTest extends UnitTest {
 		assertNotNull(levels);
 		assertEquals(2, levels.size());
 	}
-	/*
-	@Test
-	public void testLevelUtility() {
-		Fixtures.load("data.yml");
-		Level automatic = Level.find("byName", "automatic").first();
-		LevelRate levelAutomaticRate = LevelRate.find("byLevel", automatic).first();
-		
-	}
-	*/
+	
 	
 }
