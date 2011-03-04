@@ -1,0 +1,45 @@
+# Test data
+Attribute(a1):
+    name:           Colour
+    description:    >
+                    Some descriptions of the Attribute1
+
+Attribute(a2):
+    name:           Transmission
+    description:    >
+                    The transmission
+                                       
+Level(blue):
+    name:           blue
+    description:    >
+                    Thats the blue color
+    features:       f1
+    attribute:      a1
+
+Level(green):
+    name:           green
+    description:    >
+                    Thats the green color
+    features:       f2
+    attribute:      a1
+    
+Level(red):
+    name:           red
+    description:    >
+                    Thats the red color
+    features:       f5
+    attribute:      a1    
+
+Level(l1):
+    name:           automatic
+    description:    >
+                    Automatic transmission
+    features:       f3
+    attribute:      a2
+    
+Level(l2):
+    name:           manual
+    description:    >
+                    Manual transmission
+    features:       f4
+    attribute:      a2

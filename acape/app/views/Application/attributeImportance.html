@@ -1,0 +1,68 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+	#{form @Application.postAttributeImportance()}  
+	<input type="hidden" name="interviewId" value="${interviewId}" />
+	<input type="hidden" name="page" value="${page}" />    
+	<input type="hidden" name="attributeId" value="${attribute.id}" />    
+        <div class="choice-table">
+        <h2>${attribute.name}</h2>
+        <table>
+        <tr>
+         	<td>
+          ${worst.name}
+          	</td>  
+             %{
+          	    def headings = ["Unimportant", " ", " ", " ", " ", " ", "Important"]
+     			for(r in 1..headings.size()) { }%
+            <td>
+             <span />
+            </td>  
+             %{ } }%
+        </tr>
+          
+          <tr>
+          <td>
+             <span />
+           </td>
+           %{ for(r in headings) { 	}%
+            <td>
+               ${r}
+            </td>
+        	%{ } }%  
+          </tr>
+
+          <tr>
+           <td>
+             <span />
+           </td>
+           %{ for(r in 1..headings.size()) { }%
+            <td>
+               <input type="radio" name="importance" value="${r}">
+            </td>
+        	%{ } }%  
+          </tr>
+          
+          
+          <tr>
+          	<td>
+               ${best.name}
+          	</td>
+             %{
+     			for(r in 1..headings.size()) { 
+			 }%
+            <td>
+             <span />
+            </td>
+        	%{ } }%  
+          	<td>
+          	
+          	</td>   
+          </tr>
+
+        <table>
+        </div>
+        <p>
+    <input type="submit" value="Next" />
+</p>
+      #{/form}
