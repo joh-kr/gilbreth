@@ -1,16 +1,21 @@
 package models;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
 public class Level extends Model{
+	
+	@Transient
+	protected static Logger jlog =  Logger.getLogger("de.iwi.uni_leipzig.gilbreth");
 	
     @ManyToOne
     @Required
