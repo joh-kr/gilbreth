@@ -34,7 +34,7 @@ import Jama.Matrix;
  * @author jo
  */
 @Entity
-public class Respondent  extends Model{
+public class Respondent extends Model{
 	
 	/**
 	 * The levels explicitly excluded in the first stage
