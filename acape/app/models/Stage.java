@@ -27,4 +27,10 @@ public class Stage {
 		
 		return a;
 	}
+	
+	//allow access to result for unit test
+	public Result getResult()
+	{
+		return result;
+	}
 }

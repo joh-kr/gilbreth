@@ -73,10 +73,10 @@ public class Application extends Controller {
 		Interview interview = getInterview(interviewId);
 		LevelRatingStage stage = (LevelRatingStage) interview.getStage("AttributeRatingStage");
 	
-		if(stage.hasAttribute(page)){		
+		if(stage.hasAttribute(page)) {		
 			Attribute attribute = stage.getCurrentAttribute(page);
 			render(interviewId, attribute, page);
-		}else{
+		} else {
 			attributeImportance(interviewId, 0);
 			//index();
 		}

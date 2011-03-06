@@ -3,69 +3,46 @@
 # --- Test Attributes 
 
 Attribute(a1):
-    name:           Colour
+    name:           Forum
     description:    >
-                    Some descriptions of the Attribute1
-
+                    A Forum System where customers can exchange information about offered products
 Attribute(a2):
-    name:           Transmission
+    name:           Payment with Fraud Detection
     description:    >
-                    The transmission
+                    Identifies frauds within a payment process
 
 # --- Test Attribute Level
-                                       
-Level(blue):
-    name:           blue
+
+Level(forumPresent):
+    name:           Present
     description:    >
-                    Thats the blue color
-    attribute:      a1
+                    
     features:       f1
-
-Level(green):
-    name:           green
-    description:    >
-                    Thats the green color
     attribute:      a1
+
+Level(forumAbsent):
+    name:           Absent
+    description:    >
+                    
     features:       f2
-
-Level(red):
-    name:           red
-    description:    >
-                    Thats the red color
     attribute:      a1
-    features:       f5    
 
-Level(l1):
-    name:           automatic
+Level(fraudPresent):
+    name:           Present
     description:    >
-                    Automatic transmission
-    attribute:      a2
+                    
     features:       f3
-    
-Level(l2):
-    name:           manual
-    description:    >
-                    Manual transmission
     attribute:      a2
-    features:       f4
-    
-# --- Test Respondents
 
-Respondent(respondent1):
-    excludedLevels:  [green]
+Level(fraudAbsent):
+    name:           Absent
+    description:    >
+                    
+    features:       f4
+    attribute:      a2
     
 # --- Test Interviewee
 Interviewee(interviewee1):
     name:          TestUser
-    email:         TestUserMail    
-
-# --- Test Level Rates
-LevelRate(rate1):
-     level:        l1
-     respondent:   respondent1
-     rate:         7.0
-     
-LevelRate(rate2):
-     level:        l2
-     respondent:   respondent1
-     rate:         1.0
+    email:         TestUserMail
+    
