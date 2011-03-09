@@ -9,6 +9,7 @@ import models.*;
 
 
 public class walkStages {
+
 	public void walkLevelRateStage(LevelRatingStage stage) throws Exception
 	{
     	Attribute forum = Attribute.find("byName", "Forum").first();
@@ -28,5 +29,17 @@ public class walkStages {
 		levelIdsAndRates.put(paymentAbsent.id, 1d);
 		stage.addLevelRates(levelIdsAndRates);
 		
+	}
+	
+	public void walkAttributeWeightingStage(AttributeWeightingStage stage) throws Exception
+	{ 	
+    	if(stage.hasAttribute(0)) {
+    		Attribute attribute = stage.getCurrentAttribute(0);
+    		stage.weightLevelsFor(attribute, 6);
+    	}
+    	if(stage.hasAttribute(1)) {
+    		Attribute attribute = stage.getCurrentAttribute(1);
+    		stage.weightLevelsFor(attribute, 6);
+    	}
 	}
 }

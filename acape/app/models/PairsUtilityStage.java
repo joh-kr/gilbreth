@@ -1,7 +1,9 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.commons.math.linear.Array2DRowRealMatrix;
@@ -10,6 +12,8 @@ import org.apache.commons.math.linear.RealMatrix;
 import org.apache.commons.math.stat.StatUtils;
 import org.apache.commons.math.stat.regression.OLSMultipleLinearRegression;
 import org.apache.commons.math.util.MathUtils;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import Jama.LUDecomposition;
 
@@ -22,7 +26,7 @@ import sun.security.krb5.RealmException;
  *
  */
 public class PairsUtilityStage extends Stage {
-
+	
 	public PairsUtilityStage(Interview interview, Result result){
 		super(interview, result);
 	}
@@ -52,12 +56,14 @@ public class PairsUtilityStage extends Stage {
 		// next we try to find a lhs and rhs with utility as equal as possible
 		List<LevelsPair> levelsPairs = new ArrayList();
 		levelsPairs.add(initLevelPair);
+		
 		LevelsPair lp = null;
 		
 		for(int i = 0; i < initLevelPair.size(); i++){
 			for(int j = i; j < initLevelPair.size(); j++){
 				lp = new LevelsPair(levelsPairs.get(i));
 				lp.swapLevels(j);
+				lp.calculateUtilities();
 				levelsPairs.add(lp);
 			}
 		}
@@ -67,9 +73,24 @@ public class PairsUtilityStage extends Stage {
 		
 		// find a corresponding rhs with a utility similar to the utility of rhs
 		// Begin to start calculating the utility if you have enough degrees of freedom
-
 		
-		return levelsPairs.get(0);
+		Boolean newPairFound = false;
+		int i = 0;
+		
+		while(i <= levelsPairs.size() && !newPairFound) {
+			if(!observationExists(levelsPairs.get(i))) {
+				newPairFound = true;
+			} else {
+				i++;
+			}
+		}
+		
+		if(newPairFound) {
+			return levelsPairs.get(i);
+		} else {
+			return null;
+		}
+
 	}
 	
 	/**
@@ -122,14 +143,52 @@ public class PairsUtilityStage extends Stage {
 	 * element  1 for a level on the right side
 	 */
 	public void saveNewObservation(List<Long> lhsIds, List<Long> rhsIds, double preference) throws Exception{
-		double[] x = new double[result.getNrOfColumns()];
-		populate(x, lhsIds, -1.0d);
-		populate(x, rhsIds,  1.0d);
-		x[x.length - 1] = preference;
+		double[] x = buildObservationRow(lhsIds, rhsIds, preference);
 		
 		result.addNewRow(x);
 		
 		result.setR2(calculateR2());
+	}
+
+	private double[] buildObservationRow(List<Long> lhsIds, List<Long> rhsIds,
+			double preference) throws Exception {
+		double[] x = new double[result.getNrOfColumns()];
+		populate(x, lhsIds, -1.0d);
+		populate(x, rhsIds,  1.0d);
+		x[x.length - 1] = preference;
+		return x;
+	}
+	
+	private double[] buildObservationRowFromLevels(List<Level> lhs, List<Level> rhs, double preference) throws Exception {
+		List<Long> lhsIds = new ArrayList<Long>();
+		List<Long> rhsIds = new ArrayList<Long>();
+		//create list of Level IDs
+		// use to loops in case lhs and rhs are of differenz size
+		for(int i = 0; i < lhs.size(); i++) {
+			lhsIds.add(lhs.get(i).id);
+		}
+		for(int i = 0; i < rhs.size(); i++) {
+			rhsIds.add(rhs.get(i).id);
+		}
+		return buildObservationRow(lhsIds, rhsIds, preference);
+	}
+	
+	private Boolean observationExists(LevelsPair lp) throws Exception {
+		//build row with dummy preference
+		RealMatrix m = result.getMatrix();
+		//sub matrix without preference in last column
+		m = m.getSubMatrix(0, m.getRowDimension() - 1, 0, m.getColumnDimension() - 2);
+		double[] observationRow = buildObservationRowFromLevels(lp.getLHS(), lp.getRHS(), 0.0);
+		double[] compareRow = new double[observationRow.length - 1];
+		
+		System.arraycopy(observationRow, 0, compareRow, 0, observationRow.length - 1);
+		Boolean observationExists = false;
+		for(int i = 0; i < m.getRowDimension(); i++) {
+			if(Arrays.equals(compareRow, m.getRow(i))) {
+				observationExists = true;
+			}
+		}
+		return observationExists;
 	}
 	
 	private class MyOLSMultipleLinearRegression extends OLSMultipleLinearRegression{
@@ -323,6 +382,15 @@ public class PairsUtilityStage extends Stage {
 			}
 			
 			return prediction;
+		}
+		
+		public double getUtilityForLhs()
+		{
+			return utility_lhs;
+		}
+		public double getUtilityForRhs()
+		{
+			return utility_rhs;
 		}
 		
 		public double getUtilityDifference(){

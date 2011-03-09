@@ -23,7 +23,6 @@ public class TestAttributeWeightingStage extends UnitTest {
 	
 	private walkStages walkStages;
 	
-	private Result result;
 	private static Logger jlog = Logger.getLogger("de.iwi.uni_leipzig.gilbreth");	
 	
     @Before
@@ -35,7 +34,6 @@ public class TestAttributeWeightingStage extends UnitTest {
 		testuser = Interviewee.find("byName", "TestUser").first();
 		interview = Interview.createNewInterview(testuser);        
 		levelRating = (LevelRatingStage) interview.getStage("AttributeRatingStage");
-        result = levelRating.getResult();
         stage = (AttributeWeightingStage) interview.getStage("StageWeightAttributes");
         
         walkStages.walkLevelRateStage(levelRating);
@@ -53,13 +51,12 @@ public class TestAttributeWeightingStage extends UnitTest {
     
     @Test
     public void testStage() throws Exception
-    {
-		RealMatrix m;
-		double row[];	
-		
+    {	
     	assertTrue(stage.hasAttribute(0));
     	assertTrue(stage.hasAttribute(1));
     	assertFalse(stage.hasAttribute(2));
+    	
+    	walkStages.walkAttributeWeightingStage(stage);
     	
     	if(stage.hasAttribute(0)) {
     		Attribute attribute = stage.getCurrentAttribute(0);
@@ -70,8 +67,6 @@ public class TestAttributeWeightingStage extends UnitTest {
     		
     		assertTrue(best == forumPresent);
     		assertTrue(worst == forumAbsent);
-    		
-    		stage.weightLevelsFor(attribute, 6);
     		
     		//@TODO check matrix entries
     	} else {
@@ -85,12 +80,8 @@ public class TestAttributeWeightingStage extends UnitTest {
     		Level best  = stage.getBestRatedLevel(1);
     		Level worst = stage.getWorstRatedLevel(1);
     		
-    		m = result.getMatrix();
-    		
     		assertTrue(best == paymentPresent);
     		assertTrue(worst == paymentAbsent);
-    		
-    		stage.weightLevelsFor(attribute, 6);
     		
     		//@TODO check matrix entries
 
