@@ -27,8 +27,11 @@ import sun.security.krb5.RealmException;
  */
 public class PairsUtilityStage extends Stage {
 	
+	private Boolean stageFinished;
+	
 	public PairsUtilityStage(Interview interview, Result result){
 		super(interview, result);
+		stageFinished = false;
 	}
 	
 	public LevelsPair computeLevelsPair(int numberOfAttributes) throws Exception{
@@ -77,7 +80,7 @@ public class PairsUtilityStage extends Stage {
 		Boolean newPairFound = false;
 		int i = 0;
 		
-		while(i <= levelsPairs.size() && !newPairFound) {
+		while(i < levelsPairs.size() && !newPairFound) {
 			if(!observationExists(levelsPairs.get(i))) {
 				newPairFound = true;
 			} else {
@@ -88,6 +91,7 @@ public class PairsUtilityStage extends Stage {
 		if(newPairFound) {
 			return levelsPairs.get(i);
 		} else {
+			stageFinished = true;
 			return null;
 		}
 
@@ -131,7 +135,7 @@ public class PairsUtilityStage extends Stage {
 	}
 	
 	public boolean isFinished(){
-		return result.rowCount >= result.getMatrix().getRowDimension();// || result.getR2Difference() < 0.0001d;// Calc of R2 seems to be broken
+		return result.rowCount >= result.getMatrix().getRowDimension() || stageFinished;// || result.getR2Difference() < 0.0001d;// Calc of R2 seems to be broken
 	}
 	
 	// data manipulation section
@@ -181,10 +185,16 @@ public class PairsUtilityStage extends Stage {
 		double[] observationRow = buildObservationRowFromLevels(lp.getLHS(), lp.getRHS(), 0.0);
 		double[] compareRow = new double[observationRow.length - 1];
 		
+		//also compare if lhs and rhs are switched
+		double[] observationRowSwitched = buildObservationRowFromLevels(lp.getRHS(), lp.getLHS(),0.0);
+		double[] compareRowSwitched = new double[observationRowSwitched.length - 1];
+		
 		System.arraycopy(observationRow, 0, compareRow, 0, observationRow.length - 1);
+		System.arraycopy(observationRowSwitched, 0, compareRowSwitched, 0, observationRowSwitched.length - 1);
+		
 		Boolean observationExists = false;
 		for(int i = 0; i < m.getRowDimension(); i++) {
-			if(Arrays.equals(compareRow, m.getRow(i))) {
+			if(Arrays.equals(compareRow, m.getRow(i)) || Arrays.equals(compareRowSwitched, m.getRow(i))) {
 				observationExists = true;
 			}
 		}

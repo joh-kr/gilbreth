@@ -72,21 +72,38 @@ public class PairsUtilityStageTest extends UnitTest {
 		//RealMatrix m = result.getMatrix();
 		
 		// prefer lhs with both present
-		pairsUtilityStage.saveNewObservation(lhsIds, rhsIds, -4.0);
+		if(lhs.contains(forumPresent)) {
+			pairsUtilityStage.saveNewObservation(lhsIds, rhsIds, -4.0);
+		} else {
+			pairsUtilityStage.saveNewObservation(lhsIds, rhsIds,  4.0);		
+		}  
 		
 		pair = pairsUtilityStage.computeLevelsPair(2);
     	lhs = pair.getLHS();
     	rhs = pair.getRHS();
     	
+		lhsIds = new ArrayList();
+		rhsIds = new ArrayList();
+		
+		for (Level lvl : lhs) {
+			lhsIds.add(lvl.id);
+		}
+		for (Level lvl : rhs) {
+			rhsIds.add(lvl.id);
+		}    	
+    	
 		// do not repeat same pair
     	assertTrue(lhs.contains(forumAbsent) ^ lhs.contains(paymentAbsent));
 		
 		if(lhs.contains(forumPresent)) {
-			pairsUtilityStage.saveNewObservation(lhsIds, rhsIds, -4.0);
+			pairsUtilityStage.saveNewObservation(lhsIds, rhsIds, -2.0);
 		} else {
-			pairsUtilityStage.saveNewObservation(lhsIds, rhsIds,  4.0);		
+			pairsUtilityStage.saveNewObservation(lhsIds, rhsIds,  2.0);		
 		}    	
     	
+		pair = pairsUtilityStage.computeLevelsPair(2);
+		assertNull(pair);
+		assertTrue(pairsUtilityStage.isFinished());
 		//m = result.getMatrix();
     }
     

@@ -43,6 +43,7 @@ public class Application extends Controller {
 		
 		if(stage.hasAttribute(page)){		
 			Attribute attribute = stage.getCurrentAttribute(page);
+			renderArgs.put("activeTab", "Exclusion");
 			render(interviewId, attribute, page);
 		}else{
 			levelRate(interviewId, 0);
@@ -75,6 +76,7 @@ public class Application extends Controller {
 	
 		if(stage.hasAttribute(page)) {		
 			Attribute attribute = stage.getCurrentAttribute(page);
+			renderArgs.put("activeTab", "Rating");
 			render(interviewId, attribute, page);
 		} else {
 			attributeImportance(interviewId, 0);
@@ -138,7 +140,7 @@ public class Application extends Controller {
 			
 			Level best  = stage.getBestRatedLevel(page);
 			Level worst = stage.getWorstRatedLevel(page);
-			
+			renderArgs.put("activeTab", "Importance");
 			render(interviewId, attribute, best, worst, page);
 			
 		}else{
@@ -165,6 +167,7 @@ public class Application extends Controller {
 		PairsUtilityStage.LevelsPair pair = stage.computeLevelsPair(2);
 
 		if (!stage.isFinished()) {
+			renderArgs.put("activeTab", "TradeOff");
 			render(interviewId, pair);
 
 		} else {
@@ -208,6 +211,7 @@ public class Application extends Controller {
 		List<Concept> concepts = stage.calculateConcepts();
 
 		if (!finished) {
+			renderArgs.put("activeTab", "Calibration");
 			render(interviewId, concepts);
 
 		} else {
@@ -232,6 +236,7 @@ public class Application extends Controller {
 		PricedConcept concept = stage.getPricedConcept();
 
 		if (!finished) {
+			renderArgs.put("activeTab", "PriceEstimation");
 			render(interviewId, concept);
 
 		} else {

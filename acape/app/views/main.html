@@ -18,9 +18,9 @@
                 ACA PE
             </div>
             <ul id="tools">
-                <li>
+                <!--  <li>
                     <a href="#">Log in to write something</a>
-                </li>
+                </li> -->
             </ul>
 			<div id="title">
     			<span class="about">Adaptive Conjoint Analysis Price Estimation Test Tool</span>
@@ -28,6 +28,17 @@
     			<h2>${blogBaseline}</h2>
 			</div>
         </div>
+
+       	<div class="tabs">
+        	<ul>
+				<li %{ if (activeTab == "Exclusion") { }% id="activeTab" %{ } }%>Exclusion</li>
+				<li %{ if (activeTab == "Rating") { }% id="activeTab" %{ } }%>Rating</li>
+				<li %{ if (activeTab == "Importance") { }% id="activeTab" %{ } }%>Importance</li>
+				<li %{ if (activeTab == "TradeOff") { }% id="activeTab" %{ } }%>Trade-Off</li>
+				<li %{ if (activeTab == "Calibration") { }% id="activeTab" %{ } }%>Calibration</li>
+				<li %{ if (activeTab == "PriceEstimation") { }% id="activeTab" %{ } }%>Price Estimation</li>    	
+        	</ul>
+       	</div>
         
         <div id="main">
             #{doLayout /} 
@@ -35,7 +46,7 @@
         
         <p id="footer">
 			The ACA PE Test Tool is an academic prototype to test the applicability of ACA for scoping purposes of Software Product Lines.
-			(c) 2010 Johannes Müller
+			(c) 2011 Johannes Müller
 			The tool is realized with the <a href="http://www.playframework.org">Play framework</a>.
         </p>
         
