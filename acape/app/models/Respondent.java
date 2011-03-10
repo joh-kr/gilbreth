@@ -25,7 +25,7 @@ import org.apache.commons.math.stat.regression.OLSMultipleLinearRegression;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
-import Jama.Matrix;
+
 
 /**
  * Respondent is the main class in the data model and manages the survey proceeding, collects the data
