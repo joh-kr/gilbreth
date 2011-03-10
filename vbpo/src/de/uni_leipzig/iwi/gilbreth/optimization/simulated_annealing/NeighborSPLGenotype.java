@@ -65,7 +65,6 @@ public class NeighborSPLGenotype implements Neighbor<Genotype>{
 	 * - each segment gets exactly one product assigned
 	 * - price is within range
 	 */
-	@Override
 	public void neighbor(Genotype genotype) {
 		SPLGenotype splGenotype = (SPLGenotype) genotype;
 		

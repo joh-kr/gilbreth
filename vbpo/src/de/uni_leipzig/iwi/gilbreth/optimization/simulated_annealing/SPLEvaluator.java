@@ -101,7 +101,6 @@ public class SPLEvaluator implements Evaluator<Solution> {
 	 *         profit objective as a maximization problem and the corresponding
 	 *         profit generated with the given solution.
 	 */
-	@Override
 	public Objectives evaluate(Solution solution) {
 
 		double _profit = 0.0d;
@@ -129,7 +128,6 @@ public class SPLEvaluator implements Evaluator<Solution> {
 	 * @return a collection of objective objects. It contains only one
 	 *         objective, namely the profit objective as a maximization problem.
 	 */
-	@Override
 	public Collection<Objective> getObjectives() {
 		return Arrays.asList(profit);
 	}

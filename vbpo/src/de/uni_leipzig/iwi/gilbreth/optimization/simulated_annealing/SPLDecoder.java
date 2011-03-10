@@ -44,7 +44,6 @@ public class SPLDecoder implements Decoder<SPLGenotype, Solution> {
 	 * 
 	 * @return the phenotype Solution to the corresponding genotype SPLGenotype
 	 */
-	@Override
 	public Solution decode(SPLGenotype genotype) {
 		boolean[][] x = genotype.getXAsMatrix();
 		double[] p = genotype.getPAsVector();

@@ -47,7 +47,6 @@ public class SPLCreator implements Creator<SPLGenotype> {
 	 * @return a SPLGenotype representing the SPLProblem to solve in an abstract
 	 *         fashion
 	 */
-	@Override
 	public SPLGenotype create() {
 
 		// The SPLGenotype consists of three sub genotypes for the selected

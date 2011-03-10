@@ -150,7 +150,6 @@ public class SPLProblemVisualization implements IndividualMouseListener {
 			return scrollPane;
 		}
 
-		@Override
 		public JPanel getPanel() {
 			JPanel panel = new JPanel();
 			panel.add(createResultTable(), BorderLayout.NORTH);
@@ -159,7 +158,6 @@ public class SPLProblemVisualization implements IndividualMouseListener {
 			return panel;
 		}
 
-		@Override
 		public void init(Viewport arg0) {
 			// TODO Auto-generated method stub
 

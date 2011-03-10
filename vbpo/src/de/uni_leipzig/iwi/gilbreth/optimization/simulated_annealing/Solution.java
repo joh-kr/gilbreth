@@ -51,7 +51,6 @@ public class Solution implements Phenotype {
 			this.asset = asset;
 		}
 
-		@Override
 		public int compareTo(AssetContainer o) {
 			return Double.compare(this.delta_profit, o.delta_profit);
 		}
