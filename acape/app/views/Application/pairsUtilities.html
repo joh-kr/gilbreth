@@ -7,7 +7,7 @@
 
 <div class="pairUtilities">
 <p class="description">
-Which of both concepts would you prefer?
+Which of both concepts do you prefer?
 </p>
 <div class="leftProduct">
 	<ul>
@@ -21,21 +21,21 @@ Which of both concepts would you prefer?
 </div>
 
 <div class="rightProduct">
-<div class="innerProduct">
-	<ul>
-	   %{ i = 0; }%
-	   %{ for(r in pair.getRHS()) { }%       
-        	<li>${r.getAttribute().getName()}: ${r.getName()} </li>
-        	<input type="hidden" name="rhsIds[${i}]" value="${r.getId()}" />
-        	%{ i = i + 1; }%
-       %{ } }%
-	</ul>
+	<div class="innerProduct">
+		<ul>
+		   %{ i = 0; }%
+		   %{ for(r in pair.getRHS()) { }%       
+	        	<li>${r.getAttribute().getName()}: ${r.getName()} </li>
+	        	<input type="hidden" name="rhsIds[${i}]" value="${r.getId()}" />
+	        	%{ i = i + 1; }%
+	       %{ } }%
+		</ul>
 	</div>
 </div>
 
-
-        <div class="choice-table">
-        <table>
+<!-- 
+<div class="choice-table">
+	<table>
         %{def label = ["Strongly prefer", " ", " ", " ", " ", " ", " ", " ", "Strongly prefer"]}%
          <colgroup width="${600/label.size()}" span="${label.size()}"></colgroup>
         <tr>
@@ -45,7 +45,7 @@ Which of both concepts would you prefer?
         </td> 
         %{ } }%
         </tr>
-        
+
           <tr>
           	%{ for(i in [-4, -3, -2, -1, 0, 1, 2, 3, 4]) { }%
 				<td>
@@ -53,9 +53,71 @@ Which of both concepts would you prefer?
 				</td>
 			%{ } }%
           </tr>
-        </table>
+	</table>
 </div>
+-->
+<input id="preference" type="hidden" name="preference" value="0">
+<div style="float: left; width: 120px; margin-top: 10px; margin-left: 105px;">Strongly prefer<br>left side</div>
+        	<div style="float: left; margin-left: 0px; width: 370px" class="rating">
+        		
+			%{
+     			for(r in -4..4) {
+     			if(r == 0) {
+     				}%
+     				<div id="divider" style="float: left; width: 5px; background-color:black; height: 25px; margin-right: 15px;">
+     				</div>
+     				
+     				%{
+     			} else {
+			}%
+        	 
+				 <!-- <input type="radio" name="levelRates[${i}]" value="${r}"> -->
+				%{ if(r < 4) { }% 
+					<div style="margin-right: 15px;" class="rate${r} ratingIcon"></div>
+        		%{ } else { }%
+        			<div style="margin-right: 0px;" class="rate${r} ratingIcon"></div>
+        		%{ } }%
+        	%{
+     			}
+     			}
+			}%
+			</div>
+<div style="margin-left: 0px; text-align: right; margin-top: 10px; margin-right: 120px;">Strongly prefer<br>right side</div>
+
+
 
 </div>
+
+   	<script>
+ 	$('.ratingIcon').hover(  
+	    // Handles the mouseover  
+	    function() { 
+	    	var classNames;
+ 			classNames = $(this)[0].className.split(' ');
+	    	var id = classNames[0].substring(4) - 0;
+	    	if (id > 0) {
+	        	$(this).prevUntil("#divider").andSelf().addClass('ratingIcon_selected'); 
+	        	$(this).nextAll().removeClass('ratingIcon_selected');
+	        	$("#divider").prevAll().removeClass('ratingIcon_selected');
+	        } else {
+	        	$(this).nextUntil("#divider").andSelf().addClass('ratingIcon_selected'); 
+	        	$(this).prevAll().removeClass('ratingIcon_selected');
+	        	$("#divider").nextAll().removeClass('ratingIcon_selected');
+	        }	 
+	    },  
+	    // Handles the mouseout  
+	    function() {     
+	    }  
+	);
+ 	$('.ratingIcon').click(function() {
+ 		var classNames;
+ 		classNames = $(this)[0].className.split(' ');
+ 		$("#preference").val(classNames[0].substring(4));
+ 	}); 
+ 
+ 	</script>
+
+<div style="clear: both;" />
 <p><input type="submit" value="Next" /></p>
 #{/form}
+

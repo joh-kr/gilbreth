@@ -6,32 +6,55 @@
 	<input type="hidden" name="page" value="${page}" />    
 	<input type="hidden" name="attributeId" value="${attribute.id}" />    
 	<div class="choice-table">
-    	<h2>At attribute ${attribute.name},</h2>
+    	<h2>For attribute ${attribute.name},</h2>
     	<p class="description">
     		<br />
 			how important is the difference between ${best.name} and ${worst.name} for you?
 		</p>
 
         <table>
-        %{def label = ["Unimportant", " ", " ", " ", " ", " ", "Important"]}%
-         <colgroup width="${600/label.size()}" span="${label.size()}"></colgroup>
-        <tr>
-        %{ for(r in label) { }% 
-        <td>
-        	${r}
-        </td> 
-        %{ } }%
-        </tr>
-        
           <tr>
-          	%{ for(i in 1..label.size()) { }%
-				<td>
-				<input type="radio" name="importance" value="${i}">
-				</td>
-			%{ } }%
+          	<td>
+        	<div class="rating">
+        		<input type="hidden" name="levelRates[${i}]" value="0">
+			%{
+     			for(r in 1..7) { 
+			}%
+        	 
+				 <!-- <input type="radio" name="levelRates[${i}]" value="${r}"> -->
+				<div class="rate${r} ratingIcon"></div>
+        		
+        	%{
+     			}
+			}%
+				<div style="height: 29px; line-height: 29px;">Importance</div>
+			</div>
+			</td>
           </tr>
         </table>
    	</div>
+   	<script>
+ 	$('.ratingIcon').hover(  
+	    // Handles the mouseover  
+	    function() { 
+	        $(this).prevAll().andSelf().addClass('ratingIcon_selected'); 
+	        $(this).nextAll().removeClass('ratingIcon_selected');	 
+	    },  
+	    // Handles the mouseout  
+	    function() {
+	 		$(this).prevAll().andSelf().addClass('ratingIcon_selected');  
+	 		$(this).nextAll().removeClass('ratingIcon_selected');	        
+	    }  
+	);
+ 	$('.ratingIcon').click(function() {
+ 		var classNames;
+ 		classNames = $(this)[0].className.split(' ');
+ 		$(this).parent().children(":input").val(classNames[0].substring(4));
+ 		$(this).prevAll().andSelf().addClass('ratingIcon_selected');  
+ 		$(this).nextAll().removeClass('ratingIcon_selected'); 
+ 	}); 
+ 
+ 	</script>
         <p>
     <input type="submit" value="Next" />
 </p>

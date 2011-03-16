@@ -201,7 +201,8 @@ public class PairsUtilityStage extends Stage {
 	
 	private class MyOLSMultipleLinearRegression extends OLSMultipleLinearRegression{
 		public double calculateYVariance(){
-			return super.calculateYVariance();
+			//return super.calculateYVariance();
+			return 1;
 		}
 	}
 	
@@ -217,15 +218,18 @@ public class PairsUtilityStage extends Stage {
 		double[] y = result.getDependentVariableValues();
 		double[][] x = result.getIndeptendentVariableValues();
 		
-		regression.newSampleData(y, x);
+		//@TODO
+		//regression.newSampleData(y, x);
 		
 		//double y_var = regression.estimateRegressandVariance();
-		double y_var = regression.calculateYVariance();
-		double res_var = StatUtils.variance(regression.estimateResiduals());
+		//double y_var = regression.calculateYVariance();
+		//double res_var = StatUtils.variance(regression.estimateResiduals());
 		
-		double r2 = 1 - res_var/y_var;
-		jlog.log(java.util.logging.Level.INFO, "R2 is calculated as " + r2 + " with var y: " + y_var + " and var residuals " + res_var);
-		return r2;
+		//double r2 = 1 - res_var/y_var;
+		//jlog.log(java.util.logging.Level.INFO, "R2 is calculated as " + r2 + " with var y: " + y_var + " and var residuals " + res_var);
+		//@TODO
+		//return r2;
+		return 1;
 	}
 	
 	private void populate(double[] x, List<Long> list, double factor) throws Exception{
@@ -361,7 +365,8 @@ public class PairsUtilityStage extends Stage {
 			double[] y = result.getDependentVariableValues();
 			double[][] x = result.getIndeptendentVariableValues();
 			
-			regression.newSampleData(y, x);
+			//@TODO
+			//regression.newSampleData(y, x);
 			
 			jlog.log(java.util.logging.Level.INFO, "Transformed Matrix before regression: ");
 			
@@ -375,8 +380,9 @@ public class PairsUtilityStage extends Stage {
 					x_predict[i] = 1.0d;
 				}
 			}
-			
-			return predict(regression, x_predict);
+			//@TODO
+			//return predict(regression, x_predict);
+			return 1;
 		}
 		
 		private double predict(OLSMultipleLinearRegression regression, double[] x){

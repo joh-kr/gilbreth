@@ -8,7 +8,7 @@ html, body {
 body {
     width: 900px;
     padding: 0 30px;
-    margin: auto;
+    
 }
 
 /** Blog header **/
@@ -261,25 +261,51 @@ h3 span {
 .tabs ul {
 	margin: 0;
 	padding: 0;
+	list-style: none;
+	
 }
 
 .tabs {
 	float: left;
+	display: block;
+	padding: 0;
+	border-bottom: 1px solid #364B66;
+	padding-left: 35px;
 	width: 100%;
-	border-bottom: solid 3px darkred;	
+
 }
 
 .tabs li {
 	float: left;
-	margin: 3px 0 0 0;
-	padding: 2px 2px 2px 6px;
-	list-style: none;
+	margin: 0;
+	padding: 5px 0 0 0px;
 	width: 130px;
+	background: #E0EEFE;
+	text-align: center;
 }
 
 #activeTab {
 	margin: 0;
-	border-top: solid 3px red;	
+	border-bottom: 3px solid #364B66;
+	/*background: url("/public/images/tabLine_on.png") no-repeat bottom;*/
+}
+
+/** Level Rating **/
+.rating {  
+    overflow:   visible;  
+    padding:    10px;  
+    width:      400px;  
+    height:     25px;  
+}
+.ratingIcon {
+	background: url('/public/images/circle_off.png') no-repeat;  
+    float:      left;   
+    padding:    2px; 
+    height:     25px;
+    width:      25px;
+}
+.ratingIcon_selected {
+	background: url('/public/images/circle_on.png') no-repeat;
 }
 
 /** Form **/
@@ -629,7 +655,7 @@ tr.odd {
 
 .concept{
     padding: 0px;
-    width: 30%;
+    width: 32%;
     height: 300px;
     position: relative;
     right: 4%
@@ -655,14 +681,21 @@ tr.odd {
 
 .concept ul{
 	list-style-type: none;
+	margin: 0;
+	padding-top: 5px;
+	padding-left: 5px;
 }
 
 #price{
-	padding-left:40px;
+	padding-left:20px;
 	padding-top:10px;
 	border-top-style: solid;
     border-width: 2px;
     border-color: #C0CBE5;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
 }
 
 .buyingprobability{
@@ -679,10 +712,11 @@ tr.odd {
 }
 
 .description{
-	padding: 10px;
-	margin: 30px;
-	
-	color: #869AB1;
     font-size: 110%;
-	
+    margin-bottom: 20px;
+}
+
+.choice-table
+{
+		
 }

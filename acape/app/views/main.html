@@ -4,12 +4,15 @@
     <head>
         <title>#{get 'title' /}</title>		
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" media="print" 
+            href="@{'/public/stylesheets/main.css'}" />
         <link rel="stylesheet" type="text/css" media="screen" 
             href="@{'/public/stylesheets/main.css'}" />
         <link rel="shortcut icon" type="image/png" 
             href="@{'/public/images/favicon.png'}" />
             
         <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}"></script>
+        #{get 'moreScripts' /}
     </head>
     <body>
         
@@ -31,12 +34,12 @@
 
        	<div class="tabs">
         	<ul>
-				<li %{ if (activeTab == "Exclusion") { }% id="activeTab" %{ } }%>Exclusion</li>
+				<li %{ if (activeTab == "Exclusion") { }%id="activeTab"%{ } }%>Exclusion</li>
 				<li %{ if (activeTab == "Rating") { }% id="activeTab" %{ } }%>Rating</li>
 				<li %{ if (activeTab == "Importance") { }% id="activeTab" %{ } }%>Importance</li>
 				<li %{ if (activeTab == "TradeOff") { }% id="activeTab" %{ } }%>Trade-Off</li>
 				<li %{ if (activeTab == "Calibration") { }% id="activeTab" %{ } }%>Calibration</li>
-				<li %{ if (activeTab == "PriceEstimation") { }% id="activeTab" %{ } }%>Price Estimation</li>    	
+				<li %{ if (activeTab == "PriceEstimation") { }% id="activeTab" %{ } }%>Price Estimation</li>
         	</ul>
        	</div>
         

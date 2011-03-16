@@ -6,26 +6,25 @@
 	<input type="hidden" name="attributeId" value="${attribute.id}" />
 	<input type="hidden" name="page" value="${page}" />       
         <div class="choice-table">
-        <h2>Is for ${attribute.name}</h2>
+        <h2>Attribute ${attribute.name}</h2>
         <p class="description">
-        any level absolutely unacceptable for you? Mark any level that would hinder you from buying.
+         Mark any level that would hinder you from buying.
         </p>
         <table>
           <tr>
             <th>
-             
+            ${attribute.name}
             </th>
-            <th style="font-weight='normal'">
-             Unaccaptable?
+            <th>
             </th>    
           </tr>
           %{ i = 0; }%
             #{list items:attribute.levels, as:'level'}
           <tr>
-        	<td> 
-        		${level.name} 
-        		<br />
-        		${level.description}
+        	<td>${level.name}
+        		%{ if( level.description != "" ) { }%
+        			<br />${level.description}
+        		%{ } }%
         	</td>
         	<td> 
         	 <input type="checkbox" name="excludeLevelIds[${i}]" value="${level.id}" />

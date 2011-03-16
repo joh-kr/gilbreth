@@ -16,15 +16,18 @@ public class ConceptComparisonStage extends Stage{
 		Random r = new Random();
 		List<Concept> concepts = new ArrayList<Concept>();
 		
-		for(int i = 0; i < 3; i++){
+		while(concepts.size() < 3) {
 			Concept concept = new Concept();
 			List<Attribute> attributes = Attribute.findAll();
 			for(Attribute a : attributes){
 				List<Level> levels = a.getLevels(result.excludedLevels);
 				int n = r.nextInt(levels.size());
+				
 				concept.addAttributeAndLevel(a, levels.get(n));
 			}
-			concepts.add(concept);
+			if(concept.isValid()) {
+				concepts.add(concept);
+			}
 			
 		}
 		

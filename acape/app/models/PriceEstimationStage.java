@@ -15,11 +15,13 @@ public class PriceEstimationStage extends Stage {
 		
 		PricedConcept concept = new PricedConcept();
 		List<Attribute> attributes = Attribute.findAll();
-		for(Attribute a : attributes){
-			List<Level> levels = a.getLevels(result.excludedLevels);
-			int n = r.nextInt(levels.size());
-			concept.addAttributeAndLevel(a, levels.get(n));
-		}
+		do {
+			for(Attribute a : attributes){
+				List<Level> levels = a.getLevels(result.excludedLevels);
+				int n = r.nextInt(levels.size());
+				concept.addAttributeAndLevel(a, levels.get(n));
+			}
+		} while(!concept.isValid());
 		
 		concept.setPrice(new BigDecimal(r.nextInt(1000)));
 

@@ -242,17 +242,13 @@ public class Application extends Controller {
 		} else {
 			index(); // Survey is finished becuase the other stages are not implemented yet
 		}
-			
 	}
 	
 	public static void postPriceEstimation(long interviewId) throws Exception {
 		Interview interview = getInterview(interviewId);
 		
 		conceptComparison(interviewId, true);
-
 	}
-	
-	
 	
 	// ----- Helper ---------
 	
