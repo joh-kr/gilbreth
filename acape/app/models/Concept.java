@@ -33,6 +33,9 @@ public class Concept{
 		return attributeLevelPairs.get(attribute);
 	}
 	
+	/*
+	 * Checks all contraints
+	 */
 	public Boolean isValid() {
 		Boolean isValid = true;
 		
@@ -43,7 +46,9 @@ public class Concept{
 		for(Constraint c : constraints) {
 			
 			List<Level> objectLevels = new ArrayList<Level>();
-			
+			/*
+			 * Select all levels containing the object feature
+			 */
 			for(Level l : allLevels) {
 				Boolean levelContainsFeature = false;
 				if(Arrays.asList(l.features.split(",")).contains(c.object)) {
@@ -54,7 +59,10 @@ public class Concept{
 					objectLevels.add(l);
 				}
 			}
-			
+			/*
+			 * if a level with an object feature is present check if
+			 * a level with the corresponding subject feature is present
+			 */
 			for(Level objectLevel : objectLevels) {
 				if(attributeLevelPairs.containsValue(objectLevel)) {
 					Boolean subjectLevelExists = false; 
@@ -63,6 +71,9 @@ public class Concept{
 							subjectLevelExists = true;
 						}
 					}
+					/*
+					 * the validity depends on the type of the constraint
+					 */
 					if(subjectLevelExists && c instanceof ExcludesConstraint) {
 						isValid = false;
 					}else if(!subjectLevelExists && c instanceof RequiresConstraint) {
