@@ -9,13 +9,18 @@ import org.junit.Test;
 import play.test.Fixtures;
 import play.test.UnitTest;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
 
 public class Constraints extends UnitTest {
 	
     @Before
     public void setup() throws Exception {
         Fixtures.deleteAll();
-        Fixtures.load("initial-data.yml");
+        Fixtures.load("testdata.yml");
     } 
        
 	@Test
@@ -59,7 +64,5 @@ public class Constraints extends UnitTest {
 		
 		concept.addAttributeAndLevel(fraudDetection, fdPresent);
 		assertTrue(concept.isValid());
-		
-		
 	}
 }

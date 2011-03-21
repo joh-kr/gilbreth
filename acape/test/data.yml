@@ -1,5 +1,9 @@
 # Test data
 
+# --- Result
+
+Result(myResult):
+
 # --- Test Attributes 
 
 Attribute(a1):
@@ -45,4 +49,3 @@ Level(fraudAbsent):
 Interviewee(interviewee1):
     name:          TestUser
     email:         TestUserMail
-    

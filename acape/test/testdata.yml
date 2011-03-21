@@ -1,4 +1,7 @@
 # Test data
+
+# --- Attributes
+
 Attribute(a1):
     name:           Forum
     description:    >
@@ -117,7 +120,6 @@ Attribute(a5):
     description:    >
                     Recommends products possibly attracting customers
 
-    
 Level(rsAbsent):
     name:           Absent
     description:    >
@@ -132,6 +134,8 @@ Level(rsPresent):
     features:       f11
     attribute:      a5
     
+# --- Constraints
+
 ExcludesConstraint(RSxF):
     object:         f11
     subject:        f1
@@ -142,5 +146,77 @@ RequiresConstraint(CCrFD):
 
 RequiresConstraint(DCrFD):
     object:         f6
-    subject:        f3    
+    subject:        f3   
+    
+# --- Result
+
+Result(ResultWithExcludedLevels):
+    excludedLevels: 
+        - ccdc
+        
+# --- Level Rating Observations
+
+TestModels.RatingObservation(obsFpresent):
+    level:          forumPresent
+    rating:         6
+TestModels.RatingObservation(obsFabsent):
+    level:          forumAbsent
+    rating:         2
+TestModels.RatingObservation(obsFDpresent):
+    level:          fraudPresent
+    rating:         5
+TestModels.RatingObservation(obsFDabsent):
+    level:          fraudAbsent
+    rating:         1
+TestModels.RatingObservation(obsPMcc):
+    level:          cc
+    rating:         1
+TestModels.RatingObservation(obsPMdc):
+    level:          dc
+    rating:         1
+TestModels.RatingObservation(obsPMpo):
+    level:          po
+    rating:         1
+TestModels.RatingObservation(obsPMccdc):
+    level:          ccdc
+    rating:         2    
+TestModels.RatingObservation(obsPMccdcpo):
+    level:          ccdcpo
+    rating:         7       
+TestModels.RatingObservation(obsPMccpo):
+    level:          ccpo
+    rating:         2   
+TestModels.RatingObservation(obsPMdcpo):
+    level:          dcpo
+    rating:         2       
+TestModels.RatingObservation(obsCMpresent):
+    level:          cmPresent
+    rating:         6
+TestModels.RatingObservation(obsCMabsent):
+    level:          cmAbsent
+    rating:         1        
+TestModels.RatingObservation(obsRSpresent):
+    level:          rsPresent
+    rating:         6  
+TestModels.RatingObservation(obsRSabsent):
+    level:          rsAbsent
+    rating:         4 
+    
+# --- Attribute Importance
+TestModels.AttributeImportanceObservation(ForumImportance):
+    attribute:      a1
+    importance:     2
+TestModels.AttributeImportanceObservation(FDImportance):
+    attribute:      a2
+    importance:     4
+TestModels.AttributeImportanceObservation(PMImportance):
+    attribute:      a3
+    importance:     6
+TestModels.AttributeImportanceObservation(CMImportance):
+    attribute:      a4
+    importance:     5
+TestModels.AttributeImportanceObservation(RSImportance):
+    attribute:      a5
+    importance:     1
+    
     

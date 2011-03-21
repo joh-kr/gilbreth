@@ -47,7 +47,6 @@ public class Interview extends Model{
 		stages.put("PairsUtilityStage", new PairsUtilityStage(this, result));
 		stages.put("ConceptComparisonStage", new ConceptComparisonStage(this, result));
 		stages.put("PriceEstimationStage", new PriceEstimationStage(this, result));
-		
 	}
 	
 	public static Interview createNewInterview(Interviewee interviewee){
