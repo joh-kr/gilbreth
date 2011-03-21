@@ -28,7 +28,6 @@ public class walkStages {
 		levelIdsAndRates.put(paymentPresent.id, 4d);
 		levelIdsAndRates.put(paymentAbsent.id, 1d);
 		stage.addLevelRates(levelIdsAndRates);
-		
 	}
 	
 	public void walkAttributeWeightingStage(AttributeWeightingStage stage) throws Exception

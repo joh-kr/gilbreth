@@ -307,7 +307,9 @@ h3 span {
 .ratingIcon_selected {
 	background: url('/public/images/circle_on.png') no-repeat;
 }
-
+.ratingIcon_hover {
+	background: url('/public/images/circle_on.png') no-repeat;
+}
 /** Form **/
 
 form {

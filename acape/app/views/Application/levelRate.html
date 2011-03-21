@@ -40,7 +40,7 @@
         	</td>
         	<td colspan="2">
         	<div class="rating">
-        		<input type="hidden" name="levelRates[${i}]" value="0">
+        		<input type="hidden" name="levelRates[${i}]" value="0" />
 			%{
      			for(r in 1..7) { 
 			}%
@@ -62,13 +62,14 @@
  	$('.ratingIcon').hover(  
 	    // Handles the mouseover  
 	    function() { 
-	        $(this).prevAll().andSelf().addClass('ratingIcon_selected'); 
+	        $(this).prevAll().andSelf().addClass('ratingIcon_hover'); 
 	        $(this).nextAll().removeClass('ratingIcon_selected');	 
 	    },  
 	    // Handles the mouseout  
 	    function() {
-	 		$(this).prevAll().andSelf().addClass('ratingIcon_selected');  
-	 		$(this).nextAll().removeClass('ratingIcon_selected');	        
+	 		$(this).prevAll().andSelf().removeClass('ratingIcon_hover');  
+	 		//$(this).nextAll().removeClass('ratingIcon_hover');
+	 		setSelection($(this).parent());
 	    }  
 	);
  	$('.ratingIcon').click(function() {
@@ -78,6 +79,11 @@
  		$(this).prevAll().andSelf().addClass('ratingIcon_selected');  
  		$(this).nextAll().removeClass('ratingIcon_selected'); 
  	}); 
+ 	
+ 	function setSelection(element) {
+ 		$(element).find('.rate' + $(element).children(":input").val()).prevAll().andSelf().addClass('ratingIcon_selected');
+ 		$(element).find('.rate' + $(element).children(":input").val()).nextAll().removeClass('ratingIcon_selected'); 
+ 	}
  
  	</script>
     <p>

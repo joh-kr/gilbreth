@@ -34,27 +34,32 @@
         </table>
    	</div>
    	<script>
- 	$('.ratingIcon').hover(  
-	    // Handles the mouseover  
-	    function() { 
-	        $(this).prevAll().andSelf().addClass('ratingIcon_selected'); 
-	        $(this).nextAll().removeClass('ratingIcon_selected');	 
-	    },  
-	    // Handles the mouseout  
-	    function() {
-	 		$(this).prevAll().andSelf().addClass('ratingIcon_selected');  
-	 		$(this).nextAll().removeClass('ratingIcon_selected');	        
-	    }  
-	);
- 	$('.ratingIcon').click(function() {
- 		var classNames;
- 		classNames = $(this)[0].className.split(' ');
- 		$(this).parent().children(":input").val(classNames[0].substring(4));
- 		$(this).prevAll().andSelf().addClass('ratingIcon_selected');  
- 		$(this).nextAll().removeClass('ratingIcon_selected'); 
- 	}); 
- 
- 	</script>
+   	$('.ratingIcon').hover(  
+   			// Handles the mouseover  
+   			function() { 
+   				$(this).prevAll().andSelf().addClass('ratingIcon_hover'); 
+   		 		$(this).nextAll().removeClass('ratingIcon_selected');	 
+   		 	},  
+   		 	// Handles the mouseout  
+   		 	function() {
+   		 		$(this).prevAll().andSelf().removeClass('ratingIcon_hover');  
+   		 		//$(this).nextAll().removeClass('ratingIcon_hover');
+   		 		setSelection($(this).parent());
+   		 		}  
+   		 );
+   		 $('.ratingIcon').click(function() {
+   		  		var classNames;
+   		  		classNames = $(this)[0].className.split(' ');
+   		  		$(this).parent().children(":input").val(classNames[0].substring(4));
+   		  		$(this).prevAll().andSelf().addClass('ratingIcon_selected');  
+   		  		$(this).nextAll().removeClass('ratingIcon_selected'); 
+   		 }); 
+   		 	
+   		 function setSelection(element) {
+   		 	$(element).find('.rate' + $(element).children(":input").val()).prevAll().andSelf().addClass('ratingIcon_selected');
+   		 	$(element).find('.rate' + $(element).children(":input").val()).nextAll().removeClass('ratingIcon_selected'); 
+   		 }
+   	</script>
         <p>
     <input type="submit" value="Next" />
 </p>

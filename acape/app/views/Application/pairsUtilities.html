@@ -96,17 +96,36 @@ Which of both concepts do you prefer?
  			classNames = $(this)[0].className.split(' ');
 	    	var id = classNames[0].substring(4) - 0;
 	    	if (id > 0) {
-	        	$(this).prevUntil("#divider").andSelf().addClass('ratingIcon_selected'); 
+	        	$(this).prevUntil("#divider").andSelf().addClass('ratingIcon_hover'); 
 	        	$(this).nextAll().removeClass('ratingIcon_selected');
+	        	$("#divider").prevAll().removeClass('ratingIcon_hover');
 	        	$("#divider").prevAll().removeClass('ratingIcon_selected');
 	        } else {
-	        	$(this).nextUntil("#divider").andSelf().addClass('ratingIcon_selected'); 
+	        	$(this).nextUntil("#divider").andSelf().addClass('ratingIcon_hover'); 
 	        	$(this).prevAll().removeClass('ratingIcon_selected');
+	        	$("#divider").nextAll().removeClass('ratingIcon_hover');
 	        	$("#divider").nextAll().removeClass('ratingIcon_selected');
 	        }	 
 	    },  
 	    // Handles the mouseout  
-	    function() {     
+	    function() {
+	    	var classNames;
+ 			classNames = $(this)[0].className.split(' ');
+	    	var id = classNames[0].substring(4) - 0;
+	    	if (id > 0) {
+	        	$(this).prevUntil("#divider").addClass('ratingIcon_hover'); 
+	        	$(this).nextAll().andSelf().removeClass('ratingIcon_hover');
+	        	$(this).nextAll().andSelf().removeClass('ratingIcon_selected');
+	        	$("#divider").prevAll().removeClass('ratingIcon_hover');
+	        	$("#divider").prevAll().removeClass('ratingIcon_selected');
+	        } else {
+	        	$(this).nextUntil("#divider").addClass('ratingIcon_hover'); 
+	        	$(this).prevAll().andSelf().removeClass('ratingIcon_hover');
+	        	$(this).prevAll().andSelf().removeClass('ratingIcon_selected');
+	        	$("#divider").nextAll().removeClass('ratingIcon_hover');
+	        	$("#divider").nextAll().removeClass('ratingIcon_selected');
+	        }
+	        setSelection($(this).parent());
 	    }  
 	);
  	$('.ratingIcon').click(function() {
@@ -114,6 +133,24 @@ Which of both concepts do you prefer?
  		classNames = $(this)[0].className.split(' ');
  		$("#preference").val(classNames[0].substring(4));
  	}); 
+ 	
+ 	function setSelection(element) {
+ 		
+ 		if ($('#preference').val() > 0) {
+ 			$(element).find('.rate' + $('#preference').val()).prevUntil("#divider").andSelf().addClass('ratingIcon_selected');
+ 			$(element).find('.rate' + $('#preference').val()).nextAll().removeClass('ratingIcon_selected');
+ 			$("#divider").prevAll().removeClass('ratingIcon_selected');
+ 			$("#divider").prevAll().removeClass('ratingIcon_hover');
+ 		} else {
+ 		 	$(element).find('.rate' + $('#preference').val()).nextUntil("#divider").andSelf().addClass('ratingIcon_selected');
+ 			$(element).find('.rate' + $('#preference').val()).prevAll().removeClass('ratingIcon_selected');
+ 			$("#divider").nextAll().removeClass('ratingIcon_selected');
+ 			$("#divider").nextAll().removeClass('ratingIcon_hover');
+ 		}
+ 		
+ 		//$(element).find('.rate' + $('#preference').val()).prevAll().andSelf().addClass('ratingIcon_selected');
+ 		//$(element).find('.rate' + $('#preference').val()).nextAll().removeClass('ratingIcon_selected'); 
+ 	}
  
  	</script>
 

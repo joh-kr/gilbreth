@@ -52,6 +52,5 @@ public class TestRatingObservation extends UnitTest {
     	}
     	
     	assertEquals(0, allLevels.size());
-    	
     }
 }
