@@ -6,39 +6,21 @@ import java.util.logging.Logger;
 
 import play.test.*;
 import models.*;
+import models.TestModels.AttributeImportanceObservation;
+import models.TestModels.RatingObservation;
 
 
 public class walkStages {
 
 	public void walkLevelRateStage(LevelRatingStage stage) throws Exception
 	{
-    	Attribute forum = Attribute.find("byName", "Forum").first();
-    	Map<Long, Double> levelIdsAndRates = new Hashtable();
-		Level forumPresent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", forum, "Present").first();
-		Level forumAbsent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", forum, "Absent").first();
-		levelIdsAndRates.put(forumAbsent.id, 2d);
-		levelIdsAndRates.put(forumPresent.id, 7d);
-		stage.addLevelRates(levelIdsAndRates);
-		
-    	Attribute payment = Attribute.find("byName", "Payment with Fraud Detection").first();
-    	levelIdsAndRates = new Hashtable();
-		Level paymentPresent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", payment, "Present").first();
-		Level paymentAbsent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", payment, "Absent").first();	
-
-		levelIdsAndRates.put(paymentPresent.id, 4d);
-		levelIdsAndRates.put(paymentAbsent.id, 1d);
-		stage.addLevelRates(levelIdsAndRates);
+		List<RatingObservation> testObservations = RatingObservation.findAll();
+		RatingObservation.addObservations(stage, testObservations);
 	}
 	
 	public void walkAttributeWeightingStage(AttributeWeightingStage stage) throws Exception
 	{ 	
-    	if(stage.hasAttribute(0)) {
-    		Attribute attribute = stage.getCurrentAttribute(0);
-    		stage.weightLevelsFor(attribute, 6);
-    	}
-    	if(stage.hasAttribute(1)) {
-    		Attribute attribute = stage.getCurrentAttribute(1);
-    		stage.weightLevelsFor(attribute, 6);
-    	}
+		List<AttributeImportanceObservation> testObservations = AttributeImportanceObservation.findAll();
+		AttributeImportanceObservation.addObservations(stage, testObservations);
 	}
 }

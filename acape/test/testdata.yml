@@ -71,28 +71,28 @@ Level(ccdc):
     name:           Debit Card and Credit Card
     description:    >
                     
-    features:       f5, f6
+    features:       f5,f6
     attribute:      a3
         
 Level(ccdcpo):
     name:           Debit Card, Credit Card, and Purchase Order
     description:    >
                     
-    features:       f5, f6, f7
+    features:       f5,f6,f7
     attribute:      a3
     
 Level(ccpo):
     name:           Debit Card and Purchase Order
     description:    >
                     
-    features:       f5, f7
+    features:       f5,f7
     attribute:      a3
     
 Level(dcpo):
     name:           Credit Card and Purchase Order
     description:    >
                     
-    features:       f6, f7
+    features:       f6,f7
     attribute:      a3
  
 Attribute(a4):

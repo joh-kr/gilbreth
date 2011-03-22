@@ -365,8 +365,7 @@ public class PairsUtilityStage extends Stage {
 			double[] y = result.getDependentVariableValues();
 			double[][] x = result.getIndeptendentVariableValues();
 			
-			//@TODO
-			//regression.newSampleData(y, x);
+			regression.newSampleData(y, x);
 			
 			jlog.log(java.util.logging.Level.INFO, "Transformed Matrix before regression: ");
 			
@@ -380,12 +379,14 @@ public class PairsUtilityStage extends Stage {
 					x_predict[i] = 1.0d;
 				}
 			}
-			//@TODO
-			//return predict(regression, x_predict);
-			return 1;
+			
+			return predict(regression, x_predict);
 		}
 		
 		private double predict(OLSMultipleLinearRegression regression, double[] x){
+			if(regression == null) {
+				throw new IllegalArgumentException("Parameter regression must not be null");
+			}
 			double prediction = 0.0d;
 			double[] beta = regression.estimateRegressionParameters();
 			if(beta.length != x.length) 

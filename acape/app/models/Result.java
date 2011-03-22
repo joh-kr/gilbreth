@@ -58,16 +58,24 @@ public class Result extends Model{
     	R2 = 0.0d;
     }
  
+    /*
+     * Creates a map with:
+     *    key is a string representing a single feature or
+     *           a string representing the interaction of multiple features
+     *    value is the column index in the matrix 
+     */
 	private void initializeFeatureColumnMatching(){
-		int c = 0;
+		int column = 0;
 		Map<String, Integer> map = new Hashtable();
     	List<Level> levels = Level.all().fetch();
     	for(Level l : levels){
     		for(String f : l.getConstitutingFeaturesAsArray()){
-    			if(!map.containsKey(f)) map.put(f, c++);
+    			if(!map.containsKey(f)) map.put(f, column++);
     		}
     		if(l.getNrOfFeatures() > 1){
-    			if(!map.containsKey(l.getConstitutingFeatures())) map.put(l.getConstitutingFeatures(), c++);
+    			if(!map.containsKey(l.getConstitutingFeatures())) {
+    				map.put(l.getConstitutingFeatures(), column++);
+    			}
     		}
     	}
     	this.setFeatureColumnMatching(map);
@@ -105,7 +113,7 @@ public class Result extends Model{
     }
     
     /**
-     * the number of all features in the 	
+     * the number of all columns in the matrix
      * @return
      */
     private  int calculateNrOfColumns(){

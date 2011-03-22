@@ -28,7 +28,7 @@ public class TestAttributeWeightingStage extends UnitTest {
     @Before
     public void setup() throws Exception {
         Fixtures.deleteAll();
-        Fixtures.load("data.yml");
+        Fixtures.load("testdata.yml");
         
         walkStages = new walkStages();
 		testuser = Interviewee.find("byName", "TestUser").first();
@@ -37,6 +37,7 @@ public class TestAttributeWeightingStage extends UnitTest {
         stage = (AttributeWeightingStage) interview.getStage("StageWeightAttributes");
         
         walkStages.walkLevelRateStage(levelRating);
+        walkStages.walkAttributeWeightingStage(stage);
         
         forum = Attribute.find("byName", "Forum").first();
 		payment = Attribute.find("byName", "Payment with Fraud Detection").first();
@@ -53,41 +54,19 @@ public class TestAttributeWeightingStage extends UnitTest {
     public void testStage() throws Exception
     {	
     	assertTrue(stage.hasAttribute(0));
-    	assertTrue(stage.hasAttribute(1));
-    	assertFalse(stage.hasAttribute(2));
     	
-    	walkStages.walkAttributeWeightingStage(stage);
-    	
-    	if(stage.hasAttribute(0)) {
-    		Attribute attribute = stage.getCurrentAttribute(0);
-    		assertTrue(attribute == forum);
-    		
-    		Level best  = stage.getBestRatedLevel(0);
-    		Level worst = stage.getWorstRatedLevel(0);
-    		
-    		assertTrue(best == forumPresent);
-    		assertTrue(worst == forumAbsent);
-    		
-    		//@TODO check matrix entries
-    	} else {
-    		fail("missing attribute 0");
+    	int i = 0;
+    	while(stage.getCurrentAttribute(0) != forum) {
+    		stage.hasAttribute(++i);
     	}
-    	
-    	if(stage.hasAttribute(1)) {
-    		Attribute attribute = stage.getCurrentAttribute(1);
-    		assertTrue(attribute == payment);
-    		
-    		Level best  = stage.getBestRatedLevel(1);
-    		Level worst = stage.getWorstRatedLevel(1);
-    		
-    		assertTrue(best == paymentPresent);
-    		assertTrue(worst == paymentAbsent);
-    		
-    		//@TODO check matrix entries
 
-    	} else {
-    		fail("missing attribute 1");
-    	}
-		
+    	Attribute attribute = stage.getCurrentAttribute(0);
+    	assertTrue(attribute.name, attribute == forum);
+    		
+    	Level best  = stage.getBestRatedLevel(0);
+    	Level worst = stage.getWorstRatedLevel(0);
+    		
+    	assertTrue(best == forumPresent);
+    	assertTrue(worst == forumAbsent);
     }
 }
