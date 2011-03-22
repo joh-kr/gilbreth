@@ -37,21 +37,18 @@ public class LevelRatingStage extends Stage {
 			level = Level.findById(id);
 			double[] row = new double[result.getNrOfColumns()];
 			
-			jlog.log(java.util.logging.Level.INFO, "Save rates of Level: " + level.getName());
+			/*jlog.log(java.util.logging.Level.INFO, "Save rates of Level: " + level.getName());*/
 			
 			// For each feature constituting the level a entry is added to the matrix
 			for(String f : level.getConstitutingFeaturesAsArray()){
-				jlog.log(java.util.logging.Level.INFO, 
-						"Add entry at " + result.getColumnFor(f) + " for feature " + f);
+				/*jlog.log(java.util.logging.Level.INFO, 
+						"Add entry at " + result.getColumnFor(f) + " for feature " + f);*/
 				row[result.getColumnFor(f)] = 1;
 			}
-			// If the level consists of more than one feature, we add also a interaction parameter
-			if(level.getNrOfFeatures() > 1){
-				row[result.getColumnFor(level.getConstitutingFeatures())] = 1;
-			}
+
 			// Save the rate as the dependent variable in the matrix
-			jlog.log(java.util.logging.Level.INFO, 
-					"Add entry at " + (row.length - 1) + " for rate " + idAndRates.get(id));			
+			/*jlog.log(java.util.logging.Level.INFO, 
+					"Add entry at " + (row.length - 1) + " for rate " + idAndRates.get(id));*/			
 			row[row.length - 1] = idAndRates.get(id);
 			
 			result.addNewRow(row);

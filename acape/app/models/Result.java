@@ -60,8 +60,7 @@ public class Result extends Model{
  
     /*
      * Creates a map with:
-     *    key is a string representing a single feature or
-     *           a string representing the interaction of multiple features
+     *    key is a string representing a single feature
      *    value is the column index in the matrix 
      */
 	private void initializeFeatureColumnMatching(){
@@ -70,11 +69,8 @@ public class Result extends Model{
     	List<Level> levels = Level.all().fetch();
     	for(Level l : levels){
     		for(String f : l.getConstitutingFeaturesAsArray()){
-    			if(!map.containsKey(f)) map.put(f, column++);
-    		}
-    		if(l.getNrOfFeatures() > 1){
-    			if(!map.containsKey(l.getConstitutingFeatures())) {
-    				map.put(l.getConstitutingFeatures(), column++);
+    			if(!map.containsKey(f)) {
+    				map.put(f, column++);
     			}
     		}
     	}
@@ -120,7 +116,8 @@ public class Result extends Model{
     	return this.getFeatureColumnMatching().size() + 1;
     }
     
-    private void initializeMatrix(){ 	
+    private void initializeMatrix() {
+    	jlog.log(java.util.logging.Level.INFO, "Number of Columns: " + this.calculateNrOfColumns());
     	setMatrix(new Array2DRowRealMatrix(this.calculateNrOfRows(), this.calculateNrOfColumns()));
     	jlog.log(java.util.logging.Level.INFO, "Matrix is initialized.");
     }
@@ -137,7 +134,7 @@ public class Result extends Model{
     	m.setRow(++rowCount, row);
     	this.setMatrix(m);
     	this.save();
-    	jlog.log(java.util.logging.Level.INFO, "At row " + rowCount + " new values are written.");
+    	//jlog.log(java.util.logging.Level.INFO, "At row " + rowCount + " new values are written.");
     }
     
     public int getNrOfColumns(){
@@ -217,37 +214,66 @@ public class Result extends Model{
     }
     
     public double getRateFor(Level level) throws Exception{
-    	int column = getColumnFor(level.getConstitutingFeatures());
     	RealMatrix matrix = getMatrix();
     	// Check whether matrix is initialized
-    	int row = 0;
+    	double rating = 0;
+    	
+    	String[] features = level.getConstitutingFeaturesAsArray();
+    	int[] affectedColumns = new int[features.length];
+    	for(int i = 0; i < features.length; i++) {
+    		affectedColumns[i] = getColumnFor(features[i]);
+    	}
+    	
     	boolean found = false;
-    	for(int i = 0; i < matrix.getRowDimension(); i++){
-    		if(matrix.getEntry(i, column) == 1.0d){
-    			row = i;
-    			found = true;
-    			break;
+    	boolean featureInRow = false;
+    	
+    	for(int i = 0; i < matrix.getRowDimension(); i++) {
+    		featureInRow = false;
+    		for(int j = 0; j < affectedColumns.length; j++) {
+	    		if(matrix.getEntry(i, affectedColumns[j]) != 0){
+	    			featureInRow = true;
+	    			found = true;
+	    		}
+    		}
+    		if(featureInRow) {
+    			rating += matrix.getEntry(i, matrix.getColumnDimension() - 1);
     		}
     	}
     	if(!found) 
     		throw new Exception("No Entry for Level " + level.getName() + " found.");
     
-    	return matrix.getEntry(row, matrix.getColumnDimension() - 1);
+    	return rating;
     }
     
     /*
-     * Level frequency is the sum of ??
-     * TODO: find out what level frequency is
+     * Level frequency is the count of observations containing all the features of the level
      */
     public int getLevelFrequency(Level level) throws Exception{
     	RealMatrix m = getMatrix();
-    	int columnIndex = getColumnFor(level.getConstitutingFeatures());
-    	double[] column = m.getColumn(columnIndex);
+    	
+    	int[] columns = new int[level.getConstitutingFeaturesAsArray().length];
+    	
     	int c = 0;
-    	for(double entry : column){
-    		if(entry != 0.0d) c++;
+    	for(String f : level.getConstitutingFeaturesAsArray()) {
+    		columns[c++] = getColumnFor(f);
     	}
-    	return c;
+    	
+    	int count = 0;
+    	
+    	for(int i = 0; i < getRowCount(); i++) {
+    		double[] row = m.getRow(i);
+    		boolean rowContainsAllFeatures = true;
+    		for(int j = 0; j < columns.length; j++) {
+    			if(row[columns[j]] != 1.0d) {
+    				rowContainsAllFeatures = false;
+    			}
+    		}
+    		if(rowContainsAllFeatures) {
+    			count++;
+    		}
+    	}
+    	
+    	return count;
     }
     
     /*

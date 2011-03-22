@@ -57,7 +57,8 @@ public class TestLevelRate extends UnitTest {
 		Level paymentPresent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", payment, "Present").first();
 		Level paymentAbsent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", payment, "Absent").first();		
 		
-		assertTrue(result.getRateFor(paymentPresent) > result.getRateFor(paymentAbsent));
+		assertTrue("Present: " + result.getRateFor(paymentPresent) + " Absent: " + result.getRateFor(paymentAbsent),
+				result.getRateFor(paymentPresent) > result.getRateFor(paymentAbsent));
 		assertTrue(result.getRateFor(forumPresent) > result.getRateFor(forumAbsent));
     }
     

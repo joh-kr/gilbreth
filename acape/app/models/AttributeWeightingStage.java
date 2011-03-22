@@ -1,5 +1,6 @@
 package models;
 
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.commons.math.linear.RealMatrix;
@@ -41,31 +42,49 @@ public class AttributeWeightingStage extends Stage {
 		return level;
 	}
 	
+	/*
+	 * Applies the weight to the current rating of all observations containing
+	 * a feature of the attribute
+	 */
 	public void weightLevelsFor(Attribute attribute, double weight) throws Exception{
 		List<Level> levels = attribute.getLevels(result.excludedLevels);
 		
 		RealMatrix matrix = result.getMatrix();
-		int colIndex;
-		double[] column;
 		double rate;
-		int match;
 		
-		for(Level l : levels){
-			colIndex = result.getColumnFor(l.getConstitutingFeatures());
-			column = matrix.getColumn(colIndex);
-			match = -1;
-			for(int i = 0; i < column.length; i++){
-				if(column[i] != 0){
-					match = i;
-					break;
-				}
+		HashSet<String> features = new HashSet<String>();
+		
+		for(Level l : levels) {
+			for(String feature : l.getConstitutingFeaturesAsArray()) {
+				features.add(feature);
 			}
-			rate = matrix.getEntry(match, matrix.getColumnDimension() - 1);
-			matrix.setEntry(match, matrix.getColumnDimension() - 1, rate * weight);
 		}
+		
+    	int[] affectedColumns = new int[features.size()];
+    	
+    	int j = 0;
+		for(String feature : features) {
+			affectedColumns[j++] = result.getColumnFor(feature);
+		}
+		
+		boolean featureInRow = false;
+		
+    	for(int i = 0; i < matrix.getRowDimension(); i++) {
+    		featureInRow = false;
+    		for(int c = 0; c < affectedColumns.length; c++) {
+	    		if(matrix.getEntry(i, affectedColumns[c]) != 0){
+	    			featureInRow = true;
+	    		}
+    		}
+    		//weight row as it contains a feature of the attribute
+    		if(featureInRow) {
+    			rate = matrix.getEntry(i, matrix.getColumnDimension() - 1);
+    			matrix.setEntry(i, matrix.getColumnDimension() - 1, rate * weight);
+    		}
+    	}		
+
 		result.setMatrix(matrix);
 		result.save();
-		//System.out.println("Weighted Matrix: " + result.getMatrix());
 	}
 
 }
