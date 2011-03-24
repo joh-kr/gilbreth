@@ -154,6 +154,12 @@ Result(ResultWithExcludedLevels):
     excludedLevels: 
         - ccdc
         
+# --- Test Interviewee
+
+Interviewee(interviewee1):
+    name:          TestUser
+    email:         TestUserMail        
+        
 # --- Level Rating Observations
 
 TestModels.RatingObservation(obsFpresent):

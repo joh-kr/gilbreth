@@ -9,7 +9,6 @@ public class ConceptComparisonStage extends Stage{
 
 	public ConceptComparisonStage(Interview interview, Result result) {
 		super(interview, result);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public List<Concept> calculateConcepts(){

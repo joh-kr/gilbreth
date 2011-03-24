@@ -8,7 +8,6 @@ public class PriceEstimationStage extends Stage {
 	Random r = new Random();
 	public PriceEstimationStage(Interview interview, Result result) {
 		super(interview, result);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public PricedConcept getPricedConcept(){

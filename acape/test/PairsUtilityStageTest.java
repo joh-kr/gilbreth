@@ -16,14 +16,7 @@ public class PairsUtilityStageTest extends UnitTest {
 	private PairsUtilityStage pairsUtilityStage;
 	private Result result;
 	private walkStages walkStages;
-	
-	private Attribute payment;
-	private Attribute forum;
-	private Level forumPresent;
-	private Level forumAbsent;
-	private Level paymentPresent;
-	private Level paymentAbsent;
-	
+
 	private static Logger jlog = Logger.getLogger("de.iwi.uni_leipzig.gilbreth");
 	
     @Before
@@ -43,15 +36,7 @@ public class PairsUtilityStageTest extends UnitTest {
         // first stage
         walkStages.walkLevelRateStage(levelRatingStage);
         // second stage
-        walkStages.walkAttributeWeightingStage(attributeWeightingStage);
-        
-    	payment = Attribute.find("byName", "Payment with Fraud Detection").first();
-    	forum = Attribute.find("byName", "Forum").first();
-    	
-		forumPresent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", forum, "Present").first();
-		forumAbsent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", forum, "Absent").first();
-		paymentPresent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", payment, "Present").first();
-		paymentAbsent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", payment, "Absent").first();        
+        walkStages.walkAttributeWeightingStage(attributeWeightingStage);     
     }
     
     @Test
@@ -80,67 +65,6 @@ public class PairsUtilityStageTest extends UnitTest {
     	assertTrue(independent.length >= independent[0].length);	
     }
     
-    //@TODO unit test is not working, do not assume certain levels presented first
-    public void testComputedPairs() throws Exception
-    {
-    	PairsUtilityStage.LevelsPair pair = pairsUtilityStage.computeLevelsPair(2);
-    	assertNotNull(pair);
-    	List<Level> lhs = pair.getLHS();
-    	List<Level> rhs = pair.getRHS();
-		
-		assertTrue(lhs.contains(forumPresent) && lhs.contains(paymentPresent));
-		assertTrue(rhs.contains(forumAbsent) && rhs.contains(paymentAbsent));
-		
-		List<Long> lhsIds = new ArrayList();
-		List<Long> rhsIds = new ArrayList();
-		
-		for (Level lvl : lhs) {
-			lhsIds.add(lvl.id);
-		}
-		for (Level lvl : rhs) {
-			rhsIds.add(lvl.id);
-		}
-		
-		//RealMatrix m = result.getMatrix();
-		
-		// prefer lhs with both present
-		if(lhs.contains(forumPresent)) {
-			pairsUtilityStage.saveNewObservation(lhsIds, rhsIds, -4.0);
-		} else {
-			pairsUtilityStage.saveNewObservation(lhsIds, rhsIds,  4.0);		
-		}  
-		
-		pair = pairsUtilityStage.computeLevelsPair(2);
-    	lhs = pair.getLHS();
-    	rhs = pair.getRHS();
-    	
-		lhsIds = new ArrayList();
-		rhsIds = new ArrayList();
-		
-		for (Level lvl : lhs) {
-			lhsIds.add(lvl.id);
-		}
-		for (Level lvl : rhs) {
-			rhsIds.add(lvl.id);
-		}    	
-    	
-		// if left pair is the same, the right pair has to be different
-		if(lhs.contains(forumAbsent) ^ lhs.contains(paymentAbsent)) {
-			assertTrue(rhs.contains(forumAbsent) ^ rhs.contains(paymentAbsent));
-		}
-
-		if(lhs.contains(forumPresent)) {
-			pairsUtilityStage.saveNewObservation(lhsIds, rhsIds, -2.0);
-		} else {
-			pairsUtilityStage.saveNewObservation(lhsIds, rhsIds,  2.0);		
-		}    	
-    	
-		pair = pairsUtilityStage.computeLevelsPair(2);
-		assertNotNull(pair);
-		assertFalse(pairsUtilityStage.isFinished());
-		//m = result.getMatrix();
-    }
-    
     @Test
     public void improveObservationsChangeUtility() throws Exception
     {
@@ -163,15 +87,15 @@ public class PairsUtilityStageTest extends UnitTest {
 		double oldLhsUtility = pair.getUtilityForLhs();
 		double oldRhsUtility = pair.getUtilityForRhs();
 		
-		pairsUtilityStage.saveNewObservation(lhsIds, rhsIds, -2.0);
+		pairsUtilityStage.saveNewObservation(lhsIds, rhsIds, -4.0);
 		
 		pair.calculateUtilities();
 		
 		double newLhsUtility = pair.getUtilityForLhs();
 		double newRhsUtility = pair.getUtilityForRhs();
 		
-		assertTrue("old: " + oldLhsUtility + " new: " + newLhsUtility, oldLhsUtility > newLhsUtility);
-		assertTrue("old: " + oldRhsUtility + " new: " + newRhsUtility, oldRhsUtility < newRhsUtility);
+		assertTrue("old: " + oldLhsUtility + " new: " + newLhsUtility, oldLhsUtility < newLhsUtility);
+		assertTrue("old: " + oldRhsUtility + " new: " + newRhsUtility, oldRhsUtility > newRhsUtility);
 		
     }
     
@@ -183,4 +107,9 @@ public class PairsUtilityStageTest extends UnitTest {
 		//stage.calculateR2();
 	}
 	
+	@Test
+	public void fillOutStage() throws Exception {
+		walkStages.walkPairsUtilityStage(pairsUtilityStage);
+		assertTrue(pairsUtilityStage.isFinished());
+	}
 }

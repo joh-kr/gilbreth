@@ -151,6 +151,21 @@ public class PairsUtilityStage extends Stage {
 		
 		result.setR2(calculateR2());
 	}
+	
+	/*
+	 * Wrapper for function saveNewObservation accepting lists of levels instead of level IDs
+	 */
+	public void saveNewObservationByLevels(List<Level> lhs, List<Level> rhs, double preference) throws Exception {
+		List<Long> lhsIds = new ArrayList<Long>();
+		List<Long> rhsIds = new ArrayList<Long>();
+		for(Level l : lhs) {
+			lhsIds.add(l.id);
+		}
+		for(Level l : rhs) {
+			rhsIds.add(l.id);
+		}
+		saveNewObservation(lhsIds, rhsIds, preference);
+	}
 
 	private double[] buildObservationRow(List<Long> lhsIds, List<Long> rhsIds,
 			double preference) throws Exception {
