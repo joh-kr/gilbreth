@@ -77,6 +77,7 @@ public class TestUtilityCalculations extends UnitTest {
 		x = new double[][] {{1.0, 0.0, 0.0},{0.0, 1.0, 0.0},{1.0, -1.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, -1.0, 1.0}};
 		
 		// utility of x2 should not decrease with this observation
+		// fails
 		assertTrue("old utility of x2: " + utilityX2 + " new utility: " + calculateUtility(y, x, 1), 
 				utilityX2 <= calculateUtility(y, x, 1));
 		
