@@ -310,6 +310,11 @@ h3 span {
 .ratingIcon_hover {
 	background: url('/public/images/circle_on.png') no-repeat;
 }
+
+#singularRating {
+	background: none;
+}
+
 /** Form **/
 
 form {
