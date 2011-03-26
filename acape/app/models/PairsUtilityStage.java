@@ -148,7 +148,6 @@ public class PairsUtilityStage extends Stage {
 		double[] x = buildObservationRow(lhsIds, rhsIds, preference);
 		
 		result.addNewRow(x);
-		
 		result.setR2(calculateR2());
 	}
 	
@@ -227,24 +226,14 @@ public class PairsUtilityStage extends Stage {
 	 * @return r2 value
 	 */
 	public double calculateR2(){
-		
 		MyOLSMultipleLinearRegression regression = new MyOLSMultipleLinearRegression();
 		
 		double[] y = result.getDependentVariableValues();
 		double[][] x = result.getIndeptendentVariableValues();
+
+		regression.newSampleData(y, x);
 		
-		//@TODO
-		//regression.newSampleData(y, x);
-		
-		//double y_var = regression.estimateRegressandVariance();
-		//double y_var = regression.calculateYVariance();
-		//double res_var = StatUtils.variance(regression.estimateResiduals());
-		
-		//double r2 = 1 - res_var/y_var;
-		//jlog.log(java.util.logging.Level.INFO, "R2 is calculated as " + r2 + " with var y: " + y_var + " and var residuals " + res_var);
-		//@TODO
-		//return r2;
-		return 1;
+		return regression.calculateRSquared();
 	}
 	
 	private void populate(double[] x, List<Long> list, double factor) throws Exception{
