@@ -16,12 +16,12 @@
           <tr>
           	<td>
         	<div class="rating">
-        		<input type="hidden" name="levelRates[${i}]" value="0">
+        		<input type="hidden" name="levelRates[${i}]" value="1">
+        		<div id="singularRating" class="rate1 ratingIcon"></div>
 			%{
-     			for(r in 1..7) { 
+     			for(r in 2..8) { 
 			}%
-        	 
-				 <!-- <input type="radio" name="levelRates[${i}]" value="${r}"> -->
+        	 	
 				<div class="rate${r} ratingIcon"></div>
         		
         	%{
