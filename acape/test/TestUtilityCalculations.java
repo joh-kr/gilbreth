@@ -14,6 +14,7 @@ public class TestUtilityCalculations extends UnitTest {
     private double calculateUtility(double[] y, double[][] x, int searchedIndex) {
     	OLSMultipleLinearRegression regression = new OLSMultipleLinearRegression();
     	
+    	regression.setNoIntercept(true);
     	regression.newSampleData(y, x);
     	
     	double[] x_predict = new double[x[0].length];
@@ -37,8 +38,8 @@ public class TestUtilityCalculations extends UnitTest {
     @Test
     public void improveUtilityByObservation() {
     	
-		double[] y = {1.0, 2.0};
-		double[][] x = {{1.0, 0.0},{0.0, 1.0}};
+		double[] y = {1.0, 2.0, 0.0};
+		double[][] x = {{1.0, 0.0},{0.0, 1.0},{0.0, 0.0}};
 		
 		//one observation concerning x1, utility of x1 is 1
 		assertEquals(1.0, calculateUtility(y, x, 0), 0.001);
@@ -63,12 +64,19 @@ public class TestUtilityCalculations extends UnitTest {
 		
 		// introduce new x3 with utility of 1
 		y = new double[] {1.0, 2.0, -2.0, 1.0};
-		x = new double[][] {{1.0, 0.0, 0.0},{0.0, 1.0, 0.0},{1.0, -1.0, 0.0}, {0.0, 0.0, 1.0}};
+		x = new double[][] {{1.0, 0.0, 0.0},
+				            {0.0, 1.0, 0.0},
+				            {1.0, -1.0, 0.0},
+				            {0.0, 0.0, 1.0}};
 		assertEquals(1.0, calculateUtility(y, x, 2), 0.001);
 		
 		// add observation showing x2 is preferred to x3
-		y = new double[] {1.0, 2.0, -2.0, 1.0, -1.0};
-		x = new double[][] {{1.0, 0.0, 0.0},{0.0, 1.0, 0.0},{1.0, -1.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, -1.0, 1.0}};
+		y = new double[] {1.0, 2.0, -2.0, 1.0, -1.5};
+		x = new double[][] {{1.0, 0.0, 0.0},
+				            {0.0, 1.0, 0.0},
+				            {1.0, -1.0, 0.0}, 
+				            {0.0, 0.0, 1.0}, 
+				            {0.0, -1.0, 1.0}};
 		
 		// utility of x2 should not decrease with this observation
 		// fails

@@ -225,7 +225,7 @@ TestModels.AttributeImportanceObservation(RSImportance):
     attribute:      a5
     importance:     1
     
- # --- Price Settings
+# --- Price Settings
  
 PriceSettings(price):
     minimumPrice:   100

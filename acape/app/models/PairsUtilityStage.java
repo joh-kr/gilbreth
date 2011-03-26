@@ -380,6 +380,7 @@ public class PairsUtilityStage extends Stage {
 			double[] y = result.getDependentVariableValues();
 			double[][] x = result.getIndeptendentVariableValues();
 			
+			regression.setNoIntercept(true);
 			regression.newSampleData(y, x);
 			
 			jlog.log(java.util.logging.Level.INFO, "Transformed Matrix before regression: ");

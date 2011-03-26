@@ -87,15 +87,16 @@ public class PairsUtilityStageTest extends UnitTest {
 		double oldLhsUtility = pair.getUtilityForLhs();
 		double oldRhsUtility = pair.getUtilityForRhs();
 		
+		//choose best rating for lhs
 		pairsUtilityStage.saveNewObservation(lhsIds, rhsIds, -4.0);
 		
 		pair.calculateUtilities();
 		
 		double newLhsUtility = pair.getUtilityForLhs();
-		double newRhsUtility = pair.getUtilityForRhs();
 		
-		assertTrue("old: " + oldLhsUtility + " new: " + newLhsUtility, oldLhsUtility < newLhsUtility);
-		assertTrue("old: " + oldRhsUtility + " new: " + newRhsUtility, oldRhsUtility > newRhsUtility);
+		//rating of lhs must not decrease
+		assertTrue("old: " + oldLhsUtility + " new: " + newLhsUtility, Math.abs(newLhsUtility - oldLhsUtility) <= 0.001);
+
 		
     }
     
