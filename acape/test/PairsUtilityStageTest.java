@@ -85,7 +85,6 @@ public class PairsUtilityStageTest extends UnitTest {
 		pair.calculateUtilities();
 		
 		double oldLhsUtility = pair.getUtilityForLhs();
-		double oldRhsUtility = pair.getUtilityForRhs();
 		
 		//choose best rating for lhs
 		pairsUtilityStage.saveNewObservation(lhsIds, rhsIds, -4.0);

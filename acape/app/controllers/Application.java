@@ -25,13 +25,36 @@ public class Application extends Controller {
 	// ----- Start the survey
 	
 	public static void index() throws Exception {
-		Interviewee interviewee = Interviewee.createNewInterviewee("John Deere", "john.deere@gmail.com");
+		// load first stage identifying the interviewee
+		registerInterviewee();
+		//render(id);
+	}
+	
+	// render form asking for name and mail of interviewee
+	public static void registerInterviewee()
+	{
+		render();
+	}
+	
+	// Interviewee registration stage
+	public static void postRegisterInterviewee(String name, String mail) throws Exception {
+		
+		Interviewee interviewee = null;
+		// Search existing interviewees
+		List<Interviewee> interviewees = Interviewee.find("byEMail", mail).fetch();
+		
+		if(interviewees.size() == 0) {
+			// new interviewee
+			interviewee = Interviewee.createNewInterviewee(name, mail);
+		} else {
+			// existing interviewee
+			interviewee = interviewees.get(0);
+		}
+		//new interview with interviewee
 		Interview interview = Interview.createNewInterview(interviewee);
 		
 		long id = interview.id;
 		excludeLevel(id, 0);
-		
-		//render(id);
 	}
 	
 	// ------ Exclude Level Stage -------
