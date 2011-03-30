@@ -1,6 +1,15 @@
 #{extends 'main.html' /}
 #{set title:'ACA PE' /}
 
+#{ifErrors}
+   <h1>Error</h1>
+ 
+   #{errors}
+       <p>${error}</p>
+   #{/errors}
+#{/ifErrors}
+ 
+
 	#{form @Application.postExcludeLevel()}  
 	<input type="hidden" name="interviewId" value="${interviewId}" />
 	<input type="hidden" name="attributeId" value="${attribute.id}" />
@@ -26,8 +35,14 @@
         			<br />${level.description}
         		%{ } }%
         	</td>
-        	<td> 
-        	 <input type="checkbox" name="excludeLevelIds[${i}]" value="${level.id}" />
+        	<td>
+        	
+        	<input type="checkbox" name="excludeLevelIds[${i}]" value="${level.id}"
+        	%{ if(flash.contains('excludeLevelIds[' + i + ']')) { }%
+        		 checked
+            %{ } }%
+        	/> 
+        	 
         	</td>
 
           </tr>

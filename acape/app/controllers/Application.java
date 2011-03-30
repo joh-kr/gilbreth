@@ -75,7 +75,7 @@ public class Application extends Controller {
 	}
 
 	public static void postExcludeLevel(long interviewId,
-			List<Long> excludeLevelIds, int page) throws Exception {
+			List<Long> excludeLevelIds, int page, long attributeId) throws Exception {
 		Interview interview = getInterview(interviewId);
 		
 		LevelExclusionStage stage = (LevelExclusionStage) interview.getStage("LevelExclusion");
@@ -83,11 +83,29 @@ public class Application extends Controller {
 		// remove null values i.e. not selected check boxes
 		if (excludeLevelIds != null) {
 			excludeLevelIds.removeAll(Collections.singleton(null));
+			
+			if(excludeLevelIds.size() > 0) {
+				// Use this level to find attribute of current page
+				Attribute attribute = Attribute.findById(attributeId);
+				// Check that attribute contains more levels than are excluded
+				validation.max(excludeLevelIds.size(), attribute.levels.size() - 1)
+				          .message("You can not exclude all levels of an attribute.");
+			}
 		}
+		if(validation.hasErrors()) {
+			// Display error in log
+			for(play.data.validation.Error error : validation.errors()) {
+				jlog.log(java.util.logging.Level.INFO, error.message());
+	        }
+			// show page again with 
+			params.flash();
+	        validation.keep();
+	        excludeLevel(interview.id, page); 
+		} else {
+			stage.excludeLevels(excludeLevelIds);
 		
-		stage.excludeLevels(excludeLevelIds);
-		
-		excludeLevel(interview.id, ++page);
+			excludeLevel(interview.id, ++page);
+		}
 	}
 
 	// ------ Rate Level Stage -------
