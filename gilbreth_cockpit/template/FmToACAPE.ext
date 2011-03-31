@@ -1,0 +1,36 @@
+
+
+transform(featureModelSchema::FeatureModelType f):
+	callJavaTransform(getFeatureModelPath())
+;
+
+callJavaTransform(String path):
+ JAVA de.uni_leipzig.iwi.gilbreth.acape.generator.Helper.transform(java.lang.String)
+;
+
+String getFeatureModelPath():
+ (String) GLOBALVAR FeatureModelFilePath
+;
+
+create acape::ACAPEDataModel createACAPEDataModel(featureModelSchema::GeneralFeature  f):
+	let dataModel = new acape::ACAPEDataModel:
+		dataModel.setName(" ") ->
+		dataModel
+;
+
+create acape::Attribute createAttributes(featureModelSchema::GeneralFeature f):
+	let att = new acape::Attribute:
+		att.setName(f.name) ->
+		//att.addlevels = createLevels(f)
+		att
+;
+
+create acape::Level createLevels(featureModelSchema::GeneralFeature f):
+	let l = new acape::Level:
+		l.setName("") ->
+		l
+;
+
+other(acape::ACAPEDataModel a):
+null
+;
