@@ -26,10 +26,12 @@ import sun.security.krb5.RealmException;
 public class PairsUtilityStage extends Stage {
 	
 	private Boolean stageFinished;
+	private Utility utility;
 	
 	public PairsUtilityStage(Interview interview, Result result){
 		super(interview, result);
 		stageFinished = false;
+		this.utility = new Utility(result);
 	}
 	
 	public LevelsPair computeLevelsPair(int numberOfAttributes) throws Exception{
@@ -47,7 +49,7 @@ public class PairsUtilityStage extends Stage {
 			listOfListOfLevelFrequencies.add(sortLevels(attributeFrequencies.get(i).getAttribute()));
 		}
 		
-		jlog.log(java.util.logging.Level.INFO, "Construct list of sorted levels with " + listOfListOfLevelFrequencies.size() + " elements.");
+		//jlog.log(java.util.logging.Level.INFO, "Construct list of sorted levels with " + listOfListOfLevelFrequencies.size() + " elements.");
 		
 		for(List<LevelFrequency> lf : listOfListOfLevelFrequencies){
 			initLevelPair.addToLHS(lf.get(0).getLevel(), lf.get(lf.size() <= 1 ? 0 : 1).getLevel());
@@ -324,7 +326,7 @@ public class PairsUtilityStage extends Stage {
 				this.lhs.add(levelsPair.getLHS().get(i)); 
 				this.rhs.add(levelsPair.getRHS().get(i)); 
 			}
-			jlog.log(java.util.logging.Level.INFO, "Created a LevelsPair with size " + lhs.size());
+			// jlog.log(java.util.logging.Level.INFO, "Created a LevelsPair with size " + lhs.size());
 		}
 		
 		public List<Level> getLHS(){
@@ -348,8 +350,8 @@ public class PairsUtilityStage extends Stage {
 		public void swapLevels(int index){
 			if(index >= lhs.size())
 				throw new IllegalArgumentException("The index is out of range. Index is " + index + " but range is 0 - " + (lhs.size() - 1));
-			jlog.log(java.util.logging.Level.INFO, "Swap element at " + index);
-			jlog.log(java.util.logging.Level.INFO, "Size of levels is" + lhs.size());
+			//jlog.log(java.util.logging.Level.INFO, "Swap element at " + index);
+			//jlog.log(java.util.logging.Level.INFO, "Size of levels is" + lhs.size());
 			
 			Level swap;
 			swap = lhs.get(index);
@@ -359,49 +361,8 @@ public class PairsUtilityStage extends Stage {
 		
 		
 		public void calculateUtilities() throws Exception{
-			utility_lhs = computeUtilityFor(lhs);
-			utility_rhs = computeUtilityFor(rhs);
-		}
-		
-		private double computeUtilityFor(List<Level> levels) throws Exception{		
-			OLSMultipleLinearRegression regression = new OLSMultipleLinearRegression();
-			
-			double[] y = result.getDependentVariableValues();
-			double[][] x = result.getIndeptendentVariableValues();
-			
-			regression.setNoIntercept(true);
-			regression.newSampleData(y, x);
-			
-			jlog.log(java.util.logging.Level.INFO, "Transformed Matrix before regression: ");
-			
-			// Without dependent variable
-			double[] x_predict = new double[result.getNrOfColumns() - 1];
-			Integer[] columns;
-			
-			for(Level l : levels){
-				columns = result.getColumnsFor(l);
-				for(int i : columns){
-					x_predict[i] = 1.0d;
-				}
-			}
-			
-			return predict(regression, x_predict);
-		}
-		
-		private double predict(OLSMultipleLinearRegression regression, double[] x){
-			if(regression == null) {
-				throw new IllegalArgumentException("Parameter regression must not be null");
-			}
-			double prediction = 0.0d;
-			double[] beta = regression.estimateRegressionParameters();
-			if(beta.length != x.length) 
-				throw new IllegalArgumentException("The number of predictor variables is different to the number of regression parameters. " + x.length + "!=" + beta.length);
-			
-			for(int i = 0; i < beta.length; i++){
-				prediction += beta[i] * x[i];
-			}
-			
-			return prediction;
+			utility_lhs = utility.computeUtilityFor(lhs);
+			utility_rhs = utility.computeUtilityFor(rhs);
 		}
 		
 		public double getUtilityForLhs()

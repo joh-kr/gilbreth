@@ -2,6 +2,7 @@ package models;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
@@ -16,8 +17,18 @@ public class Concept{
 	
 	private HashMap<Attribute, Level> attributeLevelPairs = new HashMap<Attribute, Level>();
 	
+	double utility;
+	
+	public double getUtility() {
+		return utility;
+	}
+
+	public void setUtility(double utility) {
+		this.utility = utility;
+	}
+
 	public void addAttributeAndLevel(Attribute attribute, Level level){
-		jlog.log(java.util.logging.Level.INFO, "Add: " + attribute.name + " " + level.name);
+		// jlog.log(java.util.logging.Level.INFO, "Add: " + attribute.name + " " + level.name);
 		attributeLevelPairs.put(attribute, level);
 	}
 	
@@ -27,6 +38,14 @@ public class Concept{
 			attributes.add(a);
 		}
 		return attributes;
+	}
+	
+	/*
+	 * Returns a unsorted list of all levels in the concept
+	 */
+	public List<Level> getLevels()
+	{
+		return new ArrayList(attributeLevelPairs.values());
 	}
 	
 	public Level getLevelOf(Attribute attribute){

@@ -1,9 +1,10 @@
 #{extends 'main.html' /} 
 #{set title:'ACA PE' /}
 
-#{form @Application.postPairsUtilities()}
+#{form @Application.postPriceEstimation()}
 <input type="hidden" name="interviewId" value="${interviewId}" />
-
+<input type="hidden" name="page" value="${page}" />
+<input type="hidden" name="utility" value="${concept.getUtility()}" />
 
 <div class="conceptComparisons">
 <p class="description">
@@ -23,5 +24,5 @@ Would you buy the presented product? Please answer with the buttons below.
 </div>
 
 </div>
-<p><input type="submit" value="Buy" /> <input type="submit" value="Not Buy" /></p>
+<p><input type="submit" name="buyButton" value="Buy" /> <input type="submit" name="noBuyButton" value="Not Buy" /></p>
 #{/form}

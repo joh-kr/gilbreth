@@ -256,7 +256,7 @@ public class Application extends Controller {
 			render(interviewId, concepts);
 
 		} else {
-			priceEstimation(interviewId, false);
+			priceEstimation(interviewId, 0);
 		}
 			
 	}
@@ -270,25 +270,35 @@ public class Application extends Controller {
 	
 	// ------ Price Estimation Stage -------
 	
-	public static void priceEstimation(long interviewId, boolean finished) throws Exception{
+	public static void priceEstimation(long interviewId, int page) throws Exception{
 		Interview interview = getInterview(interviewId);
 		PriceEstimationStage stage = (PriceEstimationStage) interview.getStage("PriceEstimationStage");
 		
 		PricedConcept concept = stage.getPricedConcept();
 
-		if (!finished) {
+		// @TODO decide when to finish stage
+		if (page < 5) {
 			renderArgs.put("activeTab", "PriceEstimation");
-			render(interviewId, concept);
-
+			render(interviewId, concept, page);
 		} else {
-			index(); // Survey is finished becuase the other stages are not implemented yet
+			index(); // Survey is finished because the other stages are not implemented yet
 		}
 	}
 	
-	public static void postPriceEstimation(long interviewId) throws Exception {
+	public static void postPriceEstimation(long interviewId, double utility, int page) throws Exception {
 		Interview interview = getInterview(interviewId);
 		
-		conceptComparison(interviewId, true);
+		PriceEstimationStage stage = (PriceEstimationStage) interview.getStage("PriceEstimationStage");
+		if(params.get("buyButton") != null) {
+			//jlog.log(java.util.logging.Level.INFO, "Buy concept clicked");
+			stage.BuyConcept(utility);
+		} else {
+			//jlog.log(java.util.logging.Level.INFO, "Don't buy concept clicked");
+			stage.DoNotBuyConcept(utility);
+		}
+		
+		// @TODO decide when to finish stage
+		priceEstimation(interviewId, ++page);
 	}
 	
 	// ----- Helper ---------
