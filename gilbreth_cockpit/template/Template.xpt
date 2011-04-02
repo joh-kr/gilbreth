@@ -1,5 +1,15 @@
 «IMPORT acape» 
 
+«DEFINE test FOR Object-» 
+«FILE "test.yml"-» 
+# This is the initialization file for the ACA-PE Online Survey tool
+# For the ACA-PE survey
+#
+# (c) 2011 Johannes Müller, Information Systems Institute, University of Leipzig
+
+
+«ENDFILE» 
+«ENDDEFINE» 
 
 «DEFINE main FOR ACAPEDataModel-» 
 «FILE "data.yml"-» 

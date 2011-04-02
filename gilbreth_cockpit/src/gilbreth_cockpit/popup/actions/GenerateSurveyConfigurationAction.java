@@ -170,11 +170,11 @@ public class GenerateSurveyConfigurationAction implements IObjectActionDelegate 
 		properties.put("featureModelPath", osPath.toOSString());
 		properties.put("famaMetamodelPath", "platform:/plugin/gilbreth_cockpit/model/feature-model-schema.xsd");
 		properties.put("targetDir", targetDir);
-		properties.put("targetDir", runtimeProject);
+		properties.put("runtimeProject", runtimeProject);
 		
 		Map<String, Object> externalSlotValues = new HashMap<String, Object>();
 		
-		//setConsole();
+		setConsole();
 		//org.apache.log4j.BasicConfigurator.configure();
 		
 		System.out.println("Console switched.");

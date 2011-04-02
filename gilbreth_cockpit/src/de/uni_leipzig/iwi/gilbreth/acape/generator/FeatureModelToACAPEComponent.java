@@ -71,19 +71,27 @@ public class FeatureModelToACAPEComponent extends AbstractWorkflowComponent {
 
 		LOG.info("Begin transforming Feature Model to ACAPE Survey ... ");
 		// Create the Handler for FaMa and EMF
-		famaHandling = new FaMaFeatureModelHandling(featureModelPath);
+	  //  famaHandling = new FaMaFeatureModelHandling(featureModelPath);
 		// pass the dynamically with emf loaded fama feature model from the 
 		// workflow context to the member field
-		emfHandling = new EmfFeatureModelHandling((EObject) ctx.get(inputModelSlot));
+		//emfHandling = new EmfFeatureModelHandling((EObject) ctx.get(inputModelSlot));
 		
 		
-		instanciateACAPEModel();
-		ctx.set(outputModelSlot, aCAPEDataModel);
+		// instanciateACAPEModel();
+		// instanciateTest();
+		// ctx.set(outputModelSlot, aCAPEDataModel);
 		
 		LOG.info("Feature Model to ACAPE Survey finished ");
 	}
 	
 	
+	private void instanciateTest(){
+		AcapePackageImpl.init();
+		AcapeFactory factory = AcapeFactory.eINSTANCE;
+		aCAPEDataModel = factory.createACAPEDataModel();
+		aCAPEDataModel.setName("MyModel");
+		
+	} 
 	
 	// ---- ACAPE Model Handling
 	private void instanciateACAPEModel(){
