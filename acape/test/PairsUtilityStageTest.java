@@ -94,7 +94,7 @@ public class PairsUtilityStageTest extends UnitTest {
 		double newLhsUtility = pair.getUtilityForLhs();
 		
 		//rating of lhs must not decrease
-		assertTrue("old: " + oldLhsUtility + " new: " + newLhsUtility, Math.abs(newLhsUtility - oldLhsUtility) <= 0.001);
+		assertTrue("old: " + oldLhsUtility + " new: " + newLhsUtility, newLhsUtility - oldLhsUtility >= 0);
     }
     
 	@Test
