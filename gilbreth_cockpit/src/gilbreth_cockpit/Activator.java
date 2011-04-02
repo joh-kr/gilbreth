@@ -1,6 +1,9 @@
 package gilbreth_cockpit;
 
+import org.eclipse.emf.mwe.core.resources.ResourceLoaderFactory;
+import org.eclipse.emf.mwe.core.resources.ResourceLoaderImpl;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -15,6 +18,7 @@ public class Activator extends AbstractUIPlugin {
 	// The shared instance
 	private static Activator plugin;
 	
+	
 	/**
 	 * The constructor
 	 */
@@ -28,6 +32,8 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		
+		ResourceLoaderFactory.setCurrentThreadResourceLoader(new ResourceLoaderImpl(getClass().getClassLoader()));
 	}
 
 	/*
