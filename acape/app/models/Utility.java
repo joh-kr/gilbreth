@@ -21,7 +21,8 @@ public class Utility {
 		double[] y = result.getDependentVariableValues();
 		double[][] x = result.getIndeptendentVariableValues();
 		
-		regression.setNoIntercept(true);
+		// consider an intercept in the regression
+		regression.setNoIntercept(false);
 		regression.newSampleData(y, x);
 		
 		// jlog.log(java.util.logging.Level.INFO, "Transformed Matrix before regression: ");
@@ -46,13 +47,12 @@ public class Utility {
 		}
 		double prediction = 0.0d;
 		double[] beta = regression.estimateRegressionParameters();
-		if(beta.length != x.length) 
-			throw new IllegalArgumentException("The number of predictor variables is different to the number of regression parameters. " + x.length + "!=" + beta.length);
 		
-		for(int i = 0; i < beta.length; i++){
-			prediction += beta[i] * x[i];
+		// intercept at beta[0]
+		prediction = beta[0];
+		for(int i = 1; i < beta.length; i++){
+			prediction += beta[i] * x[i - 1];
 		}
-		
 		
 		return prediction;
 	}

@@ -150,6 +150,9 @@ public class PairsUtilityStage extends Stage {
 		double[] x = buildObservationRow(lhsIds, rhsIds, preference);
 		
 		result.addNewRow(x);
+		
+		//jlog.log(java.util.logging.Level.INFO, "Add new Row" + Arrays.toString(x));
+		
 		result.setR2(calculateR2());
 	}
 	
