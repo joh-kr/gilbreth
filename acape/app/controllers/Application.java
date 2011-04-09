@@ -274,6 +274,11 @@ public class Application extends Controller {
 		Interview interview = getInterview(interviewId);
 		PriceEstimationStage stage = (PriceEstimationStage) interview.getStage("PriceEstimationStage");
 		
+		if(page == 0) {
+			// initialize before first iteration
+			stage.initializePricePerUtility();
+		}
+		
 		PricedConcept concept = stage.getPricedConcept();
 
 		// @TODO decide when to finish stage

@@ -108,4 +108,7 @@ public class TestUtilityCalculations extends UnitTest {
 		//jlog.log(java.util.logging.Level.INFO, "utility X1 " + utilityX1);
 		//jlog.log(java.util.logging.Level.INFO, "utility X3 " + utilityX3);	
     }
+    
+    
+
 }

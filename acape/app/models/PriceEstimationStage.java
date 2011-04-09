@@ -10,10 +10,25 @@ public class PriceEstimationStage extends Stage {
 	private PriceSettings priceSettings;
 	private Utility utility;
 	
+	private enum Action {
+		buy,
+		noBuy
+	}
+	private Action lastAction = null;
+	boolean finished = false;
+	
 	public PriceEstimationStage(Interview interview, Result result, PriceSettings priceSettings) {
 		super(interview, result);
 		this.priceSettings = priceSettings;
 		this.utility = new Utility(result);
+	}
+	
+	// initialize pricePerUtility
+	public void initializePricePerUtility() throws Exception {
+		PricedConcept concept = getPricedConcept();
+		BigDecimal middlePrice = priceSettings.maximumPrice.add(priceSettings.minimumPrice).divide(new BigDecimal(2));
+		
+		result.pricePerUtilityUnit = middlePrice.doubleValue() / concept.getUtility();
 	}
 	
 	private BigDecimal getPrice(Concept c) throws Exception
@@ -26,6 +41,8 @@ public class PriceEstimationStage extends Stage {
 		
 		// Adjust to maximum price
 		price = Math.min(price, priceSettings.maximumPrice.doubleValue());
+		
+		price = Math.round(price);
 		
 		return new BigDecimal(price);
 	}
@@ -55,25 +72,42 @@ public class PriceEstimationStage extends Stage {
 	}
 	
 	/*
-	 * Increase PricePerUtilityUnit by 5%
+	 * Increase PricePerUtilityUnit by 0.5
 	 */
 	public void BuyConcept(double utility) {
-		if(utility * result.pricePerUtilityUnit < priceSettings.minimumPrice.doubleValue()) {
-			// if concept would be prices below minimum, increase above minimum
-			result.pricePerUtilityUnit = (priceSettings.minimumPrice.doubleValue() * 1.05) / result.pricePerUtilityUnit; 
-		}else {
-			// increase by 5%
-			result.pricePerUtilityUnit *= 1.05;
-		}
+		// increase by 5%
+		result.pricePerUtilityUnit += 0.5;
 		result.save();
+		setFinished(Action.buy);
 	}
 
 	/*
-	 * Decrease PricePerUtilityUnit by 1%
+	 * Decrease PricePerUtilityUnit by 0.5
 	 */
 	public void DoNotBuyConcept(double utility) {
-		result.pricePerUtilityUnit *= 0.99;
+		result.pricePerUtilityUnit -= 0.5;
 		result.save();
+		setFinished(Action.noBuy);
 	}	
+	
+	/*
+	 * Finish state after point of wtp is crossed
+	 */
+	private void setFinished(Action action) {
+		if(lastAction != null && action != lastAction) {
+			// choose middle between two last points
+			if(action == Action.buy) {
+				result.pricePerUtilityUnit -= 0.25;
+			} else {
+				result.pricePerUtilityUnit += 0.25;
+			}
+			finished = true;
+		}
+		lastAction = action;
+	}
+	
+	public boolean isFinished() {
+		return finished;
+	}
 	
 }

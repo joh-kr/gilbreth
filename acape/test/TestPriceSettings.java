@@ -55,6 +55,7 @@ public class TestPriceSettings extends UnitTest {
         walkStages.walkPairsUtilityStage((PairsUtilityStage) interview.getStage("PairsUtilityStage"));
         
         stage = (PriceEstimationStage) interview.getStage("PriceEstimationStage");
+        stage.initializePricePerUtility();
         concept = stage.getPricedConcept();
     }
     
@@ -69,13 +70,7 @@ public class TestPriceSettings extends UnitTest {
     public void testPriceMaximum()
     {
     	assertTrue("Price " + concept.getPrice() + " <= " + settings.maximumPrice,
-    			concept.getPrice().compareTo(settings.maximumPrice) < 0);
-    }
-    
-    @Test
-    public void testIntialMoneyToWtp()
-    {
-    	assertTrue(result.pricePerUtilityUnit == 1);
+    			concept.getPrice().compareTo(settings.maximumPrice) <= 0);
     }
     
     @Test
@@ -95,6 +90,7 @@ public class TestPriceSettings extends UnitTest {
     	double expectedPrice = result.pricePerUtilityUnit * utility.computeUtilityFor(concept.getLevels());
     	expectedPrice = Math.max(expectedPrice, settings.minimumPrice.doubleValue());
     	expectedPrice = Math.min(expectedPrice, settings.maximumPrice.doubleValue());
+    	expectedPrice = Math.round(expectedPrice);
     	assertEquals(expectedPrice, concept.getPrice().doubleValue(), 0.001);
     }
     
@@ -121,5 +117,28 @@ public class TestPriceSettings extends UnitTest {
         	concept = stage.getPricedConcept();
     		assertTrue(concept.getPrice().compareTo(settings.minimumPrice) > 0);
     	}
+    }
+    
+    @Test
+    public void testCompleteStage() throws Exception {
+    	// secret price per utility to be estimated by survey
+    	double secretPU = 35;
+    	do {
+    		/*jlog.log(java.util.logging.Level.INFO, 
+    			"utility " + concept.getUtility() + 
+    			" price: " + concept.getPrice() + 
+    			" current P/U " + result.pricePerUtilityUnit);*/
+    		if(concept.getUtility() * secretPU >= concept.getPrice().doubleValue()) {
+    			stage.BuyConcept(result.pricePerUtilityUnit);
+    			//jlog.log(java.util.logging.Level.INFO, "Buy");
+    		} else {
+    			stage.DoNotBuyConcept(result.pricePerUtilityUnit);
+    			//jlog.log(java.util.logging.Level.INFO, "Do Not Buy");
+    		}
+    		if(!stage.isFinished()) {
+    			concept = stage.getPricedConcept();
+    		}
+    	} while(!stage.isFinished());
+    	assertEquals(secretPU, result.pricePerUtilityUnit, 0.5);
     }
 }
