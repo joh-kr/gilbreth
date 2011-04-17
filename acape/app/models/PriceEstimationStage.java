@@ -29,6 +29,7 @@ public class PriceEstimationStage extends Stage {
 		BigDecimal middlePrice = priceSettings.maximumPrice.add(priceSettings.minimumPrice).divide(new BigDecimal(2));
 		
 		result.pricePerUtilityUnit = middlePrice.doubleValue() / concept.getUtility();
+		result.save();
 	}
 	
 	private BigDecimal getPrice(Concept c) throws Exception
@@ -74,7 +75,7 @@ public class PriceEstimationStage extends Stage {
 	/*
 	 * Increase PricePerUtilityUnit by 0.5
 	 */
-	public void BuyConcept(double utility) {
+	public void BuyConcept() {
 		// increase by 5%
 		result.pricePerUtilityUnit += 0.5;
 		result.save();
@@ -84,7 +85,7 @@ public class PriceEstimationStage extends Stage {
 	/*
 	 * Decrease PricePerUtilityUnit by 0.5
 	 */
-	public void DoNotBuyConcept(double utility) {
+	public void DoNotBuyConcept() {
 		result.pricePerUtilityUnit -= 0.5;
 		result.save();
 		setFinished(Action.noBuy);

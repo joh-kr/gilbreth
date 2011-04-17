@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.math.stat.regression.OLSMultipleLinearRegression;
@@ -39,6 +40,12 @@ public class Utility {
 		}
 		
 		return predict(regression, x_predict);
+	}
+	
+	public double computeUtilityFor(Level level) throws Exception {
+		List<Level> levels = new ArrayList<Level>();
+		levels.add(level);
+		return computeUtilityFor(levels);
 	}
 	
 	private double predict(OLSMultipleLinearRegression regression, double[] x){

@@ -9,6 +9,14 @@ public class Interviewee extends Model{
 
 	String name;
 	
+	public String getName() {
+		return name;
+	}
+
+	public String geteMail() {
+		return eMail;
+	}
+
 	String eMail;
 	
 	private Interviewee(String name, String eMail){

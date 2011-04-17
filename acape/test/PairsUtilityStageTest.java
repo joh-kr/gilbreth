@@ -15,6 +15,7 @@ public class PairsUtilityStageTest extends UnitTest {
 	private Interview interview;
 	private PairsUtilityStage pairsUtilityStage;
 	private Result result;
+	private Utility utility;
 	private walkStages walkStages;
 
 	private static Logger jlog = Logger.getLogger("de.iwi.uni_leipzig.gilbreth");
@@ -29,6 +30,7 @@ public class PairsUtilityStageTest extends UnitTest {
 		pairsUtilityStage = (PairsUtilityStage) interview.getStage("PairsUtilityStage");
         result = pairsUtilityStage.getResult();
         walkStages = new walkStages();
+        utility = new Utility(result);
         
 		LevelRatingStage levelRatingStage = (LevelRatingStage) interview.getStage("AttributeRatingStage");
         AttributeWeightingStage attributeWeightingStage = (AttributeWeightingStage) interview.getStage("StageWeightAttributes");
@@ -101,7 +103,6 @@ public class PairsUtilityStageTest extends UnitTest {
     
 	@Test
 	public void singularMatrix() throws Exception {
-
 		RealMatrix m = result.getMatrix();
 		
 		//stage.calculateR2();
@@ -109,7 +110,7 @@ public class PairsUtilityStageTest extends UnitTest {
 	
 	@Test
 	public void fillOutStage() throws Exception {
-		walkStages.walkPairsUtilityStage(pairsUtilityStage);
+		walkStages.walkPairsUtilityStage(pairsUtilityStage, utility);
 		assertTrue(pairsUtilityStage.isFinished());
 	}
 }

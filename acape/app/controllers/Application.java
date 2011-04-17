@@ -296,14 +296,31 @@ public class Application extends Controller {
 		PriceEstimationStage stage = (PriceEstimationStage) interview.getStage("PriceEstimationStage");
 		if(params.get("buyButton") != null) {
 			//jlog.log(java.util.logging.Level.INFO, "Buy concept clicked");
-			stage.BuyConcept(utility);
+			stage.BuyConcept();
 		} else {
 			//jlog.log(java.util.logging.Level.INFO, "Don't buy concept clicked");
-			stage.DoNotBuyConcept(utility);
+			stage.DoNotBuyConcept();
 		}
 		
 		// @TODO decide when to finish stage
 		priceEstimation(interviewId, ++page);
+	}
+	
+	public static void showSurvey() {
+		List<Interview> interviews = Interview.findAll();
+		
+		render(interviews);
+	}
+	
+	public static void showResult(long id) {
+		Interviewee interviewee = Interviewee.findById(id);
+		Interview interview = Interview.find("byInterviewee", interviewee).first();
+		
+		List<Attribute> attributes = Attribute.findAll();
+		Utility utility = new Utility(interview.result);
+		
+		render(interview, attributes, utility);
+		
 	}
 	
 	// ----- Helper ---------
@@ -318,5 +335,6 @@ public class Application extends Controller {
 		if(interview == null) throw new Exception("For the passed interview ID " + id + " is no interview saved.");
 		return interview;
 	}
+	
 	
 }

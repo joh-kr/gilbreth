@@ -52,7 +52,7 @@ public class TestPriceSettings extends UnitTest {
         // second stage
         walkStages.walkAttributeWeightingStage((AttributeWeightingStage) interview.getStage("StageWeightAttributes"));
         // third stage
-        walkStages.walkPairsUtilityStage((PairsUtilityStage) interview.getStage("PairsUtilityStage"));
+        walkStages.walkPairsUtilityStage((PairsUtilityStage) interview.getStage("PairsUtilityStage"), utility);
         
         stage = (PriceEstimationStage) interview.getStage("PriceEstimationStage");
         stage.initializePricePerUtility();
@@ -98,14 +98,14 @@ public class TestPriceSettings extends UnitTest {
     @Test
     public void testBuy() throws Exception {
     	double oldPricePerUtilityUnit = result.pricePerUtilityUnit;
-    	stage.BuyConcept(oldPricePerUtilityUnit);
+    	stage.BuyConcept();
     	assertTrue(oldPricePerUtilityUnit < result.pricePerUtilityUnit);
     }
     
     @Test
     public void testDoNotBuy() throws Exception {
     	double oldPricePerUtilityUnit = result.pricePerUtilityUnit;
-    	stage.DoNotBuyConcept(oldPricePerUtilityUnit);
+    	stage.DoNotBuyConcept();
     	assertTrue(oldPricePerUtilityUnit > result.pricePerUtilityUnit);
     }
     
@@ -113,7 +113,7 @@ public class TestPriceSettings extends UnitTest {
     public void afterBuyIncreaseAboveMinimumPrice() throws Exception {
     	double oldPricePerUtilityUnit = result.pricePerUtilityUnit;
     	if(concept.getPrice().compareTo(settings.minimumPrice) == 0) {
-        	stage.BuyConcept(oldPricePerUtilityUnit);
+        	stage.BuyConcept();
         	concept = stage.getPricedConcept();
     		assertTrue(concept.getPrice().compareTo(settings.minimumPrice) > 0);
     	}
@@ -129,10 +129,10 @@ public class TestPriceSettings extends UnitTest {
     			" price: " + concept.getPrice() + 
     			" current P/U " + result.pricePerUtilityUnit);*/
     		if(concept.getUtility() * secretPU >= concept.getPrice().doubleValue()) {
-    			stage.BuyConcept(result.pricePerUtilityUnit);
+    			stage.BuyConcept();
     			//jlog.log(java.util.logging.Level.INFO, "Buy");
     		} else {
-    			stage.DoNotBuyConcept(result.pricePerUtilityUnit);
+    			stage.DoNotBuyConcept();
     			//jlog.log(java.util.logging.Level.INFO, "Do Not Buy");
     		}
     		if(!stage.isFinished()) {

@@ -24,7 +24,22 @@ public class walkStages {
 		AttributeImportanceObservation.addObservations(stage, testObservations);
 	}
 	
-	public void walkPairsUtilityStage(PairsUtilityStage stage) throws Exception
+	private int getUtilityComparisionRating(double ratingLhs, double ratingRhs) {
+    	int rating;
+		if(ratingLhs == ratingRhs) {
+    		rating = 0;
+    	} else if(ratingLhs > ratingRhs) {
+    		rating = (int) Math.max(-4, Math.round(ratingRhs - ratingLhs));
+    	} else {
+    		rating = (int) Math.min(4, Math.round(ratingLhs - ratingRhs));
+    	}
+    	return rating;
+	}
+	
+	/*
+	 * answer pairs utility stage consistent by using expected utility
+	 */
+	public void walkPairsUtilityStage(PairsUtilityStage stage, Utility utility) throws Exception
 	{
 		while(!stage.isFinished()) {
 	    	PairsUtilityStage.LevelsPair pair = stage.computeLevelsPair(2);
@@ -32,28 +47,11 @@ public class walkStages {
 		    	List<Level> lhs = pair.getLHS();
 		    	List<Level> rhs = pair.getRHS();
 		    	
-		    	// get test ratings from previous observations
-		    	double ratingLhs = 0;
-		    	double ratingRhs = 0;
+		    	double utilityLhs = utility.computeUtilityFor(lhs);
+		    	double utilityRhs = utility.computeUtilityFor(rhs);
 		    	
-		    	for(Level l : lhs) {
-		    		RatingObservation obs = RatingObservation.find("select obs from RatingObservation obs where obs.level = ?", l).first();
-		    		ratingLhs += obs.rating;
-		    	}
-		    	for(Level l : rhs) {
-		    		RatingObservation obs = RatingObservation.find("select obs from RatingObservation obs where obs.level = ?", l).first();
-		    		ratingRhs += obs.rating;
-		    	}
-		    	
-		    	int rating;
-		    	
-		    	if(ratingLhs == ratingRhs) {
-		    		rating = 0;
-		    	} else if(ratingLhs > ratingRhs) {
-		    		rating = (int) Math.max(-4, Math.round(ratingRhs - ratingLhs));
-		    	} else {
-		    		rating = (int) Math.min(4, Math.round(ratingLhs - ratingRhs));
-		    	}
+		    	int rating = getUtilityComparisionRating(utilityLhs, utilityRhs);
+
 		    	stage.saveNewObservationByLevels(lhs, rhs, rating);	    		
 	    	}
 		}

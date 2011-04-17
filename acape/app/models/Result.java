@@ -337,7 +337,7 @@ public class Result extends Model {
 		}
 		return obj;
 	}
-
+	
 	public static Result createNewResult() {
 		Result result = new Result();
 		result.initializeFeatureColumnMatching();
