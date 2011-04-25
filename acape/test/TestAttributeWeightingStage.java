@@ -12,12 +12,11 @@ public class TestAttributeWeightingStage extends UnitTest {
 	private Interview interview;
 	private LevelRatingStage levelRating;
 	private AttributeWeightingStage stage;
-	
+
 	private Level forumPresent;
 	private Level forumAbsent;
 	
 	private Attribute forum;
-	private Attribute payment;
 	
 	private walkStages walkStages;
 	
@@ -38,11 +37,7 @@ public class TestAttributeWeightingStage extends UnitTest {
         walkStages.walkAttributeWeightingStage(stage);
         
         forum = Attribute.find("byName", "Forum").first();
-		payment = Attribute.find("byName", "Payment with Fraud Detection").first();
-		
-		
-		paymentPresent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", payment, "Present").first();
-		paymentAbsent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", payment, "Absent").first();	
+	
 		forumPresent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", forum, "Present").first();
 		forumAbsent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", forum, "Absent").first();
 
