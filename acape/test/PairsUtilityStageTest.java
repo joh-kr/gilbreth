@@ -100,13 +100,6 @@ public class PairsUtilityStageTest extends UnitTest {
 		//improve lhs compared to rhs
 		assertTrue((oldUtilityLhs - oldUtilityRhs) < (utilityLhs - utilityRhs));
     }
-    
-	@Test
-	public void singularMatrix() throws Exception {
-		RealMatrix m = result.getMatrix();
-		
-		//stage.calculateR2();
-	}
 	
 	@Test
 	public void fillOutStage() throws Exception {

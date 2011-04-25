@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import org.apache.commons.math.linear.Array2DRowRealMatrix;
 import org.apache.commons.math.linear.RealMatrix;
-import org.apache.commons.math.linear.RealMatrixImpl;
 import org.apache.commons.math.stat.regression.OLSMultipleLinearRegression;
 import org.apache.commons.math.stat.regression.SimpleRegression;
 

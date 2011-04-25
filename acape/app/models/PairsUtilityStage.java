@@ -190,30 +190,6 @@ public class PairsUtilityStage extends Stage {
 		return x;
 	}
 	
-	private double[] buildObservationRowFromLevels(List<Level> lhs, List<Level> rhs, double preference) throws Exception {
-		List<Long> lhsIds = new ArrayList<Long>();
-		List<Long> rhsIds = new ArrayList<Long>();
-		//create list of Level IDs
-		// use to loops in case lhs and rhs are of differenz size
-		for(int i = 0; i < lhs.size(); i++) {
-			lhsIds.add(lhs.get(i).id);
-		}
-		for(int i = 0; i < rhs.size(); i++) {
-			rhsIds.add(rhs.get(i).id);
-		}
-		return buildObservationRow(lhsIds, rhsIds, preference);
-	}
-	
-	private List<LevelsPair> usedLevelPairs()
-	{
-		RealMatrix m = result.getMatrix();
-		m = m.getSubMatrix((int) Level.count(), m.getRowDimension() - 1, 0, m.getColumnDimension() - 2);
-		
-		
-		
-		return null;
-	}
-	
 	private Boolean observationExists(LevelsPair lp) throws Exception {
 		
 		Boolean observationExists = false;

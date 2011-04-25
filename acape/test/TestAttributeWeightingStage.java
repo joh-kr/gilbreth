@@ -13,8 +13,6 @@ public class TestAttributeWeightingStage extends UnitTest {
 	private LevelRatingStage levelRating;
 	private AttributeWeightingStage stage;
 	
-	private Level paymentPresent;
-	private Level paymentAbsent;
 	private Level forumPresent;
 	private Level forumAbsent;
 	

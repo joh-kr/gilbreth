@@ -74,9 +74,6 @@ public class Calibration extends UnitTest {
     	
     	SimpleRegression regression = utility.getCalibratedUtilitiesRegression(finalUtilities, buyingProbabilities);
     	
-    	double a = regression.getSlope();
-    	double b = regression.getIntercept();
-    	
     	assertFalse(Double.isNaN(regression.getSlope()));
     	assertFalse(Double.isNaN(regression.getIntercept()));
     }
@@ -98,7 +95,7 @@ public class Calibration extends UnitTest {
     	
     	stage.saveObservation(finalUtilities, buyingProbabilities);
     	
-    	
+    	//@TODO add test
     	double calibratedUtility = utility.computeCalibratedUtilityFor(concepts.get(0).getLevels());
     	
     	
