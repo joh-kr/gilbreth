@@ -24,7 +24,9 @@ public class LevelRatingStage extends Stage {
 	public LevelRatingStage(Interview interview, Result result){
 		super(interview, result);	
 	}
-	
+	/*
+	 * @TODO Ensure only levels of the same attribute are added at the same time
+	 */
 	public void addLevelRates(Map<Long, Double> idAndRates) throws Exception{	
 		Level level = null;
 		

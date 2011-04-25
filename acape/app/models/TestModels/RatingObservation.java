@@ -35,10 +35,18 @@ public class RatingObservation extends Model {
     public static void addObservations(LevelRatingStage stage, List<RatingObservation> observations) throws Exception {
 		Map<Long, Double> levelIdsAndRates = new Hashtable();
 		
-		for(RatingObservation obs : observations) {
-			levelIdsAndRates.put(obs.level.id, obs.rating);
-		}
+		List<Attribute> attributes = Attribute.findAll();
 		
-		stage.addLevelRates(levelIdsAndRates);
+		for(Attribute attr : attributes) {
+			levelIdsAndRates.clear();
+			for(RatingObservation obs : observations) {
+				if(attr.levels.contains(obs.level)) {
+					levelIdsAndRates.put(obs.level.id, obs.rating);
+				}
+			}
+			if(!levelIdsAndRates.isEmpty()) {
+				stage.addLevelRates(levelIdsAndRates);
+			}
+		}
     }
 }

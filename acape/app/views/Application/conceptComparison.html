@@ -24,7 +24,8 @@ Please type for each concept a buying probability in the field below the concept
 	</ul>
 	
 	<p class="buyingprobability">
-	Probability: <input name="concept$i" type="text" size="3" maxlength="3" />
+	<input name="utilities[]" type="hidden" value="${concept.getUtility()}"/>
+	Probability: <input name="buyingProbabilities[]" type="text" size="3" maxlength="3" />
 	</p>
 </div>
         	

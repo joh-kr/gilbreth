@@ -12,5 +12,4 @@ import play.db.jpa.Model;
  */
 @Entity
 public class Survey extends Model{
-
 }

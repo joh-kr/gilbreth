@@ -53,6 +53,9 @@ public class TestPriceSettings extends UnitTest {
         walkStages.walkAttributeWeightingStage((AttributeWeightingStage) interview.getStage("StageWeightAttributes"));
         // third stage
         walkStages.walkPairsUtilityStage((PairsUtilityStage) interview.getStage("PairsUtilityStage"), utility);
+        // fourth stage
+        walkStages.walkCalibrationStage((ConceptComparisonStage) interview.getStage("ConceptComparisonStage"), utility);
+        
         
         stage = (PriceEstimationStage) interview.getStage("PriceEstimationStage");
         stage.initializePricePerUtility();
@@ -83,11 +86,11 @@ public class TestPriceSettings extends UnitTest {
     		}
     	}
     }
-    
+    /*
     @Test
     public void testCorrectPriceSetting() throws Exception
     {
-    	double expectedPrice = result.pricePerUtilityUnit * utility.computeUtilityFor(concept.getLevels());
+    	double expectedPrice = result.pricePerUtilityUnit * utility.computeCalibratedUtilityFor(concept.getLevels());
     	expectedPrice = Math.max(expectedPrice, settings.minimumPrice.doubleValue());
     	expectedPrice = Math.min(expectedPrice, settings.maximumPrice.doubleValue());
     	expectedPrice = Math.round(expectedPrice);
@@ -118,17 +121,24 @@ public class TestPriceSettings extends UnitTest {
     		assertTrue(concept.getPrice().compareTo(settings.minimumPrice) > 0);
     	}
     }
+    */
+    
+    @Test
+    public void testSorting() {
+    	int size = result.randomConcepts.size();
+    	assertTrue(result.randomConcepts.get(0).getUtility() <= result.randomConcepts.get(size - 1).getUtility());
+    }
     
     @Test
     public void testCompleteStage() throws Exception {
     	// secret price per utility to be estimated by survey
-    	double secretPU = 35;
+    	
     	do {
     		/*jlog.log(java.util.logging.Level.INFO, 
     			"utility " + concept.getUtility() + 
     			" price: " + concept.getPrice() + 
-    			" current P/U " + result.pricePerUtilityUnit);*/
-    		if(concept.getUtility() * secretPU >= concept.getPrice().doubleValue()) {
+    			" current P/U " + result.pricePerUtilityUnit);*/ 
+    		if(concept.getUtility() * 10 + 300 >= concept.getPrice().doubleValue()) {
     			stage.BuyConcept();
     			//jlog.log(java.util.logging.Level.INFO, "Buy");
     		} else {
@@ -139,6 +149,8 @@ public class TestPriceSettings extends UnitTest {
     			concept = stage.getPricedConcept();
     		}
     	} while(!stage.isFinished());
-    	assertEquals(secretPU, result.pricePerUtilityUnit, 0.5);
+    	assertEquals(10, result.PEslope, 10);
+    	assertEquals(300, result.PEintercept, 100);
     }
+    
 }

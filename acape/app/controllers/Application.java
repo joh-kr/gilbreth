@@ -205,7 +205,7 @@ public class Application extends Controller {
 		Interview interview = getInterview(interviewId);
 		PairsUtilityStage stage = (PairsUtilityStage) interview.getStage("PairsUtilityStage");
 		
-		PairsUtilityStage.LevelsPair pair = stage.computeLevelsPair(2);
+		LevelsPair pair = stage.computeLevelsPair(2);
 
 		if (!stage.isFinished()) {
 			renderArgs.put("activeTab", "TradeOff");
@@ -261,8 +261,12 @@ public class Application extends Controller {
 			
 	}
 	
-	public static void postConceptComparison(long interviewId) throws Exception {
+	public static void postConceptComparison(long interviewId, List<Double> utilities, List<Integer> buyingProbabilities) throws Exception {
 		Interview interview = getInterview(interviewId);
+		
+		ConceptComparisonStage stage = (ConceptComparisonStage) interview.getStage("ConceptComparisonStage");
+		
+		stage.saveObservation(utilities, buyingProbabilities);
 		
 		conceptComparison(interviewId, true);
 

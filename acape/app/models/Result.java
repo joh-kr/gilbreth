@@ -5,17 +5,22 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.logging.Logger;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+
+import models.LevelsPair;
 
 import org.apache.commons.math.linear.Array2DRowRealMatrix;
 import org.apache.commons.math.linear.RealMatrix;
@@ -39,28 +44,64 @@ public class Result extends Model {
 	@Required
 	public int rowCount;
 
-	@Required
 	/*
-	 * Bridges the utility level to a willingess to pay (wtp)
+	 * Results from Price Estimation Stage
 	 */
-	public double pricePerUtilityUnit;
-
+	public double PEslope = Double.NaN;
+	public double PEintercept = Double.NaN;
+	
 	public double R2Difference;
 
 	public double R2;
+	
+	@Required
+	/*
+	 * Intercept of the regression of the calibrated utility after stage concept comparision
+	 */
+	public double calibratedUtilityIntercept;
+	
+	@Required
+	/*
+	 * Slope of the regression of the calibrated utility after stage concept comparision
+	 */	
+	public double calibratedUtilitySlope;
 
 	/**
 	 * The levels explicitly excluded in the first stage
 	 */
 	@ManyToMany
 	public List<Level> excludedLevels;
+	
+	@ManyToMany
+	public List<UsedLevelPair> usedLevelPairs;
+	
+	/*
+	 * Number of pairs questions
+	 */
+	public int numberOfPairs = 0;
+	
+	/*
+	 * PE Stage Variables
+	 */
+	public double utility1;
+	public BigDecimal price1;
+	public double utility2;
+	public BigDecimal price2;
+	
+	@ManyToMany
+	public List<Concept> randomConcepts = null;
+	
 
 	public Result() {
 		excludedLevels = new ArrayList<Level>();
+		usedLevelPairs = new ArrayList<UsedLevelPair>();
+		
 		rowCount = -1;
 		R2Difference = 1.0d;
 		R2 = 0.0d;
-		pricePerUtilityUnit = 1.0;
+		
+		calibratedUtilityIntercept = Double.NaN;
+		calibratedUtilitySlope = Double.NaN;
 	}
 
 	/*
@@ -207,6 +248,27 @@ public class Result extends Model {
 
 	public int getRowCount() {
 		return this.rowCount;
+	}
+	
+	public String getNameForColumn(Integer column) throws Exception
+	{
+		Map<String, Integer> map = getFeatureColumnMatching();
+		if(!map.containsValue(column)) {
+			throw new Exception(
+					"The matrix does not contain any entry for value " + column);
+		}
+		String name = null;
+		Boolean found = false;
+		for (Entry<String, Integer> entry : map.entrySet()) {
+			if(entry.getValue() == column) {
+				name = entry.getKey();
+				found = true;
+			}
+		}
+		if(!found) {
+			throw new Exception("Value not found");
+		}
+		return name;
 	}
 
 	public int getColumnFor(String name) throws Exception {

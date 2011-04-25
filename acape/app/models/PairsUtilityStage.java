@@ -6,6 +6,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
+
 import org.apache.commons.math.linear.Array2DRowRealMatrix;
 import org.apache.commons.math.linear.LUDecompositionImpl;
 import org.apache.commons.math.linear.RealMatrix;
@@ -13,9 +17,9 @@ import org.apache.commons.math.stat.StatUtils;
 import org.apache.commons.math.stat.regression.OLSMultipleLinearRegression;
 import org.apache.commons.math.util.MathUtils;
 
+import play.data.validation.Required;
+import play.db.jpa.Model;
 
-
-import sun.security.krb5.RealmException;
 
 /**
  * In that stage, iteratively 2 concepts are compared to to each other.
@@ -41,7 +45,7 @@ public class PairsUtilityStage extends Stage {
 		
 		List<List<LevelFrequency>> listOfListOfLevelFrequencies = new ArrayList();
 		
-		LevelsPair initLevelPair = new LevelsPair();
+		LevelsPair initLevelPair = new LevelsPair(utility);
 
 
 		// Put the levels of each attribute with the lowest frequency into the lhs
@@ -149,11 +153,17 @@ public class PairsUtilityStage extends Stage {
 	public void saveNewObservation(List<Long> lhsIds, List<Long> rhsIds, double preference) throws Exception{
 		double[] x = buildObservationRow(lhsIds, rhsIds, preference);
 		
+		UsedLevelPair usedPair = new UsedLevelPair(lhsIds, rhsIds);
+		usedPair.save();
+		result.usedLevelPairs.add(usedPair);
+		result.numberOfPairs++;
+		
 		result.addNewRow(x);
 		
 		//jlog.log(java.util.logging.Level.INFO, "Add new Row" + Arrays.toString(x));
 		
 		result.setR2(calculateR2());
+		result.save();
 	}
 	
 	/*
@@ -194,7 +204,20 @@ public class PairsUtilityStage extends Stage {
 		return buildObservationRow(lhsIds, rhsIds, preference);
 	}
 	
+	private List<LevelsPair> usedLevelPairs()
+	{
+		RealMatrix m = result.getMatrix();
+		m = m.getSubMatrix((int) Level.count(), m.getRowDimension() - 1, 0, m.getColumnDimension() - 2);
+		
+		
+		
+		return null;
+	}
+	
 	private Boolean observationExists(LevelsPair lp) throws Exception {
+		
+		Boolean observationExists = false;
+		/*
 		//build row with dummy preference
 		RealMatrix m = result.getMatrix();
 		//sub matrix without preference in last column
@@ -209,12 +232,20 @@ public class PairsUtilityStage extends Stage {
 		System.arraycopy(observationRow, 0, compareRow, 0, observationRow.length - 1);
 		System.arraycopy(observationRowSwitched, 0, compareRowSwitched, 0, observationRowSwitched.length - 1);
 		
-		Boolean observationExists = false;
+		
 		for(int i = 0; i < m.getRowDimension(); i++) {
 			if(Arrays.equals(compareRow, m.getRow(i)) || Arrays.equals(compareRowSwitched, m.getRow(i))) {
 				observationExists = true;
 			}
 		}
+		*/
+		
+		for(UsedLevelPair usedPair : result.usedLevelPairs) {
+			if(usedPair.equalsLevelsPair(lp)) {
+				observationExists = true;
+			}
+		}
+		
 		return observationExists;
 	}
 	
@@ -312,83 +343,5 @@ public class PairsUtilityStage extends Stage {
 		
 	}
 	
-	public class LevelsPair implements Comparable{
-		private List<Level> lhs;
-		private List<Level> rhs;
-		private double utility_lhs;
-		private double utility_rhs;
-		
-		public LevelsPair(){
-			lhs = new ArrayList();
-			rhs = new ArrayList();
-		}
-		
-		public LevelsPair(LevelsPair levelsPair){
-			this();
-			for(int i = 0; i < levelsPair.size(); i++){
-				this.lhs.add(levelsPair.getLHS().get(i)); 
-				this.rhs.add(levelsPair.getRHS().get(i)); 
-			}
-			// jlog.log(java.util.logging.Level.INFO, "Created a LevelsPair with size " + lhs.size());
-		}
-		
-		public List<Level> getLHS(){
-			return lhs;
-		}
-		
-		public List<Level> getRHS(){
-			return rhs;
-		}
-		
-		public void addToLHS(Level lhs, Level rhs){
-			this.lhs.add(lhs);
-			this.rhs.add(rhs);
-		}
-		
-		
-		public int size(){
-			return lhs.size();
-		}
-		
-		public void swapLevels(int index){
-			if(index >= lhs.size())
-				throw new IllegalArgumentException("The index is out of range. Index is " + index + " but range is 0 - " + (lhs.size() - 1));
-			//jlog.log(java.util.logging.Level.INFO, "Swap element at " + index);
-			//jlog.log(java.util.logging.Level.INFO, "Size of levels is" + lhs.size());
-			
-			Level swap;
-			swap = lhs.get(index);
-			lhs.set(index, rhs.get(index));
-			rhs.set(index, swap);
-		}
-		
-		
-		public void calculateUtilities() throws Exception{
-			utility_lhs = utility.computeUtilityFor(lhs);
-			utility_rhs = utility.computeUtilityFor(rhs);
-		}
-		
-		public double getUtilityForLhs()
-		{
-			return utility_lhs;
-		}
-		public double getUtilityForRhs()
-		{
-			return utility_rhs;
-		}
-		
-		public double getUtilityDifference(){
-			return Math.abs(utility_lhs - utility_rhs);
-		}
 
-		public int compareTo(Object o) {
-			if(o instanceof LevelsPair){
-				LevelsPair af = (LevelsPair) o;
-				return new Double(this.getUtilityDifference()).compareTo(af.getUtilityDifference());
-			}
-			return 0;
-		}
-		
-		
-	}
 }

@@ -4,20 +4,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
+
+import play.db.jpa.Model;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
-public class Concept{
+@Entity
+public class Concept extends Model implements Comparable<Concept> {
 	@Transient
 	protected static Logger jlog =  Logger.getLogger("de.iwi.uni_leipzig.gilbreth");
 	
-	private HashMap<Attribute, Level> attributeLevelPairs = new HashMap<Attribute, Level>();
+	@ManyToMany
+	private List<Level> levels = new ArrayList<Level>();
 	
-	double utility;
+	private double utility;
 	
 	public double getUtility() {
 		return utility;
@@ -27,15 +34,16 @@ public class Concept{
 		this.utility = utility;
 	}
 
-	public void addAttributeAndLevel(Attribute attribute, Level level){
+	public void addLevel(Level level){
 		// jlog.log(java.util.logging.Level.INFO, "Add: " + attribute.name + " " + level.name);
-		attributeLevelPairs.put(attribute, level);
+		levels.add(level);
 	}
 	
-	public List<Attribute> getAttributes(){
-		List<Attribute> attributes= new ArrayList<Attribute>();
-		for(Attribute a : attributeLevelPairs.keySet()){
-			attributes.add(a);
+	public HashSet<Attribute> getAttributes(){		
+		HashSet<Attribute> attributes = new HashSet<Attribute>();
+		
+		for(Level l : levels){
+			attributes.add(l.attribute);
 		}
 		return attributes;
 	}
@@ -45,11 +53,23 @@ public class Concept{
 	 */
 	public List<Level> getLevels()
 	{
-		return new ArrayList(attributeLevelPairs.values());
+		return levels;
 	}
 	
-	public Level getLevelOf(Attribute attribute){
-		return attributeLevelPairs.get(attribute);
+	public Level getLevelOf(Attribute attribute) throws Exception{
+		Level level = null;
+		boolean found = false;
+		for(Level l : levels) {
+			if(l.attribute == attribute) {
+				found = true;
+				level = l;
+			}
+		}
+		if(!found) {
+			throw new Exception("Concept does not contain attribute");
+		}
+		
+		return level;
 	}
 	
 	/*
@@ -83,9 +103,9 @@ public class Concept{
 			 * a level with the corresponding subject feature is present
 			 */
 			for(Level objectLevel : objectLevels) {
-				if(attributeLevelPairs.containsValue(objectLevel)) {
+				if(levels.contains(objectLevel)) {
 					Boolean subjectLevelExists = false; 
-					for(Level l : attributeLevelPairs.values()) {
+					for(Level l : levels) {
 						if(Arrays.asList(l.features.split(",")).contains(c.subject)) {
 							subjectLevelExists = true;
 						}
@@ -102,6 +122,17 @@ public class Concept{
 			}
 		}
 		return isValid;
+	}
+
+	@Override
+	public int compareTo(Concept c) {
+		if(utility > c.utility) {
+			return 1;
+		} else if(utility < c.utility) {
+			return -1;
+		} else {
+			return 0;
+		}
 	}
 	
 } 

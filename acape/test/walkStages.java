@@ -1,4 +1,5 @@
 import org.apache.commons.math.linear.RealMatrix;
+import org.hibernate.mapping.Collection;
 import org.junit.*;
 
 import java.util.*;
@@ -31,7 +32,7 @@ public class walkStages {
     	} else if(ratingLhs > ratingRhs) {
     		rating = (int) Math.max(-4, Math.round(ratingRhs - ratingLhs));
     	} else {
-    		rating = (int) Math.min(4, Math.round(ratingLhs - ratingRhs));
+    		rating = (int) Math.min(4, Math.abs(Math.round(ratingLhs - ratingRhs)));
     	}
     	return rating;
 	}
@@ -42,18 +43,39 @@ public class walkStages {
 	public void walkPairsUtilityStage(PairsUtilityStage stage, Utility utility) throws Exception
 	{
 		while(!stage.isFinished()) {
-	    	PairsUtilityStage.LevelsPair pair = stage.computeLevelsPair(2);
+	    	LevelsPair pair = stage.computeLevelsPair(2);
 	    	if(pair != null) {
 		    	List<Level> lhs = pair.getLHS();
 		    	List<Level> rhs = pair.getRHS();
 		    	
-		    	double utilityLhs = utility.computeUtilityFor(lhs);
-		    	double utilityRhs = utility.computeUtilityFor(rhs);
+		    	double utilityLhs = utility.getFinalUtility(lhs);
+		    	double utilityRhs = utility.getFinalUtility(rhs);
 		    	
 		    	int rating = getUtilityComparisionRating(utilityLhs, utilityRhs);
 
 		    	stage.saveNewObservationByLevels(lhs, rhs, rating);	    		
 	    	}
 		}
+	}
+	
+	public void walkCalibrationStage(ConceptComparisonStage stage, Utility utility) throws Exception
+	{
+		List<Concept> concepts = stage.calculateConcepts();
+		
+		List<Double> finalUtilities = new ArrayList<Double>();
+		List<Integer> buyingProbabilities = new ArrayList<Integer>();
+		
+		for(Concept c : concepts) {
+			finalUtilities.add(utility.getFinalUtility(c.getLevels()));
+		}
+		
+		Collections.sort(finalUtilities);
+		
+		buyingProbabilities.add(10);
+		buyingProbabilities.add(50);
+		buyingProbabilities.add(90);
+		
+		stage.saveObservation(finalUtilities, buyingProbabilities);
+		
 	}
 }

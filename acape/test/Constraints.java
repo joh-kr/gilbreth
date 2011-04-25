@@ -24,7 +24,7 @@ public class Constraints extends UnitTest {
     } 
        
 	@Test
-	public void testExclude() {
+	public void testExclude() throws Exception {
 	   
 		Concept concept = new Concept();
 		
@@ -39,8 +39,8 @@ public class Constraints extends UnitTest {
 		assertNotNull(forumPresent);
 		assertNotNull(forum);
 		
-		concept.addAttributeAndLevel(forum, forumPresent);
-		concept.addAttributeAndLevel(recommenderSystem, rsPresent);
+		concept.addLevel(forumPresent);
+		concept.addLevel(rsPresent);
 		
 		assertTrue(concept.getAttributes().contains(forum));
 		assertTrue(concept.getLevelOf(forum) == forumPresent);
@@ -50,19 +50,19 @@ public class Constraints extends UnitTest {
 		assertFalse(concept.isValid());
 		
 		concept = new Concept();
-		concept.addAttributeAndLevel(forum, forumPresent);
+		concept.addLevel(forumPresent);
 		assertTrue(concept.isValid());
 		
 		Attribute paymentMethod = Attribute.find("byName", "Payment Method").first();
 		Level pmCC = Level.find("select l from Level l where l.attribute = ? and l.name = ?", paymentMethod, "Credit Card").first();
 		
-		concept.addAttributeAndLevel(paymentMethod, pmCC);
+		concept.addLevel(pmCC);
 		assertFalse(concept.isValid());
 		
 		Attribute fraudDetection = Attribute.find("byName", "Payment with Fraud Detection").first();
 		Level fdPresent = Level.find("select l from Level l where l.attribute = ? and l.name = ?", fraudDetection, "Present").first();
 		
-		concept.addAttributeAndLevel(fraudDetection, fdPresent);
+		concept.addLevel(fdPresent);
 		assertTrue(concept.isValid());
 	}
 }

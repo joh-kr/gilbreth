@@ -70,7 +70,7 @@ public class PairsUtilityStageTest extends UnitTest {
     @Test
     public void improveObservationsChangeUtility() throws Exception
     {
-    	PairsUtilityStage.LevelsPair pair = pairsUtilityStage.computeLevelsPair(2);
+    	LevelsPair pair = pairsUtilityStage.computeLevelsPair(2);
     	List<Level> lhs = pair.getLHS();
     	List<Level> rhs = pair.getRHS();
     	
@@ -98,7 +98,7 @@ public class PairsUtilityStageTest extends UnitTest {
 		double utilityRhs = pair.getUtilityForRhs();
 		
 		//improve lhs compared to rhs
-		assertTrue((oldUtilityLhs - oldUtilityRhs) > (utilityLhs - utilityRhs));
+		assertTrue((oldUtilityLhs - oldUtilityRhs) < (utilityLhs - utilityRhs));
     }
     
 	@Test
