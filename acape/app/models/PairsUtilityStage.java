@@ -217,28 +217,6 @@ public class PairsUtilityStage extends Stage {
 	private Boolean observationExists(LevelsPair lp) throws Exception {
 		
 		Boolean observationExists = false;
-		/*
-		//build row with dummy preference
-		RealMatrix m = result.getMatrix();
-		//sub matrix without preference in last column
-		m = m.getSubMatrix(0, m.getRowDimension() - 1, 0, m.getColumnDimension() - 2);
-		double[] observationRow = buildObservationRowFromLevels(lp.getLHS(), lp.getRHS(), 0.0);
-		double[] compareRow = new double[observationRow.length - 1];
-		
-		//also compare if lhs and rhs are switched
-		double[] observationRowSwitched = buildObservationRowFromLevels(lp.getRHS(), lp.getLHS(),0.0);
-		double[] compareRowSwitched = new double[observationRowSwitched.length - 1];
-		
-		System.arraycopy(observationRow, 0, compareRow, 0, observationRow.length - 1);
-		System.arraycopy(observationRowSwitched, 0, compareRowSwitched, 0, observationRowSwitched.length - 1);
-		
-		
-		for(int i = 0; i < m.getRowDimension(); i++) {
-			if(Arrays.equals(compareRow, m.getRow(i)) || Arrays.equals(compareRowSwitched, m.getRow(i))) {
-				observationExists = true;
-			}
-		}
-		*/
 		
 		for(UsedLevelPair usedPair : result.usedLevelPairs) {
 			if(usedPair.equalsLevelsPair(lp)) {
