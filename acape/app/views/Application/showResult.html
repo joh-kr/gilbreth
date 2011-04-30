@@ -6,7 +6,7 @@
 %{ } else { }%
 
 <p>Interviewee: ${interview.interviewee.getName()} (${interview.interviewee.geteMail()})</p>
-<p>Price per utility unit: ${interview.result.pricePerUtilityUnit}</p>
+<p>Price p = ${interview.result.PEintercept} + ${interview.result.PEintercept}U</p>
 
 <ul>
 %{ for(attribute in attributes) { }%
@@ -14,7 +14,7 @@
 		${attribute.name}
 		<ul>
 		%{ for(level in attribute.getLevels(interview.result.excludedLevels)) { }%
-			<li>${level.name} ${String.format('%.6f', utility.computeUtilityFor(level))}</li>
+			<li>${level.name} ${String.format('%.6f', utility.computeCalibratedUtilityFor(level))}</li>
 		%{ } }%
 		</ul>
 	</li> 

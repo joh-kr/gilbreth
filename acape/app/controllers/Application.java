@@ -283,6 +283,12 @@ public class Application extends Controller {
 			stage.initializePricePerUtility();
 		}
 		
+		if(!flash.contains("iteration")) {
+			flash.put("iteration", stage.iteration);
+		} else {
+			flash.keep("iteration");
+		}
+		
 		PricedConcept concept = stage.getPricedConcept();
 
 		// @TODO decide when to finish stage
@@ -298,14 +304,28 @@ public class Application extends Controller {
 		Interview interview = getInterview(interviewId);
 		
 		PriceEstimationStage stage = (PriceEstimationStage) interview.getStage("PriceEstimationStage");
-		if(params.get("buyButton") != null) {
-			//jlog.log(java.util.logging.Level.INFO, "Buy concept clicked");
-			stage.BuyConcept();
+		if(flash.contains("iteration")) {
+			stage.iteration = Integer.parseInt(flash.get("iteration"));
 		} else {
-			//jlog.log(java.util.logging.Level.INFO, "Don't buy concept clicked");
-			stage.DoNotBuyConcept();
+			jlog.log(java.util.logging.Level.INFO, "Missing iteration in flash scope");
 		}
 		
+		PriceEstimationStage.Action lastAction = null;
+		if(flash.contains("lastAction")) {
+			lastAction = PriceEstimationStage.Action.valueOf(flash.get("lastAction"));
+		}
+		
+		if(params.get("buyButton") != null) {
+			//jlog.log(java.util.logging.Level.INFO, "Buy concept clicked");
+			stage.BuyConcept(lastAction);
+			flash.put("lastAction", PriceEstimationStage.Action.buy.name());
+		} else {
+			//jlog.log(java.util.logging.Level.INFO, "Don't buy concept clicked");
+			stage.DoNotBuyConcept(lastAction);
+			flash.put("lastAction", PriceEstimationStage.Action.noBuy.name());
+		}
+		flash.put("iteration", stage.iteration);
+		jlog.log(java.util.logging.Level.INFO, "Set iteration in flash to " + stage.iteration);
 		// @TODO decide when to finish stage
 		priceEstimation(interviewId, ++page);
 	}

@@ -79,6 +79,13 @@ public class Utility {
 		
 		return calibratedUtility;
 	}
+	
+	public double computeCalibratedUtilityFor(Level level) throws Exception 
+	{
+		List<Level> levels = new ArrayList<Level>();
+		levels.add(level);
+		return computeCalibratedUtilityFor(levels);
+	}
 	/*
 	 * Utility based on the level rating and attribute importance
 	 */

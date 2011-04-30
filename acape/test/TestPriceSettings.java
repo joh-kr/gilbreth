@@ -10,6 +10,7 @@ import models.Level;
 import models.LevelRatingStage;
 import models.PairsUtilityStage;
 import models.PriceEstimationStage;
+import models.PriceEstimationStage.Action;
 import models.PriceSettings;
 import models.PricedConcept;
 import models.Result;
@@ -132,17 +133,19 @@ public class TestPriceSettings extends UnitTest {
     @Test
     public void testCompleteStage() throws Exception {
     	// secret price per utility to be estimated by survey
-    	
+    	PriceEstimationStage.Action lastAction = null;
     	do {
     		/*jlog.log(java.util.logging.Level.INFO, 
     			"utility " + concept.getUtility() + 
     			" price: " + concept.getPrice() + 
     			" current P/U " + result.pricePerUtilityUnit);*/ 
     		if(concept.getUtility() * 10 + 300 >= concept.getPrice().doubleValue()) {
-    			stage.BuyConcept();
+    			stage.BuyConcept(lastAction);
+    			lastAction = Action.buy;
     			//jlog.log(java.util.logging.Level.INFO, "Buy");
     		} else {
-    			stage.DoNotBuyConcept();
+    			stage.DoNotBuyConcept(lastAction);
+    			lastAction = Action.noBuy;
     			//jlog.log(java.util.logging.Level.INFO, "Do Not Buy");
     		}
     		if(!stage.isFinished()) {

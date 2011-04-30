@@ -17,13 +17,12 @@ public class PriceEstimationStage extends Stage {
 	private double deltaUtility = 1;
 	private BigDecimal deltaPrice = new BigDecimal(25);
 	
-	private int iteration;
+	public int iteration;
 	
-	private enum Action {
+	public enum Action {
 		buy,
 		noBuy
 	}
-	private Action lastAction = null;
 	boolean finished = false;
 	
 	public PriceEstimationStage(Interview interview, Result result, PriceSettings priceSettings) {
@@ -113,7 +112,7 @@ public class PriceEstimationStage extends Stage {
 	/*
 	 * Increase price per utility
 	 */
-	public void BuyConcept() throws Exception {		
+	public void BuyConcept(Action lastAction) throws Exception {		
 		if(iteration == 1) {
 			result.utility1 -= deltaUtility;
 			result.price1 = result.price1.add(deltaPrice);
@@ -123,13 +122,13 @@ public class PriceEstimationStage extends Stage {
 		}
 		
 		result.save();
-		checkIteration(Action.buy);
+		checkIteration(Action.buy, lastAction);
 	}
 
 	/*
 	 * Decrease price per utility
 	 */
-	public void DoNotBuyConcept() throws Exception {
+	public void DoNotBuyConcept(Action lastAction) throws Exception {
 		if(iteration == 1) {
 			result.utility1 += deltaUtility;
 			result.price1 = result.price1.subtract(deltaPrice);
@@ -139,10 +138,10 @@ public class PriceEstimationStage extends Stage {
 		}
 		
 		result.save();
-		checkIteration(Action.noBuy);
+		checkIteration(Action.noBuy, lastAction);
 	}
 	
-	private void checkIteration(Action action) throws Exception
+	private void checkIteration(Action action, Action lastAction) throws Exception
 	{
 		if(lastAction != null && action != lastAction) {
 			//use a new set of random concepts
