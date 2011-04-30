@@ -133,19 +133,16 @@ public class TestPriceSettings extends UnitTest {
     @Test
     public void testCompleteStage() throws Exception {
     	// secret price per utility to be estimated by survey
-    	PriceEstimationStage.Action lastAction = null;
     	do {
     		/*jlog.log(java.util.logging.Level.INFO, 
     			"utility " + concept.getUtility() + 
     			" price: " + concept.getPrice() + 
     			" current P/U " + result.pricePerUtilityUnit);*/ 
     		if(concept.getUtility() * 10 + 300 >= concept.getPrice().doubleValue()) {
-    			stage.BuyConcept(lastAction);
-    			lastAction = Action.buy;
+    			stage.BuyConcept();
     			//jlog.log(java.util.logging.Level.INFO, "Buy");
     		} else {
-    			stage.DoNotBuyConcept(lastAction);
-    			lastAction = Action.noBuy;
+    			stage.DoNotBuyConcept();
     			//jlog.log(java.util.logging.Level.INFO, "Do Not Buy");
     		}
     		if(!stage.isFinished()) {

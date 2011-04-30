@@ -256,7 +256,7 @@ public class Application extends Controller {
 			render(interviewId, concepts);
 
 		} else {
-			priceEstimation(interviewId, 0);
+			priceEstimation(interviewId, 0, false);
 		}
 			
 	}
@@ -274,25 +274,36 @@ public class Application extends Controller {
 	
 	// ------ Price Estimation Stage -------
 	
-	public static void priceEstimation(long interviewId, int page) throws Exception{
+	public static void priceEstimation(long interviewId, int page, boolean finished) throws Exception{
 		Interview interview = getInterview(interviewId);
 		PriceEstimationStage stage = (PriceEstimationStage) interview.getStage("PriceEstimationStage");
 		
 		if(page == 0) {
 			// initialize before first iteration
 			stage.initializePricePerUtility();
+			if(flash.contains("iteration")) {
+				flash.discard("iteration");
+			}
+			if(flash.contains("lastAction")) {
+				flash.discard("lastAction");
+			}
 		}
 		
-		if(!flash.contains("iteration")) {
-			flash.put("iteration", stage.iteration);
-		} else {
+		if(flash.contains("iteration")) {
+			stage.iteration = Integer.parseInt(flash.get("iteration"));
 			flash.keep("iteration");
+		} else {
+			flash.put("iteration", stage.iteration);
+		}
+		if(flash.contains("lastAction")) {
+			stage.lastAction = PriceEstimationStage.Action.valueOf(flash.get("lastAction"));
+			flash.keep("lastAction");
 		}
 		
 		PricedConcept concept = stage.getPricedConcept();
 
 		// @TODO decide when to finish stage
-		if (page < 5) {
+		if (!finished) {
 			renderArgs.put("activeTab", "PriceEstimation");
 			render(interviewId, concept, page);
 		} else {
@@ -314,20 +325,26 @@ public class Application extends Controller {
 		if(flash.contains("lastAction")) {
 			lastAction = PriceEstimationStage.Action.valueOf(flash.get("lastAction"));
 		}
+		stage.lastAction = lastAction;
 		
 		if(params.get("buyButton") != null) {
 			//jlog.log(java.util.logging.Level.INFO, "Buy concept clicked");
-			stage.BuyConcept(lastAction);
+			stage.BuyConcept();
 			flash.put("lastAction", PriceEstimationStage.Action.buy.name());
 		} else {
 			//jlog.log(java.util.logging.Level.INFO, "Don't buy concept clicked");
-			stage.DoNotBuyConcept(lastAction);
+			stage.DoNotBuyConcept();
 			flash.put("lastAction", PriceEstimationStage.Action.noBuy.name());
 		}
+		
+		if(stage.lastAction == null) {
+			flash.discard("lastAction");
+		}
+		
 		flash.put("iteration", stage.iteration);
 		jlog.log(java.util.logging.Level.INFO, "Set iteration in flash to " + stage.iteration);
 		// @TODO decide when to finish stage
-		priceEstimation(interviewId, ++page);
+		priceEstimation(interviewId, ++page, stage.isFinished());
 	}
 	
 	public static void showSurvey() {
@@ -356,7 +373,11 @@ public class Application extends Controller {
 	 */
 	private static Interview getInterview(long id) throws Exception{
 		Interview interview = Interview.findById(id);
-		if(interview == null) throw new Exception("For the passed interview ID " + id + " is no interview saved.");
+		if(interview == null) {
+			jlog.log(java.util.logging.Level.INFO, "For the passed interview ID " + id + " is no interview saved.");
+			throw new Exception("For the passed interview ID " + id + " is no interview saved.");
+		}
+		
 		return interview;
 	}
 	
