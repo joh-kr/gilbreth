@@ -273,8 +273,6 @@ public class TestUtilityCalculations extends UnitTest {
     	assertTrue(utility.getFinalUtility(forumPresent) > utility.getFinalUtility(forumAbsent));
     }
     
-
-    
     
 
 }

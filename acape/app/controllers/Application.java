@@ -353,12 +353,20 @@ public class Application extends Controller {
 		render(interviews);
 	}
 	
-	public static void showResult(long id) {
+	public static void showResult(long id) throws Exception {
 		Interviewee interviewee = Interviewee.findById(id);
 		Interview interview = Interview.find("byInterviewee", interviewee).first();
 		
 		List<Attribute> attributes = Attribute.findAll();
 		Utility utility = new Utility(interview.result);
+		
+		List<Level> levels = Level.findAll();
+		
+		for(Level l : levels) {
+			jlog.log(java.util.logging.Level.INFO, 
+					l.attribute.name + " " + l.name + ": " + utility.computeCalibratedUtilityFor(l)
+					+ "(" + utility.getPriorUtility(l) + ")");
+		}
 		
 		render(interview, attributes, utility);
 		

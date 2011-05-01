@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.logging.Logger;
 
+import models.Attribute;
 import models.AttributeWeightingStage;
 import models.Concept;
 import models.ConceptComparisonStage;
@@ -153,4 +154,17 @@ public class TestPriceSettings extends UnitTest {
     	assertEquals(300, result.PEintercept, 100);
     }
     
+    @Test
+    public void calibratedUtilities() throws Exception {
+    	Attribute paymentMethod = Attribute.find("byName", "Payment Method").first();
+    	Level creditCard = Level.find("select l from Level l where l.attribute = ? and l.name = ?", paymentMethod, "Credit Card").first();
+    	Level all = Level.find("select l from Level l where l.attribute = ? and l.name = ?", paymentMethod, "Debit Card, Credit Card, and Purchase Order").first();
+    	jlog.log(java.util.logging.Level.INFO, "Utility cc: " + utility.computeCalibratedUtilityFor(creditCard));
+    	jlog.log(java.util.logging.Level.INFO, "Utility all: " + utility.computeCalibratedUtilityFor(all));
+    	
+    	jlog.log(java.util.logging.Level.INFO, "Prior all: " + utility.getPriorUtility(all));
+    	
+    	assertTrue(utility.getPriorUtility(all) != 0);
+    	
+    }
 }
