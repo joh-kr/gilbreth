@@ -3,6 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -124,6 +125,55 @@ public class Concept extends Model implements Comparable<Concept> {
 		return isValid;
 	}
 
+	public static List<Concept> getValidConcepts(List<Level> excludedLevels) throws Exception {
+		List<Concept> concepts = new ArrayList<Concept>();
+		List<Attribute> attributes = Attribute.findAll();
+		int count = 1;
+		
+		int temp[] = new int[attributes.size()];
+		int levelSizes[] = new int[attributes.size()];
+		
+		for(int i = 0; i < temp.length; i++) {
+			levelSizes[i] = attributes.get(i).levels.size() - 1;
+			temp[i] = 0;
+			count *= levelSizes[i] + 1;
+		}
+		
+		Concept concept;
+		Boolean validLevels;
+		Level level;
+		
+		int j = temp.length - 1;
+		for(int i = 0; i < count; i++) {
+			
+			validLevels = true;
+			
+			concept = new Concept();
+			for(int attrIndex = 0; attrIndex < temp.length; attrIndex++) {
+				level = attributes.get(attrIndex).levels.get(temp[attrIndex]);
+				if(excludedLevels != null) {
+					validLevels = validLevels && !excludedLevels.contains(level);
+				}
+				concept.addLevel(level);
+			}
+			
+			if(validLevels && concept.isValid()) {
+				concept.save();
+				concepts.add(concept);
+			}
+			
+			j = temp.length - 1;
+			
+			temp[j]++;
+			while(temp[j] > levelSizes[j] && j > 0) {
+				temp[j] = 0;
+				temp[--j]++;
+			}
+		}
+		
+		return concepts;
+	}	
+	
 	@Override
 	public int compareTo(Concept c) {
 		if(utility > c.utility) {

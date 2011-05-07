@@ -125,11 +125,6 @@ public class TestPriceSettings extends UnitTest {
     }
     */
     
-    @Test
-    public void testSorting() {
-    	int size = result.randomConcepts.size();
-    	assertTrue(result.randomConcepts.get(0).getUtility() <= result.randomConcepts.get(size - 1).getUtility());
-    }
     
     @Test
     public void testCompleteStage() throws Exception {

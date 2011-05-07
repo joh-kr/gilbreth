@@ -64,11 +64,12 @@ public class Application extends Controller {
 		
 		LevelExclusionStage stage = (LevelExclusionStage) interview.getStage("LevelExclusion");
 		
-		if(stage.hasAttribute(page)){		
+		if(stage.hasAttribute(page)) {		
 			Attribute attribute = stage.getCurrentAttribute(page);
 			renderArgs.put("activeTab", "Exclusion");
 			render(interviewId, attribute, page);
-		}else{
+		} else {
+			stage.generateValidConcepts();
 			levelRate(interviewId, 0);
 			//index();
 		}

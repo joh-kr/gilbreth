@@ -18,7 +18,6 @@ public class LevelExclusionStage extends Stage{
 	}
 	
 	public void excludeLevels(List<Long> excludeLevelIds) throws Exception{
-	
 		long levelId = 0l;
 		Level level = null;
 		
@@ -32,7 +31,11 @@ public class LevelExclusionStage extends Stage{
 				result.addExcludedLevel(level);
 			}
 		}
-		
+	}
+	
+	public void generateValidConcepts() throws Exception {
+		result.validConcepts = Concept.getValidConcepts(result.excludedLevels);
+		result.save();
 	}
 	
 }

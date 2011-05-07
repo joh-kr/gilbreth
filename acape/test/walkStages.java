@@ -15,6 +15,8 @@ public class walkStages {
 
 	public void walkLevelRateStage(LevelRatingStage stage) throws Exception
 	{
+		Result result = stage.getResult();
+		result.validConcepts = Concept.getValidConcepts(result.excludedLevels);
 		List<RatingObservation> testObservations = RatingObservation.findAll();
 		RatingObservation.addObservations(stage, testObservations);
 	}

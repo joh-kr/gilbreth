@@ -2,6 +2,7 @@ package models;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -43,10 +44,18 @@ public class PriceEstimationStage extends Stage {
 		result.price1 = middlePrice;
 		result.price2 = result.price1;
 		
-		result.randomConcepts = getRandomConcepts();
+		/*
+		 * Set utility for every valid concept
+		 */
+		for(Concept concept : result.validConcepts) {
+			concept.setUtility(utility.computeCalibratedUtilityFor(concept.getLevels()));
+		}
+		Collections.sort(result.validConcepts);
 		
-		result.utility1 = result.randomConcepts.get((int) (result.randomConcepts.size() * 0.75)).getUtility();
-		result.utility2 = result.randomConcepts.get((int) (result.randomConcepts.size() * 0.25)).getUtility();
+		// get concept with utility above median 
+		result.utility1 = result.validConcepts.get((int) (result.validConcepts.size() * 0.75)).getUtility();
+		// get concept with utility below median
+		result.utility2 = result.validConcepts.get((int) (result.validConcepts.size() * 0.25)).getUtility();
 		
 		result.save();
 	}
@@ -75,6 +84,7 @@ public class PriceEstimationStage extends Stage {
 	
 	public PricedConcept getPricedConcept() throws Exception{
 		double referenceUtility = result.utility1;
+		
 		if(iteration == 2) {
 			referenceUtility = result.utility2;
 		} 
@@ -83,25 +93,19 @@ public class PriceEstimationStage extends Stage {
 		 * search concept with utility close to needed utility
 		 */
 		
-		
-		
-		while(i < result.randomConcepts.size() && result.randomConcepts.get(i).getUtility() <= referenceUtility) {
+		while(i < result.validConcepts.size() && result.validConcepts.get(i).getUtility() <= referenceUtility) {
 			i++;
 		}
 		
 		i = Math.max(0, i - 1);
 		
-		Concept concept = result.randomConcepts.get(i);
+		Concept concept = result.validConcepts.get(i);
 		PricedConcept pricedConcept = new PricedConcept();
 		// TODO Maybe add some copy constructor
 		for(Level l : concept.getLevels()) {
 			pricedConcept.addLevel(l);
 		}
-		
-		//remove used concept
-		result.randomConcepts.remove(i);
-		result.save();
-		
+	
 		if(iteration == 1) {
 			pricedConcept.setPrice(result.price1);
 		} else {
@@ -149,7 +153,6 @@ public class PriceEstimationStage extends Stage {
 	{
 		if(lastAction != null && action != lastAction) {
 			//use a new set of random concepts
-			result.randomConcepts = getRandomConcepts();
 			iteration++;
 			lastAction = null;
 		} else {
@@ -179,39 +182,6 @@ public class PriceEstimationStage extends Stage {
 	
 	public boolean isFinished() {
 		return finished;
-	}
-	
-	private Concept getRandomConcept() throws Exception {
-		Random r = new Random();
-		Concept concept = new Concept();
-		List<Attribute> attributes = Attribute.findAll();
-		
-		for(Attribute a : attributes){
-			List<Level> levels = a.getLevels(result.excludedLevels);
-			int n = r.nextInt(levels.size());
-			concept.addLevel(levels.get(n));
-		}
-
-		return concept;
-	}
-	
-	private List<Concept> getRandomConcepts() throws Exception {
-		List<Concept> concepts = new ArrayList<Concept>();
-		
-		int count = 0;
-		
-		while(count++ < 10000 && concepts.size() < 200) {
-			Concept concept = getRandomConcept();
-			if(concept.isValid()) {
-				concept.setUtility(utility.computeCalibratedUtilityFor(concept.getLevels()));
-				concept.save();
-				concepts.add(concept);
-			}
-		}
-		
-		Collections.sort(concepts);
-		
-		return concepts;
 	}
 	
 }

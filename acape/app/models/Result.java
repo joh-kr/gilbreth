@@ -89,7 +89,7 @@ public class Result extends Model {
 	public BigDecimal price2;
 	
 	@ManyToMany
-	public List<Concept> randomConcepts = null;
+	public List<Concept> validConcepts = null;
 	
 
 	public Result() {
