@@ -33,10 +33,10 @@ public class MiscTest extends UnitTest {
 		
 		int j = temp.length - 1;
 		for(int i = 0; i < count; i++) {
-			
+			/*
 			jlog.log(java.util.logging.Level.INFO, 
 					Arrays.toString(temp));
-			
+			*/
 			j = temp.length - 1;
 			
 			temp[j]++;
