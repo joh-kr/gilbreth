@@ -106,4 +106,27 @@ public class PairsUtilityStageTest extends UnitTest {
 		walkStages.walkPairsUtilityStage(pairsUtilityStage, utility);
 		assertTrue(pairsUtilityStage.isFinished());
 	}
+	
+	@Test
+	public void testAttributeFrequencies() throws Exception
+	{
+		List<Attribute> attributes = Attribute.findAll();
+		for(Attribute a : attributes) {
+			assertEquals("Frequency of " + a.name + " = " + result.getAttributeFrequency(a), a.getLevels(result.excludedLevels).size(), result.getAttributeFrequency(a), 0.01);
+		}
+	}
+	
+	@Test
+	public void testAttributeFrequenciesInPairs() throws Exception
+	{
+		LevelsPair pair = pairsUtilityStage.computeLevelsPair(2);
+		
+		int freq1 = result.getLevelFrequency(pair.getLHS().get(0));
+		
+		pairsUtilityStage.saveNewObservationByLevels(pair.getLHS(), pair.getRHS(), 1.0);
+		
+		assertEquals(freq1 + 1, result.getLevelFrequency(pair.getLHS().get(0)));
+		
+		
+	}
 }

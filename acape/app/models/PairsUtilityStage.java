@@ -203,20 +203,13 @@ public class PairsUtilityStage extends Stage {
 		return observationExists;
 	}
 	
-	private class MyOLSMultipleLinearRegression extends OLSMultipleLinearRegression{
-		public double calculateYVariance(){
-			//return super.calculateYVariance();
-			return 1;
-		}
-	}
-	
 	/**
 	 * Calculate R2 as a measure of the difference between expected results and
 	 * the actual responses
 	 * @return r2 value
 	 */
-	public double calculateR2(){
-		MyOLSMultipleLinearRegression regression = new MyOLSMultipleLinearRegression();
+	private double calculateR2(){
+		OLSMultipleLinearRegression regression = new OLSMultipleLinearRegression();
 		
 		double[] y = result.getDependentVariableValues();
 		double[][] x = result.getIndeptendentVariableValues();

@@ -7,7 +7,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +41,7 @@ public class Result extends Model {
 	public byte[] matrix;
 
 	@Lob
-	public byte[] featureColumnMatching;
+	private byte[] featureColumnMatching;
 
 	@Required
 	public int rowCount;
@@ -210,8 +212,7 @@ public class Result extends Model {
 		this.R2Difference = value - this.R2;
 		this.R2 = value;
 		save();
-		// jlog.log(java.util.logging.Level.INFO, "R2 difference is " +
-		// this.R2Difference);
+		jlog.log(java.util.logging.Level.INFO, "R2 difference is " + this.R2Difference);
 	}
 
 	public RealMatrix getCurrentSubMatrix() {
@@ -250,6 +251,34 @@ public class Result extends Model {
 		return this.rowCount;
 	}
 	
+	/*
+	 * Returns a set of features (string) which are included in at least one level of the attribute 
+	 */
+	private HashSet<String> getFeaturesOfAttribute(Attribute a)
+	{
+		HashSet<String> featureSet = new HashSet<String>();
+		
+		for(Level l : a.getLevels(excludedLevels)) {
+			for(String feature : l.getConstitutingFeaturesAsArray()) {
+				featureSet.add(feature);
+			}
+		}
+		
+		return featureSet;
+	}
+	
+	/*
+	 * Returns a set of columns which represent features present in some levels of the attribute
+	 */
+	private HashSet<Integer> getColumnsOfAttribute(Attribute a) throws Exception
+	{
+		HashSet<Integer> columns = new HashSet<Integer>();
+		for(String feature : getFeaturesOfAttribute(a)) {
+			columns.add(getColumnFor(feature));
+		}
+		return columns;
+	}
+	
 	public String getNameForColumn(Integer column) throws Exception
 	{
 		Map<String, Integer> map = getFeatureColumnMatching();
@@ -271,12 +300,15 @@ public class Result extends Model {
 		return name;
 	}
 
-	public int getColumnFor(String name) throws Exception {
+	/*
+	 * Return the column in the result matrix representing the given feature
+	 */
+	public int getColumnFor(String feature) throws Exception {
 		Map<String, Integer> map = getFeatureColumnMatching();
-		if (!map.containsKey(name))
+		if (!map.containsKey(feature))
 			throw new Exception(
-					"The matrix does not contain any entry for key " + name);
-		return map.get(name).intValue();
+					"The matrix does not contain any entry for key " + feature);
+		return map.get(feature).intValue();
 	}
 
 	public Integer[] getColumnsFor(Level level) throws Exception {
@@ -328,24 +360,32 @@ public class Result extends Model {
 	 */
 	public int getLevelFrequency(Level level) throws Exception {
 		RealMatrix m = getMatrix();
-
+		
+		//Saves the columns with the needed features
 		int[] columns = new int[level.getConstitutingFeaturesAsArray().length];
 
 		int c = 0;
 		for (String f : level.getConstitutingFeaturesAsArray()) {
 			columns[c++] = getColumnFor(f);
 		}
-
+		
+		//Get set of all columns of this attribute i.e. all features of levels of the same attribute
+		HashSet<Integer> columnsOfUnwantedFeatures = getColumnsOfAttribute(level.attribute);
+		// Remove features of the selected level leaving only unwanted features
+		for(int col : columns) {
+			columnsOfUnwantedFeatures.remove(col);
+		}
+		
 		int count = 0;
 
-		for (int i = 0; i < getRowCount(); i++) {
+		for (int i = 0; i <= getRowCount(); i++) {
 			double[] row = m.getRow(i);
 			boolean rowContainsAllFeatures = true;
-			for (int j = 0; j < columns.length; j++) {
-				if (row[columns[j]] != 1.0d) {
-					rowContainsAllFeatures = false;
-				}
-			}
+			
+			// call with +1.0 and -1.0 to check existence on left side as well as right side
+			rowContainsAllFeatures = rowContainsLevel(columns, columnsOfUnwantedFeatures, row, 1.0)
+								  || rowContainsLevel(columns, columnsOfUnwantedFeatures, row, -1.0);
+			
 			if (rowContainsAllFeatures) {
 				count++;
 			}
@@ -353,6 +393,29 @@ public class Result extends Model {
 
 		return count;
 	}
+
+	private boolean rowContainsLevel(int[] columns,
+			HashSet<Integer> columnsOfUnwantedFeatures, double[] row, double flag) {
+		
+		Boolean rowContainsAllFeatures = true;
+		
+		for (int j = 0; j < columns.length; j++) {
+			if (row[columns[j]] != flag) {
+				rowContainsAllFeatures = false;
+			}
+		}
+		
+		// Check for unwanted features
+		if(rowContainsAllFeatures) {
+			for(int j : columnsOfUnwantedFeatures) {
+				if (row[j] == flag) {
+					rowContainsAllFeatures = false;
+				}
+			}
+		}
+		return rowContainsAllFeatures;
+	}
+	
 
 	/*
 	 * Attribute frequency is the sum of the frequencies of all levels of the
