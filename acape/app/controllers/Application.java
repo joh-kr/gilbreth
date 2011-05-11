@@ -343,7 +343,7 @@ public class Application extends Controller {
 		}
 		
 		flash.put("iteration", stage.iteration);
-		jlog.log(java.util.logging.Level.INFO, "Set iteration in flash to " + stage.iteration);
+		//jlog.log(java.util.logging.Level.INFO, "Set iteration in flash to " + stage.iteration);
 		// @TODO decide when to finish stage
 		priceEstimation(interviewId, ++page, stage.isFinished());
 	}
@@ -360,7 +360,7 @@ public class Application extends Controller {
 		
 		List<Attribute> attributes = Attribute.findAll();
 		Utility utility = new Utility(interview.result);
-		
+		/*
 		List<Level> levels = Level.findAll();
 		
 		for(Level l : levels) {
@@ -368,7 +368,7 @@ public class Application extends Controller {
 					l.attribute.name + " " + l.name + ": " + utility.computeCalibratedUtilityFor(l)
 					+ "(" + utility.getPriorUtility(l) + ")");
 		}
-		
+		*/
 		render(interview, attributes, utility);
 		
 	}
