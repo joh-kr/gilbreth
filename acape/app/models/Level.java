@@ -97,17 +97,6 @@ public class Level extends Model{
 	}
 	
 	
-	public LevelRate getRatingOf(Respondent respondent){
-		List<LevelRate> levelRates = this.find("SELECT lr "
-				+ "FROM LevelRate lr JOIN lr.level l JOIN lr.respondent r "
-				+ "WHERE l = ?1 AND r = ?2",this, respondent).fetch();
-		
-		if(levelRates != null && levelRates.size() > 0)
-			return levelRates.get(0);
-		return null;
-
-	}
-	
 	public static int nrOfAllFeatures(){
     	int nrOfFeatures = 0;
     	List<Level> levels = Level.all().fetch();
