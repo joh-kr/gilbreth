@@ -19,7 +19,7 @@ import play.data.validation.Required;
 import play.db.jpa.Model;
 
 /**
- * An attribute is a structuring element of a ACA survey, organizinh Levels.
+ * An attribute is a structuring element of a ACA survey, organizing Levels.
  * 
  * @author Johannes Müller
  */

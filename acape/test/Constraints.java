@@ -1,7 +1,6 @@
 import models.Attribute;
 import models.Concept;
 import models.Level;
-import models.Respondent;
 
 import org.junit.Before;
 import org.junit.Test;
