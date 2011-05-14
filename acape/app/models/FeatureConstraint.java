@@ -6,9 +6,9 @@ import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
-public abstract class Constraint extends Model {
+public abstract class FeatureConstraint extends Model {
 	
-	public Constraint(String object, String subject) {
+	public FeatureConstraint(String object, String subject) {
 		this.object = object;
 		this.subject = subject;
 	}

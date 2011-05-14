@@ -62,7 +62,7 @@ public class PriceEstimationStage extends Stage {
 	
 	public double getPrice(Concept c) throws Exception
 	{
-		if(Double.isNaN(result.PEintercept) || Double.isNaN(result.PEslope)) {
+		if(result.PEintercept == null || result.PEslope == null) {
 			throw new Exception("Price Estimation Stage not complete");
 		}
 		

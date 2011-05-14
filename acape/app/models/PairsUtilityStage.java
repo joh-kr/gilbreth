@@ -139,7 +139,7 @@ public class PairsUtilityStage extends Stage {
 	}
 	
 	public boolean isFinished(){
-		return result.rowCount >= result.getMatrix().getRowDimension() || stageFinished;// || result.getR2Difference() < 0.0001d;// Calc of R2 seems to be broken
+		return result.matrixRowCount >= result.getMatrix().getRowDimension() || stageFinished;// || result.getR2Difference() < 0.0001d;// Calc of R2 seems to be broken
 	}
 	
 	// data manipulation section

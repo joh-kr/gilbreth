@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Logger;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
@@ -44,13 +45,15 @@ public class Result extends Model {
 	private byte[] featureColumnMatching;
 
 	@Required
-	public int rowCount;
+	public int matrixRowCount;
 
 	/*
 	 * Results from Price Estimation Stage
 	 */
-	public double PEslope = Double.NaN;
-	public double PEintercept = Double.NaN;
+	@Column(nullable=true)
+	public Double PEslope = null;
+	@Column(nullable=true)
+	public Double PEintercept = null;
 	
 	public double R2Difference;
 
@@ -60,13 +63,15 @@ public class Result extends Model {
 	/*
 	 * Intercept of the regression of the calibrated utility after stage concept comparision
 	 */
-	public double calibratedUtilityIntercept;
+	@Column(nullable = true)
+	public Double calibratedUtilityIntercept;
 	
 	@Required
 	/*
 	 * Slope of the regression of the calibrated utility after stage concept comparision
-	 */	
-	public double calibratedUtilitySlope;
+	 */
+	@Column(nullable = true)
+	public Double calibratedUtilitySlope;
 
 	/**
 	 * The levels explicitly excluded in the first stage
@@ -98,12 +103,12 @@ public class Result extends Model {
 		excludedLevels = new ArrayList<Level>();
 		usedLevelPairs = new ArrayList<UsedLevelPair>();
 		
-		rowCount = -1;
+		matrixRowCount = -1;
 		R2Difference = 1.0d;
 		R2 = 0.0d;
 		
-		calibratedUtilityIntercept = Double.NaN;
-		calibratedUtilitySlope = Double.NaN;
+		calibratedUtilityIntercept = null;
+		calibratedUtilitySlope = null;
 	}
 
 	/*
@@ -185,7 +190,7 @@ public class Result extends Model {
 
 	public void addNewRow(double[] row) {
 		RealMatrix m = this.getMatrix();
-		m.setRow(++rowCount, row);
+		m.setRow(++matrixRowCount, row);
 		this.setMatrix(m);
 		this.save();
 		// jlog.log(java.util.logging.Level.INFO, "At row " + rowCount +
@@ -248,7 +253,7 @@ public class Result extends Model {
 	}
 
 	public int getRowCount() {
-		return this.rowCount;
+		return this.matrixRowCount;
 	}
 	
 	/*

@@ -80,10 +80,10 @@ public class Concept extends Model implements Comparable<Concept> {
 		Boolean isValid = true;
 		
 		
-		List<Constraint> constraints = Constraint.findAll();
+		List<FeatureConstraint> constraints = FeatureConstraint.findAll();
 		List<Level> allLevels = Level.findAll();
 		
-		for(Constraint c : constraints) {
+		for(FeatureConstraint c : constraints) {
 			
 			List<Level> objectLevels = new ArrayList<Level>();
 			/*

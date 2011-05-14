@@ -60,7 +60,7 @@ public class Utility {
 	public double computeCalibratedUtilityFor(List<Level> levels) throws Exception 
 	{
 		// Assure concept comparison stage is finished and there calibration parameters exist
-		if(Double.isNaN(result.calibratedUtilityIntercept) || Double.isNaN(result.calibratedUtilitySlope)) {
+		if(result.calibratedUtilityIntercept == null || result.calibratedUtilitySlope == null) {
 			throw new Exception("Utility not calibrated");
 		}
 		

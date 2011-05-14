@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import play.data.validation.Required;
 import play.db.jpa.Model;
@@ -13,9 +15,17 @@ import play.db.jpa.Model;
  */
 @Entity
 public class UsedLevelPair extends Model {
+	@ManyToOne
+	@JoinColumn(name="LHS1_ID")
 	private Level lhs1;
+	@ManyToOne
+	@JoinColumn(name="LHS2_ID")
 	private Level lhs2;
+	@ManyToOne
+	@JoinColumn(name="RHS1_ID")
 	private Level rhs1;
+	@ManyToOne
+	@JoinColumn(name="RHS2_ID")
 	private Level rhs2;
 	
 	public UsedLevelPair(List<Long> lhsIds, List<Long> rhsIds)
