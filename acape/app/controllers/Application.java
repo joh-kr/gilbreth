@@ -373,6 +373,46 @@ public class Application extends Controller {
 		
 	}
 	
+	public static void showResultTable() throws Exception {
+		
+		List<Concept> concepts = Concept.getValidConcepts(null);
+		
+		List<Interview> interviews = Interview.findAll();
+		
+		String[] configNames = new String[concepts.size()];
+		double[][] utilities = new double[concepts.size()][interviews.size()];
+		double[][] wtps = new double[concepts.size()][interviews.size()];
+		
+		Utility utility;
+		Result result;
+		StringBuilder sb;
+		int j = 0;
+		
+		for(Concept c : concepts) {
+			sb = new StringBuilder();
+			
+			for(Level l : c.getLevels()) {
+				sb.append(l.attribute.name);
+				sb.append(" ");
+				sb.append(l.name);
+				sb.append(", ");
+			}
+			configNames[j] = sb.toString();
+			
+			for(int i = 0; i < interviews.size(); i++) {
+				// @TODO check excluded levels
+				result = interviews.get(i).result;
+				utility = new Utility(result);
+				utilities[j][i] = utility.computeCalibratedUtilityFor(c.getLevels());
+				wtps[j][i] = result.PEintercept + result.PEslope * utilities[j][i];
+				
+			}
+			j++;
+		}
+		
+		render(configNames, utilities, wtps);
+	}
+	
 	// ----- Helper ---------
 	
 	/**

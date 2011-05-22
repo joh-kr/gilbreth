@@ -132,6 +132,21 @@ Level(rsPresent):
     features:       f11
     attribute:      a5
     
+Attribute(a6):
+    name:           User Authentication
+    description:    >
+                    How users can log in the web shop
+
+Level(idCard):
+    name:           ID Card
+    features:       f12
+    attribute:      a6
+    
+Level(pw):
+    name:           Password
+    features:       f13
+    attribute:      a6
+    
 ExcludesConstraint(RSxF):
     object:         f11
     subject:        f1
@@ -142,7 +157,11 @@ RequiresConstraint(CCrFD):
 
 RequiresConstraint(DCrFD):
     object:         f6
-    subject:        f3    
+    subject:        f3
+    
+RequiresConstraint(RSrCM):
+    object:         f11
+    subject:        f8 
     
 # --- Price Settings
  
