@@ -52,10 +52,12 @@ public class PairsUtilityStageTest extends UnitTest {
     	List<Level> allLevels = Level.findAll();
     	HashSet<String> features = new HashSet();
     	for(Level l : allLevels) {
-    		for(String feature : Arrays.asList(l.features.split(","))) {
-    			/*jlog.log(java.util.logging.Level.INFO, 
+    		if(l.features != null) {
+    			for(String feature : Arrays.asList(l.features.split(","))) {
+    				/*jlog.log(java.util.logging.Level.INFO, 
     					"Feature " + feature);*/
-    			features.add(feature);
+    				features.add(feature);
+    			}
     		}
     	}
     	int featureCount = features.size();

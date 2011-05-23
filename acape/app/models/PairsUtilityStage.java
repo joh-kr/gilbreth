@@ -139,7 +139,7 @@ public class PairsUtilityStage extends Stage {
 	}
 	
 	public boolean isFinished(){
-		return result.matrixRowCount >= result.getMatrix().getRowDimension() || stageFinished;// || result.getR2Difference() < 0.0001d;// Calc of R2 seems to be broken
+		return result.matrixRowCount >= result.getMatrix().getRowDimension() || stageFinished || result.getR2Difference() < 0.01d;// Calc of R2 seems to be broken
 	}
 	
 	// data manipulation section
@@ -163,6 +163,7 @@ public class PairsUtilityStage extends Stage {
 		//jlog.log(java.util.logging.Level.INFO, "Add new Row" + Arrays.toString(x));
 		
 		result.setR2(calculateR2());
+		
 		result.save();
 	}
 	

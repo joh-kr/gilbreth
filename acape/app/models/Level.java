@@ -3,6 +3,7 @@ package models;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -89,7 +90,11 @@ public class Level extends Model{
 	 * @return the names of the features constituting the level
 	 */
 	public String[] getConstitutingFeaturesAsArray(){
-		return features.split(",");
+		if(features == null) {
+			return new String[0];
+		} else {
+			return features.split(",");
+		}
 	}
 	
 	public int getNrOfFeatures(){

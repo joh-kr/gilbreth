@@ -323,9 +323,12 @@ public class Result extends Model {
 			result.add(getColumnFor(s));
 		}
 
-		return result.toArray(new Integer[1]);
+		return result.toArray(new Integer[0]);
 	}
 
+	/*
+	 * Return rating 0 if level has no features
+	 */
 	public double getRateFor(Level level) throws Exception {
 		RealMatrix matrix = getMatrix();
 		// Check whether matrix is initialized
@@ -333,28 +336,33 @@ public class Result extends Model {
 
 		String[] features = level.getConstitutingFeaturesAsArray();
 		int[] affectedColumns = new int[features.length];
-		for (int i = 0; i < features.length; i++) {
-			affectedColumns[i] = getColumnFor(features[i]);
-		}
-
-		boolean found = false;
-		boolean featureInRow = false;
-
-		for (int i = 0; i < matrix.getRowDimension(); i++) {
-			featureInRow = false;
-			for (int j = 0; j < affectedColumns.length; j++) {
-				if (matrix.getEntry(i, affectedColumns[j]) != 0) {
-					featureInRow = true;
-					found = true;
+		
+		// check if level has features
+		if(features.length > 0) {
+			for (int i = 0; i < features.length; i++) {
+				affectedColumns[i] = getColumnFor(features[i]);
+			}
+	
+			boolean found = false;
+			boolean featureInRow = false;
+			
+			for (int i = 0; i < matrix.getRowDimension(); i++) {
+				featureInRow = false;
+				for (int j = 0; j < affectedColumns.length; j++) {
+					if (matrix.getEntry(i, affectedColumns[j]) != 0) {
+						featureInRow = true;
+						found = true;
+					}
+				}
+				if (featureInRow) {
+					rating += matrix.getEntry(i, matrix.getColumnDimension() - 1);
 				}
 			}
-			if (featureInRow) {
-				rating += matrix.getEntry(i, matrix.getColumnDimension() - 1);
+			if (!found) {
+				throw new Exception("No Entry for Level " + level.getName()
+						+ " found.");
 			}
 		}
-		if (!found)
-			throw new Exception("No Entry for Level " + level.getName()
-					+ " found.");
 
 		return rating;
 	}
@@ -399,8 +407,12 @@ public class Result extends Model {
 		return count;
 	}
 
+	/*
+	 * flag = -1 if feature is searched on left side, +1 else
+	 */
 	private boolean rowContainsLevel(int[] columns,
-			HashSet<Integer> columnsOfUnwantedFeatures, double[] row, double flag) {
+									 HashSet<Integer> columnsOfUnwantedFeatures,
+									 double[] row, double flag) {
 		
 		Boolean rowContainsAllFeatures = true;
 		

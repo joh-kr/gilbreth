@@ -92,22 +92,26 @@ public class Utility {
 	public double getPriorUtility(Level level) throws Exception {
 		Integer[] columns;
 		columns = result.getColumnsFor(level);
-		
-		double[] searchedRow = new double[result.getNrOfColumns() - 1];
-		for(int i : columns){
-			searchedRow[i] = 1.0d;
+		if(columns.length > 0) {
+			double[] searchedRow = new double[result.getNrOfColumns() - 1];
+			for(int i : columns){
+				searchedRow[i] = 1.0d;
+			}
+			
+			RealMatrix m = result.getMatrix();
+			m = m.getSubMatrix(0, (int) Level.count(), 0, m.getColumnDimension() - 2);
+			
+			int i = 0;
+			
+			while(!Arrays.equals(m.getRow(i), searchedRow)) {
+				i++;
+			}
+			
+			return result.getDependentVariableValues()[i];			
+		} else {
+			return 0.0;
 		}
-		
-		RealMatrix m = result.getMatrix();
-		m = m.getSubMatrix(0, (int) Level.count(), 0, m.getColumnDimension() - 2);
-		
-		int i = 0;
-		
-		while(!Arrays.equals(m.getRow(i), searchedRow)) {
-			i++;
-		}
-		
-		return result.getDependentVariableValues()[i];
+
 	}
 	
 	/*
@@ -118,8 +122,19 @@ public class Utility {
 	public double getPairsUtilities(List<Level> levels) throws Exception {
 		
 		RealMatrix m = result.getMatrix();
+		
+		int nonPairsQuestions = 0;
+		
+		// @TODO save number of level rate questions and use here
+		List<Level> allLevels = Level.findAll();
+		for(Level l : allLevels) {
+			if(l.features != null) {
+				nonPairsQuestions++;
+			}
+		}
+		
 		// get dependent variables matrix
-		m = m.getSubMatrix((int) Level.count(), m.getRowDimension() - 1, 0, m.getColumnDimension() - 1);
+		m = m.getSubMatrix(nonPairsQuestions, m.getRowDimension() - 1, 0, m.getColumnDimension() - 1);
 		
 		double[] emptyRow = new double[m.getColumnDimension()];
 		
@@ -210,7 +225,10 @@ public class Utility {
 		/*
 		 * Get Prior Utility
 		 */
-		double priorUtility = getPriorUtility(level);
+		double priorUtility = 0;
+		if(level.features != null) {
+			getPriorUtility(level);
+		}
 		double pairsUtility = 0;
 		
 		/*
