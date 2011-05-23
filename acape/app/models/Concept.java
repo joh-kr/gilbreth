@@ -91,7 +91,7 @@ public class Concept extends Model implements Comparable<Concept> {
 			 */
 			for(Level l : allLevels) {
 				Boolean levelContainsFeature = false;
-				if(Arrays.asList(l.features.split(",")).contains(c.object)) {
+				if(l.features != null && Arrays.asList(l.features.split(",")).contains(c.object)) {
 					levelContainsFeature = true;
 				}
 
@@ -107,7 +107,7 @@ public class Concept extends Model implements Comparable<Concept> {
 				if(levels.contains(objectLevel)) {
 					Boolean subjectLevelExists = false; 
 					for(Level l : levels) {
-						if(Arrays.asList(l.features.split(",")).contains(c.subject)) {
+						if(l.features != null && Arrays.asList(l.features.split(",")).contains(c.subject)) {
 							subjectLevelExists = true;
 						}
 					}

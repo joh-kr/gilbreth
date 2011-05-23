@@ -7,6 +7,8 @@ import java.util.Map;
 import org.apache.commons.math.linear.RealMatrix;
 import org.apache.commons.math.stat.StatUtils;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import play.Logger;
 
 /**
@@ -39,6 +41,8 @@ public class LevelRatingStage extends Stage {
 			level = Level.findById(id);
 			double[] row = new double[result.getNrOfColumns()];
 			
+			Boolean rowEmpty = true;
+			
 			/*jlog.log(java.util.logging.Level.INFO, "Save rates of Level: " + level.getName());*/
 			
 			// For each feature constituting the level a entry is added to the matrix
@@ -46,6 +50,7 @@ public class LevelRatingStage extends Stage {
 				/*jlog.log(java.util.logging.Level.INFO, 
 						"Add entry at " + result.getColumnFor(f) + " for feature " + f);*/
 				row[result.getColumnFor(f)] = 1;
+				rowEmpty = false;
 			}
 
 			// Save the rate as the dependent variable in the matrix
@@ -53,7 +58,9 @@ public class LevelRatingStage extends Stage {
 					"Add entry at " + (row.length - 1) + " for rate " + idAndRates.get(id));*/			
 			row[row.length - 1] = idAndRates.get(id);
 			
-			result.addNewRow(row);
+			if(!rowEmpty) {
+				result.addNewRow(row);
+			}
 		}
 	}
 	
