@@ -46,10 +46,17 @@ public class LevelRatingStage extends Stage {
 			/*jlog.log(java.util.logging.Level.INFO, "Save rates of Level: " + level.getName());*/
 			
 			// For each feature constituting the level a entry is added to the matrix
-			for(String f : level.getConstitutingFeaturesAsArray()){
-				/*jlog.log(java.util.logging.Level.INFO, 
-						"Add entry at " + result.getColumnFor(f) + " for feature " + f);*/
+			/*for(String f : level.getConstitutingFeaturesAsArray()){
+
+				jlog.log(java.util.logging.Level.INFO, 
+						"Add entry at " + result.getColumnFor(f) + " for feature " + f);
 				row[result.getColumnFor(f)] = 1;
+				rowEmpty = false;
+			}*/
+			
+			Integer[] columns = result.getColumnsFor(level);
+			for(int i : columns){
+				row[i] = 1;
 				rowEmpty = false;
 			}
 
