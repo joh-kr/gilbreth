@@ -21,5 +21,17 @@
  		%{ } }%
  	</tr>
  %{ } }%
-
+ 
+ <h2>Clusters</h2>
+ <table>
+ <tr>
+ 	<th>Respondent</th>
+ 	<th>Cluster</th>
+ </tr>
+ %{ for(int i = 0; i < clusters.length; i++) { }%
+     <tr>
+     	<td>${i}</td>
+     	<td>${clusters[i]}</td>
+     </tr>
+ %{ } }%
 </table>

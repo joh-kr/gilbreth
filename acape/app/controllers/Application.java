@@ -404,13 +404,15 @@ public class Application extends Controller {
 				result = interviews.get(i).result;
 				utility = new Utility(result);
 				utilities[j][i] = utility.computeCalibratedUtilityFor(c.getLevels());
-				wtps[j][i] = result.PEintercept + result.PEslope * utilities[j][i];
-				
+				wtps[j][i] = result.PEintercept + result.PEslope * utilities[j][i];	
 			}
 			j++;
 		}
 		
-		render(configNames, utilities, wtps);
+		Clustering c = new Clustering(wtps, utilities, 2);
+		int[] clusters = c.getAssignments();
+		
+		render(configNames, utilities, wtps, clusters);
 	}
 	
 	// ----- Helper ---------

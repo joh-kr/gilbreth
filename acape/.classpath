@@ -56,5 +56,6 @@
 	<classpathentry kind="var" path="PLAY_FRAMEWORK_LIB/snakeyaml-1.6.jar"/>
 	<classpathentry kind="var" path="APACHE_COMMONS/commons-math-2.2-javadoc.jar"/>
 	<classpathentry kind="var" path="APACHE_COMMONS/commons-math-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/weka.jar"/>
 	<classpathentry kind="output" path="eclipse/classes"/>
 </classpath>
