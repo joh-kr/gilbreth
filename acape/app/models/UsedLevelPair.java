@@ -10,8 +10,12 @@ import javax.persistence.ManyToOne;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
-/*
- * Inflexible class but for now easy to persist
+/**
+ * Class used to persist a level pair already used during the pairs utility stage
+ * 
+ * @TODO Inflexible class as it is fixed to two levels on each side but for now easy to persist
+ * @author Max Lillack
+ * 
  */
 @Entity
 public class UsedLevelPair extends Model {

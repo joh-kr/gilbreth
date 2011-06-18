@@ -7,6 +7,13 @@ import javax.persistence.*;
 
 import play.data.validation.Required;
 
+/**
+ * A LevelsPair consists of a left hand side (lhs) and right hand side (rhs) 
+ * each containing a set of levels
+ * @author Johannes Müller
+ * @author Max Lillack
+ *
+ */
 public class LevelsPair implements Comparable{
 	
 	private List<Level> lhs;

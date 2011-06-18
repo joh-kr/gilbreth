@@ -6,6 +6,7 @@ import java.math.BigDecimal;
  * A concept that has a price assigned.
  * 
  * @author Johannes Müller
+ * @author Max Lillack
  */
 public class PricedConcept extends Concept {
 	private BigDecimal price;

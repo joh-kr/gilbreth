@@ -12,6 +12,11 @@ import javax.persistence.Transient;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
+/**
+ * An Interview comprises the interviewee and her responses
+ * @author Johannes Müller
+ *
+ */
 @Entity
 public class Interview extends Model{
 	

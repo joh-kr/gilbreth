@@ -31,6 +31,12 @@ import org.apache.commons.math.linear.RealMatrix;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
+/**
+ * Result saves all intermediate and final results of the interview
+ * @author Johannes Müller
+ * @author Max Lillack
+ *
+ */
 @Entity
 public class Result extends Model {
 

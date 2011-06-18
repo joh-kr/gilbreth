@@ -17,6 +17,12 @@ import play.db.jpa.Model;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
+/**
+ * Represents a set of levels with an utility value
+ * 
+ * @author Max Lillack
+ *
+ */
 @Entity
 public class Concept extends Model implements Comparable<Concept> {
 	@Transient
@@ -49,7 +55,7 @@ public class Concept extends Model implements Comparable<Concept> {
 		return attributes;
 	}
 	
-	/*
+	/**
 	 * Returns a unsorted list of all levels in the concept
 	 */
 	public List<Level> getLevels()
@@ -73,7 +79,7 @@ public class Concept extends Model implements Comparable<Concept> {
 		return level;
 	}
 	
-	/*
+	/**
 	 * Checks all contraints
 	 */
 	public Boolean isValid() {
@@ -99,7 +105,7 @@ public class Concept extends Model implements Comparable<Concept> {
 					objectLevels.add(l);
 				}
 			}
-			/*
+			/**
 			 * if a level with an object feature is present check if
 			 * a level with the corresponding subject feature is present
 			 */
@@ -125,6 +131,13 @@ public class Concept extends Model implements Comparable<Concept> {
 		return isValid;
 	}
 
+	/**
+	 * Function to generate full concepts with respect to all constraints and the given excluded levels
+	 * 
+	 * @param excludedLevels List of levels which must not be part of any concept
+	 * @return list of valid concepts
+	 * @throws Exception
+	 */
 	public static List<Concept> getValidConcepts(List<Level> excludedLevels) throws Exception {
 		List<Concept> concepts = new ArrayList<Concept>();
 		List<Attribute> attributes = Attribute.findAll();

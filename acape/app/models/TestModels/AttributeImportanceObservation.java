@@ -14,6 +14,11 @@ import models.LevelRatingStage;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
+/**
+ * Class used only for testing. Allows the persistence of attribute importance observation.
+ * @author Max Lillack
+ *
+ */
 @Entity
 public class AttributeImportanceObservation extends Model {
     @ManyToOne

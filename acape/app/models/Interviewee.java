@@ -4,6 +4,11 @@ import javax.persistence.Entity;
 
 import play.db.jpa.Model;
 
+/**
+ * Represents some basic information about the interviewee
+ * @author Johannes Müller
+ *
+ */
 @Entity
 public class Interviewee extends Model{
 

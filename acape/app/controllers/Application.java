@@ -16,6 +16,7 @@ import models.*;
  * The application starts with the index, that opens the excludeLevel Stage.
  * 
  * @author Johannes Müller
+ * @author Max Lillack
  *
  */
 public class Application extends Controller {

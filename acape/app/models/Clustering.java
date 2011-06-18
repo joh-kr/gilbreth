@@ -7,14 +7,16 @@ import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
 
-/*
+/**
  * Use Weka library to apply k-means clustering algorithm for customer segmentation
+ * 
+ * @author Max Lillack
  */
 public class Clustering {
 	
 	private SimpleKMeans clusterer;
 	
-	/*
+	/**
 	 * @param wtps array of willingnes to pay for every product for every respondent
 	 * @param utilities array of utility for every product for every respondent
 	 * @param number of cluster to be created
@@ -61,7 +63,7 @@ public class Clustering {
 		clusterer.buildClusterer(data);
 
 	}
-	/*
+	/**
 	 * Return an array with a cluster number for every respondent
 	 */
 	public int[] getAssignments() throws Exception

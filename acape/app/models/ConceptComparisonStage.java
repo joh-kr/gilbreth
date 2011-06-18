@@ -7,6 +7,12 @@ import java.util.Random;
 
 import org.apache.commons.math.stat.regression.SimpleRegression;
 
+/**
+ * Stage for comparing concepts
+ * 
+ * @author Max Lillack
+ *
+ */
 public class ConceptComparisonStage extends Stage{
 
 	private Utility utility;
@@ -15,7 +21,11 @@ public class ConceptComparisonStage extends Stage{
 		super(interview, result);
 		utility = new Utility(result);
 	}
-	
+	/**
+	 * Generates 3 concepts for comparison
+	 * @return Three concepts with utility set
+	 * @throws Exception
+	 */
 	public List<Concept> calculateConcepts() throws Exception{
 		Random r = new Random();
 		List<Concept> concepts = new ArrayList<Concept>();

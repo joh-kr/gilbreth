@@ -9,6 +9,16 @@ import java.util.Random;
 
 import org.apache.commons.math.stat.regression.SimpleRegression;
 
+/**
+ * Implementation of the last stage of acape
+ * 
+ * The interviewee is presented with some priced concepts and decides if she would buy or not.
+ * The algorithm estimates two points in the price utility space and uses linear regression to
+ * estimate a linear function to estimate the willingness to pay for any utility value.
+ * 
+ * @author Max Lillack
+ *
+ */
 public class PriceEstimationStage extends Stage {
 	Random r = new Random();
 	
@@ -37,7 +47,10 @@ public class PriceEstimationStage extends Stage {
 		iteration = 1;
 	}
 	
-	// initialize pricePerUtility
+	/**
+	 * Initialize list of valid concepts and initial utility and prices
+	 * @throws Exception
+	 */
 	public void initializePricePerUtility() throws Exception {
 		BigDecimal middlePrice = priceSettings.maximumPrice.add(priceSettings.minimumPrice).divide(new BigDecimal(2));
 		
@@ -117,7 +130,7 @@ public class PriceEstimationStage extends Stage {
 		return pricedConcept;
 	}
 	
-	/*
+	/**
 	 * Increase price per utility
 	 */
 	public void BuyConcept() throws Exception {		
@@ -133,7 +146,7 @@ public class PriceEstimationStage extends Stage {
 		checkIteration(Action.buy);
 	}
 
-	/*
+	/**
 	 * Decrease price per utility
 	 */
 	public void DoNotBuyConcept() throws Exception {
@@ -163,7 +176,7 @@ public class PriceEstimationStage extends Stage {
 		}
 	}
 	
-	/*
+	/**
 	 * Finish state after point of wtp is crossed
 	 */
 	private void setFinished(Action action) {

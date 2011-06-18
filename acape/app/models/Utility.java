@@ -11,7 +11,12 @@ import org.apache.commons.math.stat.regression.OLSMultipleLinearRegression;
 import org.apache.commons.math.stat.regression.SimpleRegression;
 
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
+/**
+ * This class contains all the logic to estimate utility values in the during the stages of
+ * the survey as well as the final utilities used in the result of the survey
+ * @author Max Lillack
+ *
+ */
 public class Utility {
 	
 	private Result result;
@@ -54,7 +59,7 @@ public class Utility {
 		return regression;		
 	}
 	
-	/*
+	/**
 	 * Calibrated utility can be calculated after concept comparison stage
 	 */
 	public double computeCalibratedUtilityFor(List<Level> levels) throws Exception 
@@ -86,7 +91,7 @@ public class Utility {
 		levels.add(level);
 		return computeCalibratedUtilityFor(levels);
 	}
-	/*
+	/**
 	 * Utility based on the level rating and attribute importance
 	 */
 	public double getPriorUtility(Level level) throws Exception {
@@ -114,7 +119,7 @@ public class Utility {
 
 	}
 	
-	/*
+	/**
 	 * Utility based on the results from pair comparison stage
 	 * Is used to selected next pairs in the interview
 	 * @TODO Refactor this method!
@@ -200,7 +205,7 @@ public class Utility {
 		return utility;	
 	}
 	
-	/*
+	/**
 	 * Final utility is the combined utility of prior and pairs utility
 	 */
 	public double getFinalUtility(List<Level> levels) throws Exception {
@@ -212,7 +217,7 @@ public class Utility {
 		
 	}
 	
-	/*
+	/**
 	 * Final utility is the combined utility of prior and pairs utility
 	 */	
 	public double getFinalUtility(Level level) throws Exception {

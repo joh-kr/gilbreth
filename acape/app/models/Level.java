@@ -12,6 +12,12 @@ import javax.persistence.Transient;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
+/**
+ * A level comprises a set of features and is associated with one attributes
+ * @author Johannes Müller
+ * 
+ *
+ */
 @Entity
 public class Level extends Model{
 	

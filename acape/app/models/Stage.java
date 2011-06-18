@@ -2,6 +2,11 @@ package models;
 
 import java.util.logging.Logger;
 
+/**
+ * A stage represents a class of step in the survey
+ * @author Johannes Müller
+ *
+ */
 public class Stage {
 	Result result;
 	Interview interview;
