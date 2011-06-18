@@ -13,11 +13,10 @@ import play.db.jpa.Model;
 
 import javax.persistence.*;
 
-/*
+/**
  * Model used to store observation in the level rating stage for unit tests
- * 
+ * @author Max Lillack
  */
-
 @Entity
 public class RatingObservation extends Model {
     @ManyToOne

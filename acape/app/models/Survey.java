@@ -7,7 +7,7 @@ import play.db.jpa.Model;
 /**
  * The class Survey represents a whole survey. A survey consists of several interviews.
  * 
- * @author jo
+ * @author Johannes Müller
  *
  */
 @Entity

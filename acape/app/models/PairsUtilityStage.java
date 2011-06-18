@@ -169,7 +169,7 @@ public class PairsUtilityStage extends Stage {
 		result.save();
 	}
 	
-	/*
+	/**
 	 * Wrapper for function saveNewObservation accepting lists of levels instead of level IDs
 	 */
 	public void saveNewObservationByLevels(List<Level> lhs, List<Level> rhs, double preference) throws Exception {
