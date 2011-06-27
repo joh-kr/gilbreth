@@ -3,7 +3,8 @@ package models;
 import java.util.logging.Logger;
 
 /**
- * A stage represents a class of step in the survey
+ * A stage represents a class of steps in the survey
+ * 
  * @author Johannes Müller
  *
  */
