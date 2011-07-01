@@ -1,0 +1,51 @@
+# Test data
+
+# --- Result
+
+Result(myResult):
+
+# --- Test Attributes 
+
+Attribute(a1):
+    name:           Forum
+    description:    >
+                    A Forum System where customers can exchange information about offered products
+Attribute(a2):
+    name:           Payment with Fraud Detection
+    description:    >
+                    Identifies frauds within a payment process
+
+# --- Test Attribute Level
+
+Level(forumPresent):
+    name:           Present
+    description:    >
+                    
+    features:       f1
+    attribute:      a1
+
+Level(forumAbsent):
+    name:           Absent
+    description:    >
+                    
+    features:       f2
+    attribute:      a1
+
+Level(fraudPresent):
+    name:           Present
+    description:    >
+                    
+    features:       f3
+    attribute:      a2
+
+Level(fraudAbsent):
+    name:           Absent
+    description:    >
+                    
+    features:       f4
+    attribute:      a2
+    
+# --- Test Interviewee
+Interviewee(interviewee1):
+    name:          TestUser
+    email:         TestUserMail

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Sample Category"
+            id="gilbreth_cockpit">
+      </category>
+      <view
+            name="Sample View"
+            icon="icons/sample.gif"
+            category="gilbreth_cockpit"
+            class="gilbreth_cockpit.views.SampleView"
+            id="gilbreth_cockpit.views.SampleView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.TaskList"
+               relationship="right"
+               id="gilbreth_cockpit.views.SampleView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            class="acape.provider.AcapeItemProviderAdapterFactory"
+            supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider org.eclipse.emf.edit.provider.IStructuredItemContentProvider org.eclipse.emf.edit.provider.ITreeItemContentProvider org.eclipse.emf.edit.provider.IItemLabelProvider org.eclipse.emf.edit.provider.IItemPropertySource"
+            uri="de.uni_leipzig.iwi.gilbreth.acape.metamodel">
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="gilbreth_cockpit.contribution1"
+            nameFilter="*.xml"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="gilbreth_cockpit.menu1"
+               label="Gilbreth"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="gilbreth_cockpit.popup.actions.GenerateSurveyConfigurationAction"
+               enablesFor="1"
+               id="gilbreth_cockpit.newAction"
+               label="Generate Survey Configuration"
+               menubarPath="gilbreth_cockpit.menu1/group1">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

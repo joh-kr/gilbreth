@@ -1,0 +1,21 @@
+
+syntax: regexp
+^lib$
+syntax: regexp
+.project
+syntax: regexp
+.classpath
+syntax: regexp
+.hgignore
+syntax: regexp
+^conf/application\.conf$
+syntax: regexp
+^tmp$
+syntax: regexp
+^test-result$
+syntax: regexp
+^eclipse$
+syntax: regexp
+.settings
+syntax: regexp
+^logs/system\.out$
