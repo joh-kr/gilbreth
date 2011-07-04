@@ -32,14 +32,12 @@ import com.google.inject.Inject;
  */
 public class SPLCreator implements Creator<SPLGenotype> {
 
-	protected final SPLProblem problem;
 	private final SPLProblemDescription problemDescription;
 	private Random random = new Random();
 
 	@Inject
-	public SPLCreator(SPLProblem problem) {
-		this.problem = problem;
-		this.problemDescription = problem.getSPLProblemDescription();
+	public SPLCreator(SPLProblemDescription problemDescription) {
+		this.problemDescription = problemDescription;
 	}
 
 	/**

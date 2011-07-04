@@ -35,7 +35,7 @@ public class SPLSimulatedAnnealingModule extends SimulatedAnnealingModule {
 
 	@Override
 	public void config() {
-
+		
 		bindOptimizer(SPLSimulatedAnnealing.class);
 	}
 

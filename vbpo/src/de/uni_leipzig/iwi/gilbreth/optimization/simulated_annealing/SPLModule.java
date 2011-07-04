@@ -20,6 +20,8 @@ import org.opt4j.operator.neighbor.BasicNeighborModule;
 import org.opt4j.start.Constant;
 import org.opt4j.viewer.VisualizationModule;
 
+import com.google.inject.Provides;
+
 /**
  * Compiles all configurations for the SPL optimization problem.
  * 
@@ -28,27 +30,17 @@ import org.opt4j.viewer.VisualizationModule;
  */
 public class SPLModule extends ProblemModule {
 
-	public enum ProblemSelection {
-		PAPER, SMALL, RANDOM;
+	private SPLProblemDescription problemDescription = new SPLProblemDescription();
+	
+	
+	@Provides
+	public SPLProblemDescription getProblemDescription() {
+		return problemDescription;
 	}
 
-	@Constant(value = "nrOfSegments")
-	int nrOfSegments = 5;
-
-	@Constant(value = "nrOfProducts")
-	int nrOfProducts = 20;
-
-	@Constant(value = "nrOfAssets")
-	int nrOfAssets = 30;
-
-	@Constant(value = "priceLevel")
-	double priceLevel = 100.0d;
-
-	@Constant(value = "priceStep")
-	int priceStep = 100;
-
-	@Constant(value = "problemSelection")
-	ProblemSelection problemSelection = ProblemSelection.PAPER;
+	public void setProblemDescription(SPLProblemDescription problemDescription) {
+		this.problemDescription = problemDescription;
+	}
 
 	@Override
 	protected void config() {
@@ -56,60 +48,9 @@ public class SPLModule extends ProblemModule {
 
 		BasicNeighborModule.addNeighbor(this.binder(),
 				NeighborSPLGenotype.class);
-		// bindProblem(SPLSATDecoder.class,
-		// SPLSATDecoder.class,SPLEvaluator.class);
 
 		VisualizationModule.addIndividualMouseListener(binder(),
 				SPLProblemVisualization.class);
 
 	}
-
-	public int getNrOfAssets() {
-		return nrOfAssets;
-	}
-
-	public int getNrOfProducts() {
-		return nrOfProducts;
-	}
-
-	public int getNrOfSegments() {
-		return nrOfSegments;
-	}
-
-	public double getPriceLevel() {
-		return priceLevel;
-	}
-
-	public int getPriceStep() {
-		return priceStep;
-	}
-
-	public ProblemSelection getProblemSelection() {
-		return problemSelection;
-	}
-
-	public void setNrOfAssets(int nrOfAssets) {
-		this.nrOfAssets = nrOfAssets;
-	}
-
-	public void setNrOfProducts(int nrOfProducts) {
-		this.nrOfProducts = nrOfProducts;
-	}
-
-	public void setNrOfSegments(int nrOfSegments) {
-		this.nrOfSegments = nrOfSegments;
-	}
-
-	public void setPriceLevel(double priceLevel) {
-		this.priceLevel = priceLevel;
-	}
-
-	public void setPriceStep(int priceStep) {
-		this.priceStep = priceStep;
-	}
-
-	public void setProblemSelection(ProblemSelection problemSelection) {
-		this.problemSelection = problemSelection;
-	}
-
 }

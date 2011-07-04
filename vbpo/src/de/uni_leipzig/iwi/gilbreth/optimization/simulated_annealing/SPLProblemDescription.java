@@ -130,6 +130,8 @@ public class SPLProblemDescription {
 
 	private int price_steps;
 
+	public SPLProblemDescription(){} 
+	
 	public SPLProblemDescription(Customer customer, Firm firm,
 			Competition competition, int price_steps) {
 		this.customer = customer;

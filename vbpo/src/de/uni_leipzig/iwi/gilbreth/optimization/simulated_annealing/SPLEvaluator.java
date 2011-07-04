@@ -35,10 +35,10 @@ import com.google.inject.Inject;
 public class SPLEvaluator implements Evaluator<Solution> {
 
 	private Objective profit = new Objective("profit", Sign.MAX);
-	private SPLProblem problem;
+	private SPLProblemDescription problem;
 
 	@Inject
-	public SPLEvaluator(SPLProblem problem) {
+	public SPLEvaluator(SPLProblemDescription problem) {
 		this.problem = problem;
 	}
 
@@ -46,12 +46,9 @@ public class SPLEvaluator implements Evaluator<Solution> {
 	private int countSegmentsBuyingFromCompetitor(Solution solution) {
 		boolean[][] x = solution.getX();
 		double[] p = solution.getP();
-		SPLProblemDescription.Customer c = problem.getSPLProblemDescription()
-				.getCustomer();
-		SPLProblemDescription.Firm f = problem.getSPLProblemDescription()
-				.getFirm();
-		SPLProblemDescription.Competition co = problem
-				.getSPLProblemDescription().getCompetition();
+		SPLProblemDescription.Customer c = problem.getCustomer();
+		SPLProblemDescription.Firm f = problem.getFirm();
+		SPLProblemDescription.Competition co = problem.getCompetition();
 		double value = 0.0d;
 		int count = 0;
 		for (int i = 0; i < c.numberOfSegments(); i++) {
@@ -72,10 +69,8 @@ public class SPLEvaluator implements Evaluator<Solution> {
 		boolean[][] x = solution.getX();
 		boolean[] y = solution.determineY();
 		double[] p = solution.getP();
-		SPLProblemDescription.Customer c = problem.getSPLProblemDescription()
-				.getCustomer();
-		SPLProblemDescription.Firm f = problem.getSPLProblemDescription()
-				.getFirm();
+		SPLProblemDescription.Customer c = problem.getCustomer();
+		SPLProblemDescription.Firm f = problem.getFirm();
 		double welfare = 0.0d;
 		int count = 0;
 
@@ -131,123 +126,5 @@ public class SPLEvaluator implements Evaluator<Solution> {
 	public Collection<Objective> getObjectives() {
 		return Arrays.asList(profit);
 	}
-	/*
-	 * currently not used
-	 * 
-	private boolean allRequiredAssetsBuilt(Solution solution) {
-		boolean[] r = solution.determineRk();
-		boolean[] y = solution.determineY();
-		SPLProblemDescription.Firm f = problem.getSPLProblemDescription()
-				.getFirm();
-
-		for (int k = 0; k < f.NumberOfAssets(); k++) {
-			for (int j = 0; j < f.NumberOfProducts(); j++) {
-				if ((f.getA(j, k) && y[j]) && !r[k]) {
-					return false;
-				}
-			}
-		}
-
-		return true;
-	}
-    */
-
-/*
- * currently not used
- *
-	private boolean isEveryAssignedProductProduced(Solution solution) {
-		boolean[][] x = solution.getX();
-		boolean[] y = solution.determineY();
-		for (int i = 0; i < x.length; i++) {
-			for (int j = 0; j < x[0].length; j++) {
-				if (x[i][j] ^ y[j]) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-*/
-	
-/*
- * currently not used
- * 
-	private boolean isEverySegmentTheBestProductAssigned(Solution solution) {
-		boolean[][] x = solution.getX();
-		boolean[] y = solution.determineY();
-		double[] p = solution.getP();
-		SPLProblemDescription.Customer c = problem.getSPLProblemDescription()
-				.getCustomer();
-		SPLProblemDescription.Firm f = problem.getSPLProblemDescription()
-				.getFirm();
-		double welfare = 0.0d;
-
-		for (int i = 0; i < c.numberOfSegments(); i++) {
-			welfare = 0.0d;
-			for (int s = 0; s < f.NumberOfProducts(); s++) {
-				if (x[i][s])
-					welfare = c.getWTP(i, s) - p[s];
-			}
-			for (int j = 0; j < f.NumberOfProducts(); j++) {
-				if (y[j] && welfare < (c.getWTP(i, j) - p[j]))
-					return false;
-			}
-		}
-		return true;
-	}
-*/
-	
-/*
- * currently not used
-	private boolean isOneProductPerSegment(Solution solution) {
-		boolean[][] x = solution.getX();
-		int count = 0;
-		for (int i = 0; i < x.length; i++) {
-			count = 0;
-			for (int j = 0; j < x[0].length; j++) {
-				if (x[i][j]) {
-					count++;
-				}
-				if (count > 1) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-*/
-/*
- * currently not used
- *
-	private boolean isZeroProductPriceZero(Solution solution) {
-
-		return Double.compare(solution.getP()[0], 0.0d) == 0;
-	}
-
-	private boolean notBeatenByCompetitor(Solution solution) {
-		boolean[][] x = solution.getX();
-		double[] p = solution.getP();
-		SPLProblemDescription.Customer c = problem.getSPLProblemDescription()
-				.getCustomer();
-		SPLProblemDescription.Firm f = problem.getSPLProblemDescription()
-				.getFirm();
-		SPLProblemDescription.Competition co = problem
-				.getSPLProblemDescription().getCompetition();
-		double value = 0.0d;
-
-		for (int i = 0; i < c.numberOfSegments(); i++) {
-			value = 0.0d;
-			for (int j = 0; j < f.NumberOfProducts(); j++) {
-				if (x[i][j]) {
-					value += c.getWTP(i, j) - p[j];
-				}
-			}
-			if (value < co.getW(i))
-				return false;
-		}
-
-		return true;
-	}
-*/
 }
 // EOF

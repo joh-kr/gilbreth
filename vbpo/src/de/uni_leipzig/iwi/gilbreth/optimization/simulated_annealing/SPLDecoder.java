@@ -32,10 +32,10 @@ import com.google.inject.Inject;
  */
 public class SPLDecoder implements Decoder<SPLGenotype, Solution> {
 
-	SPLProblem problem;
+	SPLProblemDescription problem;
 
 	@Inject
-	public SPLDecoder(SPLProblem problem) {
+	public SPLDecoder(SPLProblemDescription problem) {
 
 		this.problem = problem;
 	}
@@ -48,8 +48,7 @@ public class SPLDecoder implements Decoder<SPLGenotype, Solution> {
 		boolean[][] x = genotype.getXAsMatrix();
 		double[] p = genotype.getPAsVector();
 
-		Solution solution = new Solution(x, p,
-				problem.getSPLProblemDescription());
+		Solution solution = new Solution(x, p, problem);
 
 		return solution;
 	}

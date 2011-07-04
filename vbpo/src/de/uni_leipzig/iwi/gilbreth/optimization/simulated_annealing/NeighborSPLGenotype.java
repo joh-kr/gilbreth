@@ -50,9 +50,9 @@ public class NeighborSPLGenotype implements Neighbor<Genotype>{
 	 * @param normalize
 	 */
 	@Inject
-	public NeighborSPLGenotype(SPLProblem problem, Rand random, NormalizeDouble normalize){
+	public NeighborSPLGenotype(SPLProblemDescription problem, Rand random, NormalizeDouble normalize){
 		
-		this.description = problem.getSPLProblemDescription();
+		this.description = problem;
 		this.random = random;
 		this.normalize = normalize;
 		this.doubleNeighbor = new NeighborDouble(normalize, random);

@@ -36,7 +36,7 @@ public class Solution implements Phenotype {
 	// ---- Data Member ---------------
 
 	/**
-	 * Container Data Type saving asset numbers an their contribution to profit
+	 * Container Data Type saving asset numbers and their contribution to profit
 	 * 
 	 * @author Johannes Müller
 	 * 
@@ -60,11 +60,12 @@ public class Solution implements Phenotype {
 
 	private double[] p;
 
-	// ---- Constructor Section -------
 
 	// ---- The problem description that determines the constant values of a
 	// solution
 	private final SPLProblemDescription problemDescription;
+	
+	// ---- Constructor Section -------
 
 	/**
 	 * Constructor creates a new solution with the given values.
@@ -152,7 +153,7 @@ public class Solution implements Phenotype {
 	 * calculates the contribution margin of the solution (unit cost minus
 	 * revenue)
 	 * 
-	 * @return the generated revenue from this solution
+	 * @return the generated contribution margin from this solution
 	 */
 	public double contributionMargin() {
 		return contributionMargin(x);
@@ -160,7 +161,7 @@ public class Solution implements Phenotype {
 
 	/**
 	 * 
-	 * @return the generated revenue from this solution
+	 * @return the generated contribution margin from this solution
 	 */
 	protected double contributionMargin(boolean[][] _x) {
 		double revenue = 0.0d;
