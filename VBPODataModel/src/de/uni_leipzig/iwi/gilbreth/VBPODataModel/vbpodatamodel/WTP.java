@@ -76,7 +76,7 @@ public interface WTP extends EObject {
 	 * @return the value of the '<em>Product</em>' reference.
 	 * @see #setProduct(Product)
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getWTP_Product()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	Product getProduct();

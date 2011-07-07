@@ -47,7 +47,7 @@ public interface Firm extends EObject {
 	 * @return the value of the '<em>SPL</em>' containment reference.
 	 * @see #setSPL(SPL)
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getFirm_SPL()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	SPL getSPL();
@@ -73,7 +73,7 @@ public interface Firm extends EObject {
 	 * @return the value of the '<em>SSF</em>' containment reference.
 	 * @see #setSSF(SSF)
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getFirm_SSF()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	SSF getSSF();

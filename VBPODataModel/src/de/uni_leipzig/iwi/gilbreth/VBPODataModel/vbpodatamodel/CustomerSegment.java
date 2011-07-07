@@ -47,7 +47,7 @@ public interface CustomerSegment extends IdentifiableEntity {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>WT Ps</em>' containment reference list.
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getCustomerSegment_WTPs()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<WTP> getWTPs();

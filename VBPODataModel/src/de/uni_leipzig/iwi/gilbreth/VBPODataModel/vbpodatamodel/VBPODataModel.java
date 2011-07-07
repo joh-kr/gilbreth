@@ -48,7 +48,7 @@ public interface VBPODataModel extends EObject {
 	 * @return the value of the '<em>Firm</em>' containment reference.
 	 * @see #setFirm(Firm)
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getVBPODataModel_Firm()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Firm getFirm();
@@ -74,7 +74,7 @@ public interface VBPODataModel extends EObject {
 	 * @return the value of the '<em>Competition</em>' containment reference.
 	 * @see #setCompetition(Competition)
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getVBPODataModel_Competition()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Competition getCompetition();
@@ -100,7 +100,7 @@ public interface VBPODataModel extends EObject {
 	 * @return the value of the '<em>Customers</em>' containment reference.
 	 * @see #setCustomers(Customers)
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getVBPODataModel_Customers()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Customers getCustomers();

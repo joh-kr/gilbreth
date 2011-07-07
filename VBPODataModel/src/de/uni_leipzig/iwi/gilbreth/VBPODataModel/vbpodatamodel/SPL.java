@@ -65,7 +65,7 @@ public interface SPL extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Contained Features</em>' containment reference list.
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSPL_ContainedFeatures()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<Feature> getContainedFeatures();

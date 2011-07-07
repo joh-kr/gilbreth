@@ -65,7 +65,7 @@ public interface SSF extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Contained Assets</em>' containment reference list.
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSSF_ContainedAssets()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<Asset> getContainedAssets();

@@ -75,7 +75,7 @@ public interface System extends IdentifiableEntity {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assets</em>' reference list.
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSystem_Assets()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<Asset> getAssets();

@@ -48,7 +48,7 @@ public interface Customers extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Customer Segments</em>' containment reference list.
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getCustomers_CustomerSegments()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<CustomerSegment> getCustomerSegments();

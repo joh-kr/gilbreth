@@ -8,8 +8,8 @@ This can be disabled with -vmargs -Dorg.eclipse.emf.examples.generator.validator
 Package vbpodatamodel <http://vbpodatamodel/1.0>
 
   Class Product -> IdentifiableEntity
-    Reference comprisingSystem : System
-    Reference features : Feature<<0..*>>
+    Reference comprisingSystem : System<<1..1>>
+    Reference features : Feature<<1..*>>
     Attribute unitCost : EBigDecimal
 
   Class Feature -> IdentifiableEntity
@@ -20,14 +20,14 @@ Package vbpodatamodel <http://vbpodatamodel/1.0>
     Attribute setupCost : EBigDecimal
 
   Class Firm
-    Reference sPL : SPL
-    Reference sSF : SSF
+    Reference sPL : SPL<<1..1>>
+    Reference sSF : SSF<<1..1>>
 
   Class Competitor -> IdentifiableEntity
     Reference prices : Price<<0..*>>
 
   Class CustomerSegment -> IdentifiableEntity
-    Reference wTPs : WTP<<0..*>>
+    Reference wTPs : WTP<<1..*>>
     Attribute size : EInt
 
   Class Price
@@ -36,20 +36,20 @@ Package vbpodatamodel <http://vbpodatamodel/1.0>
 
   Class SPL
     Reference containedProducts : Product<<0..*>>
-    Reference containedFeatures : Feature<<0..*>>
+    Reference containedFeatures : Feature<<1..*>>
 
   Class VBPODataModel
-    Reference firm : Firm
-    Reference competition : Competition
-    Reference customers : Customers
+    Reference firm : Firm<<1..1>>
+    Reference competition : Competition<<1..1>>
+    Reference customers : Customers<<1..1>>
 
   Class SSF
     Reference containedSystems : System<<0..*>>
-    Reference containedAssets : Asset<<0..*>>
+    Reference containedAssets : Asset<<1..*>>
 
   Class System -> IdentifiableEntity
     Attribute implementationCost : EBigDecimal
-    Reference assets : Asset<<0..*>>
+    Reference assets : Asset<<1..*>>
 
   Class IdentifiableEntity
     Attribute name : EString
@@ -59,9 +59,9 @@ Package vbpodatamodel <http://vbpodatamodel/1.0>
     Reference competitors : Competitor<<0..*>>
 
   Class Customers
-    Reference customerSegments : CustomerSegment<<0..*>>
+    Reference customerSegments : CustomerSegment<<1..*>>
 
   Class WTP
     Attribute value : EBigDecimal
-    Reference product : Product
+    Reference product : Product<<1..1>>
     Attribute /name : EString<<1..1>>

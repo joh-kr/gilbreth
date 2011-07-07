@@ -35,7 +35,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getProduct()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='UnitCostNotNegative'"
  * @generated
  */
 public interface Product extends IdentifiableEntity {
@@ -50,7 +50,7 @@ public interface Product extends IdentifiableEntity {
 	 * @return the value of the '<em>Comprising System</em>' reference.
 	 * @see #setComprisingSystem(de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System)
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getProduct_ComprisingSystem()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System getComprisingSystem();
@@ -76,7 +76,7 @@ public interface Product extends IdentifiableEntity {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Features</em>' reference list.
 	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getProduct_Features()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<Feature> getFeatures();
