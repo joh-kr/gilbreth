@@ -24,10 +24,12 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
@@ -50,6 +52,7 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.SubContributionItem;
+import org.eclipse.jface.commands.ActionHandler;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -58,8 +61,13 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.handlers.IHandlerService;
 
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.IterationChangedListener;
@@ -118,19 +126,49 @@ public class VbpodatamodelActionBarContributor
 		 */
 		protected IAction startOptimizationAction =
 			new Action(VBPODataModelEditorPlugin.INSTANCE.getString("_UI_StartOptimization_menu_item")) {
+			
 				@Override
 				public void run() {
+					
+					
 					// Start Optimization here
 					Job job = new Job("Optimize Portfolio") { 
 
 						@Override
 						protected IStatus run(final IProgressMonitor monitor) {
+							
+							VbpodatamodelEditor editor = (VbpodatamodelEditor) activeEditorPart;
+	
+					        // get the document of the master editor
+					        EObject root = getRootElement(getActiveEditingPartResource());
+							
+					        validateAction.setActiveWorkbenchPart(activeEditor);
+					        validateAction.run();
+					        
+							// validate Model
+							Diagnostic diagnostic = Diagnostician.INSTANCE.validate(root);
+							if(diagnostic.getSeverity() != Diagnostic.OK){
+								// do not start optimization until model is valid.
+								
+								// TODO improve, would be the best to reuse the validation action here
+								PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+								    public void run() {
+									    Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+									     MessageBox box = new MessageBox(activeShell,SWT.ICON_ERROR);
+						                  box.setMessage("The data model contains errors please check again and correct.");
+						                  box.open();
+									}
+								});
+				                  
+								
+								return Status.CANCEL_STATUS;
+							}
+							
 					        // Initialize and start optimization
 					        OptimizationInitializer optimizer = new OptimizationInitializer();
 					        monitor.beginTask("The Portfolio is optimized according to the given information ...", optimizer.getFullWorkUnits()); 
 					 
-					        // get the document of the master editor
-					        EObject root = getRootElement(getActiveEditingPartResource());
+
 					        
 					        optimizer.addIterationChangedListener(new IterationChangedListener(){
 
@@ -154,12 +192,12 @@ public class VbpodatamodelActionBarContributor
 					        ResultModelBeanBuilder builder = new ResultModelBeanBuilder((VBPODataModel)root, solution, optimizer.getLookup());
 					        
 					        
-					        VbpodatamodelEditor e = (VbpodatamodelEditor) activeEditorPart;
-					        e.getReportContentProvider().setContent(JasperPrintCreator.createPrint(builder.buildResultBean()));
 					        
+					        editor.getReportContentProvider().setContent(JasperPrintCreator.createPrint(builder.buildResultBean()));
+					       
 							VBPODataModelEditorPlugin.INSTANCE.log("Optimization is finished succesfully!");
 							
-							e.setResultPageActive();
+							editor.setResultPageActive();
 
 					        monitor.done(); 
 					        return Status.OK_STATUS; 
