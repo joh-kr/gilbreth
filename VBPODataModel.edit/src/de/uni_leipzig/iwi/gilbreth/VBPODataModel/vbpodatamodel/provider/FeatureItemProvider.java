@@ -69,25 +69,25 @@ public class FeatureItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addFeatureRealizedByAssetPropertyDescriptor(object);
+			addRealizingAssetsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Feature Realized By Asset feature.
+	 * This adds a property descriptor for the Realizing Assets feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFeatureRealizedByAssetPropertyDescriptor(Object object) {
+	protected void addRealizingAssetsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Feature_featureRealizedByAsset_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Feature_featureRealizedByAsset_feature", "_UI_Feature_type"),
-				 VbpodatamodelPackage.Literals.FEATURE__FEATURE_REALIZED_BY_ASSET,
+				 getString("_UI_Feature_realizingAssets_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Feature_realizingAssets_feature", "_UI_Feature_type"),
+				 VbpodatamodelPackage.Literals.FEATURE__REALIZING_ASSETS,
 				 true,
 				 false,
 				 true,

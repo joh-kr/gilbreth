@@ -91,9 +91,9 @@ public class VBPODataModelItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.VBPO_DATA_MODEL__HAS_AFIRM);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.VBPO_DATA_MODEL__HAS_COMPETITION);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.VBPO_DATA_MODEL__HAS_CUSTOMERS);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.VBPO_DATA_MODEL__FIRM);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.VBPO_DATA_MODEL__COMPETITION);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.VBPO_DATA_MODEL__CUSTOMERS);
 		}
 		return childrenFeatures;
 	}
@@ -145,9 +145,9 @@ public class VBPODataModelItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(VBPODataModel.class)) {
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_AFIRM:
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_COMPETITION:
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_CUSTOMERS:
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__FIRM:
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__COMPETITION:
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__CUSTOMERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -167,17 +167,17 @@ public class VBPODataModelItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.VBPO_DATA_MODEL__HAS_AFIRM,
+				(VbpodatamodelPackage.Literals.VBPO_DATA_MODEL__FIRM,
 				 VbpodatamodelFactory.eINSTANCE.createFirm()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.VBPO_DATA_MODEL__HAS_COMPETITION,
+				(VbpodatamodelPackage.Literals.VBPO_DATA_MODEL__COMPETITION,
 				 VbpodatamodelFactory.eINSTANCE.createCompetition()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.VBPO_DATA_MODEL__HAS_CUSTOMERS,
+				(VbpodatamodelPackage.Literals.VBPO_DATA_MODEL__CUSTOMERS,
 				 VbpodatamodelFactory.eINSTANCE.createCustomers()));
 	}
 

@@ -91,8 +91,8 @@ public class FirmItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.FIRM__FIRM_HAS_SPL);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.FIRM__FIRM_HAS_SSF);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.FIRM__SPL);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.FIRM__SSF);
 		}
 		return childrenFeatures;
 	}
@@ -144,8 +144,8 @@ public class FirmItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Firm.class)) {
-			case VbpodatamodelPackage.FIRM__FIRM_HAS_SPL:
-			case VbpodatamodelPackage.FIRM__FIRM_HAS_SSF:
+			case VbpodatamodelPackage.FIRM__SPL:
+			case VbpodatamodelPackage.FIRM__SSF:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -165,12 +165,12 @@ public class FirmItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.FIRM__FIRM_HAS_SPL,
+				(VbpodatamodelPackage.Literals.FIRM__SPL,
 				 VbpodatamodelFactory.eINSTANCE.createSPL()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.FIRM__FIRM_HAS_SSF,
+				(VbpodatamodelPackage.Literals.FIRM__SSF,
 				 VbpodatamodelFactory.eINSTANCE.createSSF()));
 	}
 

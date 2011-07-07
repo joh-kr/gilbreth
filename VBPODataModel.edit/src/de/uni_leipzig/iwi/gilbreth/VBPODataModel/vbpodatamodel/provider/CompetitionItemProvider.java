@@ -91,7 +91,7 @@ public class CompetitionItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.COMPETITION__CONSISTS_OF);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.COMPETITION__COMPETITORS);
 		}
 		return childrenFeatures;
 	}
@@ -143,7 +143,7 @@ public class CompetitionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Competition.class)) {
-			case VbpodatamodelPackage.COMPETITION__CONSISTS_OF:
+			case VbpodatamodelPackage.COMPETITION__COMPETITORS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -163,7 +163,7 @@ public class CompetitionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.COMPETITION__CONSISTS_OF,
+				(VbpodatamodelPackage.Literals.COMPETITION__COMPETITORS,
 				 VbpodatamodelFactory.eINSTANCE.createCompetitor()));
 	}
 

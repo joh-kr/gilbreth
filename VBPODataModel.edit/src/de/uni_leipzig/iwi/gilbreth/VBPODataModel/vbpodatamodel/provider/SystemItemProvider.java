@@ -71,7 +71,7 @@ public class SystemItemProvider
 			super.getPropertyDescriptors(object);
 
 			addImplementationCostPropertyDescriptor(object);
-			addSystemUsesAssetPropertyDescriptor(object);
+			addAssetsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -99,19 +99,19 @@ public class SystemItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the System Uses Asset feature.
+	 * This adds a property descriptor for the Assets feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSystemUsesAssetPropertyDescriptor(Object object) {
+	protected void addAssetsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_System_systemUsesAsset_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_System_systemUsesAsset_feature", "_UI_System_type"),
-				 VbpodatamodelPackage.Literals.SYSTEM__SYSTEM_USES_ASSET,
+				 getString("_UI_System_assets_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_System_assets_feature", "_UI_System_type"),
+				 VbpodatamodelPackage.Literals.SYSTEM__ASSETS,
 				 true,
 				 false,
 				 true,

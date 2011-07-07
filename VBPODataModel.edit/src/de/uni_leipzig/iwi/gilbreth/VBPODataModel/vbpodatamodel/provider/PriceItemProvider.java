@@ -77,7 +77,7 @@ public class PriceItemProvider
 			super.getPropertyDescriptors(object);
 
 			addValuePropertyDescriptor(object);
-			addPriceForProductPropertyDescriptor(object);
+			addProductPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -105,19 +105,19 @@ public class PriceItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Price For Product feature.
+	 * This adds a property descriptor for the Product feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPriceForProductPropertyDescriptor(Object object) {
+	protected void addProductPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Price_priceForProduct_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Price_priceForProduct_feature", "_UI_Price_type"),
-				 VbpodatamodelPackage.Literals.PRICE__PRICE_FOR_PRODUCT,
+				 getString("_UI_Price_product_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Price_product_feature", "_UI_Price_type"),
+				 VbpodatamodelPackage.Literals.PRICE__PRODUCT,
 				 true,
 				 false,
 				 true,

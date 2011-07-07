@@ -91,7 +91,7 @@ public class CustomersItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.CUSTOMERS__CUSTOMERS_CONSISTS_OF_CUSTOMER_SEGMENTS);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.CUSTOMERS__CUSTOMER_SEGMENTS);
 		}
 		return childrenFeatures;
 	}
@@ -143,7 +143,7 @@ public class CustomersItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Customers.class)) {
-			case VbpodatamodelPackage.CUSTOMERS__CUSTOMERS_CONSISTS_OF_CUSTOMER_SEGMENTS:
+			case VbpodatamodelPackage.CUSTOMERS__CUSTOMER_SEGMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -163,7 +163,7 @@ public class CustomersItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.CUSTOMERS__CUSTOMERS_CONSISTS_OF_CUSTOMER_SEGMENTS,
+				(VbpodatamodelPackage.Literals.CUSTOMERS__CUSTOMER_SEGMENTS,
 				 VbpodatamodelFactory.eINSTANCE.createCustomerSegment()));
 	}
 

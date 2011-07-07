@@ -77,7 +77,8 @@ public class WTPItemProvider
 			super.getPropertyDescriptors(object);
 
 			addValuePropertyDescriptor(object);
-			addWTPForProductPropertyDescriptor(object);
+			addProductPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -105,23 +106,45 @@ public class WTPItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the WTP For Product feature.
+	 * This adds a property descriptor for the Product feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addWTPForProductPropertyDescriptor(Object object) {
+	protected void addProductPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_WTP_wTPForProduct_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_WTP_wTPForProduct_feature", "_UI_WTP_type"),
-				 VbpodatamodelPackage.Literals.WTP__WTP_FOR_PRODUCT,
+				 getString("_UI_WTP_product_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WTP_product_feature", "_UI_WTP_type"),
+				 VbpodatamodelPackage.Literals.WTP__PRODUCT,
 				 true,
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_WTP_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WTP_name_feature", "_UI_WTP_type"),
+				 VbpodatamodelPackage.Literals.WTP__NAME,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -145,8 +168,7 @@ public class WTPItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		BigDecimal labelValue = ((WTP)object).getValue();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((WTP)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_WTP_type") :
 			getString("_UI_WTP_type") + " " + label;
@@ -165,6 +187,7 @@ public class WTPItemProvider
 
 		switch (notification.getFeatureID(WTP.class)) {
 			case VbpodatamodelPackage.WTP__VALUE:
+			case VbpodatamodelPackage.WTP__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

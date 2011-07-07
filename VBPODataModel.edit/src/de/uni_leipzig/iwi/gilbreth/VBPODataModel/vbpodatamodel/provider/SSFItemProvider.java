@@ -91,8 +91,8 @@ public class SSFItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.SSF__SSF_CONTAINS_SYSTEM);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.SSF__SSF_CONTAINS_ASSET);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.SSF__CONTAINED_SYSTEMS);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.SSF__CONTAINED_ASSETS);
 		}
 		return childrenFeatures;
 	}
@@ -144,8 +144,8 @@ public class SSFItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SSF.class)) {
-			case VbpodatamodelPackage.SSF__SSF_CONTAINS_SYSTEM:
-			case VbpodatamodelPackage.SSF__SSF_CONTAINS_ASSET:
+			case VbpodatamodelPackage.SSF__CONTAINED_SYSTEMS:
+			case VbpodatamodelPackage.SSF__CONTAINED_ASSETS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -165,12 +165,12 @@ public class SSFItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.SSF__SSF_CONTAINS_SYSTEM,
+				(VbpodatamodelPackage.Literals.SSF__CONTAINED_SYSTEMS,
 				 VbpodatamodelFactory.eINSTANCE.createSystem()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.SSF__SSF_CONTAINS_ASSET,
+				(VbpodatamodelPackage.Literals.SSF__CONTAINED_ASSETS,
 				 VbpodatamodelFactory.eINSTANCE.createAsset()));
 	}
 

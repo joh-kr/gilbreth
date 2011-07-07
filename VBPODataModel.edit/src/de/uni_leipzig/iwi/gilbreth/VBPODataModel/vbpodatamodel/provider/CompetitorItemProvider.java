@@ -88,7 +88,7 @@ public class CompetitorItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.COMPETITOR__COMPETITOR_HAS_PRICE);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.COMPETITOR__PRICES);
 		}
 		return childrenFeatures;
 	}
@@ -143,7 +143,7 @@ public class CompetitorItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Competitor.class)) {
-			case VbpodatamodelPackage.COMPETITOR__COMPETITOR_HAS_PRICE:
+			case VbpodatamodelPackage.COMPETITOR__PRICES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -163,7 +163,7 @@ public class CompetitorItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.COMPETITOR__COMPETITOR_HAS_PRICE,
+				(VbpodatamodelPackage.Literals.COMPETITOR__PRICES,
 				 VbpodatamodelFactory.eINSTANCE.createPrice()));
 	}
 

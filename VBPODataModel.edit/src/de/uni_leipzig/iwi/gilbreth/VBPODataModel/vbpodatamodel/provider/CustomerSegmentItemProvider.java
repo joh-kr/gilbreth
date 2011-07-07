@@ -113,7 +113,7 @@ public class CustomerSegmentItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.CUSTOMER_SEGMENT__SEGMENT_HAS_WTP);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.CUSTOMER_SEGMENT__WT_PS);
 		}
 		return childrenFeatures;
 	}
@@ -171,7 +171,7 @@ public class CustomerSegmentItemProvider
 			case VbpodatamodelPackage.CUSTOMER_SEGMENT__SIZE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case VbpodatamodelPackage.CUSTOMER_SEGMENT__SEGMENT_HAS_WTP:
+			case VbpodatamodelPackage.CUSTOMER_SEGMENT__WT_PS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -191,7 +191,7 @@ public class CustomerSegmentItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.CUSTOMER_SEGMENT__SEGMENT_HAS_WTP,
+				(VbpodatamodelPackage.Literals.CUSTOMER_SEGMENT__WT_PS,
 				 VbpodatamodelFactory.eINSTANCE.createWTP()));
 	}
 

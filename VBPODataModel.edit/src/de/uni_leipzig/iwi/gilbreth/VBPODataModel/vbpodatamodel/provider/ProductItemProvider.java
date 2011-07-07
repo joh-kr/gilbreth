@@ -71,27 +71,27 @@ public class ProductItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addProductComprisesSystemPropertyDescriptor(object);
-			addProductHasFeaturePropertyDescriptor(object);
+			addComprisingSystemPropertyDescriptor(object);
+			addFeaturesPropertyDescriptor(object);
 			addUnitCostPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Product Comprises System feature.
+	 * This adds a property descriptor for the Comprising System feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addProductComprisesSystemPropertyDescriptor(Object object) {
+	protected void addComprisingSystemPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Product_productComprisesSystem_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Product_productComprisesSystem_feature", "_UI_Product_type"),
-				 VbpodatamodelPackage.Literals.PRODUCT__PRODUCT_COMPRISES_SYSTEM,
+				 getString("_UI_Product_comprisingSystem_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Product_comprisingSystem_feature", "_UI_Product_type"),
+				 VbpodatamodelPackage.Literals.PRODUCT__COMPRISING_SYSTEM,
 				 true,
 				 false,
 				 true,
@@ -101,19 +101,19 @@ public class ProductItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Product Has Feature feature.
+	 * This adds a property descriptor for the Features feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addProductHasFeaturePropertyDescriptor(Object object) {
+	protected void addFeaturesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Product_productHasFeature_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Product_productHasFeature_feature", "_UI_Product_type"),
-				 VbpodatamodelPackage.Literals.PRODUCT__PRODUCT_HAS_FEATURE,
+				 getString("_UI_Product_features_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Product_features_feature", "_UI_Product_type"),
+				 VbpodatamodelPackage.Literals.PRODUCT__FEATURES,
 				 true,
 				 false,
 				 true,

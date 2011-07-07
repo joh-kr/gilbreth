@@ -91,8 +91,8 @@ public class SPLItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.SPL__SPL_CONTAINS_PRODUCT);
-			childrenFeatures.add(VbpodatamodelPackage.Literals.SPL__SPL_COMPRISESOF_FEATURE);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.SPL__CONTAINED_PRODUCTS);
+			childrenFeatures.add(VbpodatamodelPackage.Literals.SPL__CONTAINED_FEATURES);
 		}
 		return childrenFeatures;
 	}
@@ -144,8 +144,8 @@ public class SPLItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SPL.class)) {
-			case VbpodatamodelPackage.SPL__SPL_CONTAINS_PRODUCT:
-			case VbpodatamodelPackage.SPL__SPL_COMPRISESOF_FEATURE:
+			case VbpodatamodelPackage.SPL__CONTAINED_PRODUCTS:
+			case VbpodatamodelPackage.SPL__CONTAINED_FEATURES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -165,12 +165,12 @@ public class SPLItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.SPL__SPL_CONTAINS_PRODUCT,
+				(VbpodatamodelPackage.Literals.SPL__CONTAINED_PRODUCTS,
 				 VbpodatamodelFactory.eINSTANCE.createProduct()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(VbpodatamodelPackage.Literals.SPL__SPL_COMPRISESOF_FEATURE,
+				(VbpodatamodelPackage.Literals.SPL__CONTAINED_FEATURES,
 				 VbpodatamodelFactory.eINSTANCE.createFeature()));
 	}
 
