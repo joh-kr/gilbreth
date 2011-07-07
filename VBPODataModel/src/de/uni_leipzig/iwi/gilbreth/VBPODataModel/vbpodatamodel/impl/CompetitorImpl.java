@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.CompetitorImpl#getCompetitorHasPrice <em>Competitor Has Price</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.CompetitorImpl#getPrices <em>Prices</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,15 +47,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class CompetitorImpl extends IdentifiableEntityImpl implements Competitor {
 	/**
-	 * The cached value of the '{@link #getCompetitorHasPrice() <em>Competitor Has Price</em>}' containment reference list.
+	 * The cached value of the '{@link #getPrices() <em>Prices</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCompetitorHasPrice()
+	 * @see #getPrices()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Price> competitorHasPrice;
-
+	protected EList<Price> prices;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -80,11 +79,11 @@ public class CompetitorImpl extends IdentifiableEntityImpl implements Competitor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Price> getCompetitorHasPrice() {
-		if (competitorHasPrice == null) {
-			competitorHasPrice = new EObjectContainmentEList<Price>(Price.class, this, VbpodatamodelPackage.COMPETITOR__COMPETITOR_HAS_PRICE);
+	public EList<Price> getPrices() {
+		if (prices == null) {
+			prices = new EObjectContainmentEList<Price>(Price.class, this, VbpodatamodelPackage.COMPETITOR__PRICES);
 		}
-		return competitorHasPrice;
+		return prices;
 	}
 
 	/**
@@ -95,8 +94,8 @@ public class CompetitorImpl extends IdentifiableEntityImpl implements Competitor
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case VbpodatamodelPackage.COMPETITOR__COMPETITOR_HAS_PRICE:
-				return ((InternalEList<?>)getCompetitorHasPrice()).basicRemove(otherEnd, msgs);
+			case VbpodatamodelPackage.COMPETITOR__PRICES:
+				return ((InternalEList<?>)getPrices()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -109,8 +108,8 @@ public class CompetitorImpl extends IdentifiableEntityImpl implements Competitor
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case VbpodatamodelPackage.COMPETITOR__COMPETITOR_HAS_PRICE:
-				return getCompetitorHasPrice();
+			case VbpodatamodelPackage.COMPETITOR__PRICES:
+				return getPrices();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -124,9 +123,9 @@ public class CompetitorImpl extends IdentifiableEntityImpl implements Competitor
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case VbpodatamodelPackage.COMPETITOR__COMPETITOR_HAS_PRICE:
-				getCompetitorHasPrice().clear();
-				getCompetitorHasPrice().addAll((Collection<? extends Price>)newValue);
+			case VbpodatamodelPackage.COMPETITOR__PRICES:
+				getPrices().clear();
+				getPrices().addAll((Collection<? extends Price>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -140,8 +139,8 @@ public class CompetitorImpl extends IdentifiableEntityImpl implements Competitor
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.COMPETITOR__COMPETITOR_HAS_PRICE:
-				getCompetitorHasPrice().clear();
+			case VbpodatamodelPackage.COMPETITOR__PRICES:
+				getPrices().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -155,8 +154,8 @@ public class CompetitorImpl extends IdentifiableEntityImpl implements Competitor
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.COMPETITOR__COMPETITOR_HAS_PRICE:
-				return competitorHasPrice != null && !competitorHasPrice.isEmpty();
+			case VbpodatamodelPackage.COMPETITOR__PRICES:
+				return prices != null && !prices.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

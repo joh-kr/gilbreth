@@ -38,9 +38,9 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.VBPODataModelImpl#getHasAFirm <em>Has AFirm</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.VBPODataModelImpl#getHasCompetition <em>Has Competition</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.VBPODataModelImpl#getHasCustomers <em>Has Customers</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.VBPODataModelImpl#getFirm <em>Firm</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.VBPODataModelImpl#getCompetition <em>Competition</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.VBPODataModelImpl#getCustomers <em>Customers</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,34 +48,34 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	/**
-	 * The cached value of the '{@link #getHasAFirm() <em>Has AFirm</em>}' containment reference.
+	 * The cached value of the '{@link #getFirm() <em>Firm</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getHasAFirm()
+	 * @see #getFirm()
 	 * @generated
 	 * @ordered
 	 */
-	protected Firm hasAFirm;
+	protected Firm firm;
 
 	/**
-	 * The cached value of the '{@link #getHasCompetition() <em>Has Competition</em>}' containment reference.
+	 * The cached value of the '{@link #getCompetition() <em>Competition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getHasCompetition()
+	 * @see #getCompetition()
 	 * @generated
 	 * @ordered
 	 */
-	protected Competition hasCompetition;
+	protected Competition competition;
 
 	/**
-	 * The cached value of the '{@link #getHasCustomers() <em>Has Customers</em>}' containment reference.
+	 * The cached value of the '{@link #getCustomers() <em>Customers</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getHasCustomers()
+	 * @see #getCustomers()
 	 * @generated
 	 * @ordered
 	 */
-	protected Customers hasCustomers;
+	protected Customers customers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,8 +101,8 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Firm getHasAFirm() {
-		return hasAFirm;
+	public Firm getFirm() {
+		return firm;
 	}
 
 	/**
@@ -110,11 +110,11 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetHasAFirm(Firm newHasAFirm, NotificationChain msgs) {
-		Firm oldHasAFirm = hasAFirm;
-		hasAFirm = newHasAFirm;
+	public NotificationChain basicSetFirm(Firm newFirm, NotificationChain msgs) {
+		Firm oldFirm = firm;
+		firm = newFirm;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_AFIRM, oldHasAFirm, newHasAFirm);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.VBPO_DATA_MODEL__FIRM, oldFirm, newFirm);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -125,18 +125,18 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHasAFirm(Firm newHasAFirm) {
-		if (newHasAFirm != hasAFirm) {
+	public void setFirm(Firm newFirm) {
+		if (newFirm != firm) {
 			NotificationChain msgs = null;
-			if (hasAFirm != null)
-				msgs = ((InternalEObject)hasAFirm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_AFIRM, null, msgs);
-			if (newHasAFirm != null)
-				msgs = ((InternalEObject)newHasAFirm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_AFIRM, null, msgs);
-			msgs = basicSetHasAFirm(newHasAFirm, msgs);
+			if (firm != null)
+				msgs = ((InternalEObject)firm).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.VBPO_DATA_MODEL__FIRM, null, msgs);
+			if (newFirm != null)
+				msgs = ((InternalEObject)newFirm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.VBPO_DATA_MODEL__FIRM, null, msgs);
+			msgs = basicSetFirm(newFirm, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_AFIRM, newHasAFirm, newHasAFirm));
+			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.VBPO_DATA_MODEL__FIRM, newFirm, newFirm));
 	}
 
 	/**
@@ -144,8 +144,8 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Competition getHasCompetition() {
-		return hasCompetition;
+	public Competition getCompetition() {
+		return competition;
 	}
 
 	/**
@@ -153,11 +153,11 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetHasCompetition(Competition newHasCompetition, NotificationChain msgs) {
-		Competition oldHasCompetition = hasCompetition;
-		hasCompetition = newHasCompetition;
+	public NotificationChain basicSetCompetition(Competition newCompetition, NotificationChain msgs) {
+		Competition oldCompetition = competition;
+		competition = newCompetition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_COMPETITION, oldHasCompetition, newHasCompetition);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.VBPO_DATA_MODEL__COMPETITION, oldCompetition, newCompetition);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -168,18 +168,18 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHasCompetition(Competition newHasCompetition) {
-		if (newHasCompetition != hasCompetition) {
+	public void setCompetition(Competition newCompetition) {
+		if (newCompetition != competition) {
 			NotificationChain msgs = null;
-			if (hasCompetition != null)
-				msgs = ((InternalEObject)hasCompetition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_COMPETITION, null, msgs);
-			if (newHasCompetition != null)
-				msgs = ((InternalEObject)newHasCompetition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_COMPETITION, null, msgs);
-			msgs = basicSetHasCompetition(newHasCompetition, msgs);
+			if (competition != null)
+				msgs = ((InternalEObject)competition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.VBPO_DATA_MODEL__COMPETITION, null, msgs);
+			if (newCompetition != null)
+				msgs = ((InternalEObject)newCompetition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.VBPO_DATA_MODEL__COMPETITION, null, msgs);
+			msgs = basicSetCompetition(newCompetition, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_COMPETITION, newHasCompetition, newHasCompetition));
+			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.VBPO_DATA_MODEL__COMPETITION, newCompetition, newCompetition));
 	}
 
 	/**
@@ -187,8 +187,8 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Customers getHasCustomers() {
-		return hasCustomers;
+	public Customers getCustomers() {
+		return customers;
 	}
 
 	/**
@@ -196,11 +196,11 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetHasCustomers(Customers newHasCustomers, NotificationChain msgs) {
-		Customers oldHasCustomers = hasCustomers;
-		hasCustomers = newHasCustomers;
+	public NotificationChain basicSetCustomers(Customers newCustomers, NotificationChain msgs) {
+		Customers oldCustomers = customers;
+		customers = newCustomers;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_CUSTOMERS, oldHasCustomers, newHasCustomers);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.VBPO_DATA_MODEL__CUSTOMERS, oldCustomers, newCustomers);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -211,18 +211,18 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHasCustomers(Customers newHasCustomers) {
-		if (newHasCustomers != hasCustomers) {
+	public void setCustomers(Customers newCustomers) {
+		if (newCustomers != customers) {
 			NotificationChain msgs = null;
-			if (hasCustomers != null)
-				msgs = ((InternalEObject)hasCustomers).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_CUSTOMERS, null, msgs);
-			if (newHasCustomers != null)
-				msgs = ((InternalEObject)newHasCustomers).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_CUSTOMERS, null, msgs);
-			msgs = basicSetHasCustomers(newHasCustomers, msgs);
+			if (customers != null)
+				msgs = ((InternalEObject)customers).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.VBPO_DATA_MODEL__CUSTOMERS, null, msgs);
+			if (newCustomers != null)
+				msgs = ((InternalEObject)newCustomers).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.VBPO_DATA_MODEL__CUSTOMERS, null, msgs);
+			msgs = basicSetCustomers(newCustomers, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_CUSTOMERS, newHasCustomers, newHasCustomers));
+			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.VBPO_DATA_MODEL__CUSTOMERS, newCustomers, newCustomers));
 	}
 
 	/**
@@ -233,12 +233,12 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_AFIRM:
-				return basicSetHasAFirm(null, msgs);
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_COMPETITION:
-				return basicSetHasCompetition(null, msgs);
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_CUSTOMERS:
-				return basicSetHasCustomers(null, msgs);
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__FIRM:
+				return basicSetFirm(null, msgs);
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__COMPETITION:
+				return basicSetCompetition(null, msgs);
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__CUSTOMERS:
+				return basicSetCustomers(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -251,12 +251,12 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_AFIRM:
-				return getHasAFirm();
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_COMPETITION:
-				return getHasCompetition();
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_CUSTOMERS:
-				return getHasCustomers();
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__FIRM:
+				return getFirm();
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__COMPETITION:
+				return getCompetition();
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__CUSTOMERS:
+				return getCustomers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -269,14 +269,14 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_AFIRM:
-				setHasAFirm((Firm)newValue);
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__FIRM:
+				setFirm((Firm)newValue);
 				return;
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_COMPETITION:
-				setHasCompetition((Competition)newValue);
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__COMPETITION:
+				setCompetition((Competition)newValue);
 				return;
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_CUSTOMERS:
-				setHasCustomers((Customers)newValue);
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__CUSTOMERS:
+				setCustomers((Customers)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -290,14 +290,14 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_AFIRM:
-				setHasAFirm((Firm)null);
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__FIRM:
+				setFirm((Firm)null);
 				return;
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_COMPETITION:
-				setHasCompetition((Competition)null);
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__COMPETITION:
+				setCompetition((Competition)null);
 				return;
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_CUSTOMERS:
-				setHasCustomers((Customers)null);
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__CUSTOMERS:
+				setCustomers((Customers)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -311,12 +311,12 @@ public class VBPODataModelImpl extends EObjectImpl implements VBPODataModel {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_AFIRM:
-				return hasAFirm != null;
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_COMPETITION:
-				return hasCompetition != null;
-			case VbpodatamodelPackage.VBPO_DATA_MODEL__HAS_CUSTOMERS:
-				return hasCustomers != null;
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__FIRM:
+				return firm != null;
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__COMPETITION:
+				return competition != null;
+			case VbpodatamodelPackage.VBPO_DATA_MODEL__CUSTOMERS:
+				return customers != null;
 		}
 		return super.eIsSet(featureID);
 	}

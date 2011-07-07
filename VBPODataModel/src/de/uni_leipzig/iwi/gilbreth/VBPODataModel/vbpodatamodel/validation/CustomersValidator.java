@@ -19,5 +19,7 @@ import org.eclipse.emf.common.util.EList;
 public interface CustomersValidator {
 	boolean validate();
 
+	boolean validateCustomerSegments(EList<CustomerSegment> value);
+
 	boolean validateCustomersConsistsOfCustomerSegments(EList<CustomerSegment> value);
 }

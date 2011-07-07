@@ -259,6 +259,10 @@
   <children xmi:type="notation:Node" xmi:id="_G7m_EKSiEeCsJ5UlcdHdqg" type="1001">
     <children xmi:type="notation:Node" xmi:id="_G7oNMKSiEeCsJ5UlcdHdqg" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_G7oNMaSiEeCsJ5UlcdHdqg" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_IfHjoaicEeCajsAef44Isw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="VBPODataModel.ecore#//WTP/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_IfHjoqicEeCajsAef44Isw"/>
+      </children>
       <children xmi:type="notation:Node" xmi:id="_Wl7vkKMFEeCDLZd7GNorQg" type="2001">
         <element xmi:type="ecore:EAttribute" href="VBPODataModel.ecore#//WTP/value"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_Wl7vkaMFEeCDLZd7GNorQg"/>
@@ -287,7 +291,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_yDX8IaMFEeCDLZd7GNorQg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_yDX8IqMFEeCDLZd7GNorQg" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Feature/featureRealizedByAsset"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Feature/realizingAssets"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yDX8I6MFEeCDLZd7GNorQg" points="[2, 11, 13, -50]$[39, 63, 50, 2]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yDcNkKMFEeCDLZd7GNorQg" id="(0.6372549019607843,0.7755102040816326)"/>
   </edges>
@@ -300,7 +304,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_CdPGgKMGEeCDLZd7GNorQg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_CdPGgaMGEeCDLZd7GNorQg" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//SPL/sPLContainsProduct"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//SPL/containedProducts"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CdPGgqMGEeCDLZd7GNorQg" points="[7, 20, -5, -47]$[62, 75, 50, 8]"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_o3N5IKMGEeCDLZd7GNorQg" type="3002" source="_bBl4AKMEEeCDLZd7GNorQg" target="_-Gr9AKMFEeCDLZd7GNorQg">
@@ -312,7 +316,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_o3N5IaMGEeCDLZd7GNorQg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_o3N5IqMGEeCDLZd7GNorQg" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Firm/firmHasSPL"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Firm/sPL"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_o3N5I6MGEeCDLZd7GNorQg" points="[32, 20, -52, -86]$[54, 33, -30, -73]$[82, 104, -2, -2]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_o3SKkKMGEeCDLZd7GNorQg" id="(0.4215686274509804,0.07142857142857142)"/>
   </edges>
@@ -325,7 +329,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_sHKxgaMHEeCDLZd7GNorQg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_sHKxgqMHEeCDLZd7GNorQg" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Price/priceForProduct"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Price/product"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_sHKxg6MHEeCDLZd7GNorQg" points="[-8, 2, 159, -56]$[-8, 58, 159, 0]$[-97, 58, 70, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_sHPqAKMHEeCDLZd7GNorQg" id="(0.624,0.9591836734693877)"/>
   </edges>
@@ -338,7 +342,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_w73PkaMHEeCDLZd7GNorQg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_w73PkqMHEeCDLZd7GNorQg" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Competitor/competitorHasPrice"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Competitor/prices"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_w73Pk6MHEeCDLZd7GNorQg" points="[1, 24, -10, -168]$[10, 169, -1, -23]"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_JT0R4KMIEeCDLZd7GNorQg" type="3002" source="_DwkEsKMIEeCDLZd7GNorQg" target="_bBl4AKMEEeCDLZd7GNorQg">
@@ -350,7 +354,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_JT0R4aMIEeCDLZd7GNorQg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_JT0R4qMIEeCDLZd7GNorQg" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//VBPODataModel/hasAFirm"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//VBPODataModel/firm"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JT0R46MIEeCDLZd7GNorQg" points="[-11, 9, 225, -79]$[-115, 88, 121, 0]$[-191, 88, 45, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JT4jUKMIEeCDLZd7GNorQg" id="(0.11764705882352941,0.6190476190476191)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JT4jUaMIEeCDLZd7GNorQg" id="(0.5588235294117647,0.11904761904761904)"/>
@@ -364,7 +368,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_OplKsaPOEeCjDb9wrJ9yow" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_OplKsqPOEeCjDb9wrJ9yow" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Firm/firmHasSSF"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Firm/sSF"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_OplKs6POEeCjDb9wrJ9yow" points="[-20, 12, 94, -68]$[-164, 75, -50, -5]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OpsfcKPOEeCjDb9wrJ9yow" id="(0.20588235294117646,0.5238095238095238)"/>
   </edges>
@@ -377,7 +381,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_SDJukaPOEeCjDb9wrJ9yow" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_SDJukqPOEeCjDb9wrJ9yow" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//SSF/sSFContainsSystem"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//SSF/containedSystems"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_SDJuk6POEeCjDb9wrJ9yow" points="[2, 10, 2, 10]$[2, 10, 2, 10]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SDOnEKPOEeCjDb9wrJ9yow" id="(0.5196078431372549,0.7619047619047619)"/>
   </edges>
@@ -390,7 +394,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_ZO48gaPOEeCjDb9wrJ9yow" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_ZO48gqPOEeCjDb9wrJ9yow" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Product/productComprisesSystem"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Product/comprisingSystem"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ZO48g6POEeCjDb9wrJ9yow" points="[-12, -1, 82, 1]$[-92, -10, 2, -8]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ZO91AKPOEeCjDb9wrJ9yow" id="(0.12745098039215685,0.3877551020408163)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ZO-cEKPOEeCjDb9wrJ9yow" id="(0.7843137254901961,0.21428571428571427)"/>
@@ -404,7 +408,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_hQfbcaPOEeCjDb9wrJ9yow" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_hQfbcqPOEeCjDb9wrJ9yow" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//SSF/sSFContainsAsset"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//SSF/containedAssets"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hQfbc6POEeCjDb9wrJ9yow" points="[98, 7, -1, -186]$[154, 7, 55, -186]$[154, 187, 55, -6]$[101, 187, 2, -6]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_jUmoQKPOEeCjDb9wrJ9yow" id="(0.029411764705882353,0.23809523809523808)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_h3B3AKPOEeCjDb9wrJ9yow" id="(0.9865771812080537,0.1728395061728395)"/>
@@ -418,7 +422,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_OuoNUaPPEeCjDb9wrJ9yow" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_OuoNUqPPEeCjDb9wrJ9yow" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//SPL/sPLComprisesofFeature"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//SPL/containedFeatures"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_OuoNU6PPEeCjDb9wrJ9yow" points="[-81, 2, -24, -179]$[-99, 2, -42, -179]$[-133, 2, -76, -179]$[-133, 181, -76, 0]$[-57, 181, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OusewKPPEeCjDb9wrJ9yow" id="(0.8137254901960784,0.5476190476190477)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JkD58KSgEeCsJ5UlcdHdqg" id="(0.00980392156862745,0.07142857142857142)"/>
@@ -432,7 +436,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_jlOowaPPEeCjDb9wrJ9yow" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_jlOowqPPEeCjDb9wrJ9yow" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Product/productHasFeature"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Product/features"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jlOow6PPEeCjDb9wrJ9yow" points="[3, 24, -17, -76]$[15, 124, -5, 24]"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_BtQMQKPQEeCjDb9wrJ9yow" type="3002" source="_MRMXAKPOEeCjDb9wrJ9yow" target="_W40hQKMDEeCDLZd7GNorQg">
@@ -444,7 +448,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_BtQMQaPQEeCjDb9wrJ9yow" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_BtQMQqPQEeCjDb9wrJ9yow" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//System/systemUsesAsset"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//System/assets"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_BtQMQ6PQEeCjDb9wrJ9yow" points="[2, 10, 1, -49]$[2, 59, 1, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BtUdsKPQEeCjDb9wrJ9yow" id="(0.4696969696969697,0.7959183673469388)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BtUdsaPQEeCjDb9wrJ9yow" id="(0.4966442953020134,0.012345679012345678)"/>
@@ -505,7 +509,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_gNFKsaSfEeCsJ5UlcdHdqg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_gNFKsqSfEeCsJ5UlcdHdqg" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//VBPODataModel/hasCompetition"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//VBPODataModel/competition"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_gNFKs6SfEeCsJ5UlcdHdqg" points="[-22, 13, 7, -52]$[-29, 17, 0, -48]$[-29, 45, 0, -20]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_gNLRUKSfEeCsJ5UlcdHdqg" id="(0.8333333333333334,0.6904761904761905)"/>
   </edges>
@@ -518,7 +522,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_oH7hYaSfEeCsJ5UlcdHdqg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_oH7hYqSfEeCsJ5UlcdHdqg" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Competition/consistsOf"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Competition/competitors"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_oH7hY6SfEeCsJ5UlcdHdqg" points="[-5, 20, 10, -35]$[-14, 48, 1, -7]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_oIAZ4KSfEeCsJ5UlcdHdqg" id="(0.39215686274509803,0.19047619047619047)"/>
   </edges>
@@ -531,7 +535,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_vE894aSfEeCsJ5UlcdHdqg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_vE894qSfEeCsJ5UlcdHdqg" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//VBPODataModel/hasCustomers"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//VBPODataModel/customers"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vE8946SfEeCsJ5UlcdHdqg" points="[19, 6, -138, -40]$[107, 44, -50, -2]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vFB2YKSfEeCsJ5UlcdHdqg" id="(0.8137254901960784,0.5714285714285714)"/>
   </edges>
@@ -544,7 +548,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_0dcFgaSfEeCsJ5UlcdHdqg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_0dcFgqSfEeCsJ5UlcdHdqg" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Customers/customersConsistsOfCustomerSegments"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//Customers/customerSegments"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0dcFg6SfEeCsJ5UlcdHdqg" points="[-7, 20, 1, -44]$[-7, 56, 1, -8]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0dgW8KSfEeCsJ5UlcdHdqg" id="(0.4661016949152542,0.1836734693877551)"/>
   </edges>
@@ -557,7 +561,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_KW6BQaSiEeCsJ5UlcdHdqg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_KW6BQqSiEeCsJ5UlcdHdqg" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//CustomerSegment/segmentHasWTP"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//CustomerSegment/wTPs"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_KW6BQ6SiEeCsJ5UlcdHdqg" points="[7, 16, 0, -55]$[7, 32, 0, -39]$[7, 64, 0, -7]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KW-5wKSiEeCsJ5UlcdHdqg" id="(0.5405405405405406,0.9761904761904762)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KW-5waSiEeCsJ5UlcdHdqg" id="(0.5,0.061224489795918366)"/>
@@ -571,7 +575,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_PDfFIaSiEeCsJ5UlcdHdqg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_PDfFIqSiEeCsJ5UlcdHdqg" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//WTP/wTPForProduct"/>
+    <element xmi:type="ecore:EReference" href="VBPODataModel.ecore#//WTP/product"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PDfFI6SiEeCsJ5UlcdHdqg" points="[6, 24, 333, -52]$[6, 76, 333, 0]$[-311, 76, 16, 0]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PDj9oKSiEeCsJ5UlcdHdqg" id="(0.8865248226950354,0.16326530612244897)"/>
   </edges>

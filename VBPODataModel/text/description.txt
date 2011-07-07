@@ -8,59 +8,60 @@ This can be disabled with -vmargs -Dorg.eclipse.emf.examples.generator.validator
 Package vbpodatamodel <http://vbpodatamodel/1.0>
 
   Class Product -> IdentifiableEntity
-    Reference productComprisesSystem : System
-    Reference productHasFeature : Feature<<0..*>>
+    Reference comprisingSystem : System
+    Reference features : Feature<<0..*>>
     Attribute unitCost : EBigDecimal
 
   Class Feature -> IdentifiableEntity
-    Reference featureRealizedByAsset : Asset<<1..*>>
+    Reference realizingAssets : Asset<<1..*>>
 
   Class Asset -> IdentifiableEntity
     Attribute reuseCost : EBigDecimal
     Attribute setupCost : EBigDecimal
 
   Class Firm
-    Reference firmHasSPL : SPL
-    Reference firmHasSSF : SSF
+    Reference sPL : SPL
+    Reference sSF : SSF
 
   Class Competitor -> IdentifiableEntity
-    Reference competitorHasPrice : Price<<0..*>>
+    Reference prices : Price<<0..*>>
 
   Class CustomerSegment -> IdentifiableEntity
-    Reference segmentHasWTP : WTP<<0..*>>
+    Reference wTPs : WTP<<0..*>>
     Attribute size : EInt
 
   Class Price
     Attribute value : EBigDecimal
-    Reference priceForProduct : Product<<1..1>>
+    Reference product : Product<<1..1>>
 
   Class SPL
-    Reference sPLContainsProduct : Product<<0..*>>
-    Reference sPLComprisesofFeature : Feature<<0..*>>
+    Reference containedProducts : Product<<0..*>>
+    Reference containedFeatures : Feature<<0..*>>
 
   Class VBPODataModel
-    Reference hasAFirm : Firm
-    Reference hasCompetition : Competition
-    Reference hasCustomers : Customers
+    Reference firm : Firm
+    Reference competition : Competition
+    Reference customers : Customers
 
   Class SSF
-    Reference sSFContainsSystem : System<<0..*>>
-    Reference sSFContainsAsset : Asset<<0..*>>
+    Reference containedSystems : System<<0..*>>
+    Reference containedAssets : Asset<<0..*>>
 
   Class System -> IdentifiableEntity
     Attribute implementationCost : EBigDecimal
-    Reference systemUsesAsset : Asset<<0..*>>
+    Reference assets : Asset<<0..*>>
 
   Class IdentifiableEntity
     Attribute name : EString
     Attribute description : EString
 
   Class Competition
-    Reference consistsOf : Competitor<<0..*>>
+    Reference competitors : Competitor<<0..*>>
 
   Class Customers
-    Reference customersConsistsOfCustomerSegments : CustomerSegment<<0..*>>
+    Reference customerSegments : CustomerSegment<<0..*>>
 
   Class WTP
     Attribute value : EBigDecimal
-    Reference wTPForProduct : Product
+    Reference product : Product
+    Attribute /name : EString<<1..1>>

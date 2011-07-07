@@ -19,5 +19,7 @@ import org.eclipse.emf.common.util.EList;
 public interface CompetitionValidator {
 	boolean validate();
 
+	boolean validateCompetitors(EList<Competitor> value);
+
 	boolean validateConsistsOf(EList<Competitor> value);
 }

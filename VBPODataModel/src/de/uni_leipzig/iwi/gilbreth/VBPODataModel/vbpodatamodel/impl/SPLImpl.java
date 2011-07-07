@@ -42,8 +42,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SPLImpl#getSPLContainsProduct <em>SPL Contains Product</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SPLImpl#getSPLComprisesofFeature <em>SPL Comprisesof Feature</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SPLImpl#getContainedProducts <em>Contained Products</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SPLImpl#getContainedFeatures <em>Contained Features</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,24 +51,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class SPLImpl extends EObjectImpl implements SPL {
 	/**
-	 * The cached value of the '{@link #getSPLContainsProduct() <em>SPL Contains Product</em>}' containment reference list.
+	 * The cached value of the '{@link #getContainedProducts() <em>Contained Products</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSPLContainsProduct()
+	 * @see #getContainedProducts()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Product> sPLContainsProduct;
+	protected EList<Product> containedProducts;
 
 	/**
-	 * The cached value of the '{@link #getSPLComprisesofFeature() <em>SPL Comprisesof Feature</em>}' containment reference list.
+	 * The cached value of the '{@link #getContainedFeatures() <em>Contained Features</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSPLComprisesofFeature()
+	 * @see #getContainedFeatures()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Feature> sPLComprisesofFeature;
+	protected EList<Feature> containedFeatures;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,11 +94,11 @@ public class SPLImpl extends EObjectImpl implements SPL {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Product> getSPLContainsProduct() {
-		if (sPLContainsProduct == null) {
-			sPLContainsProduct = new EObjectContainmentEList<Product>(Product.class, this, VbpodatamodelPackage.SPL__SPL_CONTAINS_PRODUCT);
+	public EList<Product> getContainedProducts() {
+		if (containedProducts == null) {
+			containedProducts = new EObjectContainmentEList<Product>(Product.class, this, VbpodatamodelPackage.SPL__CONTAINED_PRODUCTS);
 		}
-		return sPLContainsProduct;
+		return containedProducts;
 	}
 
 	/**
@@ -106,11 +106,11 @@ public class SPLImpl extends EObjectImpl implements SPL {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Feature> getSPLComprisesofFeature() {
-		if (sPLComprisesofFeature == null) {
-			sPLComprisesofFeature = new EObjectContainmentEList<Feature>(Feature.class, this, VbpodatamodelPackage.SPL__SPL_COMPRISESOF_FEATURE);
+	public EList<Feature> getContainedFeatures() {
+		if (containedFeatures == null) {
+			containedFeatures = new EObjectContainmentEList<Feature>(Feature.class, this, VbpodatamodelPackage.SPL__CONTAINED_FEATURES);
 		}
-		return sPLComprisesofFeature;
+		return containedFeatures;
 	}
 
 	/**
@@ -121,10 +121,10 @@ public class SPLImpl extends EObjectImpl implements SPL {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case VbpodatamodelPackage.SPL__SPL_CONTAINS_PRODUCT:
-				return ((InternalEList<?>)getSPLContainsProduct()).basicRemove(otherEnd, msgs);
-			case VbpodatamodelPackage.SPL__SPL_COMPRISESOF_FEATURE:
-				return ((InternalEList<?>)getSPLComprisesofFeature()).basicRemove(otherEnd, msgs);
+			case VbpodatamodelPackage.SPL__CONTAINED_PRODUCTS:
+				return ((InternalEList<?>)getContainedProducts()).basicRemove(otherEnd, msgs);
+			case VbpodatamodelPackage.SPL__CONTAINED_FEATURES:
+				return ((InternalEList<?>)getContainedFeatures()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -137,10 +137,10 @@ public class SPLImpl extends EObjectImpl implements SPL {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case VbpodatamodelPackage.SPL__SPL_CONTAINS_PRODUCT:
-				return getSPLContainsProduct();
-			case VbpodatamodelPackage.SPL__SPL_COMPRISESOF_FEATURE:
-				return getSPLComprisesofFeature();
+			case VbpodatamodelPackage.SPL__CONTAINED_PRODUCTS:
+				return getContainedProducts();
+			case VbpodatamodelPackage.SPL__CONTAINED_FEATURES:
+				return getContainedFeatures();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -154,13 +154,13 @@ public class SPLImpl extends EObjectImpl implements SPL {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case VbpodatamodelPackage.SPL__SPL_CONTAINS_PRODUCT:
-				getSPLContainsProduct().clear();
-				getSPLContainsProduct().addAll((Collection<? extends Product>)newValue);
+			case VbpodatamodelPackage.SPL__CONTAINED_PRODUCTS:
+				getContainedProducts().clear();
+				getContainedProducts().addAll((Collection<? extends Product>)newValue);
 				return;
-			case VbpodatamodelPackage.SPL__SPL_COMPRISESOF_FEATURE:
-				getSPLComprisesofFeature().clear();
-				getSPLComprisesofFeature().addAll((Collection<? extends Feature>)newValue);
+			case VbpodatamodelPackage.SPL__CONTAINED_FEATURES:
+				getContainedFeatures().clear();
+				getContainedFeatures().addAll((Collection<? extends Feature>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -174,11 +174,11 @@ public class SPLImpl extends EObjectImpl implements SPL {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.SPL__SPL_CONTAINS_PRODUCT:
-				getSPLContainsProduct().clear();
+			case VbpodatamodelPackage.SPL__CONTAINED_PRODUCTS:
+				getContainedProducts().clear();
 				return;
-			case VbpodatamodelPackage.SPL__SPL_COMPRISESOF_FEATURE:
-				getSPLComprisesofFeature().clear();
+			case VbpodatamodelPackage.SPL__CONTAINED_FEATURES:
+				getContainedFeatures().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -192,10 +192,10 @@ public class SPLImpl extends EObjectImpl implements SPL {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.SPL__SPL_CONTAINS_PRODUCT:
-				return sPLContainsProduct != null && !sPLContainsProduct.isEmpty();
-			case VbpodatamodelPackage.SPL__SPL_COMPRISESOF_FEATURE:
-				return sPLComprisesofFeature != null && !sPLComprisesofFeature.isEmpty();
+			case VbpodatamodelPackage.SPL__CONTAINED_PRODUCTS:
+				return containedProducts != null && !containedProducts.isEmpty();
+			case VbpodatamodelPackage.SPL__CONTAINED_FEATURES:
+				return containedFeatures != null && !containedFeatures.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

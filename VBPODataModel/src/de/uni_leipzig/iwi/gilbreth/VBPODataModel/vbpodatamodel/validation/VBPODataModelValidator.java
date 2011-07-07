@@ -19,6 +19,12 @@ import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm;
 public interface VBPODataModelValidator {
 	boolean validate();
 
+	boolean validateFirm(Firm value);
+
+	boolean validateCompetition(Competition value);
+
+	boolean validateCustomers(Customers value);
+
 	boolean validateHasAFirm(Firm value);
 	boolean validateHasCompetition(Competition value);
 	boolean validateHasCustomers(Customers value);

@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.CustomersImpl#getCustomersConsistsOfCustomerSegments <em>Customers Consists Of Customer Segments</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.CustomersImpl#getCustomerSegments <em>Customer Segments</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,15 +49,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class CustomersImpl extends EObjectImpl implements Customers {
 	/**
-	 * The cached value of the '{@link #getCustomersConsistsOfCustomerSegments() <em>Customers Consists Of Customer Segments</em>}' containment reference list.
+	 * The cached value of the '{@link #getCustomerSegments() <em>Customer Segments</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCustomersConsistsOfCustomerSegments()
+	 * @see #getCustomerSegments()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CustomerSegment> customersConsistsOfCustomerSegments;
-
+	protected EList<CustomerSegment> customerSegments;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -82,11 +81,11 @@ public class CustomersImpl extends EObjectImpl implements Customers {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CustomerSegment> getCustomersConsistsOfCustomerSegments() {
-		if (customersConsistsOfCustomerSegments == null) {
-			customersConsistsOfCustomerSegments = new EObjectContainmentEList<CustomerSegment>(CustomerSegment.class, this, VbpodatamodelPackage.CUSTOMERS__CUSTOMERS_CONSISTS_OF_CUSTOMER_SEGMENTS);
+	public EList<CustomerSegment> getCustomerSegments() {
+		if (customerSegments == null) {
+			customerSegments = new EObjectContainmentEList<CustomerSegment>(CustomerSegment.class, this, VbpodatamodelPackage.CUSTOMERS__CUSTOMER_SEGMENTS);
 		}
-		return customersConsistsOfCustomerSegments;
+		return customerSegments;
 	}
 
 	/**
@@ -97,8 +96,8 @@ public class CustomersImpl extends EObjectImpl implements Customers {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case VbpodatamodelPackage.CUSTOMERS__CUSTOMERS_CONSISTS_OF_CUSTOMER_SEGMENTS:
-				return ((InternalEList<?>)getCustomersConsistsOfCustomerSegments()).basicRemove(otherEnd, msgs);
+			case VbpodatamodelPackage.CUSTOMERS__CUSTOMER_SEGMENTS:
+				return ((InternalEList<?>)getCustomerSegments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -111,8 +110,8 @@ public class CustomersImpl extends EObjectImpl implements Customers {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case VbpodatamodelPackage.CUSTOMERS__CUSTOMERS_CONSISTS_OF_CUSTOMER_SEGMENTS:
-				return getCustomersConsistsOfCustomerSegments();
+			case VbpodatamodelPackage.CUSTOMERS__CUSTOMER_SEGMENTS:
+				return getCustomerSegments();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -126,9 +125,9 @@ public class CustomersImpl extends EObjectImpl implements Customers {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case VbpodatamodelPackage.CUSTOMERS__CUSTOMERS_CONSISTS_OF_CUSTOMER_SEGMENTS:
-				getCustomersConsistsOfCustomerSegments().clear();
-				getCustomersConsistsOfCustomerSegments().addAll((Collection<? extends CustomerSegment>)newValue);
+			case VbpodatamodelPackage.CUSTOMERS__CUSTOMER_SEGMENTS:
+				getCustomerSegments().clear();
+				getCustomerSegments().addAll((Collection<? extends CustomerSegment>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -142,8 +141,8 @@ public class CustomersImpl extends EObjectImpl implements Customers {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.CUSTOMERS__CUSTOMERS_CONSISTS_OF_CUSTOMER_SEGMENTS:
-				getCustomersConsistsOfCustomerSegments().clear();
+			case VbpodatamodelPackage.CUSTOMERS__CUSTOMER_SEGMENTS:
+				getCustomerSegments().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -157,8 +156,8 @@ public class CustomersImpl extends EObjectImpl implements Customers {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.CUSTOMERS__CUSTOMERS_CONSISTS_OF_CUSTOMER_SEGMENTS:
-				return customersConsistsOfCustomerSegments != null && !customersConsistsOfCustomerSegments.isEmpty();
+			case VbpodatamodelPackage.CUSTOMERS__CUSTOMER_SEGMENTS:
+				return customerSegments != null && !customerSegments.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

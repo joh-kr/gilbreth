@@ -29,7 +29,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getValue <em>Value</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getWTPForProduct <em>WTP For Product</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getProduct <em>Product</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,29 +66,44 @@ public interface WTP extends EObject {
 	void setValue(BigDecimal value);
 
 	/**
-	 * Returns the value of the '<em><b>WTP For Product</b></em>' reference.
+	 * Returns the value of the '<em><b>Product</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>WTP For Product</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>WTP For Product</em>' reference.
-	 * @see #setWTPForProduct(Product)
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getWTP_WTPForProduct()
+	 * @return the value of the '<em>Product</em>' reference.
+	 * @see #setProduct(Product)
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getWTP_Product()
 	 * @model
 	 * @generated
 	 */
-	Product getWTPForProduct();
+	Product getProduct();
 
 	/**
-	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getWTPForProduct <em>WTP For Product</em>}' reference.
+	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getProduct <em>Product</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>WTP For Product</em>' reference.
-	 * @see #getWTPForProduct()
+	 * @param value the new value of the '<em>Product</em>' reference.
+	 * @see #getProduct()
 	 * @generated
 	 */
-	void setWTPForProduct(Product value);
+	void setProduct(Product value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getWTP_Name()
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	String getName();
 
 } // WTP

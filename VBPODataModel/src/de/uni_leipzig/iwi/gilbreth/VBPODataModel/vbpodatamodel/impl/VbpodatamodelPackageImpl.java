@@ -224,7 +224,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProduct_ProductComprisesSystem() {
+	public EReference getProduct_ComprisingSystem() {
 		return (EReference)productEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -233,7 +233,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProduct_ProductHasFeature() {
+	public EReference getProduct_Features() {
 		return (EReference)productEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -260,7 +260,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFeature_FeatureRealizedByAsset() {
+	public EReference getFeature_RealizingAssets() {
 		return (EReference)featureEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -305,7 +305,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFirm_FirmHasSPL() {
+	public EReference getFirm_SPL() {
 		return (EReference)firmEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -314,7 +314,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFirm_FirmHasSSF() {
+	public EReference getFirm_SSF() {
 		return (EReference)firmEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -332,7 +332,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCompetitor_CompetitorHasPrice() {
+	public EReference getCompetitor_Prices() {
 		return (EReference)competitorEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -350,7 +350,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCustomerSegment_SegmentHasWTP() {
+	public EReference getCustomerSegment_WTPs() {
 		return (EReference)customerSegmentEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -386,7 +386,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPrice_PriceForProduct() {
+	public EReference getPrice_Product() {
 		return (EReference)priceEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -404,7 +404,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSPL_SPLContainsProduct() {
+	public EReference getSPL_ContainedProducts() {
 		return (EReference)splEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -413,7 +413,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSPL_SPLComprisesofFeature() {
+	public EReference getSPL_ContainedFeatures() {
 		return (EReference)splEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -431,7 +431,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVBPODataModel_HasAFirm() {
+	public EReference getVBPODataModel_Firm() {
 		return (EReference)vbpoDataModelEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -440,7 +440,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVBPODataModel_HasCompetition() {
+	public EReference getVBPODataModel_Competition() {
 		return (EReference)vbpoDataModelEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -449,7 +449,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVBPODataModel_HasCustomers() {
+	public EReference getVBPODataModel_Customers() {
 		return (EReference)vbpoDataModelEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -467,7 +467,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSSF_SSFContainsSystem() {
+	public EReference getSSF_ContainedSystems() {
 		return (EReference)ssfEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -476,7 +476,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSSF_SSFContainsAsset() {
+	public EReference getSSF_ContainedAssets() {
 		return (EReference)ssfEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -503,7 +503,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystem_SystemUsesAsset() {
+	public EReference getSystem_Assets() {
 		return (EReference)systemEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -548,7 +548,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCompetition_ConsistsOf() {
+	public EReference getCompetition_Competitors() {
 		return (EReference)competitionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -566,7 +566,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCustomers_CustomersConsistsOfCustomerSegments() {
+	public EReference getCustomers_CustomerSegments() {
 		return (EReference)customersEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -593,8 +593,17 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWTP_WTPForProduct() {
+	public EReference getWTP_Product() {
 		return (EReference)wtpEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getWTP_Name() {
+		return (EAttribute)wtpEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -626,62 +635,63 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 
 		// Create classes and their features
 		productEClass = createEClass(PRODUCT);
-		createEReference(productEClass, PRODUCT__PRODUCT_COMPRISES_SYSTEM);
-		createEReference(productEClass, PRODUCT__PRODUCT_HAS_FEATURE);
+		createEReference(productEClass, PRODUCT__COMPRISING_SYSTEM);
+		createEReference(productEClass, PRODUCT__FEATURES);
 		createEAttribute(productEClass, PRODUCT__UNIT_COST);
 
 		featureEClass = createEClass(FEATURE);
-		createEReference(featureEClass, FEATURE__FEATURE_REALIZED_BY_ASSET);
+		createEReference(featureEClass, FEATURE__REALIZING_ASSETS);
 
 		assetEClass = createEClass(ASSET);
 		createEAttribute(assetEClass, ASSET__REUSE_COST);
 		createEAttribute(assetEClass, ASSET__SETUP_COST);
 
 		firmEClass = createEClass(FIRM);
-		createEReference(firmEClass, FIRM__FIRM_HAS_SPL);
-		createEReference(firmEClass, FIRM__FIRM_HAS_SSF);
+		createEReference(firmEClass, FIRM__SPL);
+		createEReference(firmEClass, FIRM__SSF);
 
 		competitorEClass = createEClass(COMPETITOR);
-		createEReference(competitorEClass, COMPETITOR__COMPETITOR_HAS_PRICE);
+		createEReference(competitorEClass, COMPETITOR__PRICES);
 
 		customerSegmentEClass = createEClass(CUSTOMER_SEGMENT);
-		createEReference(customerSegmentEClass, CUSTOMER_SEGMENT__SEGMENT_HAS_WTP);
+		createEReference(customerSegmentEClass, CUSTOMER_SEGMENT__WT_PS);
 		createEAttribute(customerSegmentEClass, CUSTOMER_SEGMENT__SIZE);
 
 		priceEClass = createEClass(PRICE);
 		createEAttribute(priceEClass, PRICE__VALUE);
-		createEReference(priceEClass, PRICE__PRICE_FOR_PRODUCT);
+		createEReference(priceEClass, PRICE__PRODUCT);
 
 		splEClass = createEClass(SPL);
-		createEReference(splEClass, SPL__SPL_CONTAINS_PRODUCT);
-		createEReference(splEClass, SPL__SPL_COMPRISESOF_FEATURE);
+		createEReference(splEClass, SPL__CONTAINED_PRODUCTS);
+		createEReference(splEClass, SPL__CONTAINED_FEATURES);
 
 		vbpoDataModelEClass = createEClass(VBPO_DATA_MODEL);
-		createEReference(vbpoDataModelEClass, VBPO_DATA_MODEL__HAS_AFIRM);
-		createEReference(vbpoDataModelEClass, VBPO_DATA_MODEL__HAS_COMPETITION);
-		createEReference(vbpoDataModelEClass, VBPO_DATA_MODEL__HAS_CUSTOMERS);
+		createEReference(vbpoDataModelEClass, VBPO_DATA_MODEL__FIRM);
+		createEReference(vbpoDataModelEClass, VBPO_DATA_MODEL__COMPETITION);
+		createEReference(vbpoDataModelEClass, VBPO_DATA_MODEL__CUSTOMERS);
 
 		ssfEClass = createEClass(SSF);
-		createEReference(ssfEClass, SSF__SSF_CONTAINS_SYSTEM);
-		createEReference(ssfEClass, SSF__SSF_CONTAINS_ASSET);
+		createEReference(ssfEClass, SSF__CONTAINED_SYSTEMS);
+		createEReference(ssfEClass, SSF__CONTAINED_ASSETS);
 
 		systemEClass = createEClass(SYSTEM);
 		createEAttribute(systemEClass, SYSTEM__IMPLEMENTATION_COST);
-		createEReference(systemEClass, SYSTEM__SYSTEM_USES_ASSET);
+		createEReference(systemEClass, SYSTEM__ASSETS);
 
 		identifiableEntityEClass = createEClass(IDENTIFIABLE_ENTITY);
 		createEAttribute(identifiableEntityEClass, IDENTIFIABLE_ENTITY__NAME);
 		createEAttribute(identifiableEntityEClass, IDENTIFIABLE_ENTITY__DESCRIPTION);
 
 		competitionEClass = createEClass(COMPETITION);
-		createEReference(competitionEClass, COMPETITION__CONSISTS_OF);
+		createEReference(competitionEClass, COMPETITION__COMPETITORS);
 
 		customersEClass = createEClass(CUSTOMERS);
-		createEReference(customersEClass, CUSTOMERS__CUSTOMERS_CONSISTS_OF_CUSTOMER_SEGMENTS);
+		createEReference(customersEClass, CUSTOMERS__CUSTOMER_SEGMENTS);
 
 		wtpEClass = createEClass(WTP);
 		createEAttribute(wtpEClass, WTP__VALUE);
-		createEReference(wtpEClass, WTP__WTP_FOR_PRODUCT);
+		createEReference(wtpEClass, WTP__PRODUCT);
+		createEAttribute(wtpEClass, WTP__NAME);
 	}
 
 	/**
@@ -721,62 +731,63 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(productEClass, Product.class, "Product", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProduct_ProductComprisesSystem(), this.getSystem(), null, "productComprisesSystem", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProduct_ProductHasFeature(), this.getFeature(), null, "productHasFeature", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProduct_ComprisingSystem(), this.getSystem(), null, "comprisingSystem", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProduct_Features(), this.getFeature(), null, "features", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProduct_UnitCost(), ecorePackage.getEBigDecimal(), "unitCost", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFeature_FeatureRealizedByAsset(), this.getAsset(), null, "featureRealizedByAsset", null, 1, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeature_RealizingAssets(), this.getAsset(), null, "realizingAssets", null, 1, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assetEClass, Asset.class, "Asset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAsset_ReuseCost(), ecorePackage.getEBigDecimal(), "reuseCost", null, 0, 1, Asset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAsset_SetupCost(), ecorePackage.getEBigDecimal(), "setupCost", null, 0, 1, Asset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(firmEClass, Firm.class, "Firm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFirm_FirmHasSPL(), this.getSPL(), null, "firmHasSPL", null, 0, 1, Firm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFirm_FirmHasSSF(), this.getSSF(), null, "firmHasSSF", null, 0, 1, Firm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFirm_SPL(), this.getSPL(), null, "sPL", null, 0, 1, Firm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFirm_SSF(), this.getSSF(), null, "sSF", null, 0, 1, Firm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(competitorEClass, Competitor.class, "Competitor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCompetitor_CompetitorHasPrice(), this.getPrice(), null, "competitorHasPrice", null, 0, -1, Competitor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompetitor_Prices(), this.getPrice(), null, "prices", null, 0, -1, Competitor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customerSegmentEClass, CustomerSegment.class, "CustomerSegment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCustomerSegment_SegmentHasWTP(), this.getWTP(), null, "segmentHasWTP", null, 0, -1, CustomerSegment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCustomerSegment_WTPs(), this.getWTP(), null, "wTPs", null, 0, -1, CustomerSegment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCustomerSegment_Size(), ecorePackage.getEInt(), "size", null, 0, 1, CustomerSegment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(priceEClass, Price.class, "Price", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPrice_Value(), ecorePackage.getEBigDecimal(), "value", null, 0, 1, Price.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPrice_PriceForProduct(), this.getProduct(), null, "priceForProduct", null, 1, 1, Price.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPrice_Product(), this.getProduct(), null, "product", null, 1, 1, Price.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(splEClass, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL.class, "SPL", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSPL_SPLContainsProduct(), this.getProduct(), null, "sPLContainsProduct", null, 0, -1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSPL_SPLComprisesofFeature(), this.getFeature(), null, "sPLComprisesofFeature", null, 0, -1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSPL_ContainedProducts(), this.getProduct(), null, "containedProducts", null, 0, -1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSPL_ContainedFeatures(), this.getFeature(), null, "containedFeatures", null, 0, -1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(vbpoDataModelEClass, VBPODataModel.class, "VBPODataModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVBPODataModel_HasAFirm(), this.getFirm(), null, "hasAFirm", null, 0, 1, VBPODataModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVBPODataModel_HasCompetition(), this.getCompetition(), null, "hasCompetition", null, 0, 1, VBPODataModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVBPODataModel_HasCustomers(), this.getCustomers(), null, "hasCustomers", null, 0, 1, VBPODataModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVBPODataModel_Firm(), this.getFirm(), null, "firm", null, 0, 1, VBPODataModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVBPODataModel_Competition(), this.getCompetition(), null, "competition", null, 0, 1, VBPODataModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVBPODataModel_Customers(), this.getCustomers(), null, "customers", null, 0, 1, VBPODataModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ssfEClass, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF.class, "SSF", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSSF_SSFContainsSystem(), this.getSystem(), null, "sSFContainsSystem", null, 0, -1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSSF_SSFContainsAsset(), this.getAsset(), null, "sSFContainsAsset", null, 0, -1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSSF_ContainedSystems(), this.getSystem(), null, "containedSystems", null, 0, -1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSSF_ContainedAssets(), this.getAsset(), null, "containedAssets", null, 0, -1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemEClass, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSystem_ImplementationCost(), ecorePackage.getEBigDecimal(), "implementationCost", null, 0, 1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSystem_SystemUsesAsset(), this.getAsset(), null, "systemUsesAsset", null, 0, -1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSystem_Assets(), this.getAsset(), null, "assets", null, 0, -1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(identifiableEntityEClass, IdentifiableEntity.class, "IdentifiableEntity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIdentifiableEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, IdentifiableEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIdentifiableEntity_Description(), ecorePackage.getEString(), "description", null, 0, 1, IdentifiableEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(competitionEClass, Competition.class, "Competition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCompetition_ConsistsOf(), this.getCompetitor(), null, "consistsOf", null, 0, -1, Competition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompetition_Competitors(), this.getCompetitor(), null, "competitors", null, 0, -1, Competition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customersEClass, Customers.class, "Customers", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCustomers_CustomersConsistsOfCustomerSegments(), this.getCustomerSegment(), null, "customersConsistsOfCustomerSegments", null, 0, -1, Customers.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCustomers_CustomerSegments(), this.getCustomerSegment(), null, "customerSegments", null, 0, -1, Customers.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(wtpEClass, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP.class, "WTP", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getWTP_Value(), ecorePackage.getEBigDecimal(), "value", null, 0, 1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWTP_WTPForProduct(), this.getProduct(), null, "wTPForProduct", null, 0, 1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWTP_Product(), this.getProduct(), null, "product", null, 0, 1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWTP_Name(), ecorePackage.getEString(), "name", null, 1, 1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

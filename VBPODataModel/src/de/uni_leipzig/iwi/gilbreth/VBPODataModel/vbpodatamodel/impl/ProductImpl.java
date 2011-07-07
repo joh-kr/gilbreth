@@ -42,8 +42,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.ProductImpl#getProductComprisesSystem <em>Product Comprises System</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.ProductImpl#getProductHasFeature <em>Product Has Feature</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.ProductImpl#getComprisingSystem <em>Comprising System</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.ProductImpl#getFeatures <em>Features</em>}</li>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.ProductImpl#getUnitCost <em>Unit Cost</em>}</li>
  * </ul>
  * </p>
@@ -52,24 +52,24 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class ProductImpl extends IdentifiableEntityImpl implements Product {
 	/**
-	 * The cached value of the '{@link #getProductComprisesSystem() <em>Product Comprises System</em>}' reference.
+	 * The cached value of the '{@link #getComprisingSystem() <em>Comprising System</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProductComprisesSystem()
+	 * @see #getComprisingSystem()
 	 * @generated
 	 * @ordered
 	 */
-	protected de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System productComprisesSystem;
+	protected de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System comprisingSystem;
 
 	/**
-	 * The cached value of the '{@link #getProductHasFeature() <em>Product Has Feature</em>}' reference list.
+	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProductHasFeature()
+	 * @see #getFeatures()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Feature> productHasFeature;
+	protected EList<Feature> features;
 
 	/**
 	 * The default value of the '{@link #getUnitCost() <em>Unit Cost</em>}' attribute.
@@ -115,16 +115,16 @@ public class ProductImpl extends IdentifiableEntityImpl implements Product {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System getProductComprisesSystem() {
-		if (productComprisesSystem != null && productComprisesSystem.eIsProxy()) {
-			InternalEObject oldProductComprisesSystem = (InternalEObject)productComprisesSystem;
-			productComprisesSystem = (de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System)eResolveProxy(oldProductComprisesSystem);
-			if (productComprisesSystem != oldProductComprisesSystem) {
+	public de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System getComprisingSystem() {
+		if (comprisingSystem != null && comprisingSystem.eIsProxy()) {
+			InternalEObject oldComprisingSystem = (InternalEObject)comprisingSystem;
+			comprisingSystem = (de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System)eResolveProxy(oldComprisingSystem);
+			if (comprisingSystem != oldComprisingSystem) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VbpodatamodelPackage.PRODUCT__PRODUCT_COMPRISES_SYSTEM, oldProductComprisesSystem, productComprisesSystem));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VbpodatamodelPackage.PRODUCT__COMPRISING_SYSTEM, oldComprisingSystem, comprisingSystem));
 			}
 		}
-		return productComprisesSystem;
+		return comprisingSystem;
 	}
 
 	/**
@@ -132,8 +132,8 @@ public class ProductImpl extends IdentifiableEntityImpl implements Product {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System basicGetProductComprisesSystem() {
-		return productComprisesSystem;
+	public de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System basicGetComprisingSystem() {
+		return comprisingSystem;
 	}
 
 	/**
@@ -141,11 +141,11 @@ public class ProductImpl extends IdentifiableEntityImpl implements Product {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProductComprisesSystem(de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System newProductComprisesSystem) {
-		de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System oldProductComprisesSystem = productComprisesSystem;
-		productComprisesSystem = newProductComprisesSystem;
+	public void setComprisingSystem(de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System newComprisingSystem) {
+		de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System oldComprisingSystem = comprisingSystem;
+		comprisingSystem = newComprisingSystem;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.PRODUCT__PRODUCT_COMPRISES_SYSTEM, oldProductComprisesSystem, productComprisesSystem));
+			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.PRODUCT__COMPRISING_SYSTEM, oldComprisingSystem, comprisingSystem));
 	}
 
 	/**
@@ -153,11 +153,11 @@ public class ProductImpl extends IdentifiableEntityImpl implements Product {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Feature> getProductHasFeature() {
-		if (productHasFeature == null) {
-			productHasFeature = new EObjectResolvingEList<Feature>(Feature.class, this, VbpodatamodelPackage.PRODUCT__PRODUCT_HAS_FEATURE);
+	public EList<Feature> getFeatures() {
+		if (features == null) {
+			features = new EObjectResolvingEList<Feature>(Feature.class, this, VbpodatamodelPackage.PRODUCT__FEATURES);
 		}
-		return productHasFeature;
+		return features;
 	}
 
 	/**
@@ -189,11 +189,11 @@ public class ProductImpl extends IdentifiableEntityImpl implements Product {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case VbpodatamodelPackage.PRODUCT__PRODUCT_COMPRISES_SYSTEM:
-				if (resolve) return getProductComprisesSystem();
-				return basicGetProductComprisesSystem();
-			case VbpodatamodelPackage.PRODUCT__PRODUCT_HAS_FEATURE:
-				return getProductHasFeature();
+			case VbpodatamodelPackage.PRODUCT__COMPRISING_SYSTEM:
+				if (resolve) return getComprisingSystem();
+				return basicGetComprisingSystem();
+			case VbpodatamodelPackage.PRODUCT__FEATURES:
+				return getFeatures();
 			case VbpodatamodelPackage.PRODUCT__UNIT_COST:
 				return getUnitCost();
 		}
@@ -209,12 +209,12 @@ public class ProductImpl extends IdentifiableEntityImpl implements Product {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case VbpodatamodelPackage.PRODUCT__PRODUCT_COMPRISES_SYSTEM:
-				setProductComprisesSystem((de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System)newValue);
+			case VbpodatamodelPackage.PRODUCT__COMPRISING_SYSTEM:
+				setComprisingSystem((de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System)newValue);
 				return;
-			case VbpodatamodelPackage.PRODUCT__PRODUCT_HAS_FEATURE:
-				getProductHasFeature().clear();
-				getProductHasFeature().addAll((Collection<? extends Feature>)newValue);
+			case VbpodatamodelPackage.PRODUCT__FEATURES:
+				getFeatures().clear();
+				getFeatures().addAll((Collection<? extends Feature>)newValue);
 				return;
 			case VbpodatamodelPackage.PRODUCT__UNIT_COST:
 				setUnitCost((BigDecimal)newValue);
@@ -231,11 +231,11 @@ public class ProductImpl extends IdentifiableEntityImpl implements Product {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.PRODUCT__PRODUCT_COMPRISES_SYSTEM:
-				setProductComprisesSystem((de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System)null);
+			case VbpodatamodelPackage.PRODUCT__COMPRISING_SYSTEM:
+				setComprisingSystem((de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System)null);
 				return;
-			case VbpodatamodelPackage.PRODUCT__PRODUCT_HAS_FEATURE:
-				getProductHasFeature().clear();
+			case VbpodatamodelPackage.PRODUCT__FEATURES:
+				getFeatures().clear();
 				return;
 			case VbpodatamodelPackage.PRODUCT__UNIT_COST:
 				setUnitCost(UNIT_COST_EDEFAULT);
@@ -252,10 +252,10 @@ public class ProductImpl extends IdentifiableEntityImpl implements Product {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.PRODUCT__PRODUCT_COMPRISES_SYSTEM:
-				return productComprisesSystem != null;
-			case VbpodatamodelPackage.PRODUCT__PRODUCT_HAS_FEATURE:
-				return productHasFeature != null && !productHasFeature.isEmpty();
+			case VbpodatamodelPackage.PRODUCT__COMPRISING_SYSTEM:
+				return comprisingSystem != null;
+			case VbpodatamodelPackage.PRODUCT__FEATURES:
+				return features != null && !features.isEmpty();
 			case VbpodatamodelPackage.PRODUCT__UNIT_COST:
 				return UNIT_COST_EDEFAULT == null ? unitCost != null : !UNIT_COST_EDEFAULT.equals(unitCost);
 		}

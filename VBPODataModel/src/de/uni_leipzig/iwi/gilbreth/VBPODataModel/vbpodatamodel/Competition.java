@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competition#getConsistsOf <em>Consists Of</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competition#getCompetitors <em>Competitors</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Competition extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Consists Of</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Competitors</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competitor}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -46,11 +46,11 @@ public interface Competition extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Consists Of</em>' containment reference list.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getCompetition_ConsistsOf()
+	 * @return the value of the '<em>Competitors</em>' containment reference list.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getCompetition_Competitors()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Competitor> getConsistsOf();
+	EList<Competitor> getCompetitors();
 
 } // Competition

@@ -28,8 +28,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL#getSPLContainsProduct <em>SPL Contains Product</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL#getSPLComprisesofFeature <em>SPL Comprisesof Feature</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL#getContainedProducts <em>Contained Products</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL#getContainedFeatures <em>Contained Features</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface SPL extends EObject {
 	/**
-	 * Returns the value of the '<em><b>SPL Contains Product</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Contained Products</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -47,15 +47,15 @@ public interface SPL extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>SPL Contains Product</em>' containment reference list.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSPL_SPLContainsProduct()
+	 * @return the value of the '<em>Contained Products</em>' containment reference list.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSPL_ContainedProducts()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Product> getSPLContainsProduct();
+	EList<Product> getContainedProducts();
 
 	/**
-	 * Returns the value of the '<em><b>SPL Comprisesof Feature</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Contained Features</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Feature}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -63,11 +63,11 @@ public interface SPL extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>SPL Comprisesof Feature</em>' containment reference list.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSPL_SPLComprisesofFeature()
+	 * @return the value of the '<em>Contained Features</em>' containment reference list.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSPL_ContainedFeatures()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Feature> getSPLComprisesofFeature();
+	EList<Feature> getContainedFeatures();
 
 } // SPL

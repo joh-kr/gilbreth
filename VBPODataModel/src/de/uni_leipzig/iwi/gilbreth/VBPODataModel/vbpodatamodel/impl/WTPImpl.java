@@ -38,7 +38,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.WTPImpl#getValue <em>Value</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.WTPImpl#getWTPForProduct <em>WTP For Product</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.WTPImpl#getProduct <em>Product</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.WTPImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,14 +67,24 @@ public class WTPImpl extends EObjectImpl implements WTP {
 	protected BigDecimal value = VALUE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getWTPForProduct() <em>WTP For Product</em>}' reference.
+	 * The cached value of the '{@link #getProduct() <em>Product</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getWTPForProduct()
+	 * @see #getProduct()
 	 * @generated
 	 * @ordered
 	 */
-	protected Product wTPForProduct;
+	protected Product product;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,16 +131,16 @@ public class WTPImpl extends EObjectImpl implements WTP {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Product getWTPForProduct() {
-		if (wTPForProduct != null && wTPForProduct.eIsProxy()) {
-			InternalEObject oldWTPForProduct = (InternalEObject)wTPForProduct;
-			wTPForProduct = (Product)eResolveProxy(oldWTPForProduct);
-			if (wTPForProduct != oldWTPForProduct) {
+	public Product getProduct() {
+		if (product != null && product.eIsProxy()) {
+			InternalEObject oldProduct = (InternalEObject)product;
+			product = (Product)eResolveProxy(oldProduct);
+			if (product != oldProduct) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VbpodatamodelPackage.WTP__WTP_FOR_PRODUCT, oldWTPForProduct, wTPForProduct));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VbpodatamodelPackage.WTP__PRODUCT, oldProduct, product));
 			}
 		}
-		return wTPForProduct;
+		return product;
 	}
 
 	/**
@@ -137,8 +148,8 @@ public class WTPImpl extends EObjectImpl implements WTP {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Product basicGetWTPForProduct() {
-		return wTPForProduct;
+	public Product basicGetProduct() {
+		return product;
 	}
 
 	/**
@@ -146,11 +157,22 @@ public class WTPImpl extends EObjectImpl implements WTP {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setWTPForProduct(Product newWTPForProduct) {
-		Product oldWTPForProduct = wTPForProduct;
-		wTPForProduct = newWTPForProduct;
+	public void setProduct(Product newProduct) {
+		Product oldProduct = product;
+		product = newProduct;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.WTP__WTP_FOR_PRODUCT, oldWTPForProduct, wTPForProduct));
+			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.WTP__PRODUCT, oldProduct, product));
+	}
+
+	/**
+	 * creates a name for the WTP that indicates how much one is willing to pay for 
+	 * which product.
+	 * 
+	 * @generated NOT
+	 * @author Johannes MŸller
+	 */
+	public String getName() {
+		return "Would pay " + getValue().toString() + " for " + getProduct().getName();
 	}
 
 	/**
@@ -163,9 +185,11 @@ public class WTPImpl extends EObjectImpl implements WTP {
 		switch (featureID) {
 			case VbpodatamodelPackage.WTP__VALUE:
 				return getValue();
-			case VbpodatamodelPackage.WTP__WTP_FOR_PRODUCT:
-				if (resolve) return getWTPForProduct();
-				return basicGetWTPForProduct();
+			case VbpodatamodelPackage.WTP__PRODUCT:
+				if (resolve) return getProduct();
+				return basicGetProduct();
+			case VbpodatamodelPackage.WTP__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -181,8 +205,8 @@ public class WTPImpl extends EObjectImpl implements WTP {
 			case VbpodatamodelPackage.WTP__VALUE:
 				setValue((BigDecimal)newValue);
 				return;
-			case VbpodatamodelPackage.WTP__WTP_FOR_PRODUCT:
-				setWTPForProduct((Product)newValue);
+			case VbpodatamodelPackage.WTP__PRODUCT:
+				setProduct((Product)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -199,8 +223,8 @@ public class WTPImpl extends EObjectImpl implements WTP {
 			case VbpodatamodelPackage.WTP__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
-			case VbpodatamodelPackage.WTP__WTP_FOR_PRODUCT:
-				setWTPForProduct((Product)null);
+			case VbpodatamodelPackage.WTP__PRODUCT:
+				setProduct((Product)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -216,8 +240,10 @@ public class WTPImpl extends EObjectImpl implements WTP {
 		switch (featureID) {
 			case VbpodatamodelPackage.WTP__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-			case VbpodatamodelPackage.WTP__WTP_FOR_PRODUCT:
-				return wTPForProduct != null;
+			case VbpodatamodelPackage.WTP__PRODUCT:
+				return product != null;
+			case VbpodatamodelPackage.WTP__NAME:
+				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
 		}
 		return super.eIsSet(featureID);
 	}

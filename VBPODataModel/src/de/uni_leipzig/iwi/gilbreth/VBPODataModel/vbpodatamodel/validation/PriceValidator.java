@@ -20,5 +20,7 @@ public interface PriceValidator {
 	boolean validate();
 
 	boolean validateValue(BigDecimal value);
+	boolean validateProduct(Product value);
+
 	boolean validatePriceForProduct(Product value);
 }

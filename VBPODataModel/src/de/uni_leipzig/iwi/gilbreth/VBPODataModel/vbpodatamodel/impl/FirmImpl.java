@@ -37,8 +37,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.FirmImpl#getFirmHasSPL <em>Firm Has SPL</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.FirmImpl#getFirmHasSSF <em>Firm Has SSF</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.FirmImpl#getSPL <em>SPL</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.FirmImpl#getSSF <em>SSF</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,24 +46,24 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class FirmImpl extends EObjectImpl implements Firm {
 	/**
-	 * The cached value of the '{@link #getFirmHasSPL() <em>Firm Has SPL</em>}' containment reference.
+	 * The cached value of the '{@link #getSPL() <em>SPL</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFirmHasSPL()
+	 * @see #getSPL()
 	 * @generated
 	 * @ordered
 	 */
-	protected SPL firmHasSPL;
+	protected SPL sPL;
 
 	/**
-	 * The cached value of the '{@link #getFirmHasSSF() <em>Firm Has SSF</em>}' containment reference.
+	 * The cached value of the '{@link #getSSF() <em>SSF</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFirmHasSSF()
+	 * @see #getSSF()
 	 * @generated
 	 * @ordered
 	 */
-	protected SSF firmHasSSF;
+	protected SSF sSF;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,8 +89,8 @@ public class FirmImpl extends EObjectImpl implements Firm {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SPL getFirmHasSPL() {
-		return firmHasSPL;
+	public SPL getSPL() {
+		return sPL;
 	}
 
 	/**
@@ -98,11 +98,11 @@ public class FirmImpl extends EObjectImpl implements Firm {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetFirmHasSPL(SPL newFirmHasSPL, NotificationChain msgs) {
-		SPL oldFirmHasSPL = firmHasSPL;
-		firmHasSPL = newFirmHasSPL;
+	public NotificationChain basicSetSPL(SPL newSPL, NotificationChain msgs) {
+		SPL oldSPL = sPL;
+		sPL = newSPL;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.FIRM__FIRM_HAS_SPL, oldFirmHasSPL, newFirmHasSPL);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.FIRM__SPL, oldSPL, newSPL);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -113,18 +113,18 @@ public class FirmImpl extends EObjectImpl implements Firm {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFirmHasSPL(SPL newFirmHasSPL) {
-		if (newFirmHasSPL != firmHasSPL) {
+	public void setSPL(SPL newSPL) {
+		if (newSPL != sPL) {
 			NotificationChain msgs = null;
-			if (firmHasSPL != null)
-				msgs = ((InternalEObject)firmHasSPL).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.FIRM__FIRM_HAS_SPL, null, msgs);
-			if (newFirmHasSPL != null)
-				msgs = ((InternalEObject)newFirmHasSPL).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.FIRM__FIRM_HAS_SPL, null, msgs);
-			msgs = basicSetFirmHasSPL(newFirmHasSPL, msgs);
+			if (sPL != null)
+				msgs = ((InternalEObject)sPL).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.FIRM__SPL, null, msgs);
+			if (newSPL != null)
+				msgs = ((InternalEObject)newSPL).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.FIRM__SPL, null, msgs);
+			msgs = basicSetSPL(newSPL, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.FIRM__FIRM_HAS_SPL, newFirmHasSPL, newFirmHasSPL));
+			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.FIRM__SPL, newSPL, newSPL));
 	}
 
 	/**
@@ -132,8 +132,8 @@ public class FirmImpl extends EObjectImpl implements Firm {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SSF getFirmHasSSF() {
-		return firmHasSSF;
+	public SSF getSSF() {
+		return sSF;
 	}
 
 	/**
@@ -141,11 +141,11 @@ public class FirmImpl extends EObjectImpl implements Firm {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetFirmHasSSF(SSF newFirmHasSSF, NotificationChain msgs) {
-		SSF oldFirmHasSSF = firmHasSSF;
-		firmHasSSF = newFirmHasSSF;
+	public NotificationChain basicSetSSF(SSF newSSF, NotificationChain msgs) {
+		SSF oldSSF = sSF;
+		sSF = newSSF;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.FIRM__FIRM_HAS_SSF, oldFirmHasSSF, newFirmHasSSF);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.FIRM__SSF, oldSSF, newSSF);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -156,18 +156,18 @@ public class FirmImpl extends EObjectImpl implements Firm {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFirmHasSSF(SSF newFirmHasSSF) {
-		if (newFirmHasSSF != firmHasSSF) {
+	public void setSSF(SSF newSSF) {
+		if (newSSF != sSF) {
 			NotificationChain msgs = null;
-			if (firmHasSSF != null)
-				msgs = ((InternalEObject)firmHasSSF).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.FIRM__FIRM_HAS_SSF, null, msgs);
-			if (newFirmHasSSF != null)
-				msgs = ((InternalEObject)newFirmHasSSF).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.FIRM__FIRM_HAS_SSF, null, msgs);
-			msgs = basicSetFirmHasSSF(newFirmHasSSF, msgs);
+			if (sSF != null)
+				msgs = ((InternalEObject)sSF).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.FIRM__SSF, null, msgs);
+			if (newSSF != null)
+				msgs = ((InternalEObject)newSSF).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VbpodatamodelPackage.FIRM__SSF, null, msgs);
+			msgs = basicSetSSF(newSSF, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.FIRM__FIRM_HAS_SSF, newFirmHasSSF, newFirmHasSSF));
+			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.FIRM__SSF, newSSF, newSSF));
 	}
 
 	/**
@@ -178,10 +178,10 @@ public class FirmImpl extends EObjectImpl implements Firm {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case VbpodatamodelPackage.FIRM__FIRM_HAS_SPL:
-				return basicSetFirmHasSPL(null, msgs);
-			case VbpodatamodelPackage.FIRM__FIRM_HAS_SSF:
-				return basicSetFirmHasSSF(null, msgs);
+			case VbpodatamodelPackage.FIRM__SPL:
+				return basicSetSPL(null, msgs);
+			case VbpodatamodelPackage.FIRM__SSF:
+				return basicSetSSF(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -194,10 +194,10 @@ public class FirmImpl extends EObjectImpl implements Firm {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case VbpodatamodelPackage.FIRM__FIRM_HAS_SPL:
-				return getFirmHasSPL();
-			case VbpodatamodelPackage.FIRM__FIRM_HAS_SSF:
-				return getFirmHasSSF();
+			case VbpodatamodelPackage.FIRM__SPL:
+				return getSPL();
+			case VbpodatamodelPackage.FIRM__SSF:
+				return getSSF();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -210,11 +210,11 @@ public class FirmImpl extends EObjectImpl implements Firm {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case VbpodatamodelPackage.FIRM__FIRM_HAS_SPL:
-				setFirmHasSPL((SPL)newValue);
+			case VbpodatamodelPackage.FIRM__SPL:
+				setSPL((SPL)newValue);
 				return;
-			case VbpodatamodelPackage.FIRM__FIRM_HAS_SSF:
-				setFirmHasSSF((SSF)newValue);
+			case VbpodatamodelPackage.FIRM__SSF:
+				setSSF((SSF)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -228,11 +228,11 @@ public class FirmImpl extends EObjectImpl implements Firm {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.FIRM__FIRM_HAS_SPL:
-				setFirmHasSPL((SPL)null);
+			case VbpodatamodelPackage.FIRM__SPL:
+				setSPL((SPL)null);
 				return;
-			case VbpodatamodelPackage.FIRM__FIRM_HAS_SSF:
-				setFirmHasSSF((SSF)null);
+			case VbpodatamodelPackage.FIRM__SSF:
+				setSSF((SSF)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -246,10 +246,10 @@ public class FirmImpl extends EObjectImpl implements Firm {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.FIRM__FIRM_HAS_SPL:
-				return firmHasSPL != null;
-			case VbpodatamodelPackage.FIRM__FIRM_HAS_SSF:
-				return firmHasSSF != null;
+			case VbpodatamodelPackage.FIRM__SPL:
+				return sPL != null;
+			case VbpodatamodelPackage.FIRM__SSF:
+				return sSF != null;
 		}
 		return super.eIsSet(featureID);
 	}

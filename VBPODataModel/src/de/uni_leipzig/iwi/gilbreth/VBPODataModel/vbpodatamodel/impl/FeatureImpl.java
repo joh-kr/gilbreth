@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.FeatureImpl#getFeatureRealizedByAsset <em>Feature Realized By Asset</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.FeatureImpl#getRealizingAssets <em>Realizing Assets</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,15 +43,14 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class FeatureImpl extends IdentifiableEntityImpl implements Feature {
 	/**
-	 * The cached value of the '{@link #getFeatureRealizedByAsset() <em>Feature Realized By Asset</em>}' reference list.
+	 * The cached value of the '{@link #getRealizingAssets() <em>Realizing Assets</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFeatureRealizedByAsset()
+	 * @see #getRealizingAssets()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Asset> featureRealizedByAsset;
-
+	protected EList<Asset> realizingAssets;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -76,11 +75,11 @@ public class FeatureImpl extends IdentifiableEntityImpl implements Feature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Asset> getFeatureRealizedByAsset() {
-		if (featureRealizedByAsset == null) {
-			featureRealizedByAsset = new EObjectResolvingEList<Asset>(Asset.class, this, VbpodatamodelPackage.FEATURE__FEATURE_REALIZED_BY_ASSET);
+	public EList<Asset> getRealizingAssets() {
+		if (realizingAssets == null) {
+			realizingAssets = new EObjectResolvingEList<Asset>(Asset.class, this, VbpodatamodelPackage.FEATURE__REALIZING_ASSETS);
 		}
-		return featureRealizedByAsset;
+		return realizingAssets;
 	}
 
 	/**
@@ -91,8 +90,8 @@ public class FeatureImpl extends IdentifiableEntityImpl implements Feature {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case VbpodatamodelPackage.FEATURE__FEATURE_REALIZED_BY_ASSET:
-				return getFeatureRealizedByAsset();
+			case VbpodatamodelPackage.FEATURE__REALIZING_ASSETS:
+				return getRealizingAssets();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -106,9 +105,9 @@ public class FeatureImpl extends IdentifiableEntityImpl implements Feature {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case VbpodatamodelPackage.FEATURE__FEATURE_REALIZED_BY_ASSET:
-				getFeatureRealizedByAsset().clear();
-				getFeatureRealizedByAsset().addAll((Collection<? extends Asset>)newValue);
+			case VbpodatamodelPackage.FEATURE__REALIZING_ASSETS:
+				getRealizingAssets().clear();
+				getRealizingAssets().addAll((Collection<? extends Asset>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,8 +121,8 @@ public class FeatureImpl extends IdentifiableEntityImpl implements Feature {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.FEATURE__FEATURE_REALIZED_BY_ASSET:
-				getFeatureRealizedByAsset().clear();
+			case VbpodatamodelPackage.FEATURE__REALIZING_ASSETS:
+				getRealizingAssets().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -137,8 +136,8 @@ public class FeatureImpl extends IdentifiableEntityImpl implements Feature {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.FEATURE__FEATURE_REALIZED_BY_ASSET:
-				return featureRealizedByAsset != null && !featureRealizedByAsset.isEmpty();
+			case VbpodatamodelPackage.FEATURE__REALIZING_ASSETS:
+				return realizingAssets != null && !realizingAssets.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

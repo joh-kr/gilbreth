@@ -135,22 +135,22 @@ public interface VbpodatamodelPackage extends EPackage {
 	int PRODUCT__DESCRIPTION = IDENTIFIABLE_ENTITY__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Product Comprises System</b></em>' reference.
+	 * The feature id for the '<em><b>Comprising System</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT__PRODUCT_COMPRISES_SYSTEM = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int PRODUCT__COMPRISING_SYSTEM = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Product Has Feature</b></em>' reference list.
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT__PRODUCT_HAS_FEATURE = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int PRODUCT__FEATURES = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Unit Cost</b></em>' attribute.
@@ -199,13 +199,13 @@ public interface VbpodatamodelPackage extends EPackage {
 	int FEATURE__DESCRIPTION = IDENTIFIABLE_ENTITY__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Feature Realized By Asset</b></em>' reference list.
+	 * The feature id for the '<em><b>Realizing Assets</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__FEATURE_REALIZED_BY_ASSET = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int FEATURE__REALIZING_ASSETS = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Feature</em>' class.
@@ -282,22 +282,22 @@ public interface VbpodatamodelPackage extends EPackage {
 	int FIRM = 3;
 
 	/**
-	 * The feature id for the '<em><b>Firm Has SPL</b></em>' containment reference.
+	 * The feature id for the '<em><b>SPL</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FIRM__FIRM_HAS_SPL = 0;
+	int FIRM__SPL = 0;
 
 	/**
-	 * The feature id for the '<em><b>Firm Has SSF</b></em>' containment reference.
+	 * The feature id for the '<em><b>SSF</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FIRM__FIRM_HAS_SSF = 1;
+	int FIRM__SSF = 1;
 
 	/**
 	 * The number of structural features of the '<em>Firm</em>' class.
@@ -337,13 +337,13 @@ public interface VbpodatamodelPackage extends EPackage {
 	int COMPETITOR__DESCRIPTION = IDENTIFIABLE_ENTITY__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Competitor Has Price</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Prices</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPETITOR__COMPETITOR_HAS_PRICE = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int COMPETITOR__PRICES = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Competitor</em>' class.
@@ -383,13 +383,13 @@ public interface VbpodatamodelPackage extends EPackage {
 	int CUSTOMER_SEGMENT__DESCRIPTION = IDENTIFIABLE_ENTITY__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Segment Has WTP</b></em>' containment reference list.
+	 * The feature id for the '<em><b>WT Ps</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOMER_SEGMENT__SEGMENT_HAS_WTP = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int CUSTOMER_SEGMENT__WT_PS = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -429,13 +429,13 @@ public interface VbpodatamodelPackage extends EPackage {
 	int PRICE__VALUE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Price For Product</b></em>' reference.
+	 * The feature id for the '<em><b>Product</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRICE__PRICE_FOR_PRODUCT = 1;
+	int PRICE__PRODUCT = 1;
 
 	/**
 	 * The number of structural features of the '<em>Price</em>' class.
@@ -457,22 +457,22 @@ public interface VbpodatamodelPackage extends EPackage {
 	int SPL = 7;
 
 	/**
-	 * The feature id for the '<em><b>SPL Contains Product</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Contained Products</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPL__SPL_CONTAINS_PRODUCT = 0;
+	int SPL__CONTAINED_PRODUCTS = 0;
 
 	/**
-	 * The feature id for the '<em><b>SPL Comprisesof Feature</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Contained Features</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPL__SPL_COMPRISESOF_FEATURE = 1;
+	int SPL__CONTAINED_FEATURES = 1;
 
 	/**
 	 * The number of structural features of the '<em>SPL</em>' class.
@@ -494,31 +494,31 @@ public interface VbpodatamodelPackage extends EPackage {
 	int VBPO_DATA_MODEL = 8;
 
 	/**
-	 * The feature id for the '<em><b>Has AFirm</b></em>' containment reference.
+	 * The feature id for the '<em><b>Firm</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VBPO_DATA_MODEL__HAS_AFIRM = 0;
+	int VBPO_DATA_MODEL__FIRM = 0;
 
 	/**
-	 * The feature id for the '<em><b>Has Competition</b></em>' containment reference.
+	 * The feature id for the '<em><b>Competition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VBPO_DATA_MODEL__HAS_COMPETITION = 1;
+	int VBPO_DATA_MODEL__COMPETITION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Has Customers</b></em>' containment reference.
+	 * The feature id for the '<em><b>Customers</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VBPO_DATA_MODEL__HAS_CUSTOMERS = 2;
+	int VBPO_DATA_MODEL__CUSTOMERS = 2;
 
 	/**
 	 * The number of structural features of the '<em>VBPO Data Model</em>' class.
@@ -540,22 +540,22 @@ public interface VbpodatamodelPackage extends EPackage {
 	int SSF = 9;
 
 	/**
-	 * The feature id for the '<em><b>SSF Contains System</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Contained Systems</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SSF__SSF_CONTAINS_SYSTEM = 0;
+	int SSF__CONTAINED_SYSTEMS = 0;
 
 	/**
-	 * The feature id for the '<em><b>SSF Contains Asset</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Contained Assets</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SSF__SSF_CONTAINS_ASSET = 1;
+	int SSF__CONTAINED_ASSETS = 1;
 
 	/**
 	 * The number of structural features of the '<em>SSF</em>' class.
@@ -604,13 +604,13 @@ public interface VbpodatamodelPackage extends EPackage {
 	int SYSTEM__IMPLEMENTATION_COST = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>System Uses Asset</b></em>' reference list.
+	 * The feature id for the '<em><b>Assets</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__SYSTEM_USES_ASSET = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int SYSTEM__ASSETS = IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>System</em>' class.
@@ -632,13 +632,13 @@ public interface VbpodatamodelPackage extends EPackage {
 	int COMPETITION = 12;
 
 	/**
-	 * The feature id for the '<em><b>Consists Of</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Competitors</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPETITION__CONSISTS_OF = 0;
+	int COMPETITION__COMPETITORS = 0;
 
 	/**
 	 * The number of structural features of the '<em>Competition</em>' class.
@@ -660,13 +660,13 @@ public interface VbpodatamodelPackage extends EPackage {
 	int CUSTOMERS = 13;
 
 	/**
-	 * The feature id for the '<em><b>Customers Consists Of Customer Segments</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Customer Segments</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOMERS__CUSTOMERS_CONSISTS_OF_CUSTOMER_SEGMENTS = 0;
+	int CUSTOMERS__CUSTOMER_SEGMENTS = 0;
 
 	/**
 	 * The number of structural features of the '<em>Customers</em>' class.
@@ -697,13 +697,22 @@ public interface VbpodatamodelPackage extends EPackage {
 	int WTP__VALUE = 0;
 
 	/**
-	 * The feature id for the '<em><b>WTP For Product</b></em>' reference.
+	 * The feature id for the '<em><b>Product</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WTP__WTP_FOR_PRODUCT = 1;
+	int WTP__PRODUCT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WTP__NAME = 2;
 
 	/**
 	 * The number of structural features of the '<em>WTP</em>' class.
@@ -712,7 +721,7 @@ public interface VbpodatamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WTP_FEATURE_COUNT = 2;
+	int WTP_FEATURE_COUNT = 3;
 
 
 	/**
@@ -726,26 +735,26 @@ public interface VbpodatamodelPackage extends EPackage {
 	EClass getProduct();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product#getProductComprisesSystem <em>Product Comprises System</em>}'.
+	 * Returns the meta object for the reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product#getComprisingSystem <em>Comprising System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Product Comprises System</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product#getProductComprisesSystem()
+	 * @return the meta object for the reference '<em>Comprising System</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product#getComprisingSystem()
 	 * @see #getProduct()
 	 * @generated
 	 */
-	EReference getProduct_ProductComprisesSystem();
+	EReference getProduct_ComprisingSystem();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product#getProductHasFeature <em>Product Has Feature</em>}'.
+	 * Returns the meta object for the reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product#getFeatures <em>Features</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Product Has Feature</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product#getProductHasFeature()
+	 * @return the meta object for the reference list '<em>Features</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product#getFeatures()
 	 * @see #getProduct()
 	 * @generated
 	 */
-	EReference getProduct_ProductHasFeature();
+	EReference getProduct_Features();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product#getUnitCost <em>Unit Cost</em>}'.
@@ -769,15 +778,15 @@ public interface VbpodatamodelPackage extends EPackage {
 	EClass getFeature();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Feature#getFeatureRealizedByAsset <em>Feature Realized By Asset</em>}'.
+	 * Returns the meta object for the reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Feature#getRealizingAssets <em>Realizing Assets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Feature Realized By Asset</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Feature#getFeatureRealizedByAsset()
+	 * @return the meta object for the reference list '<em>Realizing Assets</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Feature#getRealizingAssets()
 	 * @see #getFeature()
 	 * @generated
 	 */
-	EReference getFeature_FeatureRealizedByAsset();
+	EReference getFeature_RealizingAssets();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Asset <em>Asset</em>}'.
@@ -822,26 +831,26 @@ public interface VbpodatamodelPackage extends EPackage {
 	EClass getFirm();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getFirmHasSPL <em>Firm Has SPL</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getSPL <em>SPL</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Firm Has SPL</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getFirmHasSPL()
+	 * @return the meta object for the containment reference '<em>SPL</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getSPL()
 	 * @see #getFirm()
 	 * @generated
 	 */
-	EReference getFirm_FirmHasSPL();
+	EReference getFirm_SPL();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getFirmHasSSF <em>Firm Has SSF</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getSSF <em>SSF</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Firm Has SSF</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getFirmHasSSF()
+	 * @return the meta object for the containment reference '<em>SSF</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getSSF()
 	 * @see #getFirm()
 	 * @generated
 	 */
-	EReference getFirm_FirmHasSSF();
+	EReference getFirm_SSF();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competitor <em>Competitor</em>}'.
@@ -854,15 +863,15 @@ public interface VbpodatamodelPackage extends EPackage {
 	EClass getCompetitor();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competitor#getCompetitorHasPrice <em>Competitor Has Price</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competitor#getPrices <em>Prices</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Competitor Has Price</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competitor#getCompetitorHasPrice()
+	 * @return the meta object for the containment reference list '<em>Prices</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competitor#getPrices()
 	 * @see #getCompetitor()
 	 * @generated
 	 */
-	EReference getCompetitor_CompetitorHasPrice();
+	EReference getCompetitor_Prices();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment <em>Customer Segment</em>}'.
@@ -875,15 +884,15 @@ public interface VbpodatamodelPackage extends EPackage {
 	EClass getCustomerSegment();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment#getSegmentHasWTP <em>Segment Has WTP</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment#getWTPs <em>WT Ps</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Segment Has WTP</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment#getSegmentHasWTP()
+	 * @return the meta object for the containment reference list '<em>WT Ps</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment#getWTPs()
 	 * @see #getCustomerSegment()
 	 * @generated
 	 */
-	EReference getCustomerSegment_SegmentHasWTP();
+	EReference getCustomerSegment_WTPs();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment#getSize <em>Size</em>}'.
@@ -918,15 +927,15 @@ public interface VbpodatamodelPackage extends EPackage {
 	EAttribute getPrice_Value();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Price#getPriceForProduct <em>Price For Product</em>}'.
+	 * Returns the meta object for the reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Price#getProduct <em>Product</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Price For Product</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Price#getPriceForProduct()
+	 * @return the meta object for the reference '<em>Product</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Price#getProduct()
 	 * @see #getPrice()
 	 * @generated
 	 */
-	EReference getPrice_PriceForProduct();
+	EReference getPrice_Product();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL <em>SPL</em>}'.
@@ -939,26 +948,26 @@ public interface VbpodatamodelPackage extends EPackage {
 	EClass getSPL();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL#getSPLContainsProduct <em>SPL Contains Product</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL#getContainedProducts <em>Contained Products</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>SPL Contains Product</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL#getSPLContainsProduct()
+	 * @return the meta object for the containment reference list '<em>Contained Products</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL#getContainedProducts()
 	 * @see #getSPL()
 	 * @generated
 	 */
-	EReference getSPL_SPLContainsProduct();
+	EReference getSPL_ContainedProducts();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL#getSPLComprisesofFeature <em>SPL Comprisesof Feature</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL#getContainedFeatures <em>Contained Features</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>SPL Comprisesof Feature</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL#getSPLComprisesofFeature()
+	 * @return the meta object for the containment reference list '<em>Contained Features</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL#getContainedFeatures()
 	 * @see #getSPL()
 	 * @generated
 	 */
-	EReference getSPL_SPLComprisesofFeature();
+	EReference getSPL_ContainedFeatures();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel <em>VBPO Data Model</em>}'.
@@ -971,37 +980,37 @@ public interface VbpodatamodelPackage extends EPackage {
 	EClass getVBPODataModel();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getHasAFirm <em>Has AFirm</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getFirm <em>Firm</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Has AFirm</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getHasAFirm()
+	 * @return the meta object for the containment reference '<em>Firm</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getFirm()
 	 * @see #getVBPODataModel()
 	 * @generated
 	 */
-	EReference getVBPODataModel_HasAFirm();
+	EReference getVBPODataModel_Firm();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getHasCompetition <em>Has Competition</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getCompetition <em>Competition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Has Competition</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getHasCompetition()
+	 * @return the meta object for the containment reference '<em>Competition</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getCompetition()
 	 * @see #getVBPODataModel()
 	 * @generated
 	 */
-	EReference getVBPODataModel_HasCompetition();
+	EReference getVBPODataModel_Competition();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getHasCustomers <em>Has Customers</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getCustomers <em>Customers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Has Customers</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getHasCustomers()
+	 * @return the meta object for the containment reference '<em>Customers</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getCustomers()
 	 * @see #getVBPODataModel()
 	 * @generated
 	 */
-	EReference getVBPODataModel_HasCustomers();
+	EReference getVBPODataModel_Customers();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF <em>SSF</em>}'.
@@ -1014,26 +1023,26 @@ public interface VbpodatamodelPackage extends EPackage {
 	EClass getSSF();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF#getSSFContainsSystem <em>SSF Contains System</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF#getContainedSystems <em>Contained Systems</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>SSF Contains System</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF#getSSFContainsSystem()
+	 * @return the meta object for the containment reference list '<em>Contained Systems</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF#getContainedSystems()
 	 * @see #getSSF()
 	 * @generated
 	 */
-	EReference getSSF_SSFContainsSystem();
+	EReference getSSF_ContainedSystems();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF#getSSFContainsAsset <em>SSF Contains Asset</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF#getContainedAssets <em>Contained Assets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>SSF Contains Asset</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF#getSSFContainsAsset()
+	 * @return the meta object for the containment reference list '<em>Contained Assets</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF#getContainedAssets()
 	 * @see #getSSF()
 	 * @generated
 	 */
-	EReference getSSF_SSFContainsAsset();
+	EReference getSSF_ContainedAssets();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System <em>System</em>}'.
@@ -1057,15 +1066,15 @@ public interface VbpodatamodelPackage extends EPackage {
 	EAttribute getSystem_ImplementationCost();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System#getSystemUsesAsset <em>System Uses Asset</em>}'.
+	 * Returns the meta object for the reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System#getAssets <em>Assets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>System Uses Asset</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System#getSystemUsesAsset()
+	 * @return the meta object for the reference list '<em>Assets</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System#getAssets()
 	 * @see #getSystem()
 	 * @generated
 	 */
-	EReference getSystem_SystemUsesAsset();
+	EReference getSystem_Assets();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.IdentifiableEntity <em>Identifiable Entity</em>}'.
@@ -1110,15 +1119,15 @@ public interface VbpodatamodelPackage extends EPackage {
 	EClass getCompetition();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competition#getConsistsOf <em>Consists Of</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competition#getCompetitors <em>Competitors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Consists Of</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competition#getConsistsOf()
+	 * @return the meta object for the containment reference list '<em>Competitors</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competition#getCompetitors()
 	 * @see #getCompetition()
 	 * @generated
 	 */
-	EReference getCompetition_ConsistsOf();
+	EReference getCompetition_Competitors();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Customers <em>Customers</em>}'.
@@ -1131,15 +1140,15 @@ public interface VbpodatamodelPackage extends EPackage {
 	EClass getCustomers();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Customers#getCustomersConsistsOfCustomerSegments <em>Customers Consists Of Customer Segments</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Customers#getCustomerSegments <em>Customer Segments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Customers Consists Of Customer Segments</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Customers#getCustomersConsistsOfCustomerSegments()
+	 * @return the meta object for the containment reference list '<em>Customer Segments</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Customers#getCustomerSegments()
 	 * @see #getCustomers()
 	 * @generated
 	 */
-	EReference getCustomers_CustomersConsistsOfCustomerSegments();
+	EReference getCustomers_CustomerSegments();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP <em>WTP</em>}'.
@@ -1163,15 +1172,26 @@ public interface VbpodatamodelPackage extends EPackage {
 	EAttribute getWTP_Value();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getWTPForProduct <em>WTP For Product</em>}'.
+	 * Returns the meta object for the reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getProduct <em>Product</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>WTP For Product</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getWTPForProduct()
+	 * @return the meta object for the reference '<em>Product</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getProduct()
 	 * @see #getWTP()
 	 * @generated
 	 */
-	EReference getWTP_WTPForProduct();
+	EReference getWTP_Product();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getName()
+	 * @see #getWTP()
+	 * @generated
+	 */
+	EAttribute getWTP_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1206,20 +1226,20 @@ public interface VbpodatamodelPackage extends EPackage {
 		EClass PRODUCT = eINSTANCE.getProduct();
 
 		/**
-		 * The meta object literal for the '<em><b>Product Comprises System</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Comprising System</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PRODUCT__PRODUCT_COMPRISES_SYSTEM = eINSTANCE.getProduct_ProductComprisesSystem();
+		EReference PRODUCT__COMPRISING_SYSTEM = eINSTANCE.getProduct_ComprisingSystem();
 
 		/**
-		 * The meta object literal for the '<em><b>Product Has Feature</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Features</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PRODUCT__PRODUCT_HAS_FEATURE = eINSTANCE.getProduct_ProductHasFeature();
+		EReference PRODUCT__FEATURES = eINSTANCE.getProduct_Features();
 
 		/**
 		 * The meta object literal for the '<em><b>Unit Cost</b></em>' attribute feature.
@@ -1240,12 +1260,12 @@ public interface VbpodatamodelPackage extends EPackage {
 		EClass FEATURE = eINSTANCE.getFeature();
 
 		/**
-		 * The meta object literal for the '<em><b>Feature Realized By Asset</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Realizing Assets</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference FEATURE__FEATURE_REALIZED_BY_ASSET = eINSTANCE.getFeature_FeatureRealizedByAsset();
+		EReference FEATURE__REALIZING_ASSETS = eINSTANCE.getFeature_RealizingAssets();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.AssetImpl <em>Asset</em>}' class.
@@ -1284,20 +1304,20 @@ public interface VbpodatamodelPackage extends EPackage {
 		EClass FIRM = eINSTANCE.getFirm();
 
 		/**
-		 * The meta object literal for the '<em><b>Firm Has SPL</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>SPL</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference FIRM__FIRM_HAS_SPL = eINSTANCE.getFirm_FirmHasSPL();
+		EReference FIRM__SPL = eINSTANCE.getFirm_SPL();
 
 		/**
-		 * The meta object literal for the '<em><b>Firm Has SSF</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>SSF</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference FIRM__FIRM_HAS_SSF = eINSTANCE.getFirm_FirmHasSSF();
+		EReference FIRM__SSF = eINSTANCE.getFirm_SSF();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.CompetitorImpl <em>Competitor</em>}' class.
@@ -1310,12 +1330,12 @@ public interface VbpodatamodelPackage extends EPackage {
 		EClass COMPETITOR = eINSTANCE.getCompetitor();
 
 		/**
-		 * The meta object literal for the '<em><b>Competitor Has Price</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Prices</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPETITOR__COMPETITOR_HAS_PRICE = eINSTANCE.getCompetitor_CompetitorHasPrice();
+		EReference COMPETITOR__PRICES = eINSTANCE.getCompetitor_Prices();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.CustomerSegmentImpl <em>Customer Segment</em>}' class.
@@ -1328,12 +1348,12 @@ public interface VbpodatamodelPackage extends EPackage {
 		EClass CUSTOMER_SEGMENT = eINSTANCE.getCustomerSegment();
 
 		/**
-		 * The meta object literal for the '<em><b>Segment Has WTP</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>WT Ps</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CUSTOMER_SEGMENT__SEGMENT_HAS_WTP = eINSTANCE.getCustomerSegment_SegmentHasWTP();
+		EReference CUSTOMER_SEGMENT__WT_PS = eINSTANCE.getCustomerSegment_WTPs();
 
 		/**
 		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
@@ -1362,12 +1382,12 @@ public interface VbpodatamodelPackage extends EPackage {
 		EAttribute PRICE__VALUE = eINSTANCE.getPrice_Value();
 
 		/**
-		 * The meta object literal for the '<em><b>Price For Product</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Product</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PRICE__PRICE_FOR_PRODUCT = eINSTANCE.getPrice_PriceForProduct();
+		EReference PRICE__PRODUCT = eINSTANCE.getPrice_Product();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SPLImpl <em>SPL</em>}' class.
@@ -1380,20 +1400,20 @@ public interface VbpodatamodelPackage extends EPackage {
 		EClass SPL = eINSTANCE.getSPL();
 
 		/**
-		 * The meta object literal for the '<em><b>SPL Contains Product</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Contained Products</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SPL__SPL_CONTAINS_PRODUCT = eINSTANCE.getSPL_SPLContainsProduct();
+		EReference SPL__CONTAINED_PRODUCTS = eINSTANCE.getSPL_ContainedProducts();
 
 		/**
-		 * The meta object literal for the '<em><b>SPL Comprisesof Feature</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Contained Features</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SPL__SPL_COMPRISESOF_FEATURE = eINSTANCE.getSPL_SPLComprisesofFeature();
+		EReference SPL__CONTAINED_FEATURES = eINSTANCE.getSPL_ContainedFeatures();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.VBPODataModelImpl <em>VBPO Data Model</em>}' class.
@@ -1406,28 +1426,28 @@ public interface VbpodatamodelPackage extends EPackage {
 		EClass VBPO_DATA_MODEL = eINSTANCE.getVBPODataModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Has AFirm</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Firm</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VBPO_DATA_MODEL__HAS_AFIRM = eINSTANCE.getVBPODataModel_HasAFirm();
+		EReference VBPO_DATA_MODEL__FIRM = eINSTANCE.getVBPODataModel_Firm();
 
 		/**
-		 * The meta object literal for the '<em><b>Has Competition</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Competition</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VBPO_DATA_MODEL__HAS_COMPETITION = eINSTANCE.getVBPODataModel_HasCompetition();
+		EReference VBPO_DATA_MODEL__COMPETITION = eINSTANCE.getVBPODataModel_Competition();
 
 		/**
-		 * The meta object literal for the '<em><b>Has Customers</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Customers</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VBPO_DATA_MODEL__HAS_CUSTOMERS = eINSTANCE.getVBPODataModel_HasCustomers();
+		EReference VBPO_DATA_MODEL__CUSTOMERS = eINSTANCE.getVBPODataModel_Customers();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SSFImpl <em>SSF</em>}' class.
@@ -1440,20 +1460,20 @@ public interface VbpodatamodelPackage extends EPackage {
 		EClass SSF = eINSTANCE.getSSF();
 
 		/**
-		 * The meta object literal for the '<em><b>SSF Contains System</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Contained Systems</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SSF__SSF_CONTAINS_SYSTEM = eINSTANCE.getSSF_SSFContainsSystem();
+		EReference SSF__CONTAINED_SYSTEMS = eINSTANCE.getSSF_ContainedSystems();
 
 		/**
-		 * The meta object literal for the '<em><b>SSF Contains Asset</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Contained Assets</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SSF__SSF_CONTAINS_ASSET = eINSTANCE.getSSF_SSFContainsAsset();
+		EReference SSF__CONTAINED_ASSETS = eINSTANCE.getSSF_ContainedAssets();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SystemImpl <em>System</em>}' class.
@@ -1474,12 +1494,12 @@ public interface VbpodatamodelPackage extends EPackage {
 		EAttribute SYSTEM__IMPLEMENTATION_COST = eINSTANCE.getSystem_ImplementationCost();
 
 		/**
-		 * The meta object literal for the '<em><b>System Uses Asset</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Assets</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SYSTEM__SYSTEM_USES_ASSET = eINSTANCE.getSystem_SystemUsesAsset();
+		EReference SYSTEM__ASSETS = eINSTANCE.getSystem_Assets();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.IdentifiableEntityImpl <em>Identifiable Entity</em>}' class.
@@ -1518,12 +1538,12 @@ public interface VbpodatamodelPackage extends EPackage {
 		EClass COMPETITION = eINSTANCE.getCompetition();
 
 		/**
-		 * The meta object literal for the '<em><b>Consists Of</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Competitors</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPETITION__CONSISTS_OF = eINSTANCE.getCompetition_ConsistsOf();
+		EReference COMPETITION__COMPETITORS = eINSTANCE.getCompetition_Competitors();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.CustomersImpl <em>Customers</em>}' class.
@@ -1536,12 +1556,12 @@ public interface VbpodatamodelPackage extends EPackage {
 		EClass CUSTOMERS = eINSTANCE.getCustomers();
 
 		/**
-		 * The meta object literal for the '<em><b>Customers Consists Of Customer Segments</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Customer Segments</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CUSTOMERS__CUSTOMERS_CONSISTS_OF_CUSTOMER_SEGMENTS = eINSTANCE.getCustomers_CustomersConsistsOfCustomerSegments();
+		EReference CUSTOMERS__CUSTOMER_SEGMENTS = eINSTANCE.getCustomers_CustomerSegments();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.WTPImpl <em>WTP</em>}' class.
@@ -1562,12 +1582,20 @@ public interface VbpodatamodelPackage extends EPackage {
 		EAttribute WTP__VALUE = eINSTANCE.getWTP_Value();
 
 		/**
-		 * The meta object literal for the '<em><b>WTP For Product</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Product</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WTP__WTP_FOR_PRODUCT = eINSTANCE.getWTP_WTPForProduct();
+		EReference WTP__PRODUCT = eINSTANCE.getWTP_Product();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WTP__NAME = eINSTANCE.getWTP_Name();
 
 	}
 

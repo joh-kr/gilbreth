@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SystemImpl#getImplementationCost <em>Implementation Cost</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SystemImpl#getSystemUsesAsset <em>System Uses Asset</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SystemImpl#getAssets <em>Assets</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,14 +69,14 @@ public class SystemImpl extends IdentifiableEntityImpl implements de.uni_leipzig
 	protected BigDecimal implementationCost = IMPLEMENTATION_COST_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSystemUsesAsset() <em>System Uses Asset</em>}' reference list.
+	 * The cached value of the '{@link #getAssets() <em>Assets</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSystemUsesAsset()
+	 * @see #getAssets()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Asset> systemUsesAsset;
+	protected EList<Asset> assets;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,11 +123,11 @@ public class SystemImpl extends IdentifiableEntityImpl implements de.uni_leipzig
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Asset> getSystemUsesAsset() {
-		if (systemUsesAsset == null) {
-			systemUsesAsset = new EObjectResolvingEList<Asset>(Asset.class, this, VbpodatamodelPackage.SYSTEM__SYSTEM_USES_ASSET);
+	public EList<Asset> getAssets() {
+		if (assets == null) {
+			assets = new EObjectResolvingEList<Asset>(Asset.class, this, VbpodatamodelPackage.SYSTEM__ASSETS);
 		}
-		return systemUsesAsset;
+		return assets;
 	}
 
 	/**
@@ -140,8 +140,8 @@ public class SystemImpl extends IdentifiableEntityImpl implements de.uni_leipzig
 		switch (featureID) {
 			case VbpodatamodelPackage.SYSTEM__IMPLEMENTATION_COST:
 				return getImplementationCost();
-			case VbpodatamodelPackage.SYSTEM__SYSTEM_USES_ASSET:
-				return getSystemUsesAsset();
+			case VbpodatamodelPackage.SYSTEM__ASSETS:
+				return getAssets();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -158,9 +158,9 @@ public class SystemImpl extends IdentifiableEntityImpl implements de.uni_leipzig
 			case VbpodatamodelPackage.SYSTEM__IMPLEMENTATION_COST:
 				setImplementationCost((BigDecimal)newValue);
 				return;
-			case VbpodatamodelPackage.SYSTEM__SYSTEM_USES_ASSET:
-				getSystemUsesAsset().clear();
-				getSystemUsesAsset().addAll((Collection<? extends Asset>)newValue);
+			case VbpodatamodelPackage.SYSTEM__ASSETS:
+				getAssets().clear();
+				getAssets().addAll((Collection<? extends Asset>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -177,8 +177,8 @@ public class SystemImpl extends IdentifiableEntityImpl implements de.uni_leipzig
 			case VbpodatamodelPackage.SYSTEM__IMPLEMENTATION_COST:
 				setImplementationCost(IMPLEMENTATION_COST_EDEFAULT);
 				return;
-			case VbpodatamodelPackage.SYSTEM__SYSTEM_USES_ASSET:
-				getSystemUsesAsset().clear();
+			case VbpodatamodelPackage.SYSTEM__ASSETS:
+				getAssets().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -194,8 +194,8 @@ public class SystemImpl extends IdentifiableEntityImpl implements de.uni_leipzig
 		switch (featureID) {
 			case VbpodatamodelPackage.SYSTEM__IMPLEMENTATION_COST:
 				return IMPLEMENTATION_COST_EDEFAULT == null ? implementationCost != null : !IMPLEMENTATION_COST_EDEFAULT.equals(implementationCost);
-			case VbpodatamodelPackage.SYSTEM__SYSTEM_USES_ASSET:
-				return systemUsesAsset != null && !systemUsesAsset.isEmpty();
+			case VbpodatamodelPackage.SYSTEM__ASSETS:
+				return assets != null && !assets.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

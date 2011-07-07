@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Customers#getCustomersConsistsOfCustomerSegments <em>Customers Consists Of Customer Segments</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Customers#getCustomerSegments <em>Customer Segments</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Customers extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Customers Consists Of Customer Segments</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Customer Segments</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -46,11 +46,11 @@ public interface Customers extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Customers Consists Of Customer Segments</em>' containment reference list.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getCustomers_CustomersConsistsOfCustomerSegments()
+	 * @return the value of the '<em>Customer Segments</em>' containment reference list.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getCustomers_CustomerSegments()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<CustomerSegment> getCustomersConsistsOfCustomerSegments();
+	EList<CustomerSegment> getCustomerSegments();
 
 } // Customers

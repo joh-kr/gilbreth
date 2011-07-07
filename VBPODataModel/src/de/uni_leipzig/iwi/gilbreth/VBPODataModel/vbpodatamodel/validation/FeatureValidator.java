@@ -19,5 +19,7 @@ import org.eclipse.emf.common.util.EList;
 public interface FeatureValidator {
 	boolean validate();
 
+	boolean validateRealizingAssets(EList<Asset> value);
+
 	boolean validateFeatureRealizedByAsset(EList<Asset> value);
 }

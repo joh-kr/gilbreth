@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.PriceImpl#getValue <em>Value</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.PriceImpl#getPriceForProduct <em>Price For Product</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.PriceImpl#getProduct <em>Product</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,14 +66,14 @@ public class PriceImpl extends EObjectImpl implements Price {
 	protected BigDecimal value = VALUE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getPriceForProduct() <em>Price For Product</em>}' reference.
+	 * The cached value of the '{@link #getProduct() <em>Product</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPriceForProduct()
+	 * @see #getProduct()
 	 * @generated
 	 * @ordered
 	 */
-	protected Product priceForProduct;
+	protected Product product;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,16 +120,16 @@ public class PriceImpl extends EObjectImpl implements Price {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Product getPriceForProduct() {
-		if (priceForProduct != null && priceForProduct.eIsProxy()) {
-			InternalEObject oldPriceForProduct = (InternalEObject)priceForProduct;
-			priceForProduct = (Product)eResolveProxy(oldPriceForProduct);
-			if (priceForProduct != oldPriceForProduct) {
+	public Product getProduct() {
+		if (product != null && product.eIsProxy()) {
+			InternalEObject oldProduct = (InternalEObject)product;
+			product = (Product)eResolveProxy(oldProduct);
+			if (product != oldProduct) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VbpodatamodelPackage.PRICE__PRICE_FOR_PRODUCT, oldPriceForProduct, priceForProduct));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VbpodatamodelPackage.PRICE__PRODUCT, oldProduct, product));
 			}
 		}
-		return priceForProduct;
+		return product;
 	}
 
 	/**
@@ -137,8 +137,8 @@ public class PriceImpl extends EObjectImpl implements Price {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Product basicGetPriceForProduct() {
-		return priceForProduct;
+	public Product basicGetProduct() {
+		return product;
 	}
 
 	/**
@@ -146,11 +146,11 @@ public class PriceImpl extends EObjectImpl implements Price {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPriceForProduct(Product newPriceForProduct) {
-		Product oldPriceForProduct = priceForProduct;
-		priceForProduct = newPriceForProduct;
+	public void setProduct(Product newProduct) {
+		Product oldProduct = product;
+		product = newProduct;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.PRICE__PRICE_FOR_PRODUCT, oldPriceForProduct, priceForProduct));
+			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.PRICE__PRODUCT, oldProduct, product));
 	}
 
 	/**
@@ -163,9 +163,9 @@ public class PriceImpl extends EObjectImpl implements Price {
 		switch (featureID) {
 			case VbpodatamodelPackage.PRICE__VALUE:
 				return getValue();
-			case VbpodatamodelPackage.PRICE__PRICE_FOR_PRODUCT:
-				if (resolve) return getPriceForProduct();
-				return basicGetPriceForProduct();
+			case VbpodatamodelPackage.PRICE__PRODUCT:
+				if (resolve) return getProduct();
+				return basicGetProduct();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -181,8 +181,8 @@ public class PriceImpl extends EObjectImpl implements Price {
 			case VbpodatamodelPackage.PRICE__VALUE:
 				setValue((BigDecimal)newValue);
 				return;
-			case VbpodatamodelPackage.PRICE__PRICE_FOR_PRODUCT:
-				setPriceForProduct((Product)newValue);
+			case VbpodatamodelPackage.PRICE__PRODUCT:
+				setProduct((Product)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -199,8 +199,8 @@ public class PriceImpl extends EObjectImpl implements Price {
 			case VbpodatamodelPackage.PRICE__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
-			case VbpodatamodelPackage.PRICE__PRICE_FOR_PRODUCT:
-				setPriceForProduct((Product)null);
+			case VbpodatamodelPackage.PRICE__PRODUCT:
+				setProduct((Product)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -216,8 +216,8 @@ public class PriceImpl extends EObjectImpl implements Price {
 		switch (featureID) {
 			case VbpodatamodelPackage.PRICE__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-			case VbpodatamodelPackage.PRICE__PRICE_FOR_PRODUCT:
-				return priceForProduct != null;
+			case VbpodatamodelPackage.PRICE__PRODUCT:
+				return product != null;
 		}
 		return super.eIsSet(featureID);
 	}

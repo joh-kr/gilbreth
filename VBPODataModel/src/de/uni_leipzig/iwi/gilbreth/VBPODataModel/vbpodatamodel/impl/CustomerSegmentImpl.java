@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.CustomerSegmentImpl#getSegmentHasWTP <em>Segment Has WTP</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.CustomerSegmentImpl#getWTPs <em>WT Ps</em>}</li>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.CustomerSegmentImpl#getSize <em>Size</em>}</li>
  * </ul>
  * </p>
@@ -50,14 +50,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class CustomerSegmentImpl extends IdentifiableEntityImpl implements CustomerSegment {
 	/**
-	 * The cached value of the '{@link #getSegmentHasWTP() <em>Segment Has WTP</em>}' containment reference list.
+	 * The cached value of the '{@link #getWTPs() <em>WT Ps</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSegmentHasWTP()
+	 * @see #getWTPs()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<WTP> segmentHasWTP;
+	protected EList<WTP> wTPs;
 
 	/**
 	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
@@ -102,11 +102,11 @@ public class CustomerSegmentImpl extends IdentifiableEntityImpl implements Custo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<WTP> getSegmentHasWTP() {
-		if (segmentHasWTP == null) {
-			segmentHasWTP = new EObjectContainmentEList<WTP>(WTP.class, this, VbpodatamodelPackage.CUSTOMER_SEGMENT__SEGMENT_HAS_WTP);
+	public EList<WTP> getWTPs() {
+		if (wTPs == null) {
+			wTPs = new EObjectContainmentEList<WTP>(WTP.class, this, VbpodatamodelPackage.CUSTOMER_SEGMENT__WT_PS);
 		}
-		return segmentHasWTP;
+		return wTPs;
 	}
 
 	/**
@@ -138,8 +138,8 @@ public class CustomerSegmentImpl extends IdentifiableEntityImpl implements Custo
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case VbpodatamodelPackage.CUSTOMER_SEGMENT__SEGMENT_HAS_WTP:
-				return ((InternalEList<?>)getSegmentHasWTP()).basicRemove(otherEnd, msgs);
+			case VbpodatamodelPackage.CUSTOMER_SEGMENT__WT_PS:
+				return ((InternalEList<?>)getWTPs()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -152,8 +152,8 @@ public class CustomerSegmentImpl extends IdentifiableEntityImpl implements Custo
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case VbpodatamodelPackage.CUSTOMER_SEGMENT__SEGMENT_HAS_WTP:
-				return getSegmentHasWTP();
+			case VbpodatamodelPackage.CUSTOMER_SEGMENT__WT_PS:
+				return getWTPs();
 			case VbpodatamodelPackage.CUSTOMER_SEGMENT__SIZE:
 				return getSize();
 		}
@@ -169,9 +169,9 @@ public class CustomerSegmentImpl extends IdentifiableEntityImpl implements Custo
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case VbpodatamodelPackage.CUSTOMER_SEGMENT__SEGMENT_HAS_WTP:
-				getSegmentHasWTP().clear();
-				getSegmentHasWTP().addAll((Collection<? extends WTP>)newValue);
+			case VbpodatamodelPackage.CUSTOMER_SEGMENT__WT_PS:
+				getWTPs().clear();
+				getWTPs().addAll((Collection<? extends WTP>)newValue);
 				return;
 			case VbpodatamodelPackage.CUSTOMER_SEGMENT__SIZE:
 				setSize((Integer)newValue);
@@ -188,8 +188,8 @@ public class CustomerSegmentImpl extends IdentifiableEntityImpl implements Custo
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.CUSTOMER_SEGMENT__SEGMENT_HAS_WTP:
-				getSegmentHasWTP().clear();
+			case VbpodatamodelPackage.CUSTOMER_SEGMENT__WT_PS:
+				getWTPs().clear();
 				return;
 			case VbpodatamodelPackage.CUSTOMER_SEGMENT__SIZE:
 				setSize(SIZE_EDEFAULT);
@@ -206,8 +206,8 @@ public class CustomerSegmentImpl extends IdentifiableEntityImpl implements Custo
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.CUSTOMER_SEGMENT__SEGMENT_HAS_WTP:
-				return segmentHasWTP != null && !segmentHasWTP.isEmpty();
+			case VbpodatamodelPackage.CUSTOMER_SEGMENT__WT_PS:
+				return wTPs != null && !wTPs.isEmpty();
 			case VbpodatamodelPackage.CUSTOMER_SEGMENT__SIZE:
 				return size != SIZE_EDEFAULT;
 		}

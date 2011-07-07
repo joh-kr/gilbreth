@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.CompetitionImpl#getConsistsOf <em>Consists Of</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.CompetitionImpl#getCompetitors <em>Competitors</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,15 +49,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class CompetitionImpl extends EObjectImpl implements Competition {
 	/**
-	 * The cached value of the '{@link #getConsistsOf() <em>Consists Of</em>}' containment reference list.
+	 * The cached value of the '{@link #getCompetitors() <em>Competitors</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConsistsOf()
+	 * @see #getCompetitors()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Competitor> consistsOf;
-
+	protected EList<Competitor> competitors;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -82,11 +81,11 @@ public class CompetitionImpl extends EObjectImpl implements Competition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Competitor> getConsistsOf() {
-		if (consistsOf == null) {
-			consistsOf = new EObjectContainmentEList<Competitor>(Competitor.class, this, VbpodatamodelPackage.COMPETITION__CONSISTS_OF);
+	public EList<Competitor> getCompetitors() {
+		if (competitors == null) {
+			competitors = new EObjectContainmentEList<Competitor>(Competitor.class, this, VbpodatamodelPackage.COMPETITION__COMPETITORS);
 		}
-		return consistsOf;
+		return competitors;
 	}
 
 	/**
@@ -97,8 +96,8 @@ public class CompetitionImpl extends EObjectImpl implements Competition {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case VbpodatamodelPackage.COMPETITION__CONSISTS_OF:
-				return ((InternalEList<?>)getConsistsOf()).basicRemove(otherEnd, msgs);
+			case VbpodatamodelPackage.COMPETITION__COMPETITORS:
+				return ((InternalEList<?>)getCompetitors()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -111,8 +110,8 @@ public class CompetitionImpl extends EObjectImpl implements Competition {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case VbpodatamodelPackage.COMPETITION__CONSISTS_OF:
-				return getConsistsOf();
+			case VbpodatamodelPackage.COMPETITION__COMPETITORS:
+				return getCompetitors();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -126,9 +125,9 @@ public class CompetitionImpl extends EObjectImpl implements Competition {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case VbpodatamodelPackage.COMPETITION__CONSISTS_OF:
-				getConsistsOf().clear();
-				getConsistsOf().addAll((Collection<? extends Competitor>)newValue);
+			case VbpodatamodelPackage.COMPETITION__COMPETITORS:
+				getCompetitors().clear();
+				getCompetitors().addAll((Collection<? extends Competitor>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -142,8 +141,8 @@ public class CompetitionImpl extends EObjectImpl implements Competition {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.COMPETITION__CONSISTS_OF:
-				getConsistsOf().clear();
+			case VbpodatamodelPackage.COMPETITION__COMPETITORS:
+				getCompetitors().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -157,8 +156,8 @@ public class CompetitionImpl extends EObjectImpl implements Competition {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.COMPETITION__CONSISTS_OF:
-				return consistsOf != null && !consistsOf.isEmpty();
+			case VbpodatamodelPackage.COMPETITION__COMPETITORS:
+				return competitors != null && !competitors.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

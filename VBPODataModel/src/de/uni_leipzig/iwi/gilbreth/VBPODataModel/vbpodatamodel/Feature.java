@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Feature#getFeatureRealizedByAsset <em>Feature Realized By Asset</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Feature#getRealizingAssets <em>Realizing Assets</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,7 +36,7 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Feature extends IdentifiableEntity {
 	/**
-	 * Returns the value of the '<em><b>Feature Realized By Asset</b></em>' reference list.
+	 * Returns the value of the '<em><b>Realizing Assets</b></em>' reference list.
 	 * The list contents are of type {@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Asset}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -44,11 +44,11 @@ public interface Feature extends IdentifiableEntity {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Feature Realized By Asset</em>' reference list.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getFeature_FeatureRealizedByAsset()
+	 * @return the value of the '<em>Realizing Assets</em>' reference list.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getFeature_RealizingAssets()
 	 * @model required="true"
 	 * @generated
 	 */
-	EList<Asset> getFeatureRealizedByAsset();
+	EList<Asset> getRealizingAssets();
 
 } // Feature

@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment#getSegmentHasWTP <em>Segment Has WTP</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment#getWTPs <em>WT Ps</em>}</li>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment#getSize <em>Size</em>}</li>
  * </ul>
  * </p>
@@ -37,7 +37,7 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface CustomerSegment extends IdentifiableEntity {
 	/**
-	 * Returns the value of the '<em><b>Segment Has WTP</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>WT Ps</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -45,12 +45,12 @@ public interface CustomerSegment extends IdentifiableEntity {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Segment Has WTP</em>' containment reference list.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getCustomerSegment_SegmentHasWTP()
+	 * @return the value of the '<em>WT Ps</em>' containment reference list.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getCustomerSegment_WTPs()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<WTP> getSegmentHasWTP();
+	EList<WTP> getWTPs();
 
 	/**
 	 * Returns the value of the '<em><b>Size</b></em>' attribute.

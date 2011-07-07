@@ -41,8 +41,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SSFImpl#getSSFContainsSystem <em>SSF Contains System</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SSFImpl#getSSFContainsAsset <em>SSF Contains Asset</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SSFImpl#getContainedSystems <em>Contained Systems</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.SSFImpl#getContainedAssets <em>Contained Assets</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,24 +50,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class SSFImpl extends EObjectImpl implements SSF {
 	/**
-	 * The cached value of the '{@link #getSSFContainsSystem() <em>SSF Contains System</em>}' containment reference list.
+	 * The cached value of the '{@link #getContainedSystems() <em>Contained Systems</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSSFContainsSystem()
+	 * @see #getContainedSystems()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System> sSFContainsSystem;
+	protected EList<de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System> containedSystems;
 
 	/**
-	 * The cached value of the '{@link #getSSFContainsAsset() <em>SSF Contains Asset</em>}' containment reference list.
+	 * The cached value of the '{@link #getContainedAssets() <em>Contained Assets</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSSFContainsAsset()
+	 * @see #getContainedAssets()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Asset> sSFContainsAsset;
+	protected EList<Asset> containedAssets;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,11 +93,11 @@ public class SSFImpl extends EObjectImpl implements SSF {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System> getSSFContainsSystem() {
-		if (sSFContainsSystem == null) {
-			sSFContainsSystem = new EObjectContainmentEList<de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System>(de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System.class, this, VbpodatamodelPackage.SSF__SSF_CONTAINS_SYSTEM);
+	public EList<de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System> getContainedSystems() {
+		if (containedSystems == null) {
+			containedSystems = new EObjectContainmentEList<de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System>(de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System.class, this, VbpodatamodelPackage.SSF__CONTAINED_SYSTEMS);
 		}
-		return sSFContainsSystem;
+		return containedSystems;
 	}
 
 	/**
@@ -105,11 +105,11 @@ public class SSFImpl extends EObjectImpl implements SSF {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Asset> getSSFContainsAsset() {
-		if (sSFContainsAsset == null) {
-			sSFContainsAsset = new EObjectContainmentEList<Asset>(Asset.class, this, VbpodatamodelPackage.SSF__SSF_CONTAINS_ASSET);
+	public EList<Asset> getContainedAssets() {
+		if (containedAssets == null) {
+			containedAssets = new EObjectContainmentEList<Asset>(Asset.class, this, VbpodatamodelPackage.SSF__CONTAINED_ASSETS);
 		}
-		return sSFContainsAsset;
+		return containedAssets;
 	}
 
 	/**
@@ -120,10 +120,10 @@ public class SSFImpl extends EObjectImpl implements SSF {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case VbpodatamodelPackage.SSF__SSF_CONTAINS_SYSTEM:
-				return ((InternalEList<?>)getSSFContainsSystem()).basicRemove(otherEnd, msgs);
-			case VbpodatamodelPackage.SSF__SSF_CONTAINS_ASSET:
-				return ((InternalEList<?>)getSSFContainsAsset()).basicRemove(otherEnd, msgs);
+			case VbpodatamodelPackage.SSF__CONTAINED_SYSTEMS:
+				return ((InternalEList<?>)getContainedSystems()).basicRemove(otherEnd, msgs);
+			case VbpodatamodelPackage.SSF__CONTAINED_ASSETS:
+				return ((InternalEList<?>)getContainedAssets()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -136,10 +136,10 @@ public class SSFImpl extends EObjectImpl implements SSF {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case VbpodatamodelPackage.SSF__SSF_CONTAINS_SYSTEM:
-				return getSSFContainsSystem();
-			case VbpodatamodelPackage.SSF__SSF_CONTAINS_ASSET:
-				return getSSFContainsAsset();
+			case VbpodatamodelPackage.SSF__CONTAINED_SYSTEMS:
+				return getContainedSystems();
+			case VbpodatamodelPackage.SSF__CONTAINED_ASSETS:
+				return getContainedAssets();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -153,13 +153,13 @@ public class SSFImpl extends EObjectImpl implements SSF {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case VbpodatamodelPackage.SSF__SSF_CONTAINS_SYSTEM:
-				getSSFContainsSystem().clear();
-				getSSFContainsSystem().addAll((Collection<? extends de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System>)newValue);
+			case VbpodatamodelPackage.SSF__CONTAINED_SYSTEMS:
+				getContainedSystems().clear();
+				getContainedSystems().addAll((Collection<? extends de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System>)newValue);
 				return;
-			case VbpodatamodelPackage.SSF__SSF_CONTAINS_ASSET:
-				getSSFContainsAsset().clear();
-				getSSFContainsAsset().addAll((Collection<? extends Asset>)newValue);
+			case VbpodatamodelPackage.SSF__CONTAINED_ASSETS:
+				getContainedAssets().clear();
+				getContainedAssets().addAll((Collection<? extends Asset>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -173,11 +173,11 @@ public class SSFImpl extends EObjectImpl implements SSF {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.SSF__SSF_CONTAINS_SYSTEM:
-				getSSFContainsSystem().clear();
+			case VbpodatamodelPackage.SSF__CONTAINED_SYSTEMS:
+				getContainedSystems().clear();
 				return;
-			case VbpodatamodelPackage.SSF__SSF_CONTAINS_ASSET:
-				getSSFContainsAsset().clear();
+			case VbpodatamodelPackage.SSF__CONTAINED_ASSETS:
+				getContainedAssets().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -191,10 +191,10 @@ public class SSFImpl extends EObjectImpl implements SSF {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.SSF__SSF_CONTAINS_SYSTEM:
-				return sSFContainsSystem != null && !sSFContainsSystem.isEmpty();
-			case VbpodatamodelPackage.SSF__SSF_CONTAINS_ASSET:
-				return sSFContainsAsset != null && !sSFContainsAsset.isEmpty();
+			case VbpodatamodelPackage.SSF__CONTAINED_SYSTEMS:
+				return containedSystems != null && !containedSystems.isEmpty();
+			case VbpodatamodelPackage.SSF__CONTAINED_ASSETS:
+				return containedAssets != null && !containedAssets.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

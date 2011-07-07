@@ -19,6 +19,8 @@ import org.eclipse.emf.common.util.EList;
 public interface CustomerSegmentValidator {
 	boolean validate();
 
+	boolean validateWTPs(EList<WTP> value);
+
 	boolean validateSegmentHasWTP(EList<WTP> value);
 
 	boolean validateSize(int value);

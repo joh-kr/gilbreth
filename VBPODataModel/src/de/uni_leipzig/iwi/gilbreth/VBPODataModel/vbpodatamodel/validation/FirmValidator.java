@@ -18,6 +18,10 @@ import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF;
 public interface FirmValidator {
 	boolean validate();
 
+	boolean validateSPL(SPL value);
+
+	boolean validateSSF(SSF value);
+
 	boolean validateFirmHasSPL(SPL value);
 	boolean validateFirmHasSSF(SSF value);
 }

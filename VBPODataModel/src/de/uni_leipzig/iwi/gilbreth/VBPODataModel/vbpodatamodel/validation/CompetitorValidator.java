@@ -18,6 +18,8 @@ import org.eclipse.emf.common.util.EList;
 public interface CompetitorValidator {
 	boolean validate();
 
+	boolean validatePrices(EList<Price> value);
+
 	boolean validateCompetitorHasPrice(EList<Price> value);
 
 	boolean validateCompetitorHasPrice(Price value);

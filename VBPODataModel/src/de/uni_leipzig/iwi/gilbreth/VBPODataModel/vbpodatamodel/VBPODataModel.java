@@ -26,9 +26,9 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getHasAFirm <em>Has AFirm</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getHasCompetition <em>Has Competition</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getHasCustomers <em>Has Customers</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getFirm <em>Firm</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getCompetition <em>Competition</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getCustomers <em>Customers</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,81 +38,81 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface VBPODataModel extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Has AFirm</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Firm</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Has AFirm</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has AFirm</em>' containment reference.
-	 * @see #setHasAFirm(Firm)
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getVBPODataModel_HasAFirm()
+	 * @return the value of the '<em>Firm</em>' containment reference.
+	 * @see #setFirm(Firm)
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getVBPODataModel_Firm()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Firm getHasAFirm();
+	Firm getFirm();
 
 	/**
-	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getHasAFirm <em>Has AFirm</em>}' containment reference.
+	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getFirm <em>Firm</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Has AFirm</em>' containment reference.
-	 * @see #getHasAFirm()
+	 * @param value the new value of the '<em>Firm</em>' containment reference.
+	 * @see #getFirm()
 	 * @generated
 	 */
-	void setHasAFirm(Firm value);
+	void setFirm(Firm value);
 
 	/**
-	 * Returns the value of the '<em><b>Has Competition</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Competition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Has Competition</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Competition</em>' containment reference.
-	 * @see #setHasCompetition(Competition)
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getVBPODataModel_HasCompetition()
+	 * @return the value of the '<em>Competition</em>' containment reference.
+	 * @see #setCompetition(Competition)
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getVBPODataModel_Competition()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Competition getHasCompetition();
+	Competition getCompetition();
 
 	/**
-	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getHasCompetition <em>Has Competition</em>}' containment reference.
+	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getCompetition <em>Competition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Has Competition</em>' containment reference.
-	 * @see #getHasCompetition()
+	 * @param value the new value of the '<em>Competition</em>' containment reference.
+	 * @see #getCompetition()
 	 * @generated
 	 */
-	void setHasCompetition(Competition value);
+	void setCompetition(Competition value);
 
 	/**
-	 * Returns the value of the '<em><b>Has Customers</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Customers</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Has Customers</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Customers</em>' containment reference.
-	 * @see #setHasCustomers(Customers)
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getVBPODataModel_HasCustomers()
+	 * @return the value of the '<em>Customers</em>' containment reference.
+	 * @see #setCustomers(Customers)
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getVBPODataModel_Customers()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Customers getHasCustomers();
+	Customers getCustomers();
 
 	/**
-	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getHasCustomers <em>Has Customers</em>}' containment reference.
+	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel#getCustomers <em>Customers</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Has Customers</em>' containment reference.
-	 * @see #getHasCustomers()
+	 * @param value the new value of the '<em>Customers</em>' containment reference.
+	 * @see #getCustomers()
 	 * @generated
 	 */
-	void setHasCustomers(Customers value);
+	void setCustomers(Customers value);
 
 } // VBPODataModel

@@ -28,8 +28,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF#getSSFContainsSystem <em>SSF Contains System</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF#getSSFContainsAsset <em>SSF Contains Asset</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF#getContainedSystems <em>Contained Systems</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SSF#getContainedAssets <em>Contained Assets</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface SSF extends EObject {
 	/**
-	 * Returns the value of the '<em><b>SSF Contains System</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Contained Systems</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -47,15 +47,15 @@ public interface SSF extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>SSF Contains System</em>' containment reference list.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSSF_SSFContainsSystem()
+	 * @return the value of the '<em>Contained Systems</em>' containment reference list.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSSF_ContainedSystems()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System> getSSFContainsSystem();
+	EList<de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System> getContainedSystems();
 
 	/**
-	 * Returns the value of the '<em><b>SSF Contains Asset</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Contained Assets</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Asset}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -63,11 +63,11 @@ public interface SSF extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>SSF Contains Asset</em>' containment reference list.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSSF_SSFContainsAsset()
+	 * @return the value of the '<em>Contained Assets</em>' containment reference list.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSSF_ContainedAssets()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Asset> getSSFContainsAsset();
+	EList<Asset> getContainedAssets();
 
 } // SSF

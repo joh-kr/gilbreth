@@ -20,5 +20,9 @@ public interface WTPValidator {
 	boolean validate();
 
 	boolean validateValue(BigDecimal value);
+	boolean validateProduct(Product value);
+
+	boolean validateName(String value);
+
 	boolean validateWTPForProduct(Product value);
 }

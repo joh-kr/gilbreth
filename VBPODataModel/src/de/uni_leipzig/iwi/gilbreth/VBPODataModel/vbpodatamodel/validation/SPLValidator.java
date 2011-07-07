@@ -20,6 +20,10 @@ import org.eclipse.emf.common.util.EList;
 public interface SPLValidator {
 	boolean validate();
 
+	boolean validateContainedProducts(EList<Product> value);
+
+	boolean validateContainedFeatures(EList<Feature> value);
+
 	boolean validateSPLContainsProduct(EList<Product> value);
 	boolean validateSPLComprisesofFeature(EList<Feature> value);
 }

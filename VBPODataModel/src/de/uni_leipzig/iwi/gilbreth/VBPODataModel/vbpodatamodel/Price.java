@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Price#getValue <em>Value</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Price#getPriceForProduct <em>Price For Product</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Price#getProduct <em>Product</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,29 +65,29 @@ public interface Price extends EObject {
 	void setValue(BigDecimal value);
 
 	/**
-	 * Returns the value of the '<em><b>Price For Product</b></em>' reference.
+	 * Returns the value of the '<em><b>Product</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Price For Product</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Price For Product</em>' reference.
-	 * @see #setPriceForProduct(Product)
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getPrice_PriceForProduct()
+	 * @return the value of the '<em>Product</em>' reference.
+	 * @see #setProduct(Product)
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getPrice_Product()
 	 * @model required="true"
 	 * @generated
 	 */
-	Product getPriceForProduct();
+	Product getProduct();
 
 	/**
-	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Price#getPriceForProduct <em>Price For Product</em>}' reference.
+	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Price#getProduct <em>Product</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Price For Product</em>' reference.
-	 * @see #getPriceForProduct()
+	 * @param value the new value of the '<em>Product</em>' reference.
+	 * @see #getProduct()
 	 * @generated
 	 */
-	void setPriceForProduct(Product value);
+	void setProduct(Product value);
 
 } // Price

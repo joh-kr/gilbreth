@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competitor#getCompetitorHasPrice <em>Competitor Has Price</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competitor#getPrices <em>Prices</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,7 +37,7 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Competitor extends IdentifiableEntity {
 	/**
-	 * Returns the value of the '<em><b>Competitor Has Price</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Prices</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Price}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -45,11 +45,11 @@ public interface Competitor extends IdentifiableEntity {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Competitor Has Price</em>' containment reference list.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getCompetitor_CompetitorHasPrice()
+	 * @return the value of the '<em>Prices</em>' containment reference list.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getCompetitor_Prices()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Price> getCompetitorHasPrice();
+	EList<Price> getPrices();
 
 } // Competitor

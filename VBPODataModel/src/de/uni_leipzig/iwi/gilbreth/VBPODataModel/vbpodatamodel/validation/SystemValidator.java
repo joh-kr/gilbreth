@@ -22,5 +22,7 @@ public interface SystemValidator {
 	boolean validate();
 
 	boolean validateImplementationCost(BigDecimal value);
+	boolean validateAssets(EList<Asset> value);
+
 	boolean validateSystemUsesAsset(EList<Asset> value);
 }

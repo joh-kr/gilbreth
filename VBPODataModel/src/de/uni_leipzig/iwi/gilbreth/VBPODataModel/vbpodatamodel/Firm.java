@@ -26,8 +26,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getFirmHasSPL <em>Firm Has SPL</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getFirmHasSSF <em>Firm Has SSF</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getSPL <em>SPL</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getSSF <em>SSF</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,55 +37,55 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Firm extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Firm Has SPL</b></em>' containment reference.
+	 * Returns the value of the '<em><b>SPL</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Firm Has SPL</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Firm Has SPL</em>' containment reference.
-	 * @see #setFirmHasSPL(SPL)
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getFirm_FirmHasSPL()
+	 * @return the value of the '<em>SPL</em>' containment reference.
+	 * @see #setSPL(SPL)
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getFirm_SPL()
 	 * @model containment="true"
 	 * @generated
 	 */
-	SPL getFirmHasSPL();
+	SPL getSPL();
 
 	/**
-	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getFirmHasSPL <em>Firm Has SPL</em>}' containment reference.
+	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getSPL <em>SPL</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Firm Has SPL</em>' containment reference.
-	 * @see #getFirmHasSPL()
+	 * @param value the new value of the '<em>SPL</em>' containment reference.
+	 * @see #getSPL()
 	 * @generated
 	 */
-	void setFirmHasSPL(SPL value);
+	void setSPL(SPL value);
 
 	/**
-	 * Returns the value of the '<em><b>Firm Has SSF</b></em>' containment reference.
+	 * Returns the value of the '<em><b>SSF</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Firm Has SSF</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Firm Has SSF</em>' containment reference.
-	 * @see #setFirmHasSSF(SSF)
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getFirm_FirmHasSSF()
+	 * @return the value of the '<em>SSF</em>' containment reference.
+	 * @see #setSSF(SSF)
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getFirm_SSF()
 	 * @model containment="true"
 	 * @generated
 	 */
-	SSF getFirmHasSSF();
+	SSF getSSF();
 
 	/**
-	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getFirmHasSSF <em>Firm Has SSF</em>}' containment reference.
+	 * Sets the value of the '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Firm#getSSF <em>SSF</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Firm Has SSF</em>' containment reference.
-	 * @see #getFirmHasSSF()
+	 * @param value the new value of the '<em>SSF</em>' containment reference.
+	 * @see #getSSF()
 	 * @generated
 	 */
-	void setFirmHasSSF(SSF value);
+	void setSSF(SSF value);
 
 } // Firm

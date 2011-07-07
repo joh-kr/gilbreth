@@ -9,62 +9,63 @@
   <genPackages prefix="Vbpodatamodel" basePackage="de.uni_leipzig.iwi.gilbreth.VBPODataModel"
       disposableProviderFactory="true" fileExtensions="vbpo" ecorePackage="VBPODataModel.ecore#/">
     <genClasses ecoreClass="VBPODataModel.ecore#//Product">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Product/productComprisesSystem"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Product/productHasFeature"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Product/comprisingSystem"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Product/features"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//Product/unitCost"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//Feature">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Feature/featureRealizedByAsset"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Feature/realizingAssets"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//Asset">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//Asset/reuseCost"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//Asset/setupCost"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//Firm">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Firm/firmHasSPL"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Firm/firmHasSSF"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Firm/sPL"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Firm/sSF"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//Competitor">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Competitor/competitorHasPrice"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Competitor/prices"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//CustomerSegment">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//CustomerSegment/segmentHasWTP"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//CustomerSegment/wTPs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//CustomerSegment/size"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//Price">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//Price/value"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Price/priceForProduct"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Price/product"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//SPL">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//SPL/sPLContainsProduct"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//SPL/sPLComprisesofFeature"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//SPL/containedProducts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//SPL/containedFeatures"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//VBPODataModel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//VBPODataModel/hasAFirm"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//VBPODataModel/hasCompetition"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//VBPODataModel/hasCustomers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//VBPODataModel/firm"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//VBPODataModel/competition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//VBPODataModel/customers"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//SSF">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//SSF/sSFContainsSystem"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//SSF/sSFContainsAsset"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//SSF/containedSystems"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//SSF/containedAssets"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//System">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//System/implementationCost"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//System/systemUsesAsset"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//System/assets"/>
     </genClasses>
     <genClasses image="false" ecoreClass="VBPODataModel.ecore#//IdentifiableEntity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//IdentifiableEntity/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//IdentifiableEntity/description"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//Competition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Competition/consistsOf"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Competition/competitors"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//Customers">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Customers/customersConsistsOfCustomerSegments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Customers/customerSegments"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//WTP">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//WTP/value"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//WTP/wTPForProduct"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//WTP/product"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//WTP/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

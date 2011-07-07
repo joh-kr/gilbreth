@@ -21,6 +21,10 @@ import org.eclipse.emf.common.util.EList;
 public interface ProductValidator {
 	boolean validate();
 
+	boolean validateComprisingSystem(de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System value);
+
+	boolean validateFeatures(EList<Feature> value);
+
 	boolean validateProductComprisesSystem(de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System value);
 	boolean validateProductHasFeature(EList<Feature> value);
 	boolean validateUnitCost(BigDecimal value);

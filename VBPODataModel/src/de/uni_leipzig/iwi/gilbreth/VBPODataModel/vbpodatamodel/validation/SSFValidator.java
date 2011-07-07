@@ -19,6 +19,10 @@ import org.eclipse.emf.common.util.EList;
 public interface SSFValidator {
 	boolean validate();
 
+	boolean validateContainedSystems(EList<de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System> value);
+
+	boolean validateContainedAssets(EList<Asset> value);
+
 	boolean validateSSFContainsSystem(EList<de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System> value);
 	boolean validateSSFContainsAsset(EList<Asset> value);
 }

@@ -29,7 +29,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System#getImplementationCost <em>Implementation Cost</em>}</li>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System#getSystemUsesAsset <em>System Uses Asset</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System#getAssets <em>Assets</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,7 +65,7 @@ public interface System extends IdentifiableEntity {
 	void setImplementationCost(BigDecimal value);
 
 	/**
-	 * Returns the value of the '<em><b>System Uses Asset</b></em>' reference list.
+	 * Returns the value of the '<em><b>Assets</b></em>' reference list.
 	 * The list contents are of type {@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Asset}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -73,11 +73,11 @@ public interface System extends IdentifiableEntity {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>System Uses Asset</em>' reference list.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSystem_SystemUsesAsset()
+	 * @return the value of the '<em>Assets</em>' reference list.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage#getSystem_Assets()
 	 * @model
 	 * @generated
 	 */
-	EList<Asset> getSystemUsesAsset();
+	EList<Asset> getAssets();
 
 } // System
