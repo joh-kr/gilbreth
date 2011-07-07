@@ -1,8 +1,18 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
+ * Copyright 2011 Johannes MŸller, University of Leipzig
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * 
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.presentation;
 
@@ -18,7 +28,6 @@ import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
@@ -51,9 +60,11 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.ide.ResourceUtil;
 
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
+import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
+import de.uni_leipzig.iwi.gilbreth.result.beans.JasperPrintCreator;
+import de.uni_leipzig.iwi.gilbreth.result.beans.ResultModelBeanBuilder;
 
 /**
  * This is the action bar contributor for the Vbpodatamodel model editor.
@@ -115,10 +126,26 @@ public class VbpodatamodelActionBarContributor
 						protected IStatus run(IProgressMonitor monitor) {
 					        monitor.beginTask("The Portfolio is optimized according to the given information ...", 100); 
 					        EObject root = getRootElement(getActiveEditingPartResource());
-					        new OptimizationInitializer().optimize((VBPODataModel)root);
+					        OptimizationInitializer optimizer = new OptimizationInitializer();
+					        optimizer.optimize((VBPODataModel)root);
+					        
+					        Solution solution = null;
+							try {
+								solution = optimizer.getSolution();
+							} catch (Exception e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 
-							VBPODataModelEditorPlugin.INSTANCE.log("That is the root element: " + getRootElement(getActiveEditingPartResource()));
-					     
+					        ResultModelBeanBuilder builder = new ResultModelBeanBuilder((VBPODataModel)root, solution, optimizer.getLookup());
+					        
+					        
+					        VbpodatamodelEditor e = (VbpodatamodelEditor) activeEditorPart;
+					        e.getReportContentProvider().setContent(JasperPrintCreator.createPrint(builder.buildResultBean()));
+					        
+							VBPODataModelEditorPlugin.INSTANCE.log("Optimization is finished succesfully!");
+							
+							e.setResultPageActive();
 
 					        monitor.done(); 
 					        return Status.OK_STATUS; 

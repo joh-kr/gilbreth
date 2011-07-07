@@ -12,7 +12,9 @@ Bundle-ClassPath: .,
  lib/commons-javaflow-20060411.jar,
  lib/commons-logging-1.0.4.jar,
  lib/groovy-all-1.7.5.jar,
- lib/iText-2.1.7.jar
+ lib/iText-2.1.7.jar,
+ lib/jfreechart-1.0.12.jar,
+ lib/jcommon-1.0.15.jar
 Bundle-Activator: de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.presentation.VBPODataModelEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin

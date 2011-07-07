@@ -1,21 +1,24 @@
+/**
+ * Copyright 2011 Johannes MŸller, University of Leipzig
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * 
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.presentation;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Iterator;
-
-import org.eclipse.emf.ecore.EObject;
-import org.opt4j.core.Archive;
-import org.opt4j.core.Individual;
-import org.opt4j.core.problem.ProblemModule;
-import org.opt4j.optimizer.sa.CoolingScheduleModule;
-import org.opt4j.optimizer.sa.CoolingSchedulesModule;
-import org.opt4j.optimizer.sa.CoolingSchedulesModule.Type;
-import org.opt4j.start.Opt4JTask;
-import org.opt4j.viewer.ViewerModule;
-
-import com.google.inject.Module;
 
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Asset;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competitor;
@@ -25,17 +28,15 @@ import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.HeadlessStarter;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.SPLModule;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.SPLProblemDescription;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.SPLSimulatedAnnealing;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.SPLSimulatedAnnealingModule;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
 
 /**
  * Initializes a SPLProblemDescription for a VBPODataModel opended in the VBPODataModelEditor
  * and delegates the Opt4J-configuration to the HeadlessStarter.
  * 
- * @author jo
+ * @author Johannes MŸller
+ * @version 0.2
  *
  */
 public class OptimizationInitializer {
@@ -49,9 +50,12 @@ public class OptimizationInitializer {
 	private int numberOfCustomerSegments;
 	private int numberOfAssets;
 	private int numberOfCompetitors;
-
-	private Hashtable<Product, Integer> productLookup = new Hashtable<Product, Integer>();
-	private Hashtable<Asset, Integer> assetLookup = new Hashtable<Asset, Integer>();
+	
+	/**
+	 * the lookup holds hashtables which relate e.g. a product to a specific 
+	 * position in an array of the solution.
+	 */
+	private Lookup lookup;
 
 	private SPLProblemDescription description;
 	
@@ -60,12 +64,27 @@ public class OptimizationInitializer {
 		
 	}
 	
+	/**
+	 * starts the optimization.
+	 * 
+	 * @param root the root of the domain model VBPODataModel
+	 */
 	public void optimize(VBPODataModel root){
 		init(root);
 		createProblemDescription();
 		
 		HeadlessStarter starter = new HeadlessStarter();
 		solution = starter.startOptimization(description);
+	}
+	
+	/**
+	 * 
+	 * @return the solution after the optimization run.
+	 * @throws Exception if the solution is not initialized. I.e. the optimization is not finished yet
+	 */
+	public Solution getSolution() throws Exception{
+		if(solution == null) throw new Exception("Optimization is not finished yet, solution is null.");
+		return solution;
 	}
 	
 	
@@ -82,6 +101,11 @@ public class OptimizationInitializer {
 		numberOfCompetitors = root.getHasCompetition().getConsistsOf().size();
 		numberOfCustomerSegments = root.getHasCustomers().eContents().size();
 
+		
+		Hashtable<Product, Integer> productLookup = new Hashtable<Product, Integer>();
+		Hashtable<Asset, Integer>   assetLookup   = new Hashtable<Asset, Integer>();
+		Hashtable<CustomerSegment, Integer>   customerLookup   = new Hashtable<CustomerSegment, Integer>();
+		
 		for (int i = 0; i < numberOfProducts; i++) {
 			productLookup.put(root.getHasAFirm().getFirmHasSPL()
 					.getSPLContainsProduct().get(i), i);
@@ -91,7 +115,16 @@ public class OptimizationInitializer {
 			assetLookup.put(root.getHasAFirm().getFirmHasSSF()
 					.getSSFContainsAsset().get(i), i);
 		}
+		
+		for (int i = 0; i < numberOfCustomerSegments; i++) {
+			customerLookup.put(root.getHasCustomers().getCustomersConsistsOfCustomerSegments().get(i), i);
+		}
 
+		lookup = new Lookup();
+		lookup.setAssetLookup(assetLookup);
+		lookup.setProductLookup(productLookup);
+		lookup.setSegmentLookup(customerLookup);
+		
 		description = new SPLProblemDescription(createCustomerDescription(),
 				createFirmDescription(), createCompetitionDescription(), 100);
 	}
@@ -115,10 +148,9 @@ public class OptimizationInitializer {
 					.getSegmentHasWTP().iterator(); iter.hasNext();) {
 				WTP wtpObject = (WTP) iter.next();
 				
-				VBPODataModelEditorPlugin.INSTANCE.log("WTP: " + wtpObject.getValue());
-				VBPODataModelEditorPlugin.INSTANCE.log("prodcutLookup null?: " + productLookup == null);
+
 				
-				int j = productLookup.get(wtpObject.getWTPForProduct());
+				int j = lookup.getProductLookup().get(wtpObject.getWTPForProduct());
 				wtp[i][j] = wtpObject.getValue().doubleValue();
 			}
 
@@ -166,7 +198,7 @@ public class OptimizationInitializer {
 						.getProductComprisesSystem().getSystemUsesAsset()
 						.iterator(); iter.hasNext();) {
 					Asset asset = (Asset) iter.next();
-					a[i][j] = j == assetLookup.get(asset);
+					a[i][j] = j == lookup.getAssetLookup().get(asset);
 				}
 			}
 		}
@@ -221,6 +253,10 @@ public class OptimizationInitializer {
 		}
 
 		return customerSurplus;
+	}
+
+	public Lookup getLookup() {
+		return lookup;
 	}
 	
 

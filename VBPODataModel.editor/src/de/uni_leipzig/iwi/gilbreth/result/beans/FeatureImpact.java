@@ -18,52 +18,34 @@
 package de.uni_leipzig.iwi.gilbreth.result.beans;
 
 /**
- * Products with their features an possible prices.
+ * The impact of features to profit.
  * 
  * @author Johannes MŸller
  * @version 0.1
- *
  */
-public class ProductFeatures {
-	
-	private String product;
-	
-	private String[] features;
-	
-	private double price;
-
-
-	public ProductFeatures(String product, String[] features, double price) {
+public class FeatureImpact {
+	public FeatureImpact(String featureName, double impact) {
 		super();
-		this.product = product;
-		this.features = features;
-		this.price = price;
+		this.featureName = featureName;
+		this.impact = impact;
 	}
-
-	public String getProduct() {
-		return product;
+	
+	public FeatureImpact(){}
+	
+	private String featureName;
+	private double impact;
+	public String getFeatureName() {
+		return featureName;
 	}
-
-	public void setProduct(String product) {
-		this.product = product;
+	public void setFeatureName(String featureName) {
+		this.featureName = featureName;
 	}
-
-	public String[] getFeatures() {
-		return features;
+	public double getImpact() {
+		return impact;
 	}
-
-	public void setFeatures(String[] features) {
-		this.features = features;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
+	public void setImpact(double impact) {
+		this.impact = impact;
 	}
 
 }
 /*EOF*/
-
