@@ -28,6 +28,7 @@ import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.HeadlessStarter;
+import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.IterationChangedListener;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.SPLProblemDescription;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
 
@@ -51,6 +52,7 @@ public class OptimizationInitializer {
 	private int numberOfAssets;
 	private int numberOfCompetitors;
 	
+	private HeadlessStarter starter;
 	/**
 	 * the lookup holds hashtables which relate e.g. a product to a specific 
 	 * position in an array of the solution.
@@ -61,7 +63,7 @@ public class OptimizationInitializer {
 	
 	
 	public OptimizationInitializer(){
-		
+		this.starter = new HeadlessStarter();
 	}
 	
 	/**
@@ -73,7 +75,7 @@ public class OptimizationInitializer {
 		init(root);
 		createProblemDescription();
 		
-		HeadlessStarter starter = new HeadlessStarter();
+		
 		solution = starter.startOptimization(description);
 	}
 	
@@ -259,6 +261,16 @@ public class OptimizationInitializer {
 		return lookup;
 	}
 	
+	public int getFullWorkUnits(){
+		return starter.getFullWorkUnits();
+	}
+	
+	public void addIterationChangedListener(IterationChangedListener listener){
+		starter.addIterationChangedListener(listener);
+	}
+	public void removeIterationChangedListener(IterationChangedListener listener){
+		starter.removeIterationChangedListener(listener);
+	}
 
 	// set EMF resource to read the model
 

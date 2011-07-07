@@ -62,6 +62,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
+import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.IterationChangedListener;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
 import de.uni_leipzig.iwi.gilbreth.result.beans.JasperPrintCreator;
 import de.uni_leipzig.iwi.gilbreth.result.beans.ResultModelBeanBuilder;
@@ -123,18 +124,31 @@ public class VbpodatamodelActionBarContributor
 					Job job = new Job("Optimize Portfolio") { 
 
 						@Override
-						protected IStatus run(IProgressMonitor monitor) {
-					        monitor.beginTask("The Portfolio is optimized according to the given information ...", 100); 
-					        EObject root = getRootElement(getActiveEditingPartResource());
+						protected IStatus run(final IProgressMonitor monitor) {
+					        // Initialize and start optimization
 					        OptimizationInitializer optimizer = new OptimizationInitializer();
+					        monitor.beginTask("The Portfolio is optimized according to the given information ...", optimizer.getFullWorkUnits()); 
+					 
+					        // get the document of the master editor
+					        EObject root = getRootElement(getActiveEditingPartResource());
+					        
+					        optimizer.addIterationChangedListener(new IterationChangedListener(){
+
+								@Override
+								public void iterationChanged(int iteration) {
+									monitor.worked(iteration);
+									VBPODataModelEditorPlugin.INSTANCE.log(iteration);
+								}
+					        	
+					        });
+					        
 					        optimizer.optimize((VBPODataModel)root);
 					        
 					        Solution solution = null;
 							try {
 								solution = optimizer.getSolution();
 							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
+								VBPODataModelEditorPlugin.INSTANCE.log(e1.getLocalizedMessage());
 							}
 
 					        ResultModelBeanBuilder builder = new ResultModelBeanBuilder((VBPODataModel)root, solution, optimizer.getLookup());
