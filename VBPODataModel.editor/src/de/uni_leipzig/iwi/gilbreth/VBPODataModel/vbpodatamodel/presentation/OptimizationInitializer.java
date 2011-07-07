@@ -96,12 +96,12 @@ public class OptimizationInitializer {
 
 	private void createProblemDescription() {
 
-		numberOfProducts = root.getHasAFirm().getFirmHasSPL()
-				.getSPLContainsProduct().size();
-		numberOfAssets = root.getHasAFirm().getFirmHasSSF()
-				.getSSFContainsAsset().size();
-		numberOfCompetitors = root.getHasCompetition().getConsistsOf().size();
-		numberOfCustomerSegments = root.getHasCustomers().eContents().size();
+		numberOfProducts = root.getFirm().getSPL()
+				.getContainedProducts().size();
+		numberOfAssets = root.getFirm().getSSF()
+				.getContainedAssets().size();
+		numberOfCompetitors = root.getCompetition().getCompetitors().size();
+		numberOfCustomerSegments = root.getCustomers().eContents().size();
 
 		
 		Hashtable<Product, Integer> productLookup = new Hashtable<Product, Integer>();
@@ -109,17 +109,17 @@ public class OptimizationInitializer {
 		Hashtable<CustomerSegment, Integer>   customerLookup   = new Hashtable<CustomerSegment, Integer>();
 		
 		for (int i = 0; i < numberOfProducts; i++) {
-			productLookup.put(root.getHasAFirm().getFirmHasSPL()
-					.getSPLContainsProduct().get(i), i);
+			productLookup.put(root.getFirm().getSPL()
+					.getContainedProducts().get(i), i);
 		}
 
 		for (int i = 0; i < numberOfAssets; i++) {
-			assetLookup.put(root.getHasAFirm().getFirmHasSSF()
-					.getSSFContainsAsset().get(i), i);
+			assetLookup.put(root.getFirm().getSSF()
+					.getContainedAssets().get(i), i);
 		}
 		
 		for (int i = 0; i < numberOfCustomerSegments; i++) {
-			customerLookup.put(root.getHasCustomers().getCustomersConsistsOfCustomerSegments().get(i), i);
+			customerLookup.put(root.getCustomers().getCustomerSegments().get(i), i);
 		}
 
 		lookup = new Lookup();
@@ -132,7 +132,7 @@ public class OptimizationInitializer {
 	}
 
 	private SPLProblemDescription.Customer createCustomerDescription() {
-		int numberOfSegments = root.getHasCustomers().eContents().size();
+		int numberOfSegments = root.getCustomers().eContents().size();
 		int[] q = new int[numberOfSegments]; // { 10, 30, 50 };
 		double[][] wtp = new double[numberOfSegments][numberOfProducts];
 		/*
@@ -141,18 +141,18 @@ public class OptimizationInitializer {
 		 */
 
 		for (int i = 0; i < numberOfCustomerSegments; i++) {
-			q[i] = root.getHasCustomers()
-					.getCustomersConsistsOfCustomerSegments().get(i).getSize();
+			q[i] = root.getCustomers()
+					.getCustomerSegments().get(i).getSize();
 		}
 		for (int i = 0; i < numberOfCustomerSegments; i++) {
-			for (Iterator iter = root.getHasCustomers()
-					.getCustomersConsistsOfCustomerSegments().get(i)
-					.getSegmentHasWTP().iterator(); iter.hasNext();) {
+			for (Iterator iter = root.getCustomers()
+					.getCustomerSegments().get(i)
+					.getWTPs().iterator(); iter.hasNext();) {
 				WTP wtpObject = (WTP) iter.next();
 				
 
 				
-				int j = lookup.getProductLookup().get(wtpObject.getWTPForProduct());
+				int j = lookup.getProductLookup().get(wtpObject.getProduct());
 				wtp[i][j] = wtpObject.getValue().doubleValue();
 			}
 
@@ -181,23 +181,23 @@ public class OptimizationInitializer {
 													// 7.0 };
 
 		for (int i = 0; i < numberOfProducts; i++) {
-			cf[i] = root.getHasAFirm().getFirmHasSPL().getSPLContainsProduct()
-					.get(i).getProductComprisesSystem().getImplementationCost()
+			cf[i] = root.getFirm().getSPL().getContainedProducts()
+					.get(i).getComprisingSystem().getImplementationCost()
 					.doubleValue();
-			cv[i] = root.getHasAFirm().getFirmHasSPL().getSPLContainsProduct()
+			cv[i] = root.getFirm().getSPL().getContainedProducts()
 					.get(i).getUnitCost().doubleValue();
 		}
 
 		for (int i = 0; i < numberOfAssets; i++) {
-			ca[i] = root.getHasAFirm().getFirmHasSSF().getSSFContainsAsset()
+			ca[i] = root.getFirm().getSSF().getContainedAssets()
 					.get(i).getSetupCost().doubleValue();
 		}
 
 		for (int i = 0; i < numberOfProducts; i++) {
 			for (int j = 0; j < numberOfAssets; j++) {
-				for (Iterator iter = root.getHasAFirm().getFirmHasSPL()
-						.getSPLContainsProduct().get(i)
-						.getProductComprisesSystem().getSystemUsesAsset()
+				for (Iterator iter = root.getFirm().getSPL()
+						.getContainedProducts().get(i)
+						.getComprisingSystem().getAssets()
 						.iterator(); iter.hasNext();) {
 					Asset asset = (Asset) iter.next();
 					a[i][j] = j == lookup.getAssetLookup().get(asset);
@@ -216,8 +216,8 @@ public class OptimizationInitializer {
 		// before.
 
 		for (int i = 0; i < numberOfCompetitors; i++) {
-			w[i] = bestCompetitiveOfferingFor(root.getHasCustomers()
-					.getCustomersConsistsOfCustomerSegments().get(i));
+			w[i] = bestCompetitiveOfferingFor(root.getCustomers()
+					.getCustomerSegments().get(i));
 		}
 
 		return new SPLProblemDescription.Competition(w);
@@ -234,17 +234,17 @@ public class OptimizationInitializer {
 	private double bestCompetitiveOfferingFor(CustomerSegment segment) {
 		double customerSurplus = -Double.MAX_VALUE;
 		double tempSurplus;
-		for (Iterator iterWTP = segment.getSegmentHasWTP().iterator(); iterWTP
+		for (Iterator iterWTP = segment.getWTPs().iterator(); iterWTP
 				.hasNext();) {
-			for (Iterator iterCompetitor = root.getHasCompetition()
-					.getConsistsOf().iterator(); iterCompetitor.hasNext();) {
+			for (Iterator iterCompetitor = root.getCompetition()
+					.getCompetitors().iterator(); iterCompetitor.hasNext();) {
 				Competitor competitor = (Competitor) iterCompetitor.next();
-				for (Iterator iterPrice = competitor.getCompetitorHasPrice().iterator(); iterPrice
+				for (Iterator iterPrice = competitor.getPrices().iterator(); iterPrice
 						.hasNext();) {
 					Price competitorPrice = (Price) iterPrice.next();
 					WTP wtp = (WTP) iterWTP.next();
-					if (competitorPrice.getPriceForProduct() == wtp
-							.getWTPForProduct()) {
+					if (competitorPrice.getProduct() == wtp
+							.getProduct()) {
 						tempSurplus = wtp.getValue().doubleValue()
 								- competitorPrice.getValue().doubleValue();
 						customerSurplus = customerSurplus < tempSurplus ? tempSurplus

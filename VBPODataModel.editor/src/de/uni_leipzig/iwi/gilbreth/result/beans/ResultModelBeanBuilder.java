@@ -90,7 +90,7 @@ public class ResultModelBeanBuilder {
 	 * @return number of assets.
 	 */
 	private int numberOfAssets(){
-		return root.getHasAFirm().getFirmHasSSF().getSSFContainsAsset().size();
+		return root.getFirm().getSSF().getContainedAssets().size();
 	}
 	
 	/**
@@ -99,7 +99,7 @@ public class ResultModelBeanBuilder {
 	 * @return number of features.
 	 */
 	private int numberOfFeatures(){
-		return root.getHasAFirm().getFirmHasSPL().getSPLComprisesofFeature().size();
+		return root.getFirm().getSPL().getContainedFeatures().size();
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class ResultModelBeanBuilder {
 	 * @return number of products.
 	 */
 	private int numberOfProducts(){
-		return root.getHasAFirm().getFirmHasSPL().getSPLContainsProduct().size();
+		return root.getFirm().getSPL().getContainedProducts().size();
 	}
 	
 	/**
@@ -117,7 +117,7 @@ public class ResultModelBeanBuilder {
 	 * @return number of systems.
 	 */
 	private int numberOfSystems(){
-		return root.getHasAFirm().getFirmHasSSF().getSSFContainsSystem().size();
+		return root.getFirm().getSSF().getContainedSystems().size();
 	}
 	
 	/**
@@ -126,7 +126,7 @@ public class ResultModelBeanBuilder {
 	 * @return number of customer segments.
 	 */
 	private int numberOfCustomerSegments(){
-		return root.getHasCustomers().getCustomersConsistsOfCustomerSegments().size();
+		return root.getCustomers().getCustomerSegments().size();
 	}	
 	
 	/**
@@ -150,13 +150,13 @@ public class ResultModelBeanBuilder {
 		double price = 0.0d;
 		ProductFeatures productFeatures = null;
 		
-		for(Iterator iter = root.getHasAFirm().getFirmHasSPL().
-				getSPLContainsProduct().iterator();iter.hasNext();){
+		for(Iterator iter = root.getFirm().getSPL().
+				getContainedProducts().iterator();iter.hasNext();){
 			
 			product = (Product)iter.next();
-			features = new String[product.getProductHasFeature().size()];
-			for(int i = 0; i < product.getProductHasFeature().size(); i++){
-				features[i] = product.getProductHasFeature().get(i).getName();
+			features = new String[product.getFeatures().size()];
+			for(int i = 0; i < product.getFeatures().size(); i++){
+				features[i] = product.getFeatures().get(i).getName();
 			}
 			
 			price = solution.getP()[lookup.getProductLookup().get(product)];
@@ -182,12 +182,12 @@ public class ResultModelBeanBuilder {
 		Product product = null;
 		CustomerSegment segment = null;
 		double price = 0.0d;
-		for(Iterator iter = root.getHasCustomers().getCustomersConsistsOfCustomerSegments().iterator(); iter.hasNext();){
+		for(Iterator iter = root.getCustomers().getCustomerSegments().iterator(); iter.hasNext();){
 			
 			segment = (CustomerSegment) iter.next();	
-			for(int i = 0; i < root.getHasAFirm().getFirmHasSPL().getSPLContainsProduct().size(); i++){
+			for(int i = 0; i < root.getFirm().getSPL().getContainedProducts().size(); i++){
 				if(solution.getX()[lookup.getSegmentLookup().get(segment)][i]){
-					product = root.getHasAFirm().getFirmHasSPL().getSPLContainsProduct().get(i);
+					product = root.getFirm().getSPL().getContainedProducts().get(i);
 					price = solution.getP()[lookup.getProductLookup().get(product)];
 					map.add(new ProductSegmentAssignment(product.getName(), segment.getName(), price));
 					break;
@@ -212,12 +212,12 @@ public class ResultModelBeanBuilder {
 		AssetImpact assetImpact = null;
 		double impact = 0.0d;
 		
-		for(Iterator iter = root.getHasAFirm().getFirmHasSPL().getSPLComprisesofFeature().iterator(); iter.hasNext();){
+		for(Iterator iter = root.getFirm().getSPL().getContainedFeatures().iterator(); iter.hasNext();){
 			feature = (Feature) iter.next();
 			impact = 0.0d;
 			for(Iterator assetIter = assetImpacts.iterator(); assetIter.hasNext();){
 				assetImpact = (AssetImpact) assetIter.next();
-				for(Iterator featureAssetIter = feature.getFeatureRealizedByAsset().iterator(); featureAssetIter.hasNext();){
+				for(Iterator featureAssetIter = feature.getRealizingAssets().iterator(); featureAssetIter.hasNext();){
 					featureAsset = (Asset) featureAssetIter.next();
 					if(featureAsset.getName().equals(assetImpact.getAssetName())){
 						impact += assetImpact.getImpact();
@@ -245,7 +245,7 @@ public class ResultModelBeanBuilder {
 		Asset asset = null;
 		for(Iterator iter = assetContainers.iterator();iter.hasNext();){
 			assetContainer = (Solution.AssetContainer) iter.next();
-			asset = root.getHasAFirm().getFirmHasSSF().getSSFContainsAsset().get(assetContainer.asset);
+			asset = root.getFirm().getSSF().getContainedAssets().get(assetContainer.asset);
 			
 			map.add(new AssetImpact(asset.getName(), assetContainer.delta_profit));
 		}
