@@ -56,6 +56,12 @@ public class Solution implements Phenotype {
 		}
 	}
 	// ---- The values that are determined by the genotype
+	/**
+	 * i: segments
+	 * j: products
+	 * x[i][j]
+	 * 
+	 */
 	private boolean[][] x;
 
 	private double[] p;
