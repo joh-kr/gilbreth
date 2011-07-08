@@ -47,7 +47,10 @@ public class HeadlessStarter {
 	private SPLProblemDescription description;
 	
 	private int maxIterations = 10000;
-	private int lastIteration = 0;
+	private double delta = 0.1d;
+	private double alpha = 0.995d;
+	private int initialTemp = 4000;
+	private int finalTemp = 1;
 	private int workUnits = 100;
 	private int eventInterval = maxIterations/workUnits;
 	
@@ -64,13 +67,13 @@ public class HeadlessStarter {
 		
 		SPLSimulatedAnnealingModule annealingModule = new SPLSimulatedAnnealingModule();
 		annealingModule.setChangeIterations(1000);
-		annealingModule.setDelta(0.7);
+		annealingModule.setDelta(delta);
 		annealingModule.setIterations(maxIterations);
 		
 		CoolingSchedulesModule coolingModules = new CoolingSchedulesModule();
 		coolingModules.setAlpha(0.995d);
-		coolingModules.setInitialTemperature(4000.00d);
-		coolingModules.setFinalTemperature(1.00d);
+		coolingModules.setInitialTemperature(initialTemp);
+		coolingModules.setFinalTemperature(finalTemp);
 		coolingModules.setType(Type.HYPERBOLIC);
 
 		SPLModule sPLModule = new SPLModule();
@@ -94,6 +97,15 @@ public class HeadlessStarter {
 
 	}
 
+	public void configure(int maxIterations, double alpha, double delta, int initialTemp, int finalTemp){
+		this.maxIterations = maxIterations;
+		this.alpha = alpha;
+		this.delta = delta;
+		this.initialTemp = initialTemp;
+		this.finalTemp = finalTemp;
+		
+	}
+	
 	private Solution runOptimization() {
 		Solution solution = null;
 		try {

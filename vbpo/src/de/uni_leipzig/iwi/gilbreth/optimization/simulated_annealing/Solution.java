@@ -54,6 +54,11 @@ public class Solution implements Phenotype {
 		public int compareTo(AssetContainer o) {
 			return Double.compare(this.delta_profit, o.delta_profit);
 		}
+		
+		@Override
+		public String toString(){
+			return "Asset: " + asset + " profit cont: " + delta_profit;
+		}
 	}
 	// ---- The values that are determined by the genotype
 	/**
@@ -129,8 +134,9 @@ public class Solution implements Phenotype {
 	}
 
 	/**
-	 * Calculates a List of contributes of single assets to the overall profit
-	 * of a SPL.
+	 * Calculates a List of contributions of single assets to the overall profit
+	 * of a SPL. The contribution is calculated as a percentage of the overall profit.
+	 * It follows a ceteris paribus assumption.
 	 * 
 	 * @return a list of integer values naming the assets ordered by their
 	 *         importance to the profit
@@ -139,15 +145,21 @@ public class Solution implements Phenotype {
 		ArrayList<AssetContainer> assets = new ArrayList<AssetContainer>();
 		int nrOfAssets = problemDescription.getFirm().NumberOfAssets();
 
+		double profit = profit();
+		
 		boolean[][] x_temp = null;
 		double profit_temp = 0.0d;
+		double contribution = 0.0d;
 
 		for (int k = 0; k < nrOfAssets; k++) {
 			x_temp = generateTempX(k);
 			profit_temp = profit(x_temp);
+			contribution = ((profit - profit_temp)/profit) * 100;
+			System.out.println("Asset "+k + "temp_profit " + profit_temp + " contr " + contribution );
 			// As smaller profit_temp as more important k is for the profit
 			// without k is so and so much lower profit generated
-			assets.add(new AssetContainer(profit_temp, k));
+			assets.add(new AssetContainer(contribution, k));
+			System.out.println(assets.get(assets.size() - 1).toString());
 		}
 
 		Collections.sort(assets);
@@ -264,7 +276,6 @@ public class Solution implements Phenotype {
 					break;
 				}
 			}
-
 		}
 		return y;
 	}
@@ -274,8 +285,7 @@ public class Solution implements Phenotype {
 
 		for (int i = 0; i < problemDescription.getCustomer().numberOfSegments(); i++) {
 			for (int j = 0; j < problemDescription.getFirm().NumberOfProducts(); j++) {
-				x_temp[i][j] = x_temp[i][j]
-						& !problemDescription.getFirm().getA(j, k);
+				x_temp[i][j] = x[i][j] && !problemDescription.getFirm().getA(j, k);
 				// if seg i has j assigned and j needs k, than set temporary to
 				// false
 			}
