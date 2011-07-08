@@ -15,10 +15,18 @@
  * limitations under the License.
  */
 
+/*
+ * Log
+ * Version 0.2
+ * asset product assignment in method createFirmDescription was broken -> fixed
+ */
+
 package de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.presentation;
 
 import java.util.Hashtable;
 import java.util.Iterator;
+
+import org.eclipse.jface.preference.IPreferenceStore;
 
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Asset;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competitor;
@@ -27,18 +35,20 @@ import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Price;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP;
+import de.uni_leipzig.iwi.gilbreth.editor.preferences.PreferenceConstants;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.HeadlessStarter;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.IterationChangedListener;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.SPLProblemDescription;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
 
 /**
- * Initializes a SPLProblemDescription for a VBPODataModel opended in the VBPODataModelEditor
- * and delegates the Opt4J-configuration to the HeadlessStarter.
+ * Initializes a SPLProblemDescription for a VBPODataModel opended in the
+ * VBPODataModelEditor and delegates the Opt4J-configuration to the
+ * HeadlessStarter.
  * 
  * @author Johannes MŸller
  * @version 0.2
- *
+ * 
  */
 public class OptimizationInitializer {
 
@@ -51,82 +61,94 @@ public class OptimizationInitializer {
 	private int numberOfCustomerSegments;
 	private int numberOfAssets;
 	private int numberOfCompetitors;
-	
+
 	private HeadlessStarter starter;
 	/**
-	 * the lookup holds hashtables which relate e.g. a product to a specific 
+	 * the lookup holds hashtables which relate e.g. a product to a specific
 	 * position in an array of the solution.
 	 */
 	private Lookup lookup;
 
 	private SPLProblemDescription description;
-	
-	
-	public OptimizationInitializer(){
+
+	public OptimizationInitializer() {
 		this.starter = new HeadlessStarter();
+
+		// Configure the starter with the values of the preference page.
+		IPreferenceStore store = VBPODataModelEditorPlugin.getPlugin()
+				.getPreferenceStore();
+		this.starter.configure(
+				store.getInt(PreferenceConstants.P_MAX_ITERATIONS),
+				store.getDouble(PreferenceConstants.P_ALPHA),
+				store.getDouble(PreferenceConstants.P_DELTA),
+				store.getInt(PreferenceConstants.P_INITIAL_TEMPERATURE),
+				store.getInt(PreferenceConstants.P_FINAL_TEMPERATURE));
+
 	}
-	
+
 	/**
 	 * starts the optimization.
 	 * 
-	 * @param root the root of the domain model VBPODataModel
+	 * @param root
+	 *            the root of the domain model VBPODataModel
 	 */
-	public void optimize(VBPODataModel root){
+	public void optimize(VBPODataModel root) {
 		init(root);
 		createProblemDescription();
-		
-		
+
 		solution = starter.startOptimization(description);
 	}
-	
+
 	/**
 	 * 
 	 * @return the solution after the optimization run.
-	 * @throws Exception if the solution is not initialized. I.e. the optimization is not finished yet
+	 * @throws Exception
+	 *             if the solution is not initialized. I.e. the optimization is
+	 *             not finished yet
 	 */
-	public Solution getSolution() throws Exception{
-		if(solution == null) throw new Exception("Optimization is not finished yet, solution is null.");
+	public Solution getSolution() throws Exception {
+		if (solution == null)
+			throw new Exception(
+					"Optimization is not finished yet, solution is null.");
 		return solution;
 	}
-	
-	
+
 	private void init(VBPODataModel root) {
 		this.root = (VBPODataModel) root;
 	}
 
 	private void createProblemDescription() {
 
-		numberOfProducts = root.getFirm().getSPL()
-				.getContainedProducts().size();
-		numberOfAssets = root.getFirm().getSSF()
-				.getContainedAssets().size();
+		numberOfProducts = root.getFirm().getSPL().getContainedProducts()
+				.size();
+		numberOfAssets = root.getFirm().getSSF().getContainedAssets().size();
 		numberOfCompetitors = root.getCompetition().getCompetitors().size();
 		numberOfCustomerSegments = root.getCustomers().eContents().size();
 
-		
 		Hashtable<Product, Integer> productLookup = new Hashtable<Product, Integer>();
-		Hashtable<Asset, Integer>   assetLookup   = new Hashtable<Asset, Integer>();
-		Hashtable<CustomerSegment, Integer>   customerLookup   = new Hashtable<CustomerSegment, Integer>();
-		
+		Hashtable<Asset, Integer> assetLookup = new Hashtable<Asset, Integer>();
+		Hashtable<CustomerSegment, Integer> customerLookup = new Hashtable<CustomerSegment, Integer>();
+
 		for (int i = 0; i < numberOfProducts; i++) {
-			productLookup.put(root.getFirm().getSPL()
-					.getContainedProducts().get(i), i);
+			productLookup.put(root.getFirm().getSPL().getContainedProducts()
+					.get(i), i);
 		}
 
 		for (int i = 0; i < numberOfAssets; i++) {
-			assetLookup.put(root.getFirm().getSSF()
-					.getContainedAssets().get(i), i);
+			assetLookup.put(
+					root.getFirm().getSSF().getContainedAssets().get(i), i);
 		}
-		
+
 		for (int i = 0; i < numberOfCustomerSegments; i++) {
-			customerLookup.put(root.getCustomers().getCustomerSegments().get(i), i);
+			customerLookup.put(
+					root.getCustomers().getCustomerSegments().get(i), i);
 		}
 
 		lookup = new Lookup();
 		lookup.setAssetLookup(assetLookup);
 		lookup.setProductLookup(productLookup);
 		lookup.setSegmentLookup(customerLookup);
-		
+
 		description = new SPLProblemDescription(createCustomerDescription(),
 				createFirmDescription(), createCompetitionDescription(), 100);
 	}
@@ -141,17 +163,13 @@ public class OptimizationInitializer {
 		 */
 
 		for (int i = 0; i < numberOfCustomerSegments; i++) {
-			q[i] = root.getCustomers()
-					.getCustomerSegments().get(i).getSize();
+			q[i] = root.getCustomers().getCustomerSegments().get(i).getSize();
 		}
 		for (int i = 0; i < numberOfCustomerSegments; i++) {
-			for (Iterator iter = root.getCustomers()
-					.getCustomerSegments().get(i)
-					.getWTPs().iterator(); iter.hasNext();) {
+			for (Iterator iter = root.getCustomers().getCustomerSegments()
+					.get(i).getWTPs().iterator(); iter.hasNext();) {
 				WTP wtpObject = (WTP) iter.next();
-				
 
-				
 				int j = lookup.getProductLookup().get(wtpObject.getProduct());
 				wtp[i][j] = wtpObject.getValue().doubleValue();
 			}
@@ -181,27 +199,31 @@ public class OptimizationInitializer {
 													// 7.0 };
 
 		for (int i = 0; i < numberOfProducts; i++) {
-			cf[i] = root.getFirm().getSPL().getContainedProducts()
-					.get(i).getComprisingSystem().getImplementationCost()
+			cf[i] = root.getFirm().getSPL().getContainedProducts().get(i)
+					.getComprisingSystem().getImplementationCost()
 					.doubleValue();
-			cv[i] = root.getFirm().getSPL().getContainedProducts()
-					.get(i).getUnitCost().doubleValue();
+			cv[i] = root.getFirm().getSPL().getContainedProducts().get(i)
+					.getUnitCost().doubleValue();
 		}
 
 		for (int i = 0; i < numberOfAssets; i++) {
-			ca[i] = root.getFirm().getSSF().getContainedAssets()
-					.get(i).getSetupCost().doubleValue();
+			ca[i] = root.getFirm().getSSF().getContainedAssets().get(i)
+					.getSetupCost().doubleValue();
 		}
 
 		for (int i = 0; i < numberOfProducts; i++) {
 			for (int j = 0; j < numberOfAssets; j++) {
-				for (Iterator iter = root.getFirm().getSPL()
-						.getContainedProducts().get(i)
-						.getComprisingSystem().getAssets()
-						.iterator(); iter.hasNext();) {
-					Asset asset = (Asset) iter.next();
-					a[i][j] = j == lookup.getAssetLookup().get(asset);
-				}
+				// set whether the System of the Product contains the asset 
+				a[i][j] = root
+						.getFirm()
+						.getSPL()
+						.getContainedProducts()
+						.get(i)
+						.getComprisingSystem()
+						.getAssets()
+						.contains(
+								root.getFirm().getSSF().getContainedAssets()
+										.get(j));
 			}
 		}
 
@@ -234,8 +256,7 @@ public class OptimizationInitializer {
 	private double bestCompetitiveOfferingFor(CustomerSegment segment) {
 		double customerSurplus = -Double.MAX_VALUE;
 		double tempSurplus;
-		for (Iterator iterWTP = segment.getWTPs().iterator(); iterWTP
-				.hasNext();) {
+		for (Iterator iterWTP = segment.getWTPs().iterator(); iterWTP.hasNext();) {
 			for (Iterator iterCompetitor = root.getCompetition()
 					.getCompetitors().iterator(); iterCompetitor.hasNext();) {
 				Competitor competitor = (Competitor) iterCompetitor.next();
@@ -243,8 +264,7 @@ public class OptimizationInitializer {
 						.hasNext();) {
 					Price competitorPrice = (Price) iterPrice.next();
 					WTP wtp = (WTP) iterWTP.next();
-					if (competitorPrice.getProduct() == wtp
-							.getProduct()) {
+					if (competitorPrice.getProduct() == wtp.getProduct()) {
 						tempSurplus = wtp.getValue().doubleValue()
 								- competitorPrice.getValue().doubleValue();
 						customerSurplus = customerSurplus < tempSurplus ? tempSurplus
@@ -260,15 +280,16 @@ public class OptimizationInitializer {
 	public Lookup getLookup() {
 		return lookup;
 	}
-	
-	public int getFullWorkUnits(){
+
+	public int getFullWorkUnits() {
 		return starter.getFullWorkUnits();
 	}
-	
-	public void addIterationChangedListener(IterationChangedListener listener){
+
+	public void addIterationChangedListener(IterationChangedListener listener) {
 		starter.addIterationChangedListener(listener);
 	}
-	public void removeIterationChangedListener(IterationChangedListener listener){
+
+	public void removeIterationChangedListener(IterationChangedListener listener) {
 		starter.removeIterationChangedListener(listener);
 	}
 
@@ -282,3 +303,4 @@ public class OptimizationInitializer {
 	// - 5. return solution
 
 }
+ 

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="optimizationResult" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="251"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -177,6 +177,17 @@
 			<fieldDescription><![CDATA[impact]]></fieldDescription>
 		</field>
 	</subDataset>
+	<subDataset name="AssetImpactDS">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="impact" class="java.lang.Double">
+			<fieldDescription><![CDATA[impact]]></fieldDescription>
+		</field>
+		<field name="assetName" class="java.lang.String">
+			<fieldDescription><![CDATA[assetName]]></fieldDescription>
+		</field>
+	</subDataset>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/Users/jo/Documents/Uni/promotion/gilbreth_workspace/gilbreth/VBPODataModel.editor/template/"]]></defaultValueExpression>
 	</parameter>
@@ -213,6 +224,9 @@
 	<field name="numberOfFeatures" class="java.lang.Long">
 		<fieldDescription><![CDATA[numberOfFeatures]]></fieldDescription>
 	</field>
+	<field name="assetImpacts" class="java.util.Collection">
+		<fieldDescription><![CDATA[assetImpacts]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -229,6 +243,9 @@
 				</textElement>
 				<text><![CDATA[ Report of Optimization Results]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="97" width="555" height="1"/>
+			</line>
 		</band>
 	</title>
 	<detail>
@@ -303,59 +320,74 @@
 				</textElement>
 				<textFieldExpression class="java.lang.Long"><![CDATA[$F{numberOfFeatures}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="84" width="555" height="1"/>
+			</line>
 		</band>
-		<band height="32"/>
+		<band height="22"/>
 		<band height="86">
 			<componentElement>
-				<reportElement key="table 3" style="table 3" x="33" y="36" width="465" height="50"/>
+				<reportElement key="table 3" style="table 3" positionType="Float" stretchType="RelativeToBandHeight" x="33" y="36" width="465" height="50" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="ProductFeaturesDS">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{productFeatures})]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="90">
-						<jr:columnHeader style="table 3_CH" height="30">
+						<jr:columnHeader style="table 3_CH" height="32" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30"/>
-								<textElement/>
-								<text><![CDATA[product]]></text>
+								<reportElement stretchType="RelativeToBandHeight" x="20" y="0" width="70" height="30" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+								<textElement>
+									<font fontName="Arial Black" size="12"/>
+								</textElement>
+								<text><![CDATA[Product]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20"/>
-								<textElement/>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField pattern="">
+								<reportElement x="7" y="0" width="74" height="20"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
 								<textFieldExpression class="java.lang.String"><![CDATA[$F{product}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90">
-						<jr:columnHeader style="table 3_CH" height="30">
+					<jr:column width="290">
+						<jr:columnHeader style="table 3_CH" height="32" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30"/>
-								<textElement/>
-								<text><![CDATA[features]]></text>
+								<reportElement x="104" y="0" width="90" height="30"/>
+								<textElement>
+									<font fontName="Arial Black" size="12"/>
+								</textElement>
+								<text><![CDATA[Features]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="20">
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20"/>
-								<textElement/>
+								<reportElement x="2" y="0" width="288" height="20"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
 								<textFieldExpression class="java.lang.String"><![CDATA[""+$F{features}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90">
-						<jr:columnHeader style="table 3_CH" height="30">
+						<jr:columnHeader style="table 3_CH" height="32" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30"/>
-								<textElement/>
-								<text><![CDATA[price]]></text>
+								<reportElement x="25" y="0" width="47" height="30"/>
+								<textElement>
+									<font fontName="Arial Black" size="12"/>
+								</textElement>
+								<text><![CDATA[Price]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="20">
-							<textField>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField pattern="¤ #,##0.00">
 								<reportElement x="0" y="0" width="90" height="20"/>
-								<textElement/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
 								<textFieldExpression class="java.lang.Double"><![CDATA[$F{price}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -377,50 +409,62 @@
 					<datasetRun subDataset="ProductSegmentDS_1">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{productSegmentAssignments})]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="90">
+					<jr:column width="173">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30"/>
-								<textElement/>
-								<text><![CDATA[segment]]></text>
+								<reportElement x="23" y="0" width="67" height="30"/>
+								<textElement>
+									<font fontName="Arial Black" size="12"/>
+								</textElement>
+								<text><![CDATA[Segment]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20"/>
-								<textElement/>
+								<reportElement x="11" y="0" width="90" height="20"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
 								<textFieldExpression class="java.lang.String"><![CDATA[$F{segment}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90">
+					<jr:column width="180">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30"/>
-								<textElement/>
-								<text><![CDATA[product]]></text>
+								<reportElement x="27" y="0" width="63" height="30"/>
+								<textElement>
+									<font fontName="Arial Black" size="12"/>
+								</textElement>
+								<text><![CDATA[Product]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20"/>
-								<textElement/>
+								<reportElement x="22" y="0" width="90" height="20"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
 								<textFieldExpression class="java.lang.String"><![CDATA[$F{product}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90">
+					<jr:column width="112">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30"/>
-								<textElement/>
-								<text><![CDATA[price]]></text>
+								<reportElement x="31" y="0" width="69" height="30"/>
+								<textElement>
+									<font fontName="Arial Black" size="12"/>
+								</textElement>
+								<text><![CDATA[Price]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20"/>
-								<textElement/>
+							<textField pattern="¤ #,##0.00">
+								<reportElement x="11" y="0" width="90" height="20"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
 								<textFieldExpression class="java.lang.Double"><![CDATA[$F{price}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -460,48 +504,58 @@
 				<text><![CDATA[Impact of Features to Profit]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table 4" style="table 4" x="33" y="37" width="114" height="83"/>
+				<reportElement key="table 4" style="table 4" x="33" y="37" width="306" height="83"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="FeatureImpactDS">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{featureImpacts})]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="90">
-						<jr:columnHeader style="table 4_CH" height="30">
+					<jr:column width="136">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30"/>
-								<textElement/>
-								<text><![CDATA[featureName]]></text>
+								<reportElement x="36" y="0" width="90" height="30"/>
+								<textElement>
+									<font fontName="Arial Black" size="12"/>
+								</textElement>
+								<text><![CDATA[Feature]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 4_TD" height="20">
+						<jr:detailCell style="table 4_TD" height="23" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20"/>
-								<textElement/>
+								<reportElement x="6" y="0" width="110" height="23"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
 								<textFieldExpression class="java.lang.String"><![CDATA[$F{featureName}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90">
-						<jr:columnHeader style="table 4_CH" height="30">
+					<jr:column width="134">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30"/>
-								<textElement/>
-								<text><![CDATA[impact]]></text>
+								<reportElement x="24" y="0" width="90" height="30"/>
+								<textElement>
+									<font fontName="Arial Black" size="12"/>
+								</textElement>
+								<text><![CDATA[Impact (%)]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 4_TD" height="20">
+						<jr:detailCell style="table 4_TD" height="23" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20"/>
-								<textElement/>
+								<reportElement x="11" y="3" width="90" height="20"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
 								<textFieldExpression class="java.lang.Double"><![CDATA[$F{impact}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 				</jr:table>
 			</componentElement>
+		</band>
+		<band height="200">
 			<barChart>
 				<chart theme="default">
-					<reportElement style="table 4" stretchType="RelativeToTallestObject" x="225" y="37" width="273" height="83"/>
+					<reportElement style="table 4" stretchType="RelativeToTallestObject" x="33" y="1" width="465" height="199" backcolor="#CCCCFF"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -513,12 +567,12 @@
 						</datasetRun>
 					</dataset>
 					<categorySeries>
-						<seriesExpression><![CDATA[""]]></seriesExpression>
+						<seriesExpression><![CDATA["Feature Impact"]]></seriesExpression>
 						<categoryExpression><![CDATA[$F{featureName}]]></categoryExpression>
 						<valueExpression><![CDATA[$F{impact}]]></valueExpression>
 					</categorySeries>
 				</categoryDataset>
-				<barPlot>
+				<barPlot isShowTickLabels="true">
 					<plot>
 						<seriesColor seriesOrder="0" color="#6666FF"/>
 					</plot>
@@ -540,12 +594,112 @@
 				</barPlot>
 			</barChart>
 		</band>
+		<band height="96">
+			<componentElement>
+				<reportElement key="table 4" style="table 4" x="33" y="10" width="306" height="83"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="AssetImpactDS">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{assetImpacts})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="136">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="36" y="0" width="90" height="30"/>
+								<textElement>
+									<font fontName="Arial Black" size="12"/>
+								</textElement>
+								<text><![CDATA[Asset]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="23" rowSpan="1">
+							<textField>
+								<reportElement x="6" y="0" width="110" height="23"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{assetName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="134">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="24" y="0" width="90" height="30"/>
+								<textElement>
+									<font fontName="Arial Black" size="12"/>
+								</textElement>
+								<text><![CDATA[Impact (%)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="23" rowSpan="1">
+							<textField>
+								<reportElement x="11" y="3" width="90" height="20"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{impact}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="211">
+			<barChart>
+				<chart theme="default">
+					<reportElement style="table 4" stretchType="RelativeToTallestObject" x="33" y="0" width="465" height="200" backcolor="#CCCCFF"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset>
+						<datasetRun subDataset="AssetImpactDS">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{assetImpacts})]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Asset Impact"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{assetName}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{impact}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot>
+						<seriesColor seriesOrder="0" color="#6666FF"/>
+					</plot>
+					<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
+					<categoryAxisLabelExpression><![CDATA["Assets"]]></categoryAxisLabelExpression>
+					<categoryAxisFormat>
+						<axisFormat>
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Impact"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat>
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
-		<band height="51" splitType="Stretch"/>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="538" y="7" width="16" height="20"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1"/>
+			</line>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>

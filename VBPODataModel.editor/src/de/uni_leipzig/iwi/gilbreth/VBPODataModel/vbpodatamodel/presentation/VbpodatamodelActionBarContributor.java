@@ -141,9 +141,6 @@ public class VbpodatamodelActionBarContributor
 	
 					        // get the document of the master editor
 					        EObject root = getRootElement(getActiveEditingPartResource());
-							
-					        validateAction.setActiveWorkbenchPart(activeEditor);
-					        validateAction.run();
 					        
 							// validate Model
 							Diagnostic diagnostic = Diagnostician.INSTANCE.validate(root);
@@ -195,7 +192,7 @@ public class VbpodatamodelActionBarContributor
 					        
 					        editor.getReportContentProvider().setContent(JasperPrintCreator.createPrint(builder.buildResultBean()));
 					       
-							VBPODataModelEditorPlugin.INSTANCE.log("Optimization is finished succesfully!");
+							VBPODataModelEditorPlugin.INSTANCE.log("Optimization is finished successfully!");
 							
 							editor.setResultPageActive();
 

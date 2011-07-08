@@ -43,5 +43,19 @@
             contributorClass="de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.presentation.VbpodatamodelActionBarContributor">
       </editor>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="de.uni_leipzig.iwi.gilbreth.editor.preferences.GilbrethPreferencePage"
+            id="vbpodatamodel.editor.preferences.GilbrethPreferencePage"
+            name="Gilbreth Preferences">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="de.uni_leipzig.iwi.gilbreth.editor.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
 
 </plugin>

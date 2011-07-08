@@ -45,6 +45,8 @@ public class BeanTestDataFactory {
 		
 		result.setFeatureImpacts(createFeatureImpact());
 		
+		result.setAssetImpacts(createAssetImpact());
+		
 		Collection<ResultBean> map = new ArrayList<ResultBean>();
 		map.add(result);
 		return map;
@@ -90,5 +92,20 @@ public class BeanTestDataFactory {
 		return map;
 	}
 
+	public static Collection createAssetImpact(){
+		Collection<AssetImpact> map = new ArrayList<AssetImpact>();
+
+		
+		map.add(new AssetImpact("A1", 100.00d));
+		map.add(new AssetImpact("A2", 90.00d));
+		map.add(new AssetImpact("A3", 10.00d));
+		map.add(new AssetImpact("A4", 50.00d));
+		map.add(new AssetImpact("A5", 20.00d));
+		map.add(new AssetImpact("A6", 50.00d));
+
+	
+		return map;
+	}
+	
 }
 
