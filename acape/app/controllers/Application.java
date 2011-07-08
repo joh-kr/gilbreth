@@ -368,6 +368,7 @@ public class Application extends Controller {
 			jlog.log(java.util.logging.Level.INFO, 
 					l.attribute.name + " " + l.name + ": " + utility.computeCalibratedUtilityFor(l)
 					+ "(" + utility.getPriorUtility(l) + ")");
+			
 		}
 		
 		render(interview, attributes, utility);

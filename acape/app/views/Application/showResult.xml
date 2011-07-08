@@ -17,6 +17,11 @@
 		<level>
 			<name>${level.name}</name>
 			<utility>${utility.computeCalibratedUtilityFor(level).round(2)}</utility>
+			<features>
+			#{list level.getConstitutingFeaturesAsArray(), as:'feature'}
+				<feature name="${feature}" />
+			#{/list}
+			</features>
 		</level>
 		#{/list}
 	</attribute>
