@@ -371,6 +371,7 @@ public class Application extends Controller {
 			
 		}
 		
+		
 		render(interview, attributes, utility);
 		
 	}
@@ -415,6 +416,15 @@ public class Application extends Controller {
 		int[] clusters = c.getAssignments();
 		
 		render(configNames, utilities, wtps, clusters);
+	}
+	
+	public static void result() throws Exception{
+		List<Interview> interviews = Interview.findAll();
+		List<Attribute> attributes = Attribute.findAll();
+		//Utility utility = new Utility(interview.result);
+		
+		render(interviews, attributes);
+		
 	}
 	
 	// ----- Helper ---------

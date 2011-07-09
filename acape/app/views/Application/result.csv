@@ -1,0 +1,16 @@
+%{ if(interviews != null) { }%
+	#{list attributes, as:'attribute'}
+		"${attribute.name}.#{list $attribute.getLevels(interview.result.excludedLevels), as:'level'}${level.name}.${level.getFeatures()}",#{/list}
+	#{/list}
+	#{list interviews, as:'interview'}
+		#{list attributes, as:'attribute'}
+		#{list $attribute.getLevels(interview.result.excludedLevels), as:'level'}
+			%{
+				Utility utility = new Utility(interview.result);
+			    utility.computeCalibratedUtilityFor(level).round(2);
+			 }%,
+		#{/list}
+	#{/list}
+
+	#{/list}	
+%{ } }% 
