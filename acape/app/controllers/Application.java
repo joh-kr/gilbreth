@@ -421,6 +421,8 @@ public class Application extends Controller {
 	public static void result() throws Exception{
 		List<Interview> interviews = Interview.findAll();
 		List<Attribute> attributes = Attribute.findAll();
+		//Attribute a = attributes.get(2);
+		//a.getLevels(null);
 		//Utility utility = new Utility(interview.result);
 		
 		render(interviews, attributes);

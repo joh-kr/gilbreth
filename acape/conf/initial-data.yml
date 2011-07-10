@@ -134,6 +134,7 @@ Attribute(a6):
 
 Level(idCard):
     name:           ID Card
+    features:       f10
     attribute:      a6
     
 Level(pw):
