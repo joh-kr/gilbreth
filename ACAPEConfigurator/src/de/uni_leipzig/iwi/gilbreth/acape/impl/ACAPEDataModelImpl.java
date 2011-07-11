@@ -10,6 +10,8 @@ import de.uni_leipzig.iwi.gilbreth.acape.ACAPEDataModel;
 import de.uni_leipzig.iwi.gilbreth.acape.AcapePackage;
 import de.uni_leipzig.iwi.gilbreth.acape.Attribute;
 
+import de.uni_leipzig.iwi.gilbreth.acape.Constraint;
+import de.uni_leipzig.iwi.gilbreth.acape.PriceSettings;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -35,6 +37,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.acape.impl.ACAPEDataModelImpl#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.acape.impl.ACAPEDataModelImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.acape.impl.ACAPEDataModelImpl#getPriceSettings <em>Price Settings</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.acape.impl.ACAPEDataModelImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +74,26 @@ public class ACAPEDataModelImpl extends EObjectImpl implements ACAPEDataModel {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getPriceSettings() <em>Price Settings</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriceSettings()
+	 * @generated
+	 * @ordered
+	 */
+	protected PriceSettings priceSettings;
+
+	/**
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Constraint> constraints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,11 +152,70 @@ public class ACAPEDataModelImpl extends EObjectImpl implements ACAPEDataModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public PriceSettings getPriceSettings() {
+		return priceSettings;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPriceSettings(PriceSettings newPriceSettings, NotificationChain msgs) {
+		PriceSettings oldPriceSettings = priceSettings;
+		priceSettings = newPriceSettings;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AcapePackage.ACAPE_DATA_MODEL__PRICE_SETTINGS, oldPriceSettings, newPriceSettings);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPriceSettings(PriceSettings newPriceSettings) {
+		if (newPriceSettings != priceSettings) {
+			NotificationChain msgs = null;
+			if (priceSettings != null)
+				msgs = ((InternalEObject)priceSettings).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AcapePackage.ACAPE_DATA_MODEL__PRICE_SETTINGS, null, msgs);
+			if (newPriceSettings != null)
+				msgs = ((InternalEObject)newPriceSettings).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AcapePackage.ACAPE_DATA_MODEL__PRICE_SETTINGS, null, msgs);
+			msgs = basicSetPriceSettings(newPriceSettings, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AcapePackage.ACAPE_DATA_MODEL__PRICE_SETTINGS, newPriceSettings, newPriceSettings));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Constraint> getConstraints() {
+		if (constraints == null) {
+			constraints = new EObjectContainmentEList<Constraint>(Constraint.class, this, AcapePackage.ACAPE_DATA_MODEL__CONSTRAINTS);
+		}
+		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AcapePackage.ACAPE_DATA_MODEL__ATTRIBUTES:
 				return ((InternalEList<?>)getAttributes()).basicRemove(otherEnd, msgs);
+			case AcapePackage.ACAPE_DATA_MODEL__PRICE_SETTINGS:
+				return basicSetPriceSettings(null, msgs);
+			case AcapePackage.ACAPE_DATA_MODEL__CONSTRAINTS:
+				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -149,6 +232,10 @@ public class ACAPEDataModelImpl extends EObjectImpl implements ACAPEDataModel {
 				return getAttributes();
 			case AcapePackage.ACAPE_DATA_MODEL__NAME:
 				return getName();
+			case AcapePackage.ACAPE_DATA_MODEL__PRICE_SETTINGS:
+				return getPriceSettings();
+			case AcapePackage.ACAPE_DATA_MODEL__CONSTRAINTS:
+				return getConstraints();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -169,6 +256,13 @@ public class ACAPEDataModelImpl extends EObjectImpl implements ACAPEDataModel {
 			case AcapePackage.ACAPE_DATA_MODEL__NAME:
 				setName((String)newValue);
 				return;
+			case AcapePackage.ACAPE_DATA_MODEL__PRICE_SETTINGS:
+				setPriceSettings((PriceSettings)newValue);
+				return;
+			case AcapePackage.ACAPE_DATA_MODEL__CONSTRAINTS:
+				getConstraints().clear();
+				getConstraints().addAll((Collection<? extends Constraint>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -187,6 +281,12 @@ public class ACAPEDataModelImpl extends EObjectImpl implements ACAPEDataModel {
 			case AcapePackage.ACAPE_DATA_MODEL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case AcapePackage.ACAPE_DATA_MODEL__PRICE_SETTINGS:
+				setPriceSettings((PriceSettings)null);
+				return;
+			case AcapePackage.ACAPE_DATA_MODEL__CONSTRAINTS:
+				getConstraints().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -203,6 +303,10 @@ public class ACAPEDataModelImpl extends EObjectImpl implements ACAPEDataModel {
 				return attributes != null && !attributes.isEmpty();
 			case AcapePackage.ACAPE_DATA_MODEL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case AcapePackage.ACAPE_DATA_MODEL__PRICE_SETTINGS:
+				return priceSettings != null;
+			case AcapePackage.ACAPE_DATA_MODEL__CONSTRAINTS:
+				return constraints != null && !constraints.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

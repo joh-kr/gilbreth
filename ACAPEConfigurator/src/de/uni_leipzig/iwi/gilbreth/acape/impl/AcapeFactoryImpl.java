@@ -67,6 +67,7 @@ public class AcapeFactoryImpl extends EFactoryImpl implements AcapeFactory {
 			case AcapePackage.LEVEL: return createLevel();
 			case AcapePackage.CONSTRAINT: return createConstraint();
 			case AcapePackage.FEATURE: return createFeature();
+			case AcapePackage.PRICE_SETTINGS: return createPriceSettings();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -160,6 +161,16 @@ public class AcapeFactoryImpl extends EFactoryImpl implements AcapeFactory {
 	public Feature createFeature() {
 		FeatureImpl feature = new FeatureImpl();
 		return feature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PriceSettings createPriceSettings() {
+		PriceSettingsImpl priceSettings = new PriceSettingsImpl();
+		return priceSettings;
 	}
 
 	/**

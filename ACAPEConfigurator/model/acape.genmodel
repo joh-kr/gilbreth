@@ -14,6 +14,8 @@
     <genClasses ecoreClass="acape.ecore#//ACAPEDataModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference acape.ecore#//ACAPEDataModel/attributes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute acape.ecore#//ACAPEDataModel/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference acape.ecore#//ACAPEDataModel/priceSettings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference acape.ecore#//ACAPEDataModel/constraints"/>
     </genClasses>
     <genClasses ecoreClass="acape.ecore#//Entity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute acape.ecore#//Entity/name"/>
@@ -32,6 +34,10 @@
     </genClasses>
     <genClasses ecoreClass="acape.ecore#//Feature">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute acape.ecore#//Feature/name"/>
+    </genClasses>
+    <genClasses ecoreClass="acape.ecore#//PriceSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute acape.ecore#//PriceSettings/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute acape.ecore#//PriceSettings/upperBound"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

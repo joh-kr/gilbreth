@@ -10,6 +10,8 @@ Package acape <de.uni_leipzig.iwi.gilbreth.acape.metamodel>
   Class ACAPEDataModel
     Reference attributes : Attribute<<0..*>>
     Attribute name : EString
+    Reference priceSettings : PriceSettings<<1..1>>
+    Reference constraints : Constraint<<0..*>>
 
   Class Entity
     Attribute name : EString
@@ -28,6 +30,10 @@ Package acape <de.uni_leipzig.iwi.gilbreth.acape.metamodel>
 
   Class Feature
     Attribute name : EString
+
+  Class PriceSettings
+    Attribute lowerBound : EBigDecimal
+    Attribute upperBound : EBigDecimal
 
   Enum ConstraintType
     Literal Require = 0

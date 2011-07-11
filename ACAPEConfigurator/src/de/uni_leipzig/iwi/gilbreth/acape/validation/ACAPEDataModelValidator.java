@@ -8,6 +8,8 @@ package de.uni_leipzig.iwi.gilbreth.acape.validation;
 
 import de.uni_leipzig.iwi.gilbreth.acape.Attribute;
 
+import de.uni_leipzig.iwi.gilbreth.acape.Constraint;
+import de.uni_leipzig.iwi.gilbreth.acape.PriceSettings;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -21,4 +23,8 @@ public interface ACAPEDataModelValidator {
 
 	boolean validateAttributes(EList<Attribute> value);
 	boolean validateName(String value);
+
+	boolean validatePriceSettings(PriceSettings value);
+
+	boolean validateConstraints(EList<Constraint> value);
 }

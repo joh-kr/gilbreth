@@ -80,6 +80,15 @@ public interface AcapeFactory extends EFactory {
 	Feature createFeature();
 
 	/**
+	 * Returns a new object of class '<em>Price Settings</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Price Settings</em>'.
+	 * @generated
+	 */
+	PriceSettings createPriceSettings();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

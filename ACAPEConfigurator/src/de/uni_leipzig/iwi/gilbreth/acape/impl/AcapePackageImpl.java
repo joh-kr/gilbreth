@@ -16,6 +16,7 @@ import de.uni_leipzig.iwi.gilbreth.acape.Entity;
 import de.uni_leipzig.iwi.gilbreth.acape.Feature;
 import de.uni_leipzig.iwi.gilbreth.acape.Level;
 
+import de.uni_leipzig.iwi.gilbreth.acape.PriceSettings;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -72,6 +73,13 @@ public class AcapePackageImpl extends EPackageImpl implements AcapePackage {
 	 * @generated
 	 */
 	private EClass featureEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass priceSettingsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -166,6 +174,24 @@ public class AcapePackageImpl extends EPackageImpl implements AcapePackage {
 	 */
 	public EAttribute getACAPEDataModel_Name() {
 		return (EAttribute)acapeDataModelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getACAPEDataModel_PriceSettings() {
+		return (EReference)acapeDataModelEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getACAPEDataModel_Constraints() {
+		return (EReference)acapeDataModelEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -290,6 +316,33 @@ public class AcapePackageImpl extends EPackageImpl implements AcapePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPriceSettings() {
+		return priceSettingsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPriceSettings_LowerBound() {
+		return (EAttribute)priceSettingsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPriceSettings_UpperBound() {
+		return (EAttribute)priceSettingsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getConstraintType() {
 		return constraintTypeEEnum;
 	}
@@ -325,6 +378,8 @@ public class AcapePackageImpl extends EPackageImpl implements AcapePackage {
 		acapeDataModelEClass = createEClass(ACAPE_DATA_MODEL);
 		createEReference(acapeDataModelEClass, ACAPE_DATA_MODEL__ATTRIBUTES);
 		createEAttribute(acapeDataModelEClass, ACAPE_DATA_MODEL__NAME);
+		createEReference(acapeDataModelEClass, ACAPE_DATA_MODEL__PRICE_SETTINGS);
+		createEReference(acapeDataModelEClass, ACAPE_DATA_MODEL__CONSTRAINTS);
 
 		entityEClass = createEClass(ENTITY);
 		createEAttribute(entityEClass, ENTITY__NAME);
@@ -343,6 +398,10 @@ public class AcapePackageImpl extends EPackageImpl implements AcapePackage {
 
 		featureEClass = createEClass(FEATURE);
 		createEAttribute(featureEClass, FEATURE__NAME);
+
+		priceSettingsEClass = createEClass(PRICE_SETTINGS);
+		createEAttribute(priceSettingsEClass, PRICE_SETTINGS__LOWER_BOUND);
+		createEAttribute(priceSettingsEClass, PRICE_SETTINGS__UPPER_BOUND);
 
 		// Create enums
 		constraintTypeEEnum = createEEnum(CONSTRAINT_TYPE);
@@ -383,6 +442,8 @@ public class AcapePackageImpl extends EPackageImpl implements AcapePackage {
 		initEClass(acapeDataModelEClass, ACAPEDataModel.class, "ACAPEDataModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getACAPEDataModel_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, ACAPEDataModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getACAPEDataModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, ACAPEDataModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getACAPEDataModel_PriceSettings(), this.getPriceSettings(), null, "priceSettings", null, 1, 1, ACAPEDataModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getACAPEDataModel_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, ACAPEDataModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -401,6 +462,10 @@ public class AcapePackageImpl extends EPackageImpl implements AcapePackage {
 
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFeature_Name(), ecorePackage.getEString(), "name", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(priceSettingsEClass, PriceSettings.class, "PriceSettings", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPriceSettings_LowerBound(), ecorePackage.getEBigDecimal(), "lowerBound", null, 0, 1, PriceSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPriceSettings_UpperBound(), ecorePackage.getEBigDecimal(), "upperBound", null, 0, 1, PriceSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(constraintTypeEEnum, ConstraintType.class, "ConstraintType");

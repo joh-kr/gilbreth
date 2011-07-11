@@ -89,13 +89,31 @@ public interface AcapePackage extends EPackage {
 	int ACAPE_DATA_MODEL__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Price Settings</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACAPE_DATA_MODEL__PRICE_SETTINGS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACAPE_DATA_MODEL__CONSTRAINTS = 3;
+
+	/**
 	 * The number of structural features of the '<em>ACAPE Data Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACAPE_DATA_MODEL_FEATURE_COUNT = 2;
+	int ACAPE_DATA_MODEL_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link de.uni_leipzig.iwi.gilbreth.acape.impl.EntityImpl <em>Entity</em>}' class.
@@ -301,6 +319,43 @@ public interface AcapePackage extends EPackage {
 	int FEATURE_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link de.uni_leipzig.iwi.gilbreth.acape.impl.PriceSettingsImpl <em>Price Settings</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.uni_leipzig.iwi.gilbreth.acape.impl.PriceSettingsImpl
+	 * @see de.uni_leipzig.iwi.gilbreth.acape.impl.AcapePackageImpl#getPriceSettings()
+	 * @generated
+	 */
+	int PRICE_SETTINGS = 6;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRICE_SETTINGS__LOWER_BOUND = 0;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRICE_SETTINGS__UPPER_BOUND = 1;
+
+	/**
+	 * The number of structural features of the '<em>Price Settings</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRICE_SETTINGS_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link de.uni_leipzig.iwi.gilbreth.acape.ConstraintType <em>Constraint Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -308,7 +363,7 @@ public interface AcapePackage extends EPackage {
 	 * @see de.uni_leipzig.iwi.gilbreth.acape.impl.AcapePackageImpl#getConstraintType()
 	 * @generated
 	 */
-	int CONSTRAINT_TYPE = 6;
+	int CONSTRAINT_TYPE = 7;
 
 
 	/**
@@ -342,6 +397,28 @@ public interface AcapePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getACAPEDataModel_Name();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.uni_leipzig.iwi.gilbreth.acape.ACAPEDataModel#getPriceSettings <em>Price Settings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Price Settings</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.acape.ACAPEDataModel#getPriceSettings()
+	 * @see #getACAPEDataModel()
+	 * @generated
+	 */
+	EReference getACAPEDataModel_PriceSettings();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.uni_leipzig.iwi.gilbreth.acape.ACAPEDataModel#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.acape.ACAPEDataModel#getConstraints()
+	 * @see #getACAPEDataModel()
+	 * @generated
+	 */
+	EReference getACAPEDataModel_Constraints();
 
 	/**
 	 * Returns the meta object for class '{@link de.uni_leipzig.iwi.gilbreth.acape.Entity <em>Entity</em>}'.
@@ -482,6 +559,38 @@ public interface AcapePackage extends EPackage {
 	EAttribute getFeature_Name();
 
 	/**
+	 * Returns the meta object for class '{@link de.uni_leipzig.iwi.gilbreth.acape.PriceSettings <em>Price Settings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Price Settings</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.acape.PriceSettings
+	 * @generated
+	 */
+	EClass getPriceSettings();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_leipzig.iwi.gilbreth.acape.PriceSettings#getLowerBound <em>Lower Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lower Bound</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.acape.PriceSettings#getLowerBound()
+	 * @see #getPriceSettings()
+	 * @generated
+	 */
+	EAttribute getPriceSettings_LowerBound();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.uni_leipzig.iwi.gilbreth.acape.PriceSettings#getUpperBound <em>Upper Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Upper Bound</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.acape.PriceSettings#getUpperBound()
+	 * @see #getPriceSettings()
+	 * @generated
+	 */
+	EAttribute getPriceSettings_UpperBound();
+
+	/**
 	 * Returns the meta object for enum '{@link de.uni_leipzig.iwi.gilbreth.acape.ConstraintType <em>Constraint Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -538,6 +647,22 @@ public interface AcapePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ACAPE_DATA_MODEL__NAME = eINSTANCE.getACAPEDataModel_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Price Settings</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACAPE_DATA_MODEL__PRICE_SETTINGS = eINSTANCE.getACAPEDataModel_PriceSettings();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACAPE_DATA_MODEL__CONSTRAINTS = eINSTANCE.getACAPEDataModel_Constraints();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.acape.impl.EntityImpl <em>Entity</em>}' class.
@@ -652,6 +777,32 @@ public interface AcapePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FEATURE__NAME = eINSTANCE.getFeature_Name();
+
+		/**
+		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.acape.impl.PriceSettingsImpl <em>Price Settings</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.uni_leipzig.iwi.gilbreth.acape.impl.PriceSettingsImpl
+		 * @see de.uni_leipzig.iwi.gilbreth.acape.impl.AcapePackageImpl#getPriceSettings()
+		 * @generated
+		 */
+		EClass PRICE_SETTINGS = eINSTANCE.getPriceSettings();
+
+		/**
+		 * The meta object literal for the '<em><b>Lower Bound</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRICE_SETTINGS__LOWER_BOUND = eINSTANCE.getPriceSettings_LowerBound();
+
+		/**
+		 * The meta object literal for the '<em><b>Upper Bound</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRICE_SETTINGS__UPPER_BOUND = eINSTANCE.getPriceSettings_UpperBound();
 
 		/**
 		 * The meta object literal for the '{@link de.uni_leipzig.iwi.gilbreth.acape.ConstraintType <em>Constraint Type</em>}' enum.
