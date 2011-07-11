@@ -107,6 +107,8 @@ public class ACAPEDataModelItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AcapePackage.Literals.ACAPE_DATA_MODEL__ATTRIBUTES);
+			childrenFeatures.add(AcapePackage.Literals.ACAPE_DATA_MODEL__PRICE_SETTINGS);
+			childrenFeatures.add(AcapePackage.Literals.ACAPE_DATA_MODEL__CONSTRAINTS);
 		}
 		return childrenFeatures;
 	}
@@ -165,6 +167,8 @@ public class ACAPEDataModelItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AcapePackage.ACAPE_DATA_MODEL__ATTRIBUTES:
+			case AcapePackage.ACAPE_DATA_MODEL__PRICE_SETTINGS:
+			case AcapePackage.ACAPE_DATA_MODEL__CONSTRAINTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -186,6 +190,16 @@ public class ACAPEDataModelItemProvider
 			(createChildParameter
 				(AcapePackage.Literals.ACAPE_DATA_MODEL__ATTRIBUTES,
 				 AcapeFactory.eINSTANCE.createAttribute()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AcapePackage.Literals.ACAPE_DATA_MODEL__PRICE_SETTINGS,
+				 AcapeFactory.eINSTANCE.createPriceSettings()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AcapePackage.Literals.ACAPE_DATA_MODEL__CONSTRAINTS,
+				 AcapeFactory.eINSTANCE.createConstraint()));
 	}
 
 	/**

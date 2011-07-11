@@ -214,6 +214,29 @@ public class AcapeItemProviderAdapterFactory extends AcapeAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.uni_leipzig.iwi.gilbreth.acape.PriceSettings} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PriceSettingsItemProvider priceSettingsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.uni_leipzig.iwi.gilbreth.acape.PriceSettings}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPriceSettingsAdapter() {
+		if (priceSettingsItemProvider == null) {
+			priceSettingsItemProvider = new PriceSettingsItemProvider(this);
+		}
+
+		return priceSettingsItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -318,6 +341,7 @@ public class AcapeItemProviderAdapterFactory extends AcapeAdapterFactory impleme
 		if (levelItemProvider != null) levelItemProvider.dispose();
 		if (constraintItemProvider != null) constraintItemProvider.dispose();
 		if (featureItemProvider != null) featureItemProvider.dispose();
+		if (priceSettingsItemProvider != null) priceSettingsItemProvider.dispose();
 	}
 
 }
