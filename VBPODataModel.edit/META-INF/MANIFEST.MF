@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: VBPODataModel.edit;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.1
 Bundle-ClassPath: .
 Bundle-Activator: de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.provider.VBPODataModelEditPlugin$Implementation
 Bundle-Vendor: %providerName

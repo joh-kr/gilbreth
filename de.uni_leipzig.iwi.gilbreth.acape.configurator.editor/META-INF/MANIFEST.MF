@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: de.uni_leipzig.iwi.gilbreth.acape.configurator.editor;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.1
 Bundle-ClassPath: .
 Bundle-Activator: de.uni_leipzig.iwi.gilbreth.acape.presentation.AcapeEditorPlugin$Implementation
 Bundle-Vendor: %providerName

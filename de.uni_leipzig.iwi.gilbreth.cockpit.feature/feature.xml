@@ -2,7 +2,7 @@
 <feature
       id="de.uni_leipzig.iwi.gilbreth.cockpit.feature"
       label="Gilbreth Cockpit"
-      version="1.0.0.RC1">
+      version="1.0.1.RC1">
 
    <description url="http://code.google.com/p/gilbreth/">
       Gilbreth Cockpit let you handle the optimization process of a product portfolio conveniently within the eclipse environment.
@@ -198,56 +198,56 @@ END OF TERMS AND CONDITIONS
          id="de.uni_leipzig.iwi.gilbreth.acape.configurator"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.0.1"
          unpack="false"/>
 
    <plugin
          id="de.uni_leipzig.iwi.gilbreth.acape.configurator.edit"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.0.1"
          unpack="false"/>
 
    <plugin
          id="de.uni_leipzig.iwi.gilbreth.acape.configurator.editor"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.0.1"
          unpack="false"/>
 
    <plugin
          id="Opt4J"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.0.1"
          unpack="false"/>
 
    <plugin
          id="vbpo"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.0.1"
          unpack="false"/>
 
    <plugin
          id="VBPODataModel"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.0.1"
          unpack="false"/>
 
    <plugin
          id="VBPODataModel.edit"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.0.1"
          unpack="false"/>
 
    <plugin
          id="VBPODataModel.editor"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.0.1"
          unpack="false"/>
 
 </feature>

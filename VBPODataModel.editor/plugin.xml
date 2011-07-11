@@ -57,5 +57,14 @@
             class="de.uni_leipzig.iwi.gilbreth.editor.preferences.PreferenceInitializer">
       </initializer>
    </extension>
+   <extension
+         id="de.uni_leipzig.iwi.gilbreth.cockpit.product"
+         name="cockpitProduct"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="VBPODataModel.editor.product"
+            name="Gilbreth Cockpit">
+      </product>
+   </extension>
 
 </plugin>
