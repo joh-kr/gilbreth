@@ -3,6 +3,8 @@
 	<name>de.uni_leipzig.iwi.gilbreth.acape.configurator.editor</name>
 	<comment></comment>
 	<projects>
+		<project>de.uni_leipzig.iwi.gilbreth.acape.configurator</project>
+		<project>de.uni_leipzig.iwi.gilbreth.acape.configurator.edit</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

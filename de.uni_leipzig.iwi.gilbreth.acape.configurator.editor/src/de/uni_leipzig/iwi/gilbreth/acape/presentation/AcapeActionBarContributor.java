@@ -164,7 +164,7 @@ public class AcapeActionBarContributor
 
 				        // get the document of the master editor
 				        EObject root = getRootElement(getActiveEditingPartResource());
-				     
+				        
 						
 						try {
 							AcapeEditorPlugin.INSTANCE.log("Begin generation");
@@ -248,8 +248,10 @@ public class AcapeActionBarContributor
 	 * This adds to the menu bar a menu and some separators for editor additions,
 	 * as well as the sub-menus for object creation items.
 	 * <!-- begin-user-doc -->
+	 * Added the registration of the start generation menu entry
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
+	 * @author Johannes MŸller
 	 */
 	@Override
 	public void contributeToMenu(IMenuManager menuManager) {
@@ -266,9 +268,8 @@ public class AcapeActionBarContributor
 		//
 		createChildMenuManager = new MenuManager(AcapeEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
 		submenuManager.insertBefore("additions", createChildMenuManager);
-		
-		submenuManager.insertAfter("additions", startGenerationAction);
 
+		submenuManager.insertBefore("additions", startGenerationAction);
 		// Prepare for CreateSibling item addition or removal.
 		//
 		createSiblingMenuManager = new MenuManager(AcapeEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));

@@ -19,6 +19,10 @@
 # (c) 2011 Johannes Müller, Information Systems Institute, University of Leipzig
 «EXPAND attribute FOREACH attributes»
 
+«REM»«Put generation of constraints here»«ENDREM»
+
+«EXPAND priceSettings FOR priceSettings»
+
 «ENDFILE» 
 «ENDDEFINE» 
 
@@ -39,5 +43,25 @@ Level(«attributeReference»«name»):
                     «description»
     features:       f1
     attribute:      «attributeReference»
+
+«ENDDEFINE»
+
+«DEFINE priceSettings FOR PriceSettings»
+PriceSettings(price):
+    minimumPrice:   «lowerBound»
+    maximumPrice:   «upperBound»
+«ENDDEFINE»
+
+«DEFINE constraint FOR Constraint»
+ «IF type == ConstraintType.Require»
+ 	RequiresConstraint(«lhs.name»r«rhs.name»):
+    object:         «lhs.name»
+    subject:        «rhs.name» 
+ «ELSE»
+ ExcludesConstraint(«lhs.name»x«rhs.name»):
+    object:         «lhs.name»
+    subject:        «rhs.name»
+ 
+ «ENDIF»
 
 «ENDDEFINE»
