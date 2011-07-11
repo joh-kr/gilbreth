@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="de.uni_leipzig.iwi.gilbreth.cockpit.feature"
-      label="Feature"
-      version="1.0.0.qualifier">
+      label="Gilbreth Cockpit"
+      version="1.0.0.RC1">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="http://code.google.com/p/gilbreth/">
+      Gilbreth Cockpit let you handle the optimization process of a product portfolio conveniently within the eclipse environment.
    </description>
 
    <copyright url="http://www.iwi.uni-leipzig.de/">
@@ -168,11 +168,17 @@ by reason of your accepting any such warranty or additional liability.
 END OF TERMS AND CONDITIONS
    </license>
 
+   <url>
+      <update label="Gilbreth Project Hosting" url="http://gilbreth.googlecode.com/hg/de.uni_leipzig.iwi.gilbreth.cockpit.update.site/"/>
+   </url>
+
    <requires>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="de.uni_leipzig.iwi.gilbreth.acape.configurator"/>
       <import plugin="org.eclipse.emf.edit"/>
       <import plugin="org.eclipse.core.resources"/>
+      <import plugin="de.uni_leipzig.iwi.gilbreth.acape.configurator.edit"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.emf.edit.ui"/>
       <import plugin="org.eclipse.ui.ide"/>
@@ -184,64 +190,64 @@ END OF TERMS AND CONDITIONS
       <import plugin="org.eclipse.ui.console" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui"/>
       <import plugin="javax.xml"/>
-      <import plugin="Opt4J" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="vbpo" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="VBPODataModel"/>
+      <import plugin="VBPODataModel.edit"/>
    </requires>
 
    <plugin
          id="de.uni_leipzig.iwi.gilbreth.acape.configurator"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
    <plugin
          id="de.uni_leipzig.iwi.gilbreth.acape.configurator.edit"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
    <plugin
          id="de.uni_leipzig.iwi.gilbreth.acape.configurator.editor"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
    <plugin
          id="Opt4J"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
    <plugin
          id="vbpo"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
    <plugin
          id="VBPODataModel"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
    <plugin
          id="VBPODataModel.edit"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
    <plugin
          id="VBPODataModel.editor"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
 </feature>
