@@ -388,7 +388,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPrice_Value() {
+	public EAttribute getPrice_Price() {
 		return (EAttribute)priceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -669,7 +669,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 		createEAttribute(customerSegmentEClass, CUSTOMER_SEGMENT__SIZE);
 
 		priceEClass = createEClass(PRICE);
-		createEAttribute(priceEClass, PRICE__VALUE);
+		createEAttribute(priceEClass, PRICE__PRICE);
 		createEReference(priceEClass, PRICE__PRODUCT);
 
 		splEClass = createEClass(SPL);
@@ -765,7 +765,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 		initEAttribute(getCustomerSegment_Size(), ecorePackage.getEInt(), "size", null, 0, 1, CustomerSegment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(priceEClass, Price.class, "Price", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPrice_Value(), ecorePackage.getEBigDecimal(), "value", null, 0, 1, Price.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPrice_Price(), ecorePackage.getEBigDecimal(), "price", null, 0, 1, Price.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPrice_Product(), this.getProduct(), null, "product", null, 1, 1, Price.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(splEClass, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.SPL.class, "SPL", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

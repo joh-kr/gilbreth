@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.PriceImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.PriceImpl#getPrice <em>Price</em>}</li>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.PriceImpl#getProduct <em>Product</em>}</li>
  * </ul>
  * </p>
@@ -46,24 +46,24 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class PriceImpl extends EObjectImpl implements Price {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getPrice() <em>Price</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getPrice()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final BigDecimal VALUE_EDEFAULT = null;
+	protected static final BigDecimal PRICE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getPrice() <em>Price</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getPrice()
 	 * @generated
 	 * @ordered
 	 */
-	protected BigDecimal value = VALUE_EDEFAULT;
+	protected BigDecimal price = PRICE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getProduct() <em>Product</em>}' reference.
@@ -99,8 +99,8 @@ public class PriceImpl extends EObjectImpl implements Price {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BigDecimal getValue() {
-		return value;
+	public BigDecimal getPrice() {
+		return price;
 	}
 
 	/**
@@ -108,11 +108,11 @@ public class PriceImpl extends EObjectImpl implements Price {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(BigDecimal newValue) {
-		BigDecimal oldValue = value;
-		value = newValue;
+	public void setPrice(BigDecimal newPrice) {
+		BigDecimal oldPrice = price;
+		price = newPrice;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.PRICE__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.PRICE__PRICE, oldPrice, price));
 	}
 
 	/**
@@ -161,8 +161,8 @@ public class PriceImpl extends EObjectImpl implements Price {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case VbpodatamodelPackage.PRICE__VALUE:
-				return getValue();
+			case VbpodatamodelPackage.PRICE__PRICE:
+				return getPrice();
 			case VbpodatamodelPackage.PRICE__PRODUCT:
 				if (resolve) return getProduct();
 				return basicGetProduct();
@@ -178,8 +178,8 @@ public class PriceImpl extends EObjectImpl implements Price {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case VbpodatamodelPackage.PRICE__VALUE:
-				setValue((BigDecimal)newValue);
+			case VbpodatamodelPackage.PRICE__PRICE:
+				setPrice((BigDecimal)newValue);
 				return;
 			case VbpodatamodelPackage.PRICE__PRODUCT:
 				setProduct((Product)newValue);
@@ -196,8 +196,8 @@ public class PriceImpl extends EObjectImpl implements Price {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.PRICE__VALUE:
-				setValue(VALUE_EDEFAULT);
+			case VbpodatamodelPackage.PRICE__PRICE:
+				setPrice(PRICE_EDEFAULT);
 				return;
 			case VbpodatamodelPackage.PRICE__PRODUCT:
 				setProduct((Product)null);
@@ -214,8 +214,8 @@ public class PriceImpl extends EObjectImpl implements Price {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.PRICE__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case VbpodatamodelPackage.PRICE__PRICE:
+				return PRICE_EDEFAULT == null ? price != null : !PRICE_EDEFAULT.equals(price);
 			case VbpodatamodelPackage.PRICE__PRODUCT:
 				return product != null;
 		}
@@ -232,8 +232,8 @@ public class PriceImpl extends EObjectImpl implements Price {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
+		result.append(" (price: ");
+		result.append(price);
 		result.append(')');
 		return result.toString();
 	}

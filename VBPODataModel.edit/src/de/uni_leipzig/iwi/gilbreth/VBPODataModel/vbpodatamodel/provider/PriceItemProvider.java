@@ -76,26 +76,26 @@ public class PriceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addPricePropertyDescriptor(object);
 			addProductPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the Price feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object) {
+	protected void addPricePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Price_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Price_value_feature", "_UI_Price_type"),
-				 VbpodatamodelPackage.Literals.PRICE__VALUE,
+				 getString("_UI_Price_price_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Price_price_feature", "_UI_Price_type"),
+				 VbpodatamodelPackage.Literals.PRICE__PRICE,
 				 true,
 				 false,
 				 false,
@@ -145,7 +145,7 @@ public class PriceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		BigDecimal labelValue = ((Price)object).getValue();
+		BigDecimal labelValue = ((Price)object).getPrice();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Price_type") :
@@ -164,7 +164,7 @@ public class PriceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Price.class)) {
-			case VbpodatamodelPackage.PRICE__VALUE:
+			case VbpodatamodelPackage.PRICE__PRICE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

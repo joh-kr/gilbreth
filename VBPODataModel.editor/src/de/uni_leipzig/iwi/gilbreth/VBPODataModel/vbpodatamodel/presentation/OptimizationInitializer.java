@@ -266,7 +266,7 @@ public class OptimizationInitializer {
 					WTP wtp = (WTP) iterWTP.next();
 					if (competitorPrice.getProduct() == wtp.getProduct()) {
 						tempSurplus = wtp.getPrice().doubleValue()
-								- competitorPrice.getValue().doubleValue();
+								- competitorPrice.getPrice().doubleValue();
 						customerSurplus = customerSurplus < tempSurplus ? tempSurplus
 								: customerSurplus;
 					}

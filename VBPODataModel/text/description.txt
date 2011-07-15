@@ -31,7 +31,7 @@ Package vbpodatamodel <http://vbpodatamodel/1.0>
     Attribute size : EInt
 
   Class Price
-    Attribute value : EBigDecimal
+    Attribute price : EBigDecimal
     Reference product : Product<<1..1>>
 
   Class SPL
