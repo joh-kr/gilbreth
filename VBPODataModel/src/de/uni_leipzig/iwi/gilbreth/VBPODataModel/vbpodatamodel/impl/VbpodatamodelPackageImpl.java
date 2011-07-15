@@ -595,7 +595,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getWTP_Value() {
+	public EAttribute getWTP_Price() {
 		return (EAttribute)wtpEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -700,7 +700,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 		createEReference(customersEClass, CUSTOMERS__CUSTOMER_SEGMENTS);
 
 		wtpEClass = createEClass(WTP);
-		createEAttribute(wtpEClass, WTP__VALUE);
+		createEAttribute(wtpEClass, WTP__PRICE);
 		createEReference(wtpEClass, WTP__PRODUCT);
 		createEAttribute(wtpEClass, WTP__NAME);
 	}
@@ -796,7 +796,7 @@ public class VbpodatamodelPackageImpl extends EPackageImpl implements Vbpodatamo
 		initEReference(getCustomers_CustomerSegments(), this.getCustomerSegment(), null, "customerSegments", null, 1, -1, Customers.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(wtpEClass, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP.class, "WTP", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWTP_Value(), ecorePackage.getEBigDecimal(), "value", null, 0, 1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWTP_Price(), ecorePackage.getEBigDecimal(), "price", null, 0, 1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWTP_Product(), this.getProduct(), null, "product", null, 1, 1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWTP_Name(), ecorePackage.getEString(), "name", null, 1, 1, de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 

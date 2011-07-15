@@ -171,7 +171,7 @@ public class OptimizationInitializer {
 				WTP wtpObject = (WTP) iter.next();
 
 				int j = lookup.getProductLookup().get(wtpObject.getProduct());
-				wtp[i][j] = wtpObject.getValue().doubleValue();
+				wtp[i][j] = wtpObject.getPrice().doubleValue();
 			}
 
 		}
@@ -265,7 +265,7 @@ public class OptimizationInitializer {
 					Price competitorPrice = (Price) iterPrice.next();
 					WTP wtp = (WTP) iterWTP.next();
 					if (competitorPrice.getProduct() == wtp.getProduct()) {
-						tempSurplus = wtp.getValue().doubleValue()
+						tempSurplus = wtp.getPrice().doubleValue()
 								- competitorPrice.getValue().doubleValue();
 						customerSurplus = customerSurplus < tempSurplus ? tempSurplus
 								: customerSurplus;

@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.WTPImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.WTPImpl#getPrice <em>Price</em>}</li>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.WTPImpl#getProduct <em>Product</em>}</li>
  *   <li>{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.impl.WTPImpl#getName <em>Name</em>}</li>
  * </ul>
@@ -47,24 +47,24 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class WTPImpl extends EObjectImpl implements WTP {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getPrice() <em>Price</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getPrice()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final BigDecimal VALUE_EDEFAULT = null;
+	protected static final BigDecimal PRICE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getPrice() <em>Price</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getPrice()
 	 * @generated
 	 * @ordered
 	 */
-	protected BigDecimal value = VALUE_EDEFAULT;
+	protected BigDecimal price = PRICE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getProduct() <em>Product</em>}' reference.
@@ -110,8 +110,8 @@ public class WTPImpl extends EObjectImpl implements WTP {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BigDecimal getValue() {
-		return value;
+	public BigDecimal getPrice() {
+		return price;
 	}
 
 	/**
@@ -119,11 +119,11 @@ public class WTPImpl extends EObjectImpl implements WTP {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(BigDecimal newValue) {
-		BigDecimal oldValue = value;
-		value = newValue;
+	public void setPrice(BigDecimal newPrice) {
+		BigDecimal oldPrice = price;
+		price = newPrice;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.WTP__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, VbpodatamodelPackage.WTP__PRICE, oldPrice, price));
 	}
 
 	/**
@@ -172,7 +172,9 @@ public class WTPImpl extends EObjectImpl implements WTP {
 	 * @author Johannes MŸller
 	 */
 	public String getName() {
-		return "Would pay " + getValue().toString() + " for " + getProduct().getName();
+		String value = getPrice() == null ? "" : getPrice().toString();
+		String name = getProduct() == null ? "" : getProduct().getName();
+		return "Would pay " + value + " for " + name;
 	}
 
 	/**
@@ -183,8 +185,8 @@ public class WTPImpl extends EObjectImpl implements WTP {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case VbpodatamodelPackage.WTP__VALUE:
-				return getValue();
+			case VbpodatamodelPackage.WTP__PRICE:
+				return getPrice();
 			case VbpodatamodelPackage.WTP__PRODUCT:
 				if (resolve) return getProduct();
 				return basicGetProduct();
@@ -202,8 +204,8 @@ public class WTPImpl extends EObjectImpl implements WTP {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case VbpodatamodelPackage.WTP__VALUE:
-				setValue((BigDecimal)newValue);
+			case VbpodatamodelPackage.WTP__PRICE:
+				setPrice((BigDecimal)newValue);
 				return;
 			case VbpodatamodelPackage.WTP__PRODUCT:
 				setProduct((Product)newValue);
@@ -220,8 +222,8 @@ public class WTPImpl extends EObjectImpl implements WTP {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.WTP__VALUE:
-				setValue(VALUE_EDEFAULT);
+			case VbpodatamodelPackage.WTP__PRICE:
+				setPrice(PRICE_EDEFAULT);
 				return;
 			case VbpodatamodelPackage.WTP__PRODUCT:
 				setProduct((Product)null);
@@ -238,8 +240,8 @@ public class WTPImpl extends EObjectImpl implements WTP {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case VbpodatamodelPackage.WTP__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case VbpodatamodelPackage.WTP__PRICE:
+				return PRICE_EDEFAULT == null ? price != null : !PRICE_EDEFAULT.equals(price);
 			case VbpodatamodelPackage.WTP__PRODUCT:
 				return product != null;
 			case VbpodatamodelPackage.WTP__NAME:
@@ -258,8 +260,8 @@ public class WTPImpl extends EObjectImpl implements WTP {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
+		result.append(" (price: ");
+		result.append(price);
 		result.append(')');
 		return result.toString();
 	}

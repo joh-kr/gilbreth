@@ -76,7 +76,7 @@ public class WTPItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addPricePropertyDescriptor(object);
 			addProductPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 		}
@@ -84,19 +84,19 @@ public class WTPItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the Price feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object) {
+	protected void addPricePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_WTP_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_WTP_value_feature", "_UI_WTP_type"),
-				 VbpodatamodelPackage.Literals.WTP__VALUE,
+				 getString("_UI_WTP_price_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WTP_price_feature", "_UI_WTP_type"),
+				 VbpodatamodelPackage.Literals.WTP__PRICE,
 				 true,
 				 false,
 				 false,
@@ -186,7 +186,7 @@ public class WTPItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(WTP.class)) {
-			case VbpodatamodelPackage.WTP__VALUE:
+			case VbpodatamodelPackage.WTP__PRICE:
 			case VbpodatamodelPackage.WTP__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

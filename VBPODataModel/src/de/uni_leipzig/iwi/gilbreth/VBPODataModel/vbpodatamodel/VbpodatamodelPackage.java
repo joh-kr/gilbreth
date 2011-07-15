@@ -688,13 +688,13 @@ public interface VbpodatamodelPackage extends EPackage {
 	int WTP = 14;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Price</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WTP__VALUE = 0;
+	int WTP__PRICE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Product</b></em>' reference.
@@ -1161,15 +1161,15 @@ public interface VbpodatamodelPackage extends EPackage {
 	EClass getWTP();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getPrice <em>Price</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getValue()
+	 * @return the meta object for the attribute '<em>Price</em>'.
+	 * @see de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getPrice()
 	 * @see #getWTP()
 	 * @generated
 	 */
-	EAttribute getWTP_Value();
+	EAttribute getWTP_Price();
 
 	/**
 	 * Returns the meta object for the reference '{@link de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP#getProduct <em>Product</em>}'.
@@ -1574,12 +1574,12 @@ public interface VbpodatamodelPackage extends EPackage {
 		EClass WTP = eINSTANCE.getWTP();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Price</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WTP__VALUE = eINSTANCE.getWTP_Value();
+		EAttribute WTP__PRICE = eINSTANCE.getWTP_Price();
 
 		/**
 		 * The meta object literal for the '<em><b>Product</b></em>' reference feature.

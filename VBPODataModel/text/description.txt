@@ -62,6 +62,6 @@ Package vbpodatamodel <http://vbpodatamodel/1.0>
     Reference customerSegments : CustomerSegment<<1..*>>
 
   Class WTP
-    Attribute value : EBigDecimal
+    Attribute price : EBigDecimal
     Reference product : Product<<1..1>>
     Attribute /name : EString<<1..1>>

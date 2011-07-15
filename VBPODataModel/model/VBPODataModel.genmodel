@@ -63,7 +63,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//Customers/customerSegments"/>
     </genClasses>
     <genClasses ecoreClass="VBPODataModel.ecore#//WTP">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//WTP/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//WTP/price"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference VBPODataModel.ecore#//WTP/product"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute VBPODataModel.ecore#//WTP/name"/>
     </genClasses>

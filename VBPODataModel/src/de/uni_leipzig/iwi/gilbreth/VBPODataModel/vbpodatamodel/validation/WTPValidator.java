@@ -19,6 +19,8 @@ import java.math.BigDecimal;
 public interface WTPValidator {
 	boolean validate();
 
+	boolean validatePrice(BigDecimal value);
+
 	boolean validateValue(BigDecimal value);
 	boolean validateProduct(Product value);
 

@@ -264,7 +264,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_IfHjoqicEeCajsAef44Isw"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_Wl7vkKMFEeCDLZd7GNorQg" type="2001">
-        <element xmi:type="ecore:EAttribute" href="VBPODataModel.ecore#//WTP/value"/>
+        <element xmi:type="ecore:EAttribute" href="VBPODataModel.ecore#//WTP/price"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_Wl7vkaMFEeCDLZd7GNorQg"/>
       </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_G7oNMqSiEeCsJ5UlcdHdqg"/>
