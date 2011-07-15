@@ -3,6 +3,11 @@
    <description name="Gilbreth Update Site" url="http://gilbreth.googlecode.com/hg/de.uni_leipzig.iwi.gilbreth.cockpit.update.site/">
       The Gilbreth Update Site hosted at google code
    </description>
-   <feature url="features/de.uni_leipzig.iwi.gilbreth.cockpit.feature_1.0.1.RC1.jar" id="de.uni_leipzig.iwi.gilbreth.cockpit.feature" version="1.0.1.RC1"/>
+   <feature url="features/de.uni_leipzig.iwi.gilbreth.cockpit.feature_1.0.1.RC1.jar" id="de.uni_leipzig.iwi.gilbreth.cockpit.feature" version="1.0.1.RC1">
+      <category name="Gilbreth_Cockpit"/>
+   </feature>
+   <feature url="features/de.uni_leipzig.iwi.gilbreth.cockpit.feature_1.0.2.RC1.jar" id="de.uni_leipzig.iwi.gilbreth.cockpit.feature" version="1.0.2.RC1" patch="true">
+      <category name="Gilbreth_Cockpit"/>
+   </feature>
    <category-def name="Gilbreth_Cockpit" label="Gilbreth Cockpit"/>
 </site>
