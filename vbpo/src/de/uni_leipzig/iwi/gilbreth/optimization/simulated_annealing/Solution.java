@@ -154,12 +154,10 @@ public class Solution implements Phenotype {
 		for (int k = 0; k < nrOfAssets; k++) {
 			x_temp = generateTempX(k);
 			profit_temp = profit(x_temp);
-			contribution = ((profit - profit_temp)/profit) * 100;
-			System.out.println("Asset "+k + "temp_profit " + profit_temp + " contr " + contribution );
+			contribution = ((profit - profit_temp)/profit);
 			// As smaller profit_temp as more important k is for the profit
 			// without k is so and so much lower profit generated
 			assets.add(new AssetContainer(contribution, k));
-			System.out.println(assets.get(assets.size() - 1).toString());
 		}
 
 		Collections.sort(assets);

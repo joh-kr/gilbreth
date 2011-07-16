@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="optimizationResult" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="251"/>
+	<property name="ireport.y" value="155"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -327,7 +327,7 @@
 		<band height="22"/>
 		<band height="86">
 			<componentElement>
-				<reportElement key="table 3" style="table 3" positionType="Float" stretchType="RelativeToBandHeight" x="33" y="36" width="465" height="50" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+				<reportElement key="table 3" style="table 3" positionType="Float" stretchType="RelativeToTallestObject" x="33" y="36" width="465" height="50" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="ProductFeaturesDS">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{productFeatures})]]></dataSourceExpression>
@@ -342,9 +342,9 @@
 								<text><![CDATA[Product]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
 							<textField pattern="">
-								<reportElement x="7" y="0" width="74" height="20"/>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="7" y="0" width="74" height="30"/>
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
@@ -362,9 +362,9 @@
 								<text><![CDATA[Features]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="2" y="0" width="288" height="20"/>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="2" y="0" width="288" height="30"/>
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
@@ -382,9 +382,9 @@
 								<text><![CDATA[Price]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
 							<textField pattern="¤ #,##0.00">
-								<reportElement x="0" y="0" width="90" height="20"/>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="90" height="30"/>
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
@@ -404,7 +404,7 @@
 		</band>
 		<band height="94">
 			<componentElement>
-				<reportElement key="table 2" style="table 2" x="33" y="44" width="465" height="50"/>
+				<reportElement key="table 2" style="table 2" stretchType="RelativeToTallestObject" x="33" y="44" width="465" height="50"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="ProductSegmentDS_1">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{productSegmentAssignments})]]></dataSourceExpression>
@@ -419,9 +419,9 @@
 								<text><![CDATA[Segment]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="31" rowSpan="1">
 							<textField>
-								<reportElement x="11" y="0" width="90" height="20"/>
+								<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="11" y="0" width="90" height="31"/>
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
@@ -439,9 +439,9 @@
 								<text><![CDATA[Product]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="31" rowSpan="1">
 							<textField>
-								<reportElement x="22" y="0" width="90" height="20"/>
+								<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="22" y="0" width="90" height="31"/>
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
@@ -459,9 +459,9 @@
 								<text><![CDATA[Price]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="31" rowSpan="1">
 							<textField pattern="¤ #,##0.00">
-								<reportElement x="11" y="0" width="90" height="20"/>
+								<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="11" y="0" width="90" height="31"/>
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
@@ -540,7 +540,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="23" rowSpan="1">
-							<textField>
+							<textField pattern="#,##0.00 %">
 								<reportElement x="11" y="3" width="90" height="20"/>
 								<textElement>
 									<font fontName="Arial" size="12"/>
@@ -632,7 +632,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="23" rowSpan="1">
-							<textField>
+							<textField pattern="#,##0.00 %">
 								<reportElement x="11" y="3" width="90" height="20"/>
 								<textElement>
 									<font fontName="Arial" size="12"/>

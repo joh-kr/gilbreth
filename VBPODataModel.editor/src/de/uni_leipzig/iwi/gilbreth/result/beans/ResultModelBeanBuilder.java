@@ -225,15 +225,18 @@ public class ResultModelBeanBuilder {
 				for(Iterator featureAssetIter = feature.getRealizingAssets().iterator(); featureAssetIter.hasNext();){
 					featureAsset = (Asset) featureAssetIter.next();
 					if(featureAsset.getName().equals(assetImpact.getAssetName())){
-						// If one of the assets related to a feature has a impact of 0, than this asset is not used in 
+						
+						impact += assetImpact.getImpact();
+						
+						// If one of the assets related to a feature has an impact of 0, than this asset is not used in 
 						// any of the products planned to be fielded. Hence the feature is not included in any od the fielded
-						// products as well. So the feature has an impact of 0 as well.
+						// products as well. So the feature has an impact of 0 as well.	
 						if(assetImpact.getImpact() == 0.0d){
 							impact = 0.0d;
 							stop = true;
 							break;
 						}
-						impact += assetImpact.getImpact();
+						
 						counter++;
 					}
 				}
@@ -241,7 +244,7 @@ public class ResultModelBeanBuilder {
 			}
 			// Because we want to normalize the impact of the features
 			// as per cent values as the asset impacts as well.
-			impact = impact / counter;
+			impact = counter == 0 ? 0.0d : impact / counter;
 			
 			map.add(new FeatureImpact(feature.getName(), impact));
 		}
