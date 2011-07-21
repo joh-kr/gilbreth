@@ -20,7 +20,7 @@
       </category>
       <wizard
             category="de.uni_leipzig.iwi.gilbreth.VBPODataModel.wizard.category.id"
-            class="de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.presentation.VbpodatamodelModelWizard"
+            class="de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.presentation.VbpodatamodelModelWizard"
             icon="icons/full/obj16/VbpodatamodelModelFile.gif"
             id="de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.presentation.VbpodatamodelModelWizardID"
             name="%_UI_VbpodatamodelModelWizard_label">
@@ -39,14 +39,14 @@
             name="%_UI_VbpodatamodelEditor_label"
             icon="icons/full/obj16/VbpodatamodelModelFile.gif"
             extensions="vbpo"
-            class="de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.presentation.VbpodatamodelEditor"
-            contributorClass="de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.presentation.VbpodatamodelActionBarContributor">
+            class="de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.presentation.VbpodatamodelEditor"
+            contributorClass="de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.presentation.VbpodatamodelActionBarContributor">
       </editor>
    </extension>
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            class="de.uni_leipzig.iwi.gilbreth.editor.preferences.GilbrethPreferencePage"
+            class="de.uni_leipzig.iwi.gilbreth.vbpo.preferences.GilbrethPreferencePage"
             id="vbpodatamodel.editor.preferences.GilbrethPreferencePage"
             name="Gilbreth Preferences">
       </page>
@@ -54,7 +54,7 @@
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
-            class="de.uni_leipzig.iwi.gilbreth.editor.preferences.PreferenceInitializer">
+            class="de.uni_leipzig.iwi.gilbreth.vbpo.preferences.PreferenceInitializer">
       </initializer>
    </extension>
    <extension

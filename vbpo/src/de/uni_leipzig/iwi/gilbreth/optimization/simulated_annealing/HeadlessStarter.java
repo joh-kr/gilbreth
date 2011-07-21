@@ -97,6 +97,15 @@ public class HeadlessStarter {
 
 	}
 
+	/**
+	 * 
+	 * 
+	 * @param maxIterations maximal number of iterations the algorithm shall be run
+	 * @param alpha the alpha value
+	 * @param delta the delta value its the difference in result the result must achieve within maxIterations to run algorithm 
+	 * @param initialTemp the initial temperature (see Opt4J for details)
+	 * @param finalTemp the final temperature (see Opt4J for details)
+	 */
 	public void configure(int maxIterations, double alpha, double delta, int initialTemp, int finalTemp){
 		this.maxIterations = maxIterations;
 		this.alpha = alpha;

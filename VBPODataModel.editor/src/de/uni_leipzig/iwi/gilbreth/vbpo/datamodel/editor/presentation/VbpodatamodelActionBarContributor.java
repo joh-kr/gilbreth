@@ -1,30 +1,38 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
+ * Copyright 2011 Johannes MŸller, University of Leipzig
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * 
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-package de.uni_leipzig.iwi.gilbreth.acape.presentation;
+package de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.presentation;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+
 import org.eclipse.emf.edit.ui.action.ControlAction;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
@@ -32,6 +40,7 @@ import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.emf.edit.ui.action.ValidateAction;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
+
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
@@ -43,33 +52,37 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.SubContributionItem;
+import org.eclipse.jface.commands.ActionHandler;
+
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.ui.IEditorInput;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.xpand2.XpandExecutionContextImpl;
-import org.eclipse.xpand2.XpandFacade;
-import org.eclipse.xpand2.output.Outlet;
-import org.eclipse.xpand2.output.OutputImpl;
-import org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.handlers.IHandlerService;
 
-import de.uni_leipzig.iwi.gilbreth.acape.ACAPEDataModel;
-import de.uni_leipzig.iwi.gilbreth.acape.AcapePackage;
-
+import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
+import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.IterationChangedListener;
+import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
+import de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.optimization.OptimizationInitializer;
+import de.uni_leipzig.iwi.gilbreth.vbpo.result.JasperPrintCreator;
+import de.uni_leipzig.iwi.gilbreth.vbpo.result.ResultModelBeanBuilder;
 
 /**
- * This is the action bar contributor for the Acape model editor.
+ * This is the action bar contributor for the Vbpodatamodel model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class AcapeActionBarContributor
+public class VbpodatamodelActionBarContributor
 	extends EditingDomainActionBarContributor
 	implements ISelectionChangedListener {
 	/**
@@ -95,17 +108,104 @@ public class AcapeActionBarContributor
 	 * @generated
 	 */
 	protected IAction showPropertiesViewAction =
-		new Action(AcapeEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+		new Action(VBPODataModelEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
 			@Override
 			public void run() {
 				try {
 					getPage().showView("org.eclipse.ui.views.PropertySheet");
 				}
 				catch (PartInitException exception) {
-					AcapeEditorPlugin.INSTANCE.log(exception);
+					VBPODataModelEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		};
+		
+		/**
+		 * This action starts the optimization of a given model.
+		 * 
+		 * @author Johannes MŸller
+		 */
+		protected IAction startOptimizationAction =
+			new Action(VBPODataModelEditorPlugin.INSTANCE.getString("_UI_StartOptimization_menu_item")) {
+			
+				@Override
+				public void run() {
+					
+					
+					// Start Optimization here
+					Job job = new Job("Optimize Portfolio") { 
+
+						@Override
+						protected IStatus run(final IProgressMonitor monitor) {
+							
+							VbpodatamodelEditor editor = (VbpodatamodelEditor) activeEditorPart;
+	
+					        // get the document of the master editor
+					        EObject root = getRootElement(getActiveEditingPartResource());
+					        
+							// validate Model
+							Diagnostic diagnostic = Diagnostician.INSTANCE.validate(root);
+							if(diagnostic.getSeverity() != Diagnostic.OK){
+								// do not start optimization until model is valid.
+								
+								// TODO improve, would be the best to reuse the validation action here
+								PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+								    public void run() {
+									    Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+									     MessageBox box = new MessageBox(activeShell,SWT.ICON_ERROR);
+						                  box.setMessage("The data model contains errors please check again and correct.");
+						                  box.open();
+									}
+								});
+				                  
+								
+								return Status.CANCEL_STATUS;
+							}
+							
+					        // Initialize and start optimization
+					        OptimizationInitializer optimizer = new OptimizationInitializer();
+					        monitor.beginTask("The Portfolio is optimized according to the given information ...", optimizer.getFullWorkUnits()); 
+					 
+
+					        
+					        optimizer.addIterationChangedListener(new IterationChangedListener(){
+
+								@Override
+								public void iterationChanged(int iteration) {
+									monitor.worked(iteration);
+									VBPODataModelEditorPlugin.INSTANCE.log(iteration);
+								}
+					        	
+					        });
+					        
+					        optimizer.optimize((VBPODataModel)root);
+					        
+					        Solution solution = null;
+							try {
+								solution = optimizer.getSolution();
+							} catch (Exception e1) {
+								VBPODataModelEditorPlugin.INSTANCE.log(e1.getLocalizedMessage());
+							}
+
+					        ResultModelBeanBuilder builder = new ResultModelBeanBuilder((VBPODataModel)root, solution, optimizer.getLookup());
+					        
+					        
+					        
+					        editor.getReportContentProvider().setContent(JasperPrintCreator.createPrint(builder.buildResultBean()));
+					       
+							VBPODataModelEditorPlugin.INSTANCE.log("Optimization is finished successfully!");
+							
+							editor.setResultPageActive();
+
+					        monitor.done(); 
+					        return Status.OK_STATUS; 
+						} 
+					}; 
+					job.schedule();
+					//VBPODataModelEditorPlugin.INSTANCE.log(exception);
+				}
+
+			};
 
 	/**
 	 * This action refreshes the viewer of the current editor if the editor
@@ -115,7 +215,7 @@ public class AcapeActionBarContributor
 	 * @generated
 	 */
 	protected IAction refreshViewerAction =
-		new Action(AcapeEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
+		new Action(VBPODataModelEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
 			@Override
 			public boolean isEnabled() {
 				return activeEditorPart instanceof IViewerProvider;
@@ -131,42 +231,6 @@ public class AcapeActionBarContributor
 				}
 			}
 		};
-		
-		protected IAction startGenerationAction =
-			new Action(AcapeEditorPlugin.INSTANCE.getString("_UI_StartGeneration_menu_item")) {
-			@Override
-			public void run() {
-				
-				// Start Optimization here
-				Job job = new Job("Start Generation") { 
-
-					@Override
-					protected IStatus run(IProgressMonitor monitor) {
-						
-						AcapeEditor editor = (AcapeEditor) activeEditorPart;
-
-				        // get the document of the master editor
-				        EObject root = getRootElement(getActiveEditingPartResource());
-				        
-						
-						try {
-							AcapeEditorPlugin.INSTANCE.log("Begin generation");
-							generate((ACAPEDataModel)root, monitor);
-						} catch (CoreException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-
-				        monitor.done(); 
-				        return Status.OK_STATUS; 
-					} 
-				}; 
-				job.schedule();
-				//VBPODataModelEditorPlugin.INSTANCE.log(exception);
-			}
-
-		};
-		
 
 	/**
 	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
@@ -208,7 +272,7 @@ public class AcapeActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AcapeActionBarContributor() {
+	public VbpodatamodelActionBarContributor() {
 		super(ADDITIONS_LAST_STYLE);
 		loadResourceAction = new LoadResourceAction();
 		validateAction = new ValidateAction();
@@ -223,24 +287,22 @@ public class AcapeActionBarContributor
 	 */
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
-		toolBarManager.add(new Separator("acape-settings"));
-		toolBarManager.add(new Separator("acape-additions"));
+		toolBarManager.add(new Separator("vbpodatamodel-settings"));
+		toolBarManager.add(new Separator("vbpodatamodel-additions"));
 	}
 
 	/**
 	 * This adds to the menu bar a menu and some separators for editor additions,
 	 * as well as the sub-menus for object creation items.
 	 * <!-- begin-user-doc -->
-	 * Added the registration of the start generation menu entry
 	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 * @author Johannes MŸller
+	 * @generated
 	 */
 	@Override
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(AcapeEditorPlugin.INSTANCE.getString("_UI_AcapeEditor_menu"), "de.uni_leipzig.iwi.gilbreth.acapeMenuID");
+		IMenuManager submenuManager = new MenuManager(VBPODataModelEditorPlugin.INSTANCE.getString("_UI_VbpodatamodelEditor_menu"), "de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodelMenuID");
 		menuManager.insertAfter("additions", submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));
@@ -249,13 +311,12 @@ public class AcapeActionBarContributor
 
 		// Prepare for CreateChild item addition or removal.
 		//
-		createChildMenuManager = new MenuManager(AcapeEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
+		createChildMenuManager = new MenuManager(VBPODataModelEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
 		submenuManager.insertBefore("additions", createChildMenuManager);
 
-		submenuManager.insertBefore("additions", startGenerationAction);
 		// Prepare for CreateSibling item addition or removal.
 		//
-		createSiblingMenuManager = new MenuManager(AcapeEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
+		createSiblingMenuManager = new MenuManager(VBPODataModelEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 		submenuManager.insertBefore("additions", createSiblingMenuManager);
 
 		// Force an update because Eclipse hides empty menus now.
@@ -446,11 +507,11 @@ public class AcapeActionBarContributor
 		super.menuAboutToShow(menuManager);
 		MenuManager submenuManager = null;
 
-		submenuManager = new MenuManager(AcapeEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
+		submenuManager = new MenuManager(VBPODataModelEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
 		populateManager(submenuManager, createChildActions, null);
 		menuManager.insertBefore("edit", submenuManager);
 
-		submenuManager = new MenuManager(AcapeEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
+		submenuManager = new MenuManager(VBPODataModelEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 		populateManager(submenuManager, createSiblingActions, null);
 		menuManager.insertBefore("edit", submenuManager);
 	}
@@ -459,7 +520,7 @@ public class AcapeActionBarContributor
 	 * This inserts global actions before the "additions-end" separator.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected void addGlobalActions(IMenuManager menuManager) {
@@ -468,6 +529,11 @@ public class AcapeActionBarContributor
 
 		refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());		
 		menuManager.insertAfter("ui-actions", refreshViewerAction);
+		
+		// Inserted the start optimization action
+		menuManager.insertAfter("ui-actions", startOptimizationAction);
+		
+		
 
 		super.addGlobalActions(menuManager);
 	}
@@ -482,46 +548,7 @@ public class AcapeActionBarContributor
 	protected boolean removeAllReferencesOnDelete() {
 		return true;
 	}
-	
-	private  IResource extractResource(IEditorPart editor) {
-		      IEditorInput input = editor.getEditorInput();
-		      if (!(input instanceof IFileEditorInput))
-		         return null;
-		      return ((IFileEditorInput)input).getFile();
-		   }
-	
-	private void generate(ACAPEDataModel model, IProgressMonitor monitor) throws CoreException {
 
-	    // get project root folder as absolute file system path
-		IResource resource = extractResource(activeEditorPart);
-		 String containerName = resource.getLocation().removeLastSegments(1).append("src-gen").toPortableString();
-
-	    // configure outlets
-	    OutputImpl output = new OutputImpl();
-	    Outlet outlet = new Outlet(containerName);
-	    outlet.setOverwrite(true);
-	    output.addOutlet(outlet);
-
-	    // create execution context
-	    Map globalVarsMap = new HashMap();
-	    XpandExecutionContextImpl execCtx = new XpandExecutionContextImpl(output, null, globalVarsMap, null, null);
-	    EmfRegistryMetaModel metamodel = new EmfRegistryMetaModel() {
-	        @Override
-	        protected EPackage[] allPackages() {
-	            return new EPackage[] { AcapePackage.eINSTANCE, EcorePackage.eINSTANCE };
-	        }
-	    };
-	    execCtx.registerMetaModel(metamodel);
-
-	    // generate
-	    XpandFacade facade = XpandFacade.create(execCtx);
-	    String templatePath = "template::Template::main";
-	    facade.evaluate(templatePath, model);
-
-	    // refresh the project to get external updates:
-	   resource.refreshLocal(IResource.DEPTH_INFINITE, monitor);
-	}
-	
 	private Resource getActiveEditingPartResource(){
         URI resourceURI = EditUIUtil.getURI(activeEditorPart.getEditorInput());
 		Exception exception = null;
@@ -543,5 +570,5 @@ public class AcapeActionBarContributor
 		return resource.getContents().get(0);
 		
 	}
-
+	
 }

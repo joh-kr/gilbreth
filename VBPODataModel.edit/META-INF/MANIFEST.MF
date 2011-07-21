@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: VBPODataModel.edit;singleton:=true
+Bundle-SymbolicName: de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.edit;singleton:=true
 Bundle-Version: 1.0.2
 Bundle-ClassPath: .
 Bundle-Activator: de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.provider.VBPODataModelEditPlugin$Implementation
@@ -10,6 +10,6 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.provider
 Require-Bundle: org.eclipse.core.runtime,
- VBPODataModel;visibility:=reexport,
+ de.uni_leipzig.iwi.gilbreth.vbpo.datamodel;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

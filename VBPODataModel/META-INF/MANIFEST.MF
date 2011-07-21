@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: VBPODataModel;singleton:=true
+Bundle-SymbolicName: de.uni_leipzig.iwi.gilbreth.vbpo.datamodel;singleton:=true
 Bundle-Version: 1.0.2
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
