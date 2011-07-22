@@ -74,7 +74,7 @@ public class Solution implements Phenotype {
 
 	// ---- The problem description that determines the constant values of a
 	// solution
-	private final SPLProblemDescription problemDescription;
+	private final VbpoProblemDescription problemDescription;
 	
 	// ---- Constructor Section -------
 
@@ -93,7 +93,7 @@ public class Solution implements Phenotype {
 	 *            A reference on the problem description.
 	 */
 	public Solution(boolean[][] x, double[] p,
-			SPLProblemDescription problemDescription) {
+			VbpoProblemDescription problemDescription) {
 		this.x = x;
 		this.p = p;
 		this.problemDescription = problemDescription;

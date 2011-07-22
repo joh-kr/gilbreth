@@ -30,12 +30,12 @@ import com.google.inject.Inject;
  * @author Johannes Müller
  * 
  */
-public class SPLDecoder implements Decoder<SPLGenotype, Solution> {
+public class VbpoDecoder implements Decoder<VbpoGenotype, Solution> {
 
-	SPLProblemDescription problem;
+	VbpoProblemDescription problem;
 
 	@Inject
-	public SPLDecoder(SPLProblemDescription problem) {
+	public VbpoDecoder(VbpoProblemDescription problem) {
 
 		this.problem = problem;
 	}
@@ -44,7 +44,7 @@ public class SPLDecoder implements Decoder<SPLGenotype, Solution> {
 	 * 
 	 * @return the phenotype Solution to the corresponding genotype SPLGenotype
 	 */
-	public Solution decode(SPLGenotype genotype) {
+	public Solution decode(VbpoGenotype genotype) {
 		boolean[][] x = genotype.getXAsMatrix();
 		double[] p = genotype.getPAsVector();
 

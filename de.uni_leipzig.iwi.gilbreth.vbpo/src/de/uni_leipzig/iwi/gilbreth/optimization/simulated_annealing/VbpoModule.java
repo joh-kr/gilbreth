@@ -28,29 +28,29 @@ import com.google.inject.Provides;
  * @author Johannes Müller
  *
  */
-public class SPLModule extends ProblemModule {
+public class VbpoModule extends ProblemModule {
 
-	private SPLProblemDescription problemDescription = new SPLProblemDescription();
+	private VbpoProblemDescription problemDescription = new VbpoProblemDescription();
 	
 	
 	@Provides
-	public SPLProblemDescription getProblemDescription() {
+	public VbpoProblemDescription getProblemDescription() {
 		return problemDescription;
 	}
 
-	public void setProblemDescription(SPLProblemDescription problemDescription) {
+	public void setProblemDescription(VbpoProblemDescription problemDescription) {
 		this.problemDescription = problemDescription;
 	}
 
 	@Override
 	protected void config() {
-		bindProblem(SPLCreator.class, SPLDecoder.class, SPLEvaluator.class);
+		bindProblem(VbpoCreator.class, VbpoDecoder.class, VbpoEvaluator.class);
 
 		BasicNeighborModule.addNeighbor(this.binder(),
-				NeighborSPLGenotype.class);
+				VbpoNeighbor.class);
 
 		VisualizationModule.addIndividualMouseListener(binder(),
-				SPLProblemVisualization.class);
+				VbpoProblemVisualization.class);
 
 	}
 }

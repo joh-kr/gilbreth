@@ -72,6 +72,9 @@ import de.uni_leipzig.iwi.gilbreth.acape.AcapePackage;
 public class AcapeActionBarContributor
 	extends EditingDomainActionBarContributor
 	implements ISelectionChangedListener {
+	
+	private static String TEMPLATE_PATH = "template::Template::main";
+	
 	/**
 	 * This keeps track of the active editor.
 	 * <!-- begin-user-doc -->
@@ -515,8 +518,7 @@ public class AcapeActionBarContributor
 
 	    // generate
 	    XpandFacade facade = XpandFacade.create(execCtx);
-	    String templatePath = "template::Template::main";
-	    facade.evaluate(templatePath, model);
+	    facade.evaluate(TEMPLATE_PATH, model);
 
 	    // refresh the project to get external updates:
 	   resource.refreshLocal(IResource.DEPTH_INFINITE, monitor);

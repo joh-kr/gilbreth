@@ -43,7 +43,7 @@ import com.google.inject.Inject;
  * @author Johannes Müller
  * 
  */
-public class SPLProblemVisualization implements IndividualMouseListener {
+public class VbpoProblemVisualization implements IndividualMouseListener {
 
 	protected final Viewport viewport;
 
@@ -51,7 +51,7 @@ public class SPLProblemVisualization implements IndividualMouseListener {
 	// monitor panel. Thus we need the ArchiveMonitorPanel and the main
 	// GUIFrame.
 	@Inject
-	public SPLProblemVisualization(Viewport viewport) {
+	public VbpoProblemVisualization(Viewport viewport) {
 		this.viewport = viewport;
 	}
 

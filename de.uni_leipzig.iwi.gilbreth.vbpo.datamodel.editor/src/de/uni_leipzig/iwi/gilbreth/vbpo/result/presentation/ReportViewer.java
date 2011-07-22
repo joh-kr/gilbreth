@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2011 Johannes MŸller, University of Leipzig
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,8 @@ import de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.presentation.VBPODataMo
  * A wrapper for the SWTJasperViewer component. Is mainly responsible to wire
  * the ReportContentProvider with the SWTJAsperViewer
  * 
- * @author jo
+ * @author Johannes MŸller
+ * @version 1.0
  *
  */
 public class ReportViewer extends Viewer {

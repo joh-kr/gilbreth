@@ -37,7 +37,7 @@ import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.HeadlessStarter;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.IterationChangedListener;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.SPLProblemDescription;
+import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
 import de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.presentation.VBPODataModelEditorPlugin;
 import de.uni_leipzig.iwi.gilbreth.vbpo.preferences.PreferenceConstants;
@@ -70,7 +70,7 @@ public class OptimizationInitializer {
 	 */
 	private Lookup lookup;
 
-	private SPLProblemDescription description;
+	private VbpoProblemDescription description;
 
 	public OptimizationInitializer() {
 		this.starter = new HeadlessStarter();
@@ -150,11 +150,11 @@ public class OptimizationInitializer {
 		lookup.setProductLookup(productLookup);
 		lookup.setSegmentLookup(customerLookup);
 
-		description = new SPLProblemDescription(createCustomerDescription(),
+		description = new VbpoProblemDescription(createCustomerDescription(),
 				createFirmDescription(), createCompetitionDescription(), 100);
 	}
 
-	private SPLProblemDescription.Customer createCustomerDescription() {
+	private VbpoProblemDescription.Customer createCustomerDescription() {
 		int numberOfSegments = root.getCustomers().eContents().size();
 		int[] q = new int[numberOfSegments]; // { 10, 30, 50 };
 		double[][] wtp = new double[numberOfSegments][numberOfProducts];
@@ -176,10 +176,10 @@ public class OptimizationInitializer {
 			}
 
 		}
-		return new SPLProblemDescription.Customer(q, wtp);
+		return new VbpoProblemDescription.Customer(q, wtp);
 	}
 
-	private SPLProblemDescription.Firm createFirmDescription() {
+	private VbpoProblemDescription.Firm createFirmDescription() {
 		double[] cv = new double[numberOfProducts]; // { 0.0, 0.1, 0.4, 0.5,
 													// 0.01 };
 		double[] cf = new double[numberOfProducts]; // { 0.0, 5.0, 6.0, 1.0, 2.0
@@ -228,10 +228,10 @@ public class OptimizationInitializer {
 			}
 		}
 
-		return new SPLProblemDescription.Firm(cv, cf, ca, a);
+		return new VbpoProblemDescription.Firm(cv, cf, ca, a);
 	}
 
-	private SPLProblemDescription.Competition createCompetitionDescription() {
+	private VbpoProblemDescription.Competition createCompetitionDescription() {
 		double[] w = new double[numberOfCustomerSegments];// { 0.0, 0.0, 0.0
 															// };// Here we need
 															// some calculations
@@ -243,7 +243,7 @@ public class OptimizationInitializer {
 					.getCustomerSegments().get(i));
 		}
 
-		return new SPLProblemDescription.Competition(w);
+		return new VbpoProblemDescription.Competition(w);
 	}
 
 	/**

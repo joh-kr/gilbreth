@@ -30,8 +30,9 @@ import org.opt4j.genotype.DoubleGenotype;
  * @author Johannes Müller
  * 
  */
-public class SPLGenotype extends CompositeGenotype<Integer, Genotype> {
+public class VbpoGenotype extends CompositeGenotype<Integer, Genotype> {
 
+	
 	public DoubleGenotype getP() {
 		return this.get(2);
 	}
@@ -75,6 +76,17 @@ public class SPLGenotype extends CompositeGenotype<Integer, Genotype> {
 
 	public void setX(BooleanGenotype genotype) {
 		this.put(1, genotype);
+	}
+	
+	/**
+	 * 
+	 * @param x the number of the segment
+	 * @param y the number of the product
+	 * @param value
+	 */
+	public void setX(int x, int y, boolean value){
+		int offset = getP().size();
+		getX().set(x*offset + y, value);
 	}
 }
 // EOF

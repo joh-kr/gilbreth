@@ -70,6 +70,7 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
+import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelFactory;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.provider.VBPODataModelEditPlugin;
@@ -193,12 +194,17 @@ public class VbpodatamodelModelWizard extends Wizard implements INewWizard {
 	 * <!-- begin-user-doc -->
 	 * Creates a VBPODataModel Object and additionally a initial Firm object
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = (EClass)vbpodatamodelPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		EClass eClass = (EClass)vbpodatamodelPackage.getEClassifier(INITIAL_OBJECT);
 		EObject rootObject = vbpodatamodelFactory.create(eClass);
-		return rootObject;
+		
+		VBPODataModel model = (VBPODataModel) rootObject; 
+		model.setFirm(vbpodatamodelFactory.createFirm());
+		model.setCompetition(vbpodatamodelFactory.createCompetition());
+		model.setCustomers(vbpodatamodelFactory.createCustomers());
+		return model;
 	}
 
 	/**
@@ -343,9 +349,9 @@ public class VbpodatamodelModelWizard extends Wizard implements INewWizard {
 	 * This is the page where the type of object to create is selected.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	
+	@Deprecated
 	public class VbpodatamodelModelWizardInitialObjectCreationPage extends WizardPage {
 		/**
 		 * <!-- begin-user-doc -->

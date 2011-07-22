@@ -44,7 +44,7 @@ public class HeadlessStarter {
 	private Collection<IterationChangedListener> iterationChangedListener = new ArrayList<IterationChangedListener>();
 	
 	private Opt4JTask task;
-	private SPLProblemDescription description;
+	private VbpoProblemDescription description;
 	
 	private int maxIterations = 10000;
 	private double delta = 0.1d;
@@ -56,7 +56,7 @@ public class HeadlessStarter {
 	
 	
 	
-	public Solution startOptimization(SPLProblemDescription description){
+	public Solution startOptimization(VbpoProblemDescription description){
 		this.description = description;
 		
 		configureOpt4J();
@@ -65,7 +65,7 @@ public class HeadlessStarter {
 	
 	private void configureOpt4J() {
 		
-		SPLSimulatedAnnealingModule annealingModule = new SPLSimulatedAnnealingModule();
+		VbpoSimulatedAnnealingModule annealingModule = new VbpoSimulatedAnnealingModule();
 		annealingModule.setChangeIterations(1000);
 		annealingModule.setDelta(delta);
 		annealingModule.setIterations(maxIterations);
@@ -76,25 +76,16 @@ public class HeadlessStarter {
 		coolingModules.setFinalTemperature(finalTemp);
 		coolingModules.setType(Type.HYPERBOLIC);
 
-		SPLModule sPLModule = new SPLModule();
+		VbpoModule sPLModule = new VbpoModule();
 		sPLModule.setProblemDescription(description);
-		
-		
-		ViewerModule viewer = new ViewerModule();
-		viewer.setCloseOnStop(true);
-		
 		
 		Collection<Module> modules = new ArrayList<Module>();
 		modules.add(sPLModule);
 		modules.add(annealingModule);
 		modules.add(coolingModules);
-		
-		//modules.add(viewer);
 
 		task = new Opt4JTask(false);
 		task.init(modules);
-		
-
 	}
 
 	/**
@@ -134,8 +125,8 @@ public class HeadlessStarter {
 			Archive archive = task.getInstance(Archive.class);
 			if(archive.size() > 0){
 				Individual individual = archive.iterator().next();
-				SPLDecoder decoder = new SPLDecoder(description);
-				solution = decoder.decode((SPLGenotype)individual.getGenotype());
+				VbpoDecoder decoder = new VbpoDecoder(description);
+				solution = decoder.decode((VbpoGenotype)individual.getGenotype());
 			}
 
 		} catch (Exception e) {

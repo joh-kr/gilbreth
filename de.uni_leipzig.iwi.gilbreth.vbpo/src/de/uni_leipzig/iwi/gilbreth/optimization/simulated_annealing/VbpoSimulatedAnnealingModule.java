@@ -25,7 +25,7 @@ import org.opt4j.start.Constant;
  * @author Johannes Müller
  * 
  */
-public class SPLSimulatedAnnealingModule extends SimulatedAnnealingModule {
+public class VbpoSimulatedAnnealingModule extends SimulatedAnnealingModule {
 
 	@Constant(value = "delta")
 	protected double delta = 0.01;
@@ -36,7 +36,7 @@ public class SPLSimulatedAnnealingModule extends SimulatedAnnealingModule {
 	@Override
 	public void config() {
 		
-		bindOptimizer(SPLSimulatedAnnealing.class);
+		bindOptimizer(VbpoSimulatedAnnealing.class);
 	}
 
 	public int getChangeIterations() {

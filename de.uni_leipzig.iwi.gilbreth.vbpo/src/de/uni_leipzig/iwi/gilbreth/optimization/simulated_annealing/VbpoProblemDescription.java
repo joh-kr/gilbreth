@@ -21,7 +21,7 @@ package de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing;
  * @author Johannes Müller
  * 
  */
-public class SPLProblemDescription {
+public class VbpoProblemDescription {
 
 	// ---- Data Member Section ----
 
@@ -130,9 +130,9 @@ public class SPLProblemDescription {
 
 	private int price_steps;
 
-	public SPLProblemDescription(){} 
+	public VbpoProblemDescription(){} 
 	
-	public SPLProblemDescription(Customer customer, Firm firm,
+	public VbpoProblemDescription(Customer customer, Firm firm,
 			Competition competition, int price_steps) {
 		this.customer = customer;
 		this.firm = firm;

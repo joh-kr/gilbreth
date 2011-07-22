@@ -42,7 +42,7 @@ import com.google.inject.Inject;
  * @author Johannes Müller
  * 
  */
-public class SPLSimulatedAnnealing extends SimulatedAnnealing {
+public class VbpoSimulatedAnnealing extends SimulatedAnnealing {
 
 	protected double delta = 0.0d;
 	protected int changeIterations = 0;
@@ -73,7 +73,7 @@ public class SPLSimulatedAnnealing extends SimulatedAnnealing {
 	 *            the cooling schedule
 	 */
 	@Inject
-	public SPLSimulatedAnnealing(Population population, Archive archive,
+	public VbpoSimulatedAnnealing(Population population, Archive archive,
 			IndividualBuilder individualBuilder, Completer completer,
 			Control control, Rand random, Neighbor<Genotype> neighbor,
 			Copy<Genotype> copy, @Iterations int iterations,

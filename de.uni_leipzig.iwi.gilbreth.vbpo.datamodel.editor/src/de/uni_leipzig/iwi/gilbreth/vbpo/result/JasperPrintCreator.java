@@ -108,5 +108,5 @@ public class JasperPrintCreator {
 }
 /*
  * 0.3.1 changed constant TEMPLATE_PATH to match the new name of the plugin
- * */
+ */
 /*EOF*/

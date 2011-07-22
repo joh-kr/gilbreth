@@ -33,10 +33,10 @@ import com.google.inject.Inject;
  * @author Johannes Müller
  *
  */
-@Apply(SPLGenotype.class)
-public class NeighborSPLGenotype implements Neighbor<Genotype>{
+@Apply(VbpoGenotype.class)
+public class VbpoNeighbor implements Neighbor<Genotype>{
 
-	private SPLProblemDescription description;
+	private VbpoProblemDescription description;
 	private Rand random;
 	protected final NormalizeDouble normalize;
 	protected final NeighborDouble doubleNeighbor;
@@ -50,7 +50,7 @@ public class NeighborSPLGenotype implements Neighbor<Genotype>{
 	 * @param normalize
 	 */
 	@Inject
-	public NeighborSPLGenotype(SPLProblemDescription problem, Rand random, NormalizeDouble normalize){
+	public VbpoNeighbor(VbpoProblemDescription problem, Rand random, NormalizeDouble normalize){
 		
 		this.description = problem;
 		this.random = random;
@@ -66,7 +66,7 @@ public class NeighborSPLGenotype implements Neighbor<Genotype>{
 	 * - price is within range
 	 */
 	public void neighbor(Genotype genotype) {
-		SPLGenotype splGenotype = (SPLGenotype) genotype;
+		VbpoGenotype splGenotype = (VbpoGenotype) genotype;
 		
 		// Randomly decide which part of the genotype to alter
 		if(random.nextBoolean()){
@@ -82,30 +82,28 @@ public class NeighborSPLGenotype implements Neighbor<Genotype>{
 	 * 
 	 * @param genotype
 	 */
-	protected void neighborP(SPLGenotype genotype){
-		int r = random.nextInt(genotype.getP().size());
-
-		
+	protected void neighborP(VbpoGenotype genotype){
+		// Dont change the initital price of the 0 product
+		int r = 1 + random.nextInt(genotype.getP().size() - 1);
 		double value = 0.0d;
-		if(r != 0){
-			value = genotype.getP().get(r) + random.nextDouble() * description.priceStep(r);
-		}// Dont change the initital price of the 0 product
+		value = genotype.getP().get(r) + random.nextDouble() * description.priceStep(r);
 		
-		if(value > genotype.getP().getUpperBound(r))
-			value = genotype.getP().getLowerBound(r);
+//		if(value > genotype.getP().getUpperBound(r)){
+//			value = genotype.getP().getLowerBound(r);
+//		}
 		genotype.getP().set(r, value);
 
 		normalize.normalize(genotype.getP());
 	}
 	
-	protected void neighborX(SPLGenotype genotype){
+	protected void neighborX(VbpoGenotype genotype){
 			
 		int i      = random.nextInt(description.getCustomer().numberOfSegments());
 		int change = random.nextInt(description.getFirm().NumberOfProducts());
-		int offset = genotype.getP().size();
 		
 		for(int j = 0; j < description.getFirm().NumberOfProducts(); j++){
-			genotype.getX().set(i*offset + j, j == change);
+			genotype.setX(i, j, j == change);
+			//genotype.getX().set(i*offset + j, j == change);
 		}	
 	}
 }

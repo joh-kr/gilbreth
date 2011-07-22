@@ -32,13 +32,13 @@ import com.google.inject.Inject;
  * @author Johannes Müller
  * 
  */
-public class SPLEvaluator implements Evaluator<Solution> {
+public class VbpoEvaluator implements Evaluator<Solution> {
 
 	private Objective profit = new Objective("profit", Sign.MAX);
-	private SPLProblemDescription problem;
+	private VbpoProblemDescription problem;
 
 	@Inject
-	public SPLEvaluator(SPLProblemDescription problem) {
+	public VbpoEvaluator(VbpoProblemDescription problem) {
 		this.problem = problem;
 	}
 
@@ -46,9 +46,9 @@ public class SPLEvaluator implements Evaluator<Solution> {
 	private int countSegmentsBuyingFromCompetitor(Solution solution) {
 		boolean[][] x = solution.getX();
 		double[] p = solution.getP();
-		SPLProblemDescription.Customer c = problem.getCustomer();
-		SPLProblemDescription.Firm f = problem.getFirm();
-		SPLProblemDescription.Competition co = problem.getCompetition();
+		VbpoProblemDescription.Customer c = problem.getCustomer();
+		VbpoProblemDescription.Firm f = problem.getFirm();
+		VbpoProblemDescription.Competition co = problem.getCompetition();
 		double value = 0.0d;
 		int count = 0;
 		for (int i = 0; i < c.numberOfSegments(); i++) {
@@ -69,8 +69,8 @@ public class SPLEvaluator implements Evaluator<Solution> {
 		boolean[][] x = solution.getX();
 		boolean[] y = solution.determineY();
 		double[] p = solution.getP();
-		SPLProblemDescription.Customer c = problem.getCustomer();
-		SPLProblemDescription.Firm f = problem.getFirm();
+		VbpoProblemDescription.Customer c = problem.getCustomer();
+		VbpoProblemDescription.Firm f = problem.getFirm();
 		double welfare = 0.0d;
 		int count = 0;
 

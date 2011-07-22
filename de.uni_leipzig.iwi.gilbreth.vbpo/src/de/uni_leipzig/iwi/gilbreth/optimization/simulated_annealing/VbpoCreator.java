@@ -30,13 +30,13 @@ import com.google.inject.Inject;
  * @author Johannes Müller
  * 
  */
-public class SPLCreator implements Creator<SPLGenotype> {
+public class VbpoCreator implements Creator<VbpoGenotype> {
 
-	private final SPLProblemDescription problemDescription;
+	private final VbpoProblemDescription problemDescription;
 	private Random random = new Random();
 
 	@Inject
-	public SPLCreator(SPLProblemDescription problemDescription) {
+	public VbpoCreator(VbpoProblemDescription problemDescription) {
 		this.problemDescription = problemDescription;
 	}
 
@@ -45,7 +45,7 @@ public class SPLCreator implements Creator<SPLGenotype> {
 	 * @return a SPLGenotype representing the SPLProblem to solve in an abstract
 	 *         fashion
 	 */
-	public SPLGenotype create() {
+	public VbpoGenotype create() {
 
 		// The SPLGenotype consists of three sub genotypes for the selected
 		// products in the SPL (y)
@@ -90,7 +90,7 @@ public class SPLCreator implements Creator<SPLGenotype> {
 		// set the 0 product explicitly to 0
 		p.set(0, 0.0d);
 		// Assemble SPLGenotype
-		SPLGenotype splgenotype = new SPLGenotype();
+		VbpoGenotype splgenotype = new VbpoGenotype();
 		splgenotype.setP(p);
 		splgenotype.setX(x);
 
