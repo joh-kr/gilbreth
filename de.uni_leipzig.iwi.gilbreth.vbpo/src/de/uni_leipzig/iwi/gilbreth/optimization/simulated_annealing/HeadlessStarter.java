@@ -47,6 +47,7 @@ public class HeadlessStarter {
 	private VbpoProblemDescription description;
 	
 	private int maxIterations = 10000;
+	private int changeIterations = 10000;
 	private double delta = 0.1d;
 	private double alpha = 0.995d;
 	private int initialTemp = 4000;
@@ -66,7 +67,7 @@ public class HeadlessStarter {
 	private void configureOpt4J() {
 		
 		VbpoSimulatedAnnealingModule annealingModule = new VbpoSimulatedAnnealingModule();
-		annealingModule.setChangeIterations(1000);
+		annealingModule.setChangeIterations(changeIterations);
 		annealingModule.setDelta(delta);
 		annealingModule.setIterations(maxIterations);
 		
@@ -97,8 +98,9 @@ public class HeadlessStarter {
 	 * @param initialTemp the initial temperature (see Opt4J for details)
 	 * @param finalTemp the final temperature (see Opt4J for details)
 	 */
-	public void configure(int maxIterations, double alpha, double delta, int initialTemp, int finalTemp){
+	public void configure(int maxIterations, int changeIterations, double alpha, double delta, int initialTemp, int finalTemp){
 		this.maxIterations = maxIterations;
+		this.changeIterations = changeIterations;
 		this.alpha = alpha;
 		this.delta = delta;
 		this.initialTemp = initialTemp;

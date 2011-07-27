@@ -18,9 +18,10 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = VBPODataModelEditorPlugin.getPlugin().getPreferenceStore();
 		
-		store.setDefault(PreferenceConstants.P_MAX_ITERATIONS, 10000);
+		store.setDefault(PreferenceConstants.P_MAX_ITERATIONS, 1000000);
+		store.setDefault(PreferenceConstants.P_CHANGE_ITERATIONS, 10000);
 		store.setDefault(PreferenceConstants.P_ALPHA, 0.995d);
-		store.setDefault(PreferenceConstants.P_DELTA, 0.7d);
+		store.setDefault(PreferenceConstants.P_DELTA, 0.01d);
 		store.setDefault(PreferenceConstants.P_INITIAL_TEMPERATURE, 4000);
 		store.setDefault(PreferenceConstants.P_FINAL_TEMPERATURE, 1);
 

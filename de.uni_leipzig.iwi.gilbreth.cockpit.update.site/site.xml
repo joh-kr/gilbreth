@@ -12,5 +12,11 @@
    <feature url="features/de.uni_leipzig.iwi.gilbreth.cockpit.feature_1.0.3.jar" id="de.uni_leipzig.iwi.gilbreth.cockpit.feature" version="1.0.3">
       <category name="Gilbreth_Cockpit"/>
    </feature>
+   <feature url="features/de.uni_leipzig.iwi.gilbreth.cockpit.feature_1.0.4.jar" id="de.uni_leipzig.iwi.gilbreth.cockpit.feature" version="1.0.4">
+      <category name="Gilbreth_Cockpit"/>
+   </feature>
+   <feature url="features/de.uni_leipzig.iwi.gilbreth.cockpit.feature_1.0.5.jar" id="de.uni_leipzig.iwi.gilbreth.cockpit.feature" version="1.0.5">
+      <category name="Gilbreth_Cockpit"/>
+   </feature>
    <category-def name="Gilbreth_Cockpit" label="Gilbreth Cockpit"/>
 </site>

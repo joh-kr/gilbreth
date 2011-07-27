@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: vbpo
 Bundle-SymbolicName: de.uni_leipzig.iwi.gilbreth.vbpo;singleton:=true
-Bundle-Version: 1.0.1
+Bundle-Version: 1.0.2
 Export-Package: de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing;
   uses:="org.opt4j.viewer,
    org.opt4j.optimizer.sa,

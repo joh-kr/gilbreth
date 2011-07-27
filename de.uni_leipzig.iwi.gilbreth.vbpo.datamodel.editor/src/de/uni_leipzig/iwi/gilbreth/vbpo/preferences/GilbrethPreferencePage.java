@@ -47,6 +47,11 @@ public class GilbrethPreferencePage
 				"&Maximal Iterations:", 
 				getFieldEditorParent()));
 		
+		addField(new IntegerFieldEditor(
+				PreferenceConstants.P_CHANGE_ITERATIONS, 
+				"&Iterations within changes must occur:", 
+				getFieldEditorParent()));
+		
 		alpha = new StringFieldEditor(
 				PreferenceConstants.P_ALPHA, 
 				"&Alpha:", 

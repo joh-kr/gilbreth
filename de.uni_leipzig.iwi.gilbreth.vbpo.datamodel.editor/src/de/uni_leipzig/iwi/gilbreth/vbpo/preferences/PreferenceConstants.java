@@ -15,6 +15,8 @@ public class PreferenceConstants {
 	
 	public static final String P_MAX_ITERATIONS = "maxIterations";
 	
+	public static final String P_CHANGE_ITERATIONS = "changeIterations";
+	
 	public static final String P_DELTA = "delta";
 	
 	public static final String P_ALPHA = "alpha";

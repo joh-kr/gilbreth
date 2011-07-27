@@ -21,6 +21,7 @@ public class SimulatedAnnealingTest {
 		starter = new HeadlessStarter();
 		this.starter.configure(
 				100000,
+				10000,
 				0.95,
 				0.05,
 				10000,

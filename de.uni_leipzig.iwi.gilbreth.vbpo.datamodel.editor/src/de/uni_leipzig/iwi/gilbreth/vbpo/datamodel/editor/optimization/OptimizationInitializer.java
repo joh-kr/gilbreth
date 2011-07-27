@@ -23,6 +23,7 @@
 
 package de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.optimization;
 
+import java.math.BigDecimal;
 import java.util.Hashtable;
 import java.util.Iterator;
 
@@ -31,9 +32,12 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Asset;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Competitor;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment;
+import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Feature;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Price;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
+import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelFactory;
+import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.HeadlessStarter;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.IterationChangedListener;
@@ -53,6 +57,15 @@ import de.uni_leipzig.iwi.gilbreth.vbpo.preferences.PreferenceConstants;
  */
 public class OptimizationInitializer {
 
+	// To handle the zero product
+	private static String ZERO_PRODUCT = "ZeroProduct";
+	
+	private VbpodatamodelFactory factory;
+	private Product zeroProduct;
+	private de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System s;
+	private Asset a;
+	private Feature f;
+	
 	private Solution solution;
 
 	private VBPODataModel root;
@@ -80,6 +93,7 @@ public class OptimizationInitializer {
 				.getPreferenceStore();
 		this.starter.configure(
 				store.getInt(PreferenceConstants.P_MAX_ITERATIONS),
+				store.getInt(PreferenceConstants.P_CHANGE_ITERATIONS),
 				store.getDouble(PreferenceConstants.P_ALPHA),
 				store.getDouble(PreferenceConstants.P_DELTA),
 				store.getInt(PreferenceConstants.P_INITIAL_TEMPERATURE),
@@ -95,9 +109,11 @@ public class OptimizationInitializer {
 	 */
 	public void optimize(VBPODataModel root) {
 		init(root);
+		// To include the zero product explizitly in the solution.
+		addZeroProduct();
 		createProblemDescription();
-
 		solution = starter.startOptimization(description);
+		removeZeroProduct();
 	}
 
 	/**
@@ -118,8 +134,52 @@ public class OptimizationInitializer {
 		this.root = (VBPODataModel) root;
 	}
 
+	private void addZeroProduct(){
+		Product p = null;
+		boolean containsZeroProduct = false;
+		for (Iterator iter = root.getFirm().getSPL().getContainedProducts()
+				.iterator(); iter.hasNext();) {
+			p = (Product) iter.next();
+			containsZeroProduct = p.getName().equals(ZERO_PRODUCT);
+		}
+		if(!containsZeroProduct){
+			factory = VbpodatamodelPackage.eINSTANCE.getVbpodatamodelFactory();
+			
+			a = factory.createAsset();
+			a.setName(ZERO_PRODUCT);
+			a.setReuseCost(new BigDecimal(0.0d));
+			a.setSetupCost(new BigDecimal(0.0d));
+			root.getFirm().getSSF().getContainedAssets().add(a);
+			
+			s = factory.createSystem();	
+			s.setImplementationCost(new BigDecimal(0.0d));
+			s.setName(ZERO_PRODUCT);
+			s.getAssets().add(a);
+			root.getFirm().getSSF().getContainedSystems().add(s);
+			
+			f = factory.createFeature();
+			f.setName(ZERO_PRODUCT);
+			f.getRealizingAssets().add(a);
+			root.getFirm().getSPL().getContainedFeatures().add(f);
+			
+			zeroProduct = factory.createProduct();
+			zeroProduct.setComprisingSystem(s);
+			zeroProduct.setUnitCost(new BigDecimal(0.0d));
+			zeroProduct.getFeatures().add(f);
+			zeroProduct.setName(ZERO_PRODUCT);		
+			root.getFirm().getSPL().getContainedProducts().add(zeroProduct);
+		}
+	}
+	
+	private void removeZeroProduct(){
+		root.getFirm().getSPL().getContainedProducts().remove(zeroProduct);
+		root.getFirm().getSPL().getContainedFeatures().remove(f);	
+		root.getFirm().getSSF().getContainedSystems().remove(s);
+		root.getFirm().getSSF().getContainedAssets().remove(a);
+	}
+	
 	private void createProblemDescription() {
-
+		
 		numberOfProducts = root.getFirm().getSPL().getContainedProducts()
 				.size();
 		numberOfAssets = root.getFirm().getSSF().getContainedAssets().size();
@@ -257,14 +317,18 @@ public class OptimizationInitializer {
 	private double bestCompetitiveOfferingFor(CustomerSegment segment) {
 		double customerSurplus = -Double.MAX_VALUE;
 		double tempSurplus;
+		WTP wtp = null;
+		Competitor competitor = null;
+		Price competitorPrice = null;
+		
 		for (Iterator iterWTP = segment.getWTPs().iterator(); iterWTP.hasNext();) {
+			wtp = (WTP) iterWTP.next();
 			for (Iterator iterCompetitor = root.getCompetition()
 					.getCompetitors().iterator(); iterCompetitor.hasNext();) {
-				Competitor competitor = (Competitor) iterCompetitor.next();
+				competitor = (Competitor) iterCompetitor.next();
 				for (Iterator iterPrice = competitor.getPrices().iterator(); iterPrice
 						.hasNext();) {
-					Price competitorPrice = (Price) iterPrice.next();
-					WTP wtp = (WTP) iterWTP.next();
+					competitorPrice = (Price) iterPrice.next();
 					if (competitorPrice.getProduct() == wtp.getProduct()) {
 						tempSurplus = wtp.getPrice().doubleValue()
 								- competitorPrice.getPrice().doubleValue();

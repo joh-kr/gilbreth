@@ -2,7 +2,7 @@
 <feature
       id="de.uni_leipzig.iwi.gilbreth.cockpit.feature"
       label="Gilbreth Cockpit"
-      version="1.0.3">
+      version="1.0.5">
 
    <description url="http://code.google.com/p/gilbreth/">
       Gilbreth Cockpit let you handle the optimization process of a product portfolio conveniently within the eclipse environment.
@@ -237,14 +237,14 @@ END OF TERMS AND CONDITIONS
          unpack="false"/>
 
    <plugin
-         id="de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor"
+         id="Opt4J"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="Opt4J"
+         id="de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"
