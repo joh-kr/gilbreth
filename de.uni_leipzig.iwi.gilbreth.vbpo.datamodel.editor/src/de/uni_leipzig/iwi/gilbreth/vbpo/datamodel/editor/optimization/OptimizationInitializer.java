@@ -113,7 +113,9 @@ public class OptimizationInitializer {
 		addZeroProduct();
 		createProblemDescription();
 		solution = starter.startOptimization(description);
-		removeZeroProduct();
+		// TODO temporarly removed because the result build crashes since the zero product 
+		// is not in the list anymore.
+		//removeZeroProduct();
 	}
 
 	/**

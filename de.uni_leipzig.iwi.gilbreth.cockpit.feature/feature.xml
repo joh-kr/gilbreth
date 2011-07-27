@@ -2,7 +2,7 @@
 <feature
       id="de.uni_leipzig.iwi.gilbreth.cockpit.feature"
       label="Gilbreth Cockpit"
-      version="1.0.5">
+      version="1.0.6">
 
    <description url="http://code.google.com/p/gilbreth/">
       Gilbreth Cockpit let you handle the optimization process of a product portfolio conveniently within the eclipse environment.
