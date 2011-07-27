@@ -2,7 +2,7 @@
 <feature
       id="de.uni_leipzig.iwi.gilbreth.cockpit.feature"
       label="Gilbreth Cockpit"
-      version="1.0.2.RC1">
+      version="1.0.3">
 
    <description url="http://code.google.com/p/gilbreth/">
       Gilbreth Cockpit let you handle the optimization process of a product portfolio conveniently within the eclipse environment.
@@ -195,59 +195,59 @@ END OF TERMS AND CONDITIONS
    </requires>
 
    <plugin
-         id="de.uni_leipzig.iwi.gilbreth.acape.configurator"
-         download-size="40"
-         install-size="40"
-         version="1.0.1"
+         id="de.uni_leipzig.iwi.gilbreth.acape.datamodel"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="de.uni_leipzig.iwi.gilbreth.acape.configurator.edit"
-         download-size="28"
-         install-size="28"
-         version="1.0.1"
+         id="de.uni_leipzig.iwi.gilbreth.acape.datamodel.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="de.uni_leipzig.iwi.gilbreth.acape.configurator.editor"
-         download-size="84"
-         install-size="84"
-         version="1.0.1"
+         id="de.uni_leipzig.iwi.gilbreth.acape.datamodel.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.uni_leipzig.iwi.gilbreth.vbpo"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.uni_leipzig.iwi.gilbreth.vbpo.datamodel"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="Opt4J"
-         download-size="1700"
-         install-size="1700"
-         version="1.0.1"
-         unpack="false"/>
-
-   <plugin
-         id="vbpo"
-         download-size="20"
-         install-size="20"
-         version="1.0.1"
-         unpack="false"/>
-
-   <plugin
-         id="VBPODataModel"
-         download-size="76"
-         install-size="76"
-         version="1.0.2"
-         unpack="false"/>
-
-   <plugin
-         id="VBPODataModel.edit"
-         download-size="60"
-         install-size="60"
-         version="1.0.2"
-         unpack="false"/>
-
-   <plugin
-         id="VBPODataModel.editor"
-         download-size="10700"
-         install-size="10700"
-         version="1.0.2"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>
