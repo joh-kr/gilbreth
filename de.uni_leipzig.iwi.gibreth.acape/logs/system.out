@@ -1,0 +1,30 @@
+17:37:27,320 INFO  ~ Starting K:\Uni\Softwareoekonomie\workspace\gilbreth
+17:37:27,794 WARN  ~ You're running Play! in DEV mode
+~
+~ Go to http://localhost:9000/@tests to run the tests
+~
+17:37:27,868 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+17:37:29,783 INFO  ~ Connected to jdbc:hsqldb:mem:playembed
+17:37:30,417 INFO  ~ Application 'gilbreth' is now started !
+17:37:36,430 ERROR ~ 
+
+@65e6o7npi
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/models/Level.java around line 55)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:290)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at models.Level.getConstitutingFeaturesAsArray(Level.java:55)
+	at models.Result.initializeFeatureColumnMatching(Result.java:66)
+	at models.Result.createNewResult(Result.java:288)
+	at models.Interview.<init>(Interview.java:32)
+	at models.Interview.createNewInterview(Interview.java:51)
+	at controllers.Application.index(Application.java:29)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:413)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:408)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:182)
+	... 1 more

@@ -1,0 +1,165 @@
+# Test data
+Attribute(a1):
+    name:           Forum
+    description:    >
+                    A Forum System where customers can exchange information about offered products
+
+Level(forumPresent):
+    name:           Present
+    description:    >
+                    
+    features:       f1
+    attribute:      a1
+
+Level(forumAbsent):
+    name:           Absent
+    description:    >
+                    
+    attribute:      a1
+
+Attribute(a2):
+    name:           Payment with Fraud Detection
+    description:    >
+                    Identifies frauds within a payment process                   
+
+Level(fraudPresent):
+    name:           Present
+    description:    >
+                    
+    features:       f2
+    attribute:      a2
+    
+Level(fraudAbsent):
+    name:           Absent
+    description:    >
+                    
+    attribute:      a2
+
+Attribute(a3):
+    name:           Payment Method
+    description:    >
+                    Methods which can be used to pay products in the web shop                     
+                                                           
+Level(cc):
+    name:           Credit Card
+    description:    >
+                    
+    features:       f3
+    attribute:      a3
+        
+Level(dc):
+    name:           Debit Card
+    description:    >
+                    
+    features:       f4
+    attribute:      a3
+    
+Level(po):
+    name:           Purchase Order
+    description:    >
+                    
+    features:       f5
+    attribute:      a3    
+    
+Level(ccdc):
+    name:           Debit Card and Credit Card
+    description:    >
+                    
+    features:       f3,f4
+    attribute:      a3
+        
+Level(ccdcpo):
+    name:           Debit Card, Credit Card, and Purchase Order
+    description:    >
+                    
+    features:       f3,f4,f5
+    attribute:      a3
+    
+Level(ccpo):
+    name:           Debit Card and Purchase Order
+    description:    >
+                    
+    features:       f3,f5
+    attribute:      a3
+    
+Level(dcpo):
+    name:           Credit Card and Purchase Order
+    description:    >
+                    
+    features:       f4,f5
+    attribute:      a3
+ 
+Attribute(a4):
+    name:           Customer Management
+    description:    >
+                    Component to manage customers                       
+
+    
+Level(cmAbsent):
+    name:           Absent
+    description:    >
+                    
+    attribute:      a4
+    
+Level(cmPresent):
+    name:           Present
+    description:    >
+                    
+    features:       f6
+    attribute:      a4
+ 
+Attribute(a5):
+    name:           Recommender System
+    description:    >
+                    Recommends products possibly attracting customers                  
+
+    
+Level(rsAbsent):
+    name:           Absent
+    description:    >
+                    
+    attribute:      a5     
+    
+Level(rsPresent):
+    name:           Present
+    description:    >
+                    
+    features:       f7
+    attribute:      a5
+    
+Attribute(a6):
+    name:           User Authentication
+    description:    >
+                    How users can log in the web shop                  
+
+Level(idCard):
+    name:           ID Card
+    features:       f10
+    attribute:      a6
+    
+Level(pw):
+    name:           Password
+    features:       f8
+    attribute:      a6
+    
+ExcludesConstraint(RSxF):
+    object:         f7
+    subject:        f1
+    
+RequiresConstraint(CCrFD):
+    object:         f3
+    subject:        f2
+
+RequiresConstraint(DCrFD):
+    object:         f4
+    subject:        f2
+    
+RequiresConstraint(RSrCM):
+    object:         f7
+    subject:        f6 
+    
+# --- Price Settings
+ 
+PriceSettings(price):
+    minimumPrice:   100
+    maximumPrice:   1000    

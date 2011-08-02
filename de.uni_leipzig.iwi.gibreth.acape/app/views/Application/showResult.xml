@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<result>
+%{ if(interview != null) { }%
+	<interviewee>
+		<name>${interview.interviewee.getName()}</name>
+		<mail>${interview.interviewee.geteMail()}</mail>
+	</interviewee>
+	<price>
+		<intercept>${interview.result.PEintercept.round()}</intercept>
+		<slope>${interview.result.PEslope.round(2)}</slope>
+	</price>
+	
+	#{list attributes, as:'attribute'}
+	<attribute>
+		<name>${attribute.name}</name>
+		#{list attribute.getLevels(interview.result.excludedLevels), as:'level'}
+		<level>
+			<name>${level.name}</name>
+			<utility>${utility.computeCalibratedUtilityFor(level).round(2)}</utility>
+			<features>
+			#{list level.getConstitutingFeaturesAsArray(), as:'feature'}
+				<feature name="${feature}" />
+			#{/list}
+			</features>
+		</level>
+		#{/list}
+	</attribute>
+	#{/list}
+%{ } }% 
+</result>
