@@ -10,7 +10,7 @@ GET     /public/                                staticDir:public
 
 GET		/{controller}/showResult/{id}			{controller}.showResult(format:'xml') 
 
-GET		/{controller}/result					{controller}.result(format:'csv') 
+GET		/{controller}/result					{controller}.result(format:'csv')
 
 GET     /{controller}/{action}/{id}             {controller}.{action}
 
