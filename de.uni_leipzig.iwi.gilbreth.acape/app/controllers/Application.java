@@ -424,6 +424,8 @@ public class Application extends Controller {
 		//Attribute a = attributes.get(2);
 		//a.getLevels(null);
 		//Utility utility = new Utility(interview.result);
+		response.contentType = "text/csv";
+		response.headers.put("content-disposition", new Http.Header("content-disposition", "attachment; filename=result.csv"));
 		
 		render(interviews, attributes);
 		
