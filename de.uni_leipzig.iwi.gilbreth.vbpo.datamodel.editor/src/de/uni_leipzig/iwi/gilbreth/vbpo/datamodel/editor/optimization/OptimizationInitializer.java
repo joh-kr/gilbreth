@@ -213,7 +213,7 @@ public class OptimizationInitializer {
 		lookup.setSegmentLookup(customerLookup);
 
 		description = new VbpoProblemDescription(createCustomerDescription(),
-				createFirmDescription(), createCompetitionDescription(), 100);
+				createFirmDescription(), createCompetitionDescription(), 10);
 	}
 
 	private VbpoProblemDescription.Customer createCustomerDescription() {
