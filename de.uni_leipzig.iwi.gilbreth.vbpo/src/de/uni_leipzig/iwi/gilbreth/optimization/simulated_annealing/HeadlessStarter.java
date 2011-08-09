@@ -72,10 +72,10 @@ public class HeadlessStarter {
 		annealingModule.setIterations(maxIterations);
 		
 		CoolingSchedulesModule coolingModules = new CoolingSchedulesModule();
-		coolingModules.setAlpha(0.995d);
+		coolingModules.setAlpha(alpha);
 		coolingModules.setInitialTemperature(initialTemp);
 		coolingModules.setFinalTemperature(finalTemp);
-		coolingModules.setType(Type.HYPERBOLIC);
+		coolingModules.setType(Type.EXPONENTIAL);
 
 		VbpoModule sPLModule = new VbpoModule();
 		sPLModule.setProblemDescription(description);
