@@ -17,8 +17,8 @@
         <tr>
         <td />
         <td>
-        <div style="padding: 10px; width: 220px">
-        %{ for(r in 1..7) { }% 
+        <div style="padding: 10px; width: 250px">
+        %{ for(r in 0..7) { }% 
         
         	<div style="width:29px; float: left; text-align:center">${r}</div>
          
@@ -42,11 +42,13 @@
         	<div class="rating">
         		<input type="hidden" name="levelRates[${i}]" value="0" />
 			%{
-     			for(r in 1..7) { 
+     			for(r in 0..7) { 
 			}%
-        	 
-				 <!-- <input type="radio" name="levelRates[${i}]" value="${r}"> -->
-				<div class="rate${r} ratingIcon"></div>
+        	 	%{ if(r == 0) { }%
+        	 		<div class="rate${r} ratingIcon ratingIcon_selected"></div>
+        	 	%{ } else { }%
+					<div class="rate${r} ratingIcon"></div>
+				%{ } }%
         		
         	%{
      			}
@@ -67,7 +69,9 @@
 	    },  
 	    // Handles the mouseout  
 	    function() {
-	 		$(this).prevAll().andSelf().removeClass('ratingIcon_hover');  
+	    	if(!$(this).hasClass(".rate0")) {
+	    		$(this).prevUntil(".rate0").andSelf().removeClass('ratingIcon_hover');  
+	    	}
 	 		//$(this).nextAll().removeClass('ratingIcon_hover');
 	 		setSelection($(this).parent());
 	    }  

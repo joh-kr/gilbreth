@@ -17,12 +17,15 @@
           	<td>
         	<div class="rating">
         		<input type="hidden" name="importance" value="1">
-        		<div id="singularRating" class="rate1 ratingIcon"></div>
 			%{
-     			for(r in 2..8) { 
+     			for(r in 1..8) { 
 			}%
-        	 	
-				<div class="rate${r} ratingIcon"></div>
+        	 
+        	 	%{ if(r == 1) { }%
+        	 		<div class="rate${r} ratingIcon ratingIcon_selected"></div>
+        	 	%{ } else { }%
+					<div class="rate${r} ratingIcon"></div>
+				%{ } }%				
         		
         	%{
      			}
@@ -42,7 +45,9 @@
    		 	},  
    		 	// Handles the mouseout  
    		 	function() {
-   		 		$(this).prevAll().andSelf().removeClass('ratingIcon_hover');  
+   		 		if(!$(this).hasClass(".rate1")) {
+   		 			$(this).prevUntil(".rate1").andSelf().removeClass('ratingIcon_hover');
+   		 		}
    		 		//$(this).nextAll().removeClass('ratingIcon_hover');
    		 		setSelection($(this).parent());
    		 		}  
