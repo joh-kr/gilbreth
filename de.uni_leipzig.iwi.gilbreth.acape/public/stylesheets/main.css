@@ -706,7 +706,7 @@ tr.odd {
 }
 
 .buyingprobability{
-    padding: 5px;    
+    padding: 5px 0px 0px 5px;    
     width: 100%;
     heigth: 40px;
     position: absolute;
@@ -726,4 +726,14 @@ tr.odd {
 .choice-table
 {
 		
+}
+
+.nextButton {
+	text-align: right;
+	margin-right: 5px;
+}
+
+.priceEstimationButtons {
+	width: 33%;
+	text-align: right; 	
 }
