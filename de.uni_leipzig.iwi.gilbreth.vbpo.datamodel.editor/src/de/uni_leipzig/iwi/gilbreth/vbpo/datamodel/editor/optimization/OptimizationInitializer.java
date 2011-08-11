@@ -109,7 +109,7 @@ public class OptimizationInitializer {
 	 */
 	public void optimize(VBPODataModel root) {
 		init(root);
-		// To include the zero product explizitly in the solution.
+		// To include the zero product explicitly in the solution.
 		addZeroProduct();
 		createProblemDescription();
 		solution = starter.startOptimization(description);
@@ -151,25 +151,25 @@ public class OptimizationInitializer {
 			a.setName(ZERO_PRODUCT);
 			a.setReuseCost(new BigDecimal(0.0d));
 			a.setSetupCost(new BigDecimal(0.0d));
-			root.getFirm().getSSF().getContainedAssets().add(a);
+			root.getFirm().getSSF().getContainedAssets().add(0, a);
 			
 			s = factory.createSystem();	
 			s.setImplementationCost(new BigDecimal(0.0d));
 			s.setName(ZERO_PRODUCT);
-			s.getAssets().add(a);
-			root.getFirm().getSSF().getContainedSystems().add(s);
+			s.getAssets().add(0, a);
+			root.getFirm().getSSF().getContainedSystems().add(0, s);
 			
 			f = factory.createFeature();
 			f.setName(ZERO_PRODUCT);
-			f.getRealizingAssets().add(a);
-			root.getFirm().getSPL().getContainedFeatures().add(f);
+			f.getRealizingAssets().add(0, a);
+			root.getFirm().getSPL().getContainedFeatures().add(0, f);
 			
 			zeroProduct = factory.createProduct();
 			zeroProduct.setComprisingSystem(s);
 			zeroProduct.setUnitCost(new BigDecimal(0.0d));
-			zeroProduct.getFeatures().add(f);
+			zeroProduct.getFeatures().add(0, f);
 			zeroProduct.setName(ZERO_PRODUCT);		
-			root.getFirm().getSPL().getContainedProducts().add(zeroProduct);
+			root.getFirm().getSPL().getContainedProducts().add(0, zeroProduct);
 		}
 	}
 	
@@ -212,18 +212,18 @@ public class OptimizationInitializer {
 		lookup.setProductLookup(productLookup);
 		lookup.setSegmentLookup(customerLookup);
 
-		description = new VbpoProblemDescription(createCustomerDescription(),
-				createFirmDescription(), createCompetitionDescription(), 10);
+		description = new VbpoProblemDescription(
+				createCustomerDescription(),
+				createFirmDescription(), 
+				createCompetitionDescription(), 10);
 	}
 
 	private VbpoProblemDescription.Customer createCustomerDescription() {
 		int numberOfSegments = root.getCustomers().eContents().size();
-		int[] q = new int[numberOfSegments]; // { 10, 30, 50 };
+		
+		int[] q = new int[numberOfSegments];
 		double[][] wtp = new double[numberOfSegments][numberOfProducts];
-		/*
-		 * { { 0.0, 1.0, 3.0, 4.0, 5.0 }, { 0.0, 4.0, 1.0, 2.0, 1.0 }, { 0.0,
-		 * 2.0, 2.3, 4.5, 2.3 } };
-		 */
+
 
 		for (int i = 0; i < numberOfCustomerSegments; i++) {
 			q[i] = root.getCustomers().getCustomerSegments().get(i).getSize();
@@ -242,51 +242,37 @@ public class OptimizationInitializer {
 	}
 
 	private VbpoProblemDescription.Firm createFirmDescription() {
-		double[] cv = new double[numberOfProducts]; // { 0.0, 0.1, 0.4, 0.5,
-													// 0.01 };
-		double[] cf = new double[numberOfProducts]; // { 0.0, 5.0, 6.0, 1.0, 2.0
-													// };
-
-		// Products/Assets
+		double[] cv = new double[numberOfProducts];
+		double[] cf = new double[numberOfProducts]; 
+		double[] ca = new double[numberOfAssets];
 		boolean[][] a = new boolean[numberOfProducts][numberOfAssets];
 
-		/*
-		 * { { true, false, true, true, true, false }, { false, true, false,
-		 * false, true, false }, { true, true, false, false, false, false }, {
-		 * false, false, false, false, false, true }, { false, false, false,
-		 * false, false, false } };
-		 */
-
-		// Cost per asset
-		double[] ca = new double[numberOfAssets];// { 4.0, 3.0, 2.0, 4.0, 5.0,
-													// 7.0 };
-
-		for (int i = 0; i < numberOfProducts; i++) {
-			cf[i] = root.getFirm().getSPL().getContainedProducts().get(i)
+		for (int j = 0; j < numberOfProducts; j++) {
+			cf[j] = root.getFirm().getSPL().getContainedProducts().get(j)
 					.getComprisingSystem().getImplementationCost()
 					.doubleValue();
-			cv[i] = root.getFirm().getSPL().getContainedProducts().get(i)
+			cv[j] = root.getFirm().getSPL().getContainedProducts().get(j)
 					.getUnitCost().doubleValue();
 		}
 
-		for (int i = 0; i < numberOfAssets; i++) {
-			ca[i] = root.getFirm().getSSF().getContainedAssets().get(i)
+		for (int l = 0; l < numberOfAssets; l++) {
+			ca[l] = root.getFirm().getSSF().getContainedAssets().get(l)
 					.getSetupCost().doubleValue();
 		}
 
-		for (int i = 0; i < numberOfProducts; i++) {
-			for (int j = 0; j < numberOfAssets; j++) {
+		for (int j = 0; j < numberOfProducts; j++) {
+			for (int l = 0; l < numberOfAssets; l++) {
 				// set whether the System of the Product contains the asset 
-				a[i][j] = root
+				a[j][l] = root
 						.getFirm()
 						.getSPL()
 						.getContainedProducts()
-						.get(i)
+						.get(j)
 						.getComprisingSystem()
 						.getAssets()
 						.contains(
 								root.getFirm().getSSF().getContainedAssets()
-										.get(j));
+										.get(l));
 			}
 		}
 
