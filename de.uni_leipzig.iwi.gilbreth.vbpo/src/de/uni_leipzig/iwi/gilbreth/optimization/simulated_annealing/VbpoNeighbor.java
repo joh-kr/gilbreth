@@ -39,8 +39,6 @@ public class VbpoNeighbor implements Neighbor<Genotype>{
 	private VbpoProblemDescription description;
 	private Rand random;
 	protected final NormalizeDouble normalize;
-	protected final NeighborDouble doubleNeighbor;
-	protected final NeighborBoolean booleanNeighbor;
 	
 	/**
 	 * creates a new neighbor creator.
@@ -55,8 +53,6 @@ public class VbpoNeighbor implements Neighbor<Genotype>{
 		this.description = problem;
 		this.random = random;
 		this.normalize = normalize;
-		this.doubleNeighbor = new NeighborDouble(normalize, random);
-		this.booleanNeighbor = new NeighborBoolean(random);
 	}
 	
 	/**
@@ -88,9 +84,6 @@ public class VbpoNeighbor implements Neighbor<Genotype>{
 		double value = 0.0d;
 		value = genotype.getP().get(r) + random.nextDouble() * description.priceStep(r);
 		
-//		if(value > genotype.getP().getUpperBound(r)){
-//			value = genotype.getP().getLowerBound(r);
-//		}
 		genotype.getP().set(r, value);
 
 		normalize.normalize(genotype.getP());
@@ -105,6 +98,10 @@ public class VbpoNeighbor implements Neighbor<Genotype>{
 			genotype.setX(i, j, j == change);
 			//genotype.getX().set(i*offset + j, j == change);
 		}	
+	}
+
+	protected VbpoProblemDescription getDescription() {
+		return description;
 	}
 }
 

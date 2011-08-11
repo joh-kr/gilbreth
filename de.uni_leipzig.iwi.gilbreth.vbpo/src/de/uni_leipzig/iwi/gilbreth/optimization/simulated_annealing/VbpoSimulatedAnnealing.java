@@ -104,8 +104,6 @@ public class VbpoSimulatedAnnealing extends SimulatedAnnealing {
 		double fx = f(x);
 		double fy;
 
-		long starttime = System.currentTimeMillis();
-
 		for (int i = 1; i < iterations && changecounter > 0; i++) {
 
 			Genotype g = copy.copy(x.getGenotype());
@@ -124,6 +122,8 @@ public class VbpoSimulatedAnnealing extends SimulatedAnnealing {
 			if (fy <= fx) {
 				sw = true;
 				calculateBreakCriteria(fx, fy);
+				population.remove(x);
+				population.add(y);
 			} else {
 				double a = (fx - fy)
 						/ coolingSchedule.getTemperature(i, iterations);
@@ -134,16 +134,16 @@ public class VbpoSimulatedAnnealing extends SimulatedAnnealing {
 			}
 
 			if (sw) {
-				population.remove(x);
-				population.add(y);
+				// changed the implementation to only save strictly better
+				// solutions
+				//population.remove(x);
+				//population.add(y);
 				fx = fy;
 				x = y;
 			}
 
 			nextIteration();
 		}
-		System.out.println((System.currentTimeMillis() - starttime) / 1000
-				+ "s");
 
 	}
 

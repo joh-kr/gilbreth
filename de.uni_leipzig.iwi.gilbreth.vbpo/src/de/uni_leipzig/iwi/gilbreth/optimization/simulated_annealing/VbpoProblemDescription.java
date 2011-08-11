@@ -15,6 +15,8 @@
  */
 package de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing;
 
+import de.uni_leipzig.iwi.gilbreth.optimization.Helper;
+
 /**
  * Contains the values that describe the SPL Optimization problem.
  * 
@@ -38,6 +40,16 @@ public class VbpoProblemDescription {
 
 		public double getW(int i) {
 			return w[i];
+		}
+		
+		@Override
+		public String toString(){
+			StringBuilder sb = new StringBuilder();
+			sb.append("Competition with following characteristics: \n");
+			sb.append("W: \n");
+			sb.append(Helper.toString(w));
+
+			return sb.toString();
 		}
 
 	}
@@ -64,6 +76,20 @@ public class VbpoProblemDescription {
 
 		public int numberOfSegments() {
 			return wtp.length;
+		}
+		
+		@Override
+		public String toString(){
+			StringBuilder sb = new StringBuilder();
+			sb.append("Customer with following characteristics: \n");
+			sb.append("Q: \n");
+			sb.append(Helper.toString(q));
+			
+			sb.append("WTP: \n");
+			sb.append(Helper.toString(wtp));			
+			
+			
+			return sb.toString();
 		}
 	}
 
@@ -116,6 +142,26 @@ public class VbpoProblemDescription {
 		public int NumberOfProducts() {
 			return cv.length;
 		}
+		
+		@Override
+		public String toString(){
+			StringBuilder sb = new StringBuilder();
+			sb.append("Firm with following characteristics: \n");
+			sb.append("A: \n");
+			sb.append(Helper.toString(a));
+			
+			sb.append("Ca: \n");
+			sb.append(Helper.toString(ca));			
+
+			sb.append("Cf: \n");
+			sb.append(Helper.toString(cf));	
+			
+			sb.append("Cv: \n");
+			sb.append(Helper.toString(cv));	
+			
+			return sb.toString();
+		}
+		
 	}
 
 	private Competition competition;
@@ -181,6 +227,16 @@ public class VbpoProblemDescription {
 		}
 
 		return max;
+	}
+	
+	@Override
+	public String toString(){
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.getClass().getName() + " with following characteristics: \n");
+		sb.append(competition.toString());
+		sb.append(customer.toString());
+		sb.append(firm.toString());
+		return sb.toString();
 	}
 
 }

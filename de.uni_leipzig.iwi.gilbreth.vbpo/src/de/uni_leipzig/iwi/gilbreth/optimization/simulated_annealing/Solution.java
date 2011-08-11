@@ -21,6 +21,8 @@ import java.util.Collections;
 
 import org.opt4j.core.problem.Phenotype;
 
+import de.uni_leipzig.iwi.gilbreth.optimization.Helper;
+
 /**
  * A solution to the SPL optimization problem. Consists of all values and
  * functional dependencies that determine the profit of a specific solution to
@@ -348,6 +350,27 @@ public class Solution implements Phenotype {
 					: 0.0d;
 		}
 		return cost;
+	}
+	
+	@Override
+	public String toString(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("x: \n");
+		sb.append(Helper.toString(x));
+		
+		sb.append("y: \n");
+		boolean[] y = determineY();
+		sb.append(Helper.toString(y));
+		
+		sb.append("p: \n");
+		sb.append(Helper.toString(p));
+		
+		sb.append("Profit: "             + profit()             + "\n");
+		sb.append("SystemStepCost: "     + systemStepCost()     + "\n");
+		sb.append("AssetStepCost: "      + assetStepCost()      + "\n");
+		sb.append("ContributionMargin: " + contributionMargin() + "\n");
+		
+		return sb.toString();
 	}
 }
 

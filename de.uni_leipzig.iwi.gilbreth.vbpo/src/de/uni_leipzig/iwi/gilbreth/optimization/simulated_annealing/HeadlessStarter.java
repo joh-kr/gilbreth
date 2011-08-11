@@ -77,7 +77,7 @@ public class HeadlessStarter {
 		coolingModules.setFinalTemperature(finalTemp);
 		coolingModules.setType(Type.EXPONENTIAL);
 
-		VbpoModule sPLModule = new VbpoModule();
+		VbpoModule sPLModule = new VbpoLinOpModule();
 		sPLModule.setProblemDescription(description);
 		
 		Collection<Module> modules = new ArrayList<Module>();
@@ -136,6 +136,7 @@ public class HeadlessStarter {
 		} finally {
 			task.close();
 		}
+		System.out.println(solution);
 		return solution;
 	}
 	
