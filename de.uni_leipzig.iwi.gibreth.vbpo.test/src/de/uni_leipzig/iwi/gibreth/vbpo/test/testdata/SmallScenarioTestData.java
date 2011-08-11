@@ -1,9 +1,9 @@
-package de.uni_leipzig.iwi.gibreth.vbpo.test;
+package de.uni_leipzig.iwi.gibreth.vbpo.test.testdata;
 
 
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription;
 
-public class TestDataGenerator {
+public class SmallScenarioTestData {
 	
 
 	public static VbpoProblemDescription generateProblemDescription(){

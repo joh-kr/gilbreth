@@ -6,11 +6,12 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.uni_leipzig.iwi.gibreth.vbpo.test.testdata.SmallScenarioTestData;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.HeadlessStarter;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
 
-public class SimulatedAnnealingTest {
+public class HeadlessStarterTest {
 	
 	private HeadlessStarter starter;
 	private VbpoProblemDescription description;
@@ -26,7 +27,7 @@ public class SimulatedAnnealingTest {
 				0.05,
 				10000,
 				1);
-		description = TestDataGenerator.generateProblemDescription();
+		description = SmallScenarioTestData.generateProblemDescription();
 		
 	}
 	
@@ -37,8 +38,8 @@ public class SimulatedAnnealingTest {
 		System.out.println(profit);
 		assertTrue("Profit height", 260 < profit);
 	}
-	@Test
 	
+	@Test
 	public void testPrices() {
 		solution = starter.startOptimization(description);
 		double profit = solution.profit();
