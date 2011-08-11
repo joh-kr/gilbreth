@@ -16,4 +16,5 @@ Export-Package: de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing;
    org.opt4j.core.optimizer,
    org.opt4j.operator.normalize"
 Bundle-ClassPath: .
-Require-Bundle: Opt4J;bundle-version="1.0.0"
+Require-Bundle: Opt4J;bundle-version="1.0.0",
+ org.apache.commons.math;bundle-version="1.0.0"
