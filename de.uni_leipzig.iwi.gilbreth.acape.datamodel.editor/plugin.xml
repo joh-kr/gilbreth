@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="de.uni_leipzig.iwi.gilbreth.VBPODataModel.wizard.category.id"
+            name="Gilbreth"/>
+      <wizard
+            id="de.uni_leipzig.iwi.gilbreth.acape.presentation.AcapeModelWizardID"
+            name="%_UI_AcapeModelWizard_label"
+            class="de.uni_leipzig.iwi.gilbreth.acape.presentation.AcapeModelWizard"
+            category="de.uni_leipzig.iwi.gilbreth.VBPODataModel.wizard.category.id"
+            icon="icons/full/obj16/AcapeModelFile.gif">
+         <description>%_UI_AcapeModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="de.uni_leipzig.iwi.gilbreth.acape.presentation.AcapeEditorID"
+            name="%_UI_AcapeEditor_label"
+            icon="icons/full/obj16/AcapeModelFile.gif"
+            extensions="acape"
+            class="de.uni_leipzig.iwi.gilbreth.acape.presentation.AcapeEditor"
+            contributorClass="de.uni_leipzig.iwi.gilbreth.acape.presentation.AcapeActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

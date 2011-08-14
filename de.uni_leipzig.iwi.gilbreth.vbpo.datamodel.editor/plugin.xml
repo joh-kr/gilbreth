@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension
+         id="de.uni_leipzig.iwi.gilbreth.wizard.id"
+         name="Gilbreth Analysis Model Wizard"
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="de.uni_leipzig.iwi.gilbreth.VBPODataModel.wizard.category.id"
+            name="Gilbreth">
+      </category>
+      <wizard
+            category="de.uni_leipzig.iwi.gilbreth.VBPODataModel.wizard.category.id"
+            class="de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.presentation.VbpodatamodelModelWizard"
+            icon="icons/full/obj16/VbpodatamodelModelFile.gif"
+            id="de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.presentation.VbpodatamodelModelWizardID"
+            name="%_UI_VbpodatamodelModelWizard_label">
+         <description>
+            %_UI_VbpodatamodelModelWizard_description
+         </description>
+         <selection
+               class="org.eclipse.core.resources.IResource">
+         </selection>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.presentation.VbpodatamodelEditorID"
+            name="%_UI_VbpodatamodelEditor_label"
+            icon="icons/full/obj16/VbpodatamodelModelFile.gif"
+            extensions="vbpo"
+            class="de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.presentation.VbpodatamodelEditor"
+            contributorClass="de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.presentation.VbpodatamodelActionBarContributor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="de.uni_leipzig.iwi.gilbreth.vbpo.preferences.GilbrethPreferencePage"
+            id="vbpodatamodel.editor.preferences.GilbrethPreferencePage"
+            name="Gilbreth Preferences">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="de.uni_leipzig.iwi.gilbreth.vbpo.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         id="de.uni_leipzig.iwi.gilbreth.cockpit.product"
+         name="cockpitProduct"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="VBPODataModel.editor.product"
+            name="Gilbreth Cockpit">
+      </product>
+   </extension>
+
+</plugin>

@@ -1,0 +1,27 @@
+%{
+
+if(interviews != null) {
+	for(attribute in attributes) {
+		for(level in attribute.getLevels(null)) {
+			out.print ('"' + attribute.name + '.' + level.name)
+			out.print (level.getFeatures() == null ? "" : ("." + '{' + level.getFeatures() + '}') + '"')
+			if(attribute != attributes.last()) {
+				out.print (',')
+			}
+		}
+	}
+	out.print('\n')
+	for(interview in interviews) {
+		models.Utility utility = new models.Utility(interview.result)
+		for(attribute in attributes) {
+			for(level in attribute.getLevels(null)) {
+				out.print(utility.computeCalibratedUtilityFor(level).round(2) + '%')
+				if(attribute != attributes.last() || level != attribute.getLevels(null).last()) {
+					out.print (',')
+				}
+			}
+		}
+	}	
+} else {empty} 
+
+}% 
