@@ -129,16 +129,12 @@ public class Result extends Model {
 			for (String f : l.getConstitutingFeaturesAsArray()) {
 				if (!map.containsKey(f)) {
 					map.put(f, column++);
-					jlog.log(java.util.logging.Level.INFO,
-							"Feature " + f + " Col: " + (column - 1));
 				}
 			}
 			// add column for feature interaction parameter
 			if(l.getNrOfFeatures() > 1) {
 				if(!map.containsKey(l.getConstitutingFeatures())) {
 					map.put(l.getConstitutingFeatures(), column++);
-					jlog.log(java.util.logging.Level.INFO,
-							"Features " + l.getConstitutingFeatures() + " Col: " + (column - 1));
 				}
 			}
 		}
