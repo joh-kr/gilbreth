@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -27,6 +28,8 @@ import models.LevelsPair;
 
 import org.apache.commons.math.linear.Array2DRowRealMatrix;
 import org.apache.commons.math.linear.RealMatrix;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import play.data.validation.Required;
 import play.db.jpa.Model;
@@ -104,10 +107,14 @@ public class Result extends Model {
 	@ManyToMany
 	public List<Concept> validConcepts = null;
 	
-
+	@ManyToMany
+	@JoinTable(name="Result_usedConcepts")
+	public List<Concept> usedConcepts;
+	
 	public Result() {
 		excludedLevels = new ArrayList<Level>();
 		usedLevelPairs = new ArrayList<UsedLevelPair>();
+		usedConcepts = new ArrayList<Concept>();
 		
 		matrixRowCount = -1;
 		R2Difference = 1.0d;

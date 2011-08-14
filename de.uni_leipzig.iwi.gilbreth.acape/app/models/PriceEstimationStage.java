@@ -7,7 +7,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.math.stat.regression.SimpleRegression;
+import org.eclipse.jdt.internal.compiler.ast.ForeachStatement;
+import org.hamcrest.core.IsEqual;
 
 /**
  * Implementation of the last stage of acape
@@ -95,6 +98,14 @@ public class PriceEstimationStage extends Stage {
 		return utility.computeCalibratedUtilityFor(c.getLevels());
 	}
 	
+	private Boolean conceptIsUsed(Concept concept) {
+		Boolean isUsed = false;
+		for (Concept c : result.usedConcepts) {
+			isUsed = isUsed || c.id == concept.id;
+		}
+		return isUsed;
+	}
+	
 	public PricedConcept getPricedConcept() throws Exception{
 		double referenceUtility = result.utility1;
 		
@@ -113,6 +124,28 @@ public class PriceEstimationStage extends Stage {
 		i = Math.max(0, i - 1);
 		
 		Concept concept = result.validConcepts.get(i);
+		
+		int offset = 1;
+		// Do not use one of the last concepts again
+		while(conceptIsUsed(concept)) {
+			int index = Math.min(i + offset, result.validConcepts.size() - 1);
+			index = Math.max(index, 0);
+			
+			concept = result.validConcepts.get(index);
+			
+			offset = (offset > 0) ? -offset : -(offset - 1);
+		}
+		
+		// remove last item from used concepts
+		// @TODO remove size of list to config
+		if(result.usedConcepts.size() > 4) {
+			result.usedConcepts.remove(0);
+		}
+		// add current concept to used concepts
+		result.usedConcepts.add(concept);
+		
+		result.save();
+		
 		PricedConcept pricedConcept = new PricedConcept();
 		// TODO Maybe add some copy constructor
 		for(Level l : concept.getLevels()) {
