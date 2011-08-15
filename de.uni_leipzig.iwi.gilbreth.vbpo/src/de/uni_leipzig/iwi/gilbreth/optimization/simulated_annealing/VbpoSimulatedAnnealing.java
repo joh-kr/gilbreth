@@ -148,10 +148,9 @@ public class VbpoSimulatedAnnealing extends SimulatedAnnealing {
 	}
 
 	private void calculateBreakCriteria(double fx, double fy) {
-		double epsilon = fx != 0.0d ? (fx - fy) / Math.abs(fx) : 1.0d;
-		// System.out.println("Fx: " + fx + "Fy: " + fy + " fx - fy: " + (fx -
-		// fy) + "absx" +(Math.abs(fx))+ " /fx: " +((fx - fy)/Math.abs(fx))+
-		// "epsilon: " + epsilon);
+		if(Double.compare(0.0d, fx) == 0) return;
+		
+		double epsilon =  1 - fy/fx;
 		if (epsilon < delta) {
 			changecounter--;
 		} else {

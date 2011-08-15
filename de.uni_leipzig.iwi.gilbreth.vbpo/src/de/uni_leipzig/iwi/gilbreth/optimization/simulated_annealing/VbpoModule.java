@@ -35,8 +35,6 @@ public class VbpoModule extends ProblemModule {
 	
 	@Provides
 	public VbpoProblemDescription getProblemDescription() {
-		System.out.print(problemDescription);
-		
 		return problemDescription;
 	}
 
