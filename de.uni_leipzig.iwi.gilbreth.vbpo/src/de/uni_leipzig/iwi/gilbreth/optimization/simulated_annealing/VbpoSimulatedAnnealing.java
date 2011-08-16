@@ -36,7 +36,7 @@ import com.google.inject.Inject;
 
 /**
  * A special implementation of the opt4j simulated annealing algorithm. Contains
- * a stoping criteria that stops the optimization if the solution does not
+ * a stopping criteria that stops the optimization if the solution does not
  * change dramatically within a given period of iterations.
  * 
  * @author Johannes Müller
