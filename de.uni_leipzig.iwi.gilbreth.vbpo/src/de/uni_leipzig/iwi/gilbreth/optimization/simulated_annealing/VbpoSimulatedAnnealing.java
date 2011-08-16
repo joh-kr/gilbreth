@@ -36,7 +36,7 @@ import com.google.inject.Inject;
 
 /**
  * A special implementation of the opt4j simulated annealing algorithm. Contains
- * a stoping criteria that stops the optimization if the solution does not
+ * a stopping criteria that stops the optimization if the solution does not
  * change dramatically within a given period of iterations.
  * 
  * @author Johannes Müller
@@ -84,6 +84,7 @@ public class VbpoSimulatedAnnealing extends SimulatedAnnealing {
 				random, neighbor, copy, iterations, coolingSchedule);
 		this.delta = delta;
 		this.changecounter = this.changeIterations = changeIterations;
+
 	}
 
 	/*
@@ -139,19 +140,21 @@ public class VbpoSimulatedAnnealing extends SimulatedAnnealing {
 				//population.remove(x);
 				//population.add(y);
 				fx = fy;
-				x = y;
+				 x = y;
 			}
 
+			//System.out.println(""+i+": "+fx);
 			nextIteration();
 		}
-
+	
 	}
 
 	private void calculateBreakCriteria(double fx, double fy) {
-		double epsilon = fx != 0.0d ? (fx - fy) / Math.abs(fx) : 1.0d;
-		// System.out.println("Fx: " + fx + "Fy: " + fy + " fx - fy: " + (fx -
-		// fy) + "absx" +(Math.abs(fx))+ " /fx: " +((fx - fy)/Math.abs(fx))+
-		// "epsilon: " + epsilon);
+		//System.out.print("break " + fx);
+		if(Double.compare(0.0d, fx) == 0) return;
+		
+		double epsilon = Math.abs(1 - (1 - fy)/(1 - fx));
+		//System.out.println("epsilon "+epsilon + " fx " + fx + "fy" + fy);
 		if (epsilon < delta) {
 			changecounter--;
 		} else {

@@ -80,7 +80,7 @@ public class VbpoNeighbor implements Neighbor<Genotype>{
 	 */
 	protected void neighborP(VbpoGenotype genotype){
 		// Dont change the initital price of the 0 product
-		int r = 1 + random.nextInt(genotype.getP().size() - 1);
+		int r = 1 + (genotype.getP().size() > 1 ? random.nextInt(genotype.getP().size() - 1) : 0);
 		double value = 0.0d;
 		value = genotype.getP().get(r) + random.nextDouble() * description.priceStep(r);
 		
