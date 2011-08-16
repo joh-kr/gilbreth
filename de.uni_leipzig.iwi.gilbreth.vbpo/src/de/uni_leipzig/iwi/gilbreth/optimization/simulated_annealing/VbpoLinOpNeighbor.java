@@ -36,6 +36,7 @@ public class VbpoLinOpNeighbor extends VbpoNeighbor {
 		super(problem, random, normalize);
 		// TODO Auto-generated constructor stub
 		solver = new SimplexSolver();
+		solver.setMaxIterations(1000);
 	}
 	/**
 	 * 

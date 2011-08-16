@@ -87,6 +87,16 @@ public class VbpoEvaluator implements Evaluator<Solution> {
 		}
 		return count;
 	}
+	
+	private double calculatePenaltyProfit(double profit, int suboptimalSegments, int segmentsBuyingFromComp){
+		if(profit <= 0.0d) return profit;
+		
+		double _profit = 0.0d;
+		_profit = Math.sqrt(profit)
+				/ (suboptimalSegments * segmentsBuyingFromComp + 1)*10000000;
+				
+		return _profit;
+	}
 
 	/**
 	 * Evaluates the performance of a given solution with respect to the
@@ -106,9 +116,7 @@ public class VbpoEvaluator implements Evaluator<Solution> {
 		if (segmentsBuyingFromComp == 0 && suboptimalSegments == 0) {
 			_profit = solution.profit();
 		} else {
-			double pr = solution.profit();
-			_profit = pr >= 0.0d ? Math.sqrt(pr)
-					/ (suboptimalSegments + segmentsBuyingFromComp) : 0.0d;
+			_profit = calculatePenaltyProfit(solution.profit(),suboptimalSegments, segmentsBuyingFromComp);
 		}
 
 		// Collection of objectives, since we have a single objective problem,

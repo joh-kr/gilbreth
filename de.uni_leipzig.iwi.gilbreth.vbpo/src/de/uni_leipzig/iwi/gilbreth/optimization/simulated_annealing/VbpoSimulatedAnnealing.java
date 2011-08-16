@@ -84,6 +84,7 @@ public class VbpoSimulatedAnnealing extends SimulatedAnnealing {
 				random, neighbor, copy, iterations, coolingSchedule);
 		this.delta = delta;
 		this.changecounter = this.changeIterations = changeIterations;
+
 	}
 
 	/*
@@ -139,18 +140,21 @@ public class VbpoSimulatedAnnealing extends SimulatedAnnealing {
 				//population.remove(x);
 				//population.add(y);
 				fx = fy;
-				x = y;
+				 x = y;
 			}
 
+			//System.out.println(""+i+": "+fx);
 			nextIteration();
 		}
-
+	
 	}
 
 	private void calculateBreakCriteria(double fx, double fy) {
+		//System.out.print("break " + fx);
 		if(Double.compare(0.0d, fx) == 0) return;
 		
-		double epsilon =  1 - fy/fx;
+		double epsilon = Math.abs(1 - (1 - fy)/(1 - fx));
+		//System.out.println("epsilon "+epsilon + " fx " + fx + "fy" + fy);
 		if (epsilon < delta) {
 			changecounter--;
 		} else {
