@@ -88,14 +88,13 @@ public class VbpoEvaluator implements Evaluator<Solution> {
 		return count;
 	}
 	
-	private double calculatePenaltyProfit(double profit, int suboptimalSegments, int segmentsBuyingFromComp){
-		if(profit <= 0.0d) return profit;
-		
+	private double calculatePenaltyProfit(double profit, int suboptimalSegments, int segmentsBuyingFromComp){	
 		double _profit = 0.0d;
-		_profit = Math.sqrt(profit)
-				/ (suboptimalSegments * segmentsBuyingFromComp + 1)*10000000;
+		_profit = profit < 0.0d ? profit : (-1*profit) * (suboptimalSegments + segmentsBuyingFromComp);
 				
 		return _profit;
+		
+		
 	}
 
 	/**

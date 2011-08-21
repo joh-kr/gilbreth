@@ -23,11 +23,20 @@ import de.uni_leipzig.iwi.gilbreth.optimization.Helper;
  * @author Johannes Müller
  * 
  */
-public class VbpoProblemDescription {
+public class VbpoProblemDescription implements java.io.Serializable{
 
 	// ---- Data Member Section ----
 
-	public static class Competition {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7181164848196429106L;
+
+	public static class Competition implements java.io.Serializable{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 3936873322900673027L;
 		private double[] w;
 
 		public Competition(double[] w) {
@@ -54,7 +63,12 @@ public class VbpoProblemDescription {
 
 	}
 
-	public static class Customer {
+	public static class Customer implements java.io.Serializable{
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -7431287357357783966L;
 
 		private int[] q;
 
@@ -93,7 +107,12 @@ public class VbpoProblemDescription {
 		}
 	}
 
-	public static class Firm {
+	public static class Firm implements java.io.Serializable{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 6963030573889670413L;
+
 		private double[] cv;
 
 		private double[] cf;
