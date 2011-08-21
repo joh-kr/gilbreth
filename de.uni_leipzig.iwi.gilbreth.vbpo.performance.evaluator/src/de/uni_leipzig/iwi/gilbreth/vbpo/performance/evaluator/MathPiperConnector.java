@@ -20,6 +20,7 @@ public class MathPiperConnector {
 	public String getResult(){
 		if(PRINT_RESULT) System.out.println("------------------------");	
 		if(PRINT_RESULT) System.out.println(currentResponse.getSideEffects());
+		if(PRINT_RESULT) System.out.println(currentResponse.getResult());
 		return currentResponse.getResult();
 	}
 	

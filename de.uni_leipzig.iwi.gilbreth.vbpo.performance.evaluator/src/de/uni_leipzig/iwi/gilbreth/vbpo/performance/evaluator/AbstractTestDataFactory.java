@@ -16,7 +16,7 @@ public abstract class AbstractTestDataFactory implements TestDataFactory {
 	protected static String COMMAND_END = ";";
 	protected static String LINE_BREAK = "\n";
 	
-	private boolean problemCreated = false;
+	protected boolean problemCreated = false;
 	
 	protected double[] b;
 	protected String deriveResult;
@@ -84,6 +84,7 @@ public abstract class AbstractTestDataFactory implements TestDataFactory {
 		return Double.parseDouble(res);
 	}
 	
+
 	/**
 	 * creates a set of commands to calculate the derivatives of the introduced variables
 	 * b_j
@@ -119,12 +120,14 @@ public abstract class AbstractTestDataFactory implements TestDataFactory {
 		return commands.toString();
 	}
 	
+	
+	
 	/**
 	 * creates a list of the variables in mathpiper syntax.
 	 * @param end
 	 * @return
 	 */
-	private String variables(int end) {
+	protected String variables(int end) {
 		StringBuilder variables = new StringBuilder();
 
 		variables.append(OPEN_LIST_BRACKET);
@@ -151,13 +154,11 @@ public abstract class AbstractTestDataFactory implements TestDataFactory {
 			return term.append("0");
 		}
 		term.append(OPEN_BRACKET);
-		term.append(u(j, j))
+		term.append(p(j - 1))
+			.append(PLUS)
+			.append(u(j, j))
 			.append(MINUS)
-			.append(OPEN_BRACKET)
-			.append(u(j, j - 1))
-			.append(MINUS)
-			.append(p(j - 1))
-			.append(CLOSE_BRACKET);
+			.append(u(j, j - 1));
 		term.append(CLOSE_BRACKET);
 		return term;
 	}

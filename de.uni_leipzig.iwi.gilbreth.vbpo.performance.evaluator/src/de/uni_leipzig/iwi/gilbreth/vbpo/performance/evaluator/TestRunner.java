@@ -1,11 +1,21 @@
 package de.uni_leipzig.iwi.gilbreth.vbpo.performance.evaluator;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
 
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription;
 
+import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 
 /**
@@ -18,7 +28,13 @@ public class TestRunner {
 	
 	private static final char COLUMN_SEPARATOR = '\t';
 	
+	private static final String MAP_FILE_PATH = "map.dat";
+	private static final String MAX_PROFIT_FILE_PATH = "pmap.dat";
+	
 	private CSVWriter csvWriter;
+	private CSVReader csvReader;
+	private Map<MaxProfitKey, VbpoProblemDescription> problems;
+	private Map<MaxProfitKey, Double> maxProfits;
 	private String csvFilePath;
 	private Optimizer optimizer;
 	private SimpleProblemTestDataFactory testData;
@@ -36,7 +52,6 @@ public class TestRunner {
 		this.maxSize = maxSize;
 		this.kappa = kappa;
 		
-		this.csvWriter = new CSVWriter(new FileWriter(csvFilePath), COLUMN_SEPARATOR);
 	}
 	
 	public void start() throws Exception{
@@ -47,26 +62,28 @@ public class TestRunner {
 		long end = 0;
 		writeHeader();
 		for(int i = startSize; i < maxSize; i++){
-			description = testData.create(i, kappa);
-			optimizer.configureAlgorithm(10, 0.95d, (i*10) + 100, 0.995d, (i*5) + 50, 1);
+			description = getVbpoProblemDescription(i, kappa);
+			optimizer.configureAlgorithm(100 + i, 0.01d, (i*10) + 10000, 0.995d, (i*5) + 1000, 1);
+			
+			// Run optimizer with linop
 			start = System.currentTimeMillis();
 			solution = optimizer.runOptimization(description, true);
-			end = System.currentTimeMillis();
+			end = System.currentTimeMillis();	
 			setLinOpResults(solution, (end-start), result);
 			
+			// Run optimizer with pure simulated Annealing
 			start = System.currentTimeMillis();
 			solution = optimizer.runOptimization(description, false);
 			end = System.currentTimeMillis();
 			setOrdinaryResults(solution, (end-start), result);
 			
-			result.setProfit_max(testData.calculateMaxProfit(i, kappa));
+			result.setProfit_max(getMaxProfit(i, kappa));
 			result.setSize(i);
 			
 			writeResult(result);
 			System.out.println("Iteration " + i);
 			System.out.println(result.toString());
 		}
-		closeWriter();
 	}
 	
 	private void setLinOpResults(Solution solution, long time, Result result){
@@ -90,15 +107,146 @@ public class TestRunner {
 	}
 	
 	private void writeHeader() throws IOException{
+		openWriter();
 		csvWriter.writeNext(Result.ENTRIES);
+		closeWriter();
 	}
 	
-	private void writeResult(Result result) throws IOException{		
+	private void writeResult(Result result) throws IOException{
+		List<String[]> entries = readCSVFile();
+		openWriter();
+		// After each iteration the writer flushes the results an closes the strean
+		// If the writer is opened the next time, it has to rewrite the whole content
+		// because it overwrites it otherwise.
+		// In case the testrunner cannot finish the whole tests the result can be used nevertheless.
+		csvWriter.writeAll(entries);
+		
 		csvWriter.writeNext(result.asStringArray());
+		
+		closeWriter();
+	}
+	
+	private List<String[]> readCSVFile() throws IOException{
+		csvReader = new CSVReader(new FileReader(csvFilePath), COLUMN_SEPARATOR);
+		return csvReader.readAll();
+	}
+	
+	private void openWriter() throws IOException{
+		this.csvWriter = new CSVWriter(new FileWriter(csvFilePath), COLUMN_SEPARATOR);
 	}
 	
 	private void closeWriter() throws IOException{
 		csvWriter.close();
+	}
+	
+	private VbpoProblemDescription getVbpoProblemDescription(int i, double kappa) throws Exception{
+		Map<MaxProfitKey, VbpoProblemDescription> map = getProblemsMap();
+		
+		MaxProfitKey key = new MaxProfitKey();
+		key.setKappa(kappa);
+		key.setSize(i);
+		
+		if(!map.containsKey(key)){
+			map.put(key, testData.create(i, kappa));
+			writeFile(MAP_FILE_PATH, map);
+		}
+		
+		return map.get(key);
+	}
+	
+	private double getMaxProfit(int i, double kappa) throws Exception{
+		Map<MaxProfitKey, Double> map = getMaxProfitMap();
+		
+		MaxProfitKey key = new MaxProfitKey();
+		key.setKappa(kappa);
+		key.setSize(i);
+		
+		if(!map.containsKey(i)){
+			map.put(key, testData.calculateMaxProfit(i, kappa));
+			writeFile(MAX_PROFIT_FILE_PATH, map);
+		}
+		
+		return map.get(key);
+	}
+	
+	private Map<MaxProfitKey, VbpoProblemDescription> getProblemsMap(){
+		if(problems != null){
+			return problems;
+		}else{
+			problems = readGeneratedDescriptions();
+			if(problems == null) problems = new Hashtable<MaxProfitKey	, VbpoProblemDescription>();
+			return problems;
+		}
+	}
+
+	private Map<MaxProfitKey, Double> getMaxProfitMap(){
+		if(maxProfits != null){
+			return maxProfits;
+		}else{
+			maxProfits = readMaxProfits();
+			if(maxProfits == null) maxProfits = new Hashtable<MaxProfitKey, Double>();
+			return maxProfits;
+		}
+	}
+	
+	private Map<MaxProfitKey, VbpoProblemDescription> readGeneratedDescriptions(){
+		return (Map<MaxProfitKey, VbpoProblemDescription>) readFile(MAP_FILE_PATH);
+	}
+	
+	private Map<MaxProfitKey, Double> readMaxProfits(){
+		return (Map<MaxProfitKey, Double>) readFile(MAX_PROFIT_FILE_PATH);
+	}	
+	
+	private Object readFile(String path){
+		Object map = null;
+		FileInputStream fis = null;
+		ObjectInputStream in = null;
+		try {
+			fis = new FileInputStream(path);
+			in = new ObjectInputStream(fis);
+			map = in.readObject();
+			in.close();
+		} catch (IOException ex) {
+			
+		} catch (ClassNotFoundException ex) {
+			
+		}
+		return map;
+	}
+	
+	private void writeFile(String path, Object map){
+		FileOutputStream fos = null;
+		ObjectOutputStream out = null;
+		try {
+			fos = new FileOutputStream(path);
+			out = new ObjectOutputStream(fos);
+			out.writeObject(map);
+			out.close();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		
+	}
+	
+	private static class MaxProfitKey implements java.io.Serializable{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -5106796792022373553L;
+		private double kappa;
+		private int size;
+		public void setKappa(double kappa) {
+			this.kappa = kappa;
+		}
+		public double getKappa() {
+			return kappa;
+		}
+		public void setSize(int size) {
+			this.size = size;
+		}
+		public int getSize() {
+			return size;
+		}
 	}
 	
 	private static class Result{

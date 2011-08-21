@@ -28,9 +28,9 @@ public class OptimizerTest {
 
 	@Test
 	public void optimizeTest() throws Exception{
-		int size = 20;
+		int size = 5;
 		double kappa = 0.1d;
-		optimizer.configureAlgorithm(100, 0.001d, 8000, 0.995d, 50, 1);
+		optimizer.configureAlgorithm(10000, 0.001d, 1000000, 0.995d, 50000, 1);
 		description = testData.create(size, kappa);
 		Solution s = optimizer.runOptimization(description, false);
 		double maxProfit = testData.calculateMaxProfit(size, kappa); 

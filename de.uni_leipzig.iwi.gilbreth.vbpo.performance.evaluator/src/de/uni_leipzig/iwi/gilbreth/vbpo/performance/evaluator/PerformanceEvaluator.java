@@ -1,23 +1,5 @@
 package de.uni_leipzig.iwi.gilbreth.vbpo.performance.evaluator;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import org.opt4j.core.Archive;
-import org.opt4j.core.Individual;
-import org.opt4j.optimizer.sa.CoolingSchedulesModule;
-import org.opt4j.optimizer.sa.CoolingSchedulesModule.Type;
-import org.opt4j.start.Opt4JTask;
-
-import com.google.inject.Module;
-
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoDecoder;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoGenotype;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoLinOpModule;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoModule;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoSimulatedAnnealingModule;
 
 
 
