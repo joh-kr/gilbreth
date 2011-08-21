@@ -70,8 +70,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
 
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.IterationChangedListener;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
 import de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.optimization.OptimizationInitializer;
 import de.uni_leipzig.iwi.gilbreth.vbpo.result.JasperPrintCreator;
 import de.uni_leipzig.iwi.gilbreth.vbpo.result.ResultModelBeanBuilder;

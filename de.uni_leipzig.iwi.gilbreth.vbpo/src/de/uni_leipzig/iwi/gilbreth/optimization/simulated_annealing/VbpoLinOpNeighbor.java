@@ -19,9 +19,12 @@ import org.opt4j.operator.normalize.NormalizeDouble;
 
 import com.google.inject.Inject;
 
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription.Competition;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription.Customer;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription.Firm;
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription.Competition;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription.Customer;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription.Firm;
 
 @Apply(VbpoGenotype.class)
 public class VbpoLinOpNeighbor extends VbpoNeighbor {
@@ -220,6 +223,10 @@ public class VbpoLinOpNeighbor extends VbpoNeighbor {
 				VbpoProblemDescription problemDescription) {
 			super(x, p, problemDescription);
 			// TODO Auto-generated constructor stub
+		}
+		
+		public boolean[] determineY(boolean[][] x){
+			return super.determineY(x);
 		}
 		
 	}

@@ -36,6 +36,8 @@ import org.opt4j.viewer.WidgetParameters;
 
 import com.google.inject.Inject;
 
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
+
 /**
  * Creates a View that visualizes a solution to the SPL problem in a table. Can
  * be used in the Opt4J runner.

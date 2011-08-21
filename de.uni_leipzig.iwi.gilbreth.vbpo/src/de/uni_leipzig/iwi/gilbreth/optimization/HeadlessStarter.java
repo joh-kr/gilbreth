@@ -15,23 +15,26 @@
  * limitations under the License.
  */
 
-package de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing;
+package de.uni_leipzig.iwi.gilbreth.optimization;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.opt4j.benchmark.dtlz.DTLZModule;
 import org.opt4j.config.Task;
 import org.opt4j.config.TaskStateListener;
 import org.opt4j.core.Archive;
 import org.opt4j.core.Individual;
-import org.opt4j.optimizer.ea.EvolutionaryAlgorithmModule;
 import org.opt4j.optimizer.sa.CoolingSchedulesModule;
 import org.opt4j.optimizer.sa.CoolingSchedulesModule.Type;
 import org.opt4j.start.Opt4JTask;
-import org.opt4j.viewer.ViewerModule;
 
 import com.google.inject.Module;
+
+import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoDecoder;
+import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoGenotype;
+import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoLinOpModule;
+import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoModule;
+import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoSimulatedAnnealingModule;
 
 /**
  * Starts a Opt4J Optimization task for a given SPLProblemDescription.
@@ -39,25 +42,11 @@ import com.google.inject.Module;
  * @author Johannes Müller
  *
  */
-public class HeadlessStarter {
-	
-	private Collection<IterationChangedListener> iterationChangedListener = new ArrayList<IterationChangedListener>();
+public class HeadlessStarter extends Runner{
 	
 	private Opt4JTask task;
-	private VbpoProblemDescription description;
 	
-	private int maxIterations = 10000;
-	private int changeIterations = 10000;
-	private double delta = 0.1d;
-	private double alpha = 0.995d;
-	private int initialTemp = 4000;
-	private int finalTemp = 1;
-	private int workUnits = 100;
-	private int eventInterval = maxIterations/workUnits;
-	
-	
-	
-	public Solution startOptimization(VbpoProblemDescription description){
+	public Solution optimize(VbpoProblemDescription description){
 		this.description = description;
 		
 		configureOpt4J();
@@ -89,25 +78,6 @@ public class HeadlessStarter {
 		task.init(modules);
 	}
 
-	/**
-	 * 
-	 * 
-	 * @param maxIterations maximal number of iterations the algorithm shall be run
-	 * @param alpha the alpha value
-	 * @param delta the delta value its the difference in result the result must achieve within maxIterations to run algorithm 
-	 * @param initialTemp the initial temperature (see Opt4J for details)
-	 * @param finalTemp the final temperature (see Opt4J for details)
-	 */
-	public void configure(int maxIterations, int changeIterations, double alpha, double delta, int initialTemp, int finalTemp){
-		this.maxIterations = maxIterations;
-		this.changeIterations = changeIterations;
-		this.alpha = alpha;
-		this.delta = delta;
-		this.initialTemp = initialTemp;
-		this.finalTemp = finalTemp;
-		
-	}
-	
 	private Solution runOptimization() {
 		Solution solution = null;
 		try {
@@ -138,22 +108,5 @@ public class HeadlessStarter {
 		}
 		System.out.println(solution);
 		return solution;
-	}
-	
-	public int getFullWorkUnits(){
-		return workUnits;
-	}
-	
-	public void addIterationChangedListener(IterationChangedListener listener){
-		iterationChangedListener.add(listener);
-	}
-	public void removeIterationChangedListener(IterationChangedListener listener){
-			iterationChangedListener.remove(listener);
-	}
-	
-	private void notifyIterationChangedListener(int iteration){
-		for(IterationChangedListener listener: iterationChangedListener){
-			listener.iterationChanged(iteration);
-		}
 	}
 }

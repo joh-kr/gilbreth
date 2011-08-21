@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing;
+package de.uni_leipzig.iwi.gilbreth.optimization;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 import org.opt4j.core.problem.Phenotype;
 
-import de.uni_leipzig.iwi.gilbreth.optimization.Helper;
+import de.uni_leipzig.iwi.gilbreth.optimization.helper.Helper;
 
 /**
  * A solution to the SPL optimization problem. Consists of all values and

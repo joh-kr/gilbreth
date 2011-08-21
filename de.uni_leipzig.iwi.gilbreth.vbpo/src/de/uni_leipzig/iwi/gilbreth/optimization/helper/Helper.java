@@ -1,4 +1,4 @@
-package de.uni_leipzig.iwi.gilbreth.optimization;
+package de.uni_leipzig.iwi.gilbreth.optimization.helper;
 
 public class Helper {
 	

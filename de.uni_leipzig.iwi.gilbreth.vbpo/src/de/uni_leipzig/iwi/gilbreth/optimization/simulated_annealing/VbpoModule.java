@@ -22,6 +22,10 @@ import org.opt4j.viewer.VisualizationModule;
 
 import com.google.inject.Provides;
 
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
+
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
+
 /**
  * Compiles all configurations for the SPL optimization problem.
  * 

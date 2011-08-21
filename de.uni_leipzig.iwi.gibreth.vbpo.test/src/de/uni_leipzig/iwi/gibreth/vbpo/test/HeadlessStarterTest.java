@@ -7,9 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.uni_leipzig.iwi.gibreth.vbpo.test.testdata.SmallScenarioTestData;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.HeadlessStarter;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
+import de.uni_leipzig.iwi.gilbreth.optimization.HeadlessStarter;
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
 
 public class HeadlessStarterTest {
 	
@@ -33,7 +33,7 @@ public class HeadlessStarterTest {
 	
 	@Test
 	public void testProfit() {
-		solution = starter.startOptimization(description);
+		solution = starter.optimize(description);
 		double profit = solution.profit();
 		System.out.println(profit);
 		assertTrue("Profit height", 260 < profit);
@@ -41,7 +41,7 @@ public class HeadlessStarterTest {
 	
 	@Test
 	public void testPrices() {
-		solution = starter.startOptimization(description);
+		solution = starter.optimize(description);
 		double profit = solution.profit();
 		assertTrue("Price Range", true);
 	}

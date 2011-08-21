@@ -1,6 +1,6 @@
 package de.uni_leipzig.iwi.gilbreth.vbpo.performance.evaluator;
 
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
 
 /**
  * A TestDataGenerator that generates TestData that can also be solved analytically.

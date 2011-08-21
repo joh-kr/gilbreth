@@ -20,6 +20,12 @@ import org.opt4j.core.problem.Decoder;
 
 import com.google.inject.Inject;
 
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
+
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
+
 /**
  * Decoder to decode a SPLGenotype into the corresponding Solution phenotype.
  * The Genotype is the abstract representation of the phenotype. Usually it

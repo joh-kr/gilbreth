@@ -12,8 +12,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription;
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
 
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;

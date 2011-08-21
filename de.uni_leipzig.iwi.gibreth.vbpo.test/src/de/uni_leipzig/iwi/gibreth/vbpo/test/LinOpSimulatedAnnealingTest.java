@@ -16,12 +16,12 @@ import com.google.inject.Module;
 
 import de.uni_leipzig.iwi.gibreth.vbpo.test.testdata.ITestDataFactory;
 import de.uni_leipzig.iwi.gibreth.vbpo.test.testdata.PaperTestData;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoDecoder;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoGenotype;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoLinOpModule;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoModule;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoSimulatedAnnealingModule;
 
 public class LinOpSimulatedAnnealingTest {

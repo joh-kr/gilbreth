@@ -1,6 +1,6 @@
 package de.uni_leipzig.iwi.gibreth.vbpo.test.testdata;
 
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
 
 public class PaperTestData implements ITestDataFactory {
 

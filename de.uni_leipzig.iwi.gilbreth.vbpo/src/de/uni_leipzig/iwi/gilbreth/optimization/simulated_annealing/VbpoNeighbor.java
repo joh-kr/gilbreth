@@ -25,6 +25,10 @@ import org.opt4j.operator.neighbor.NeighborDouble;
 import org.opt4j.operator.normalize.NormalizeDouble;
 import com.google.inject.Inject;
 
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
+
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
+
 
 /**
  * Generates Neighbors to a given genotype uses domain knowledge about the SPL problem

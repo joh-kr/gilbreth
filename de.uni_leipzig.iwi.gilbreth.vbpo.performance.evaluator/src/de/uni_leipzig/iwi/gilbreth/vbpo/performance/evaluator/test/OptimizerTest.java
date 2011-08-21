@@ -6,8 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription;
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
 import de.uni_leipzig.iwi.gilbreth.vbpo.performance.evaluator.Optimizer;
 import de.uni_leipzig.iwi.gilbreth.vbpo.performance.evaluator.SimpleProblemTestDataFactory;
 import de.uni_leipzig.iwi.gilbreth.vbpo.performance.evaluator.TestDataFactory;

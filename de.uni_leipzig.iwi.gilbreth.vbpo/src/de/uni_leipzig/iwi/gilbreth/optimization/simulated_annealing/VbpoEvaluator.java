@@ -25,6 +25,12 @@ import org.opt4j.core.problem.Evaluator;
 
 import com.google.inject.Inject;
 
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
+
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
+
 /**
  * Responsible for evaluation a specific Solution. It calculates the generated
  * profit and saves it in a objective object.

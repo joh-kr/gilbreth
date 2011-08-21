@@ -26,7 +26,7 @@ import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Feature;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
 import de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.optimization.Lookup;
 import de.uni_leipzig.iwi.gilbreth.vbpo.result.beans.AssetImpact;
 import de.uni_leipzig.iwi.gilbreth.vbpo.result.beans.FeatureImpact;
@@ -262,7 +262,7 @@ public class ResultModelBeanBuilder {
 	 * 
 	 * 
 	 * @return a collection of AssetImpact-Beans containing the impact of assets on profit.
-	 * @see de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution
+	 * @see de.uni_leipzig.iwi.gilbreth.optimization.Solution
 	 */
 	public Collection<AssetImpact> assetImpacts(){
 		Collection<AssetImpact> map = new ArrayList<AssetImpact>();

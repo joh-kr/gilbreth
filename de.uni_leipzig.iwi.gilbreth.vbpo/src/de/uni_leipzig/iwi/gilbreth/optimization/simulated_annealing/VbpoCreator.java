@@ -24,6 +24,10 @@ import org.opt4j.genotype.DoubleGenotype;
 
 import com.google.inject.Inject;
 
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
+
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
+
 /**
  * Responsible for creation of SPLGenotypes for a given SPLProblem.
  * 

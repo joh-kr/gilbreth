@@ -39,10 +39,10 @@ import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelFactory;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.HeadlessStarter;
+import de.uni_leipzig.iwi.gilbreth.optimization.HeadlessStarter;
+import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
+import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.IterationChangedListener;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.VbpoProblemDescription;
-import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.Solution;
 import de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.presentation.VBPODataModelEditorPlugin;
 import de.uni_leipzig.iwi.gilbreth.vbpo.preferences.PreferenceConstants;
 
@@ -112,7 +112,7 @@ public class OptimizationInitializer {
 		// To include the zero product explicitly in the solution.
 		addZeroProduct();
 		createProblemDescription();
-		solution = starter.startOptimization(description);
+		solution = starter.optimize(description);
 		// TODO temporarly removed because the result build crashes since the zero product 
 		// is not in the list anymore.
 		//removeZeroProduct();

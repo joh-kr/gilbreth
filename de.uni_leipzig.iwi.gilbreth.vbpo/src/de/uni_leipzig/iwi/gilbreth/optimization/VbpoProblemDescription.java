@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing;
+package de.uni_leipzig.iwi.gilbreth.optimization;
 
-import de.uni_leipzig.iwi.gilbreth.optimization.Helper;
+import de.uni_leipzig.iwi.gilbreth.optimization.helper.Helper;
 
 /**
  * Contains the values that describe the SPL Optimization problem.
