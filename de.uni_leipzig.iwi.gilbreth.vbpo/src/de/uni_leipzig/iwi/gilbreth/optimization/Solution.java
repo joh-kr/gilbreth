@@ -37,31 +37,7 @@ public class Solution implements Phenotype {
 
 	// ---- Data Member ---------------
 
-	/**
-	 * Container Data Type saving asset numbers and their contribution to profit
-	 * 
-	 * @author Johannes Müller
-	 * 
-	 */
-	public static class AssetContainer implements Comparable<AssetContainer> {
 
-		public double delta_profit;
-		public int asset;
-
-		public AssetContainer(double delta_profit, int asset) {
-			this.delta_profit = delta_profit;
-			this.asset = asset;
-		}
-
-		public int compareTo(AssetContainer o) {
-			return Double.compare(this.delta_profit, o.delta_profit);
-		}
-		
-		@Override
-		public String toString(){
-			return "Asset: " + asset + " profit cont: " + delta_profit;
-		}
-	}
 	// ---- The values that are determined by the genotype
 	/**
 	 * i: segments
@@ -143,8 +119,8 @@ public class Solution implements Phenotype {
 	 * @return a list of integer values naming the assets ordered by their
 	 *         importance to the profit
 	 */
-	public ArrayList<AssetContainer> calculateAssetImportance() {
-		ArrayList<AssetContainer> assets = new ArrayList<AssetContainer>();
+	public ArrayList<EntityContainer> calculateAssetImportance() {
+		ArrayList<EntityContainer> assets = new ArrayList<EntityContainer>();
 		int nrOfAssets = problemDescription.getFirm().NumberOfAssets();
 
 		double profit = profit();
@@ -154,17 +130,42 @@ public class Solution implements Phenotype {
 		double contribution = 0.0d;
 
 		for (int k = 0; k < nrOfAssets; k++) {
-			x_temp = generateTempX(k);
+			x_temp = generateTempXForAssetImportance(k);
 			profit_temp = profit(x_temp);
 			contribution = ((profit - profit_temp)/profit);
 			// As smaller profit_temp as more important k is for the profit
 			// without k is so and so much lower profit generated
-			assets.add(new AssetContainer(contribution, k));
+			assets.add(new EntityContainer(contribution, k));
 		}
 
 		Collections.sort(assets);
 
 		return assets;
+	}
+	
+	public ArrayList<EntityContainer> calculateSystemImportance() {
+		ArrayList<EntityContainer> systems = new ArrayList<EntityContainer>();
+		int nrOfSystems = problemDescription.getFirm().NumberOfProducts();
+
+		double profit = profit();
+		
+		boolean[][] x_temp = null;
+		double profit_temp = 0.0d;
+		double contribution = 0.0d;
+
+		for (int j = 0; j < nrOfSystems; j++) {
+			x_temp = generateTempXForSystemImportance(j);
+			profit_temp = profit(x_temp);
+			contribution = ((profit - profit_temp)/profit);
+			System.out.println("profit:" + profit + " profit temp " + profit_temp + " contribution " + contribution);
+			// As smaller profit_temp as more important k is for the profit
+			// without k is so and so much lower profit generated
+			systems.add(new EntityContainer(contribution, j));
+		}
+
+		Collections.sort(systems);
+
+		return systems;
 	}
 
 	/**
@@ -280,7 +281,7 @@ public class Solution implements Phenotype {
 		return y;
 	}
 
-	private boolean[][] generateTempX(int k) {
+	private boolean[][] generateTempXForAssetImportance(int k) {
 		boolean[][] x_temp = copy(x);
 
 		for (int i = 0; i < problemDescription.getCustomer().numberOfSegments(); i++) {
@@ -294,6 +295,16 @@ public class Solution implements Phenotype {
 		return x_temp;
 	}
 
+	private boolean[][] generateTempXForSystemImportance(int j) {
+		boolean[][] x_temp = copy(x);
+
+		for (int i = 0; i < problemDescription.getCustomer().numberOfSegments(); i++) {
+			x_temp[i][j] = false;
+		}
+
+		return x_temp;
+	}
+	
 	public double[] getP() {
 		return p;
 	}

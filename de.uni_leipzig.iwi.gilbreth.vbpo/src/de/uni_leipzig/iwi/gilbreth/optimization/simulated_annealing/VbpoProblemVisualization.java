@@ -36,6 +36,7 @@ import org.opt4j.viewer.WidgetParameters;
 
 import com.google.inject.Inject;
 
+import de.uni_leipzig.iwi.gilbreth.optimization.EntityContainer;
 import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
 
 /**
@@ -97,7 +98,7 @@ public class VbpoProblemVisualization implements IndividualMouseListener {
 		}
 
 		private JScrollPane createAssetTable() {
-			ArrayList<Solution.AssetContainer> list = solution
+			ArrayList<EntityContainer> list = solution
 					.calculateAssetImportance();
 
 			Object[][] data = new Object[list.size()][2];
