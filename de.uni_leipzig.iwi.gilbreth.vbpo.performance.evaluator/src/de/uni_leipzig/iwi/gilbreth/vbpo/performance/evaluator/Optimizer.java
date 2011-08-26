@@ -43,7 +43,7 @@ public class Optimizer {
 	}
 	
 	public  Solution runOptimization(VbpoProblemDescription description, boolean useLinOp) throws Exception{		
-		Solution solution;
+		Solution solution = null;
 		
 		VbpoSimulatedAnnealingModule annealingModule = new VbpoSimulatedAnnealingModule();
 		annealingModule.setChangeIterations(change_iterations);
@@ -54,7 +54,7 @@ public class Optimizer {
 		coolingModules.setAlpha(alpha);
 		coolingModules.setInitialTemperature(initial_temp);
 		coolingModules.setFinalTemperature(final_temp);
-		coolingModules.setType(Type.EXPONENTIAL);
+		coolingModules.setType(Type.HYPERBOLIC);
 
 		VbpoModule vbpoModule = useLinOp ? new VbpoLinOpModule() : new VbpoModule();
 		vbpoModule.setProblemDescription(description);
@@ -74,11 +74,11 @@ public class Optimizer {
 			VbpoDecoder decoder = new VbpoDecoder(description);
 			solution = decoder.decode((VbpoGenotype)individual.getGenotype());	
 			if(PRINT_RESULT) System.out.println("Solution:" + solution.toString());
-			return solution;
+			
 		}
 		task.close();
 		
-		return null;
+		return solution;
 	}
 
 }

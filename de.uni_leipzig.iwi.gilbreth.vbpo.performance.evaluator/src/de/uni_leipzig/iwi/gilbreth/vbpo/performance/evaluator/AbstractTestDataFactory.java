@@ -41,7 +41,7 @@ public abstract class AbstractTestDataFactory implements TestDataFactory {
 		mathPiperConnector.evaluate(term);
 		deriveResult = mathPiperConnector.getResult();
 		b = mathPiperConnector.getResultAsArray();
-		
+		cleanUp(b);
 		VbpoProblemDescription problem = new VbpoProblemDescription(
 				 createCustomerDescription(u, u, b), createFirmDescription(u, k, b),
 				 createCompetitionDescription(u), 100);;
@@ -84,6 +84,11 @@ public abstract class AbstractTestDataFactory implements TestDataFactory {
 		return Double.parseDouble(res);
 	}
 	
+	private void cleanUp(double[] _b){
+		for(int i = 0; i < b.length; i++){
+			b[i] = b[i]<= 0.0d ? 0.0d : b[i]; 
+		}
+	}
 
 	/**
 	 * creates a set of commands to calculate the derivatives of the introduced variables

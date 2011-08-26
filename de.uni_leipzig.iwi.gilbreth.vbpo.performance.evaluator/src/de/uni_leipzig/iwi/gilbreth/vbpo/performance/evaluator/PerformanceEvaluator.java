@@ -1,5 +1,9 @@
 package de.uni_leipzig.iwi.gilbreth.vbpo.performance.evaluator;
 
+import de.uni_leipzig.iwi.gilbreth.optimization.DomainSpecificPureSimulatedAnnealingRunner;
+import de.uni_leipzig.iwi.gilbreth.optimization.DomainSpecificSimulatedAnnealingRunner;
+import de.uni_leipzig.iwi.gilbreth.optimization.Runner;
+
 
 
 
@@ -11,18 +15,23 @@ public class PerformanceEvaluator {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		SimpleProblemTestDataFactory testData = new SimpleProblemTestDataFactory();
-		Optimizer optimizer = new Optimizer();
+		SimpleProblemTestDataFactory testData = new FlatPriceDefinitionTestDataFactory();
 		licenceText();
 		
-		if(args.length < 3){ 
+		if(args.length < 2){ 
 			help();
 		}else{
-			int        min    = Integer.parseInt(args[0]);
-			int        max    = Integer.parseInt(args[1]);
-			double     kappa  = Double.parseDouble(args[2]);
+			String path = args[0];
+			double kappa = Double.parseDouble(args[1]);
 			
-			TestRunner runner = new TestRunner("./result.csv", optimizer, testData, min, max, kappa);
+			TestRunner runner = new TestRunner("./result.csv", testData, kappa);
+			runner.setConfigurations(
+					TestRunnerConfigurationReader.read(path)
+			);
+
+			runner.setRunners(new Runner[]{
+					new DomainSpecificPureSimulatedAnnealingRunner(), 
+					new DomainSpecificSimulatedAnnealingRunner()});
 	
 			long start = System.currentTimeMillis();
 			runner.start();

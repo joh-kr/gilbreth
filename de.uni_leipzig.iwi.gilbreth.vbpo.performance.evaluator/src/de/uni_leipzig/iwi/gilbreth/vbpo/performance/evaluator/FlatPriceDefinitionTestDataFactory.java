@@ -36,6 +36,7 @@ public class FlatPriceDefinitionTestDataFactory extends SimpleProblemTestDataFac
 				+ "];\n");
 		commands.append("solResult;");
 		commands.append("]");
+		//System.out.println(commands);
 		return commands.toString();
 	}
 	
@@ -100,13 +101,13 @@ public class FlatPriceDefinitionTestDataFactory extends SimpleProblemTestDataFac
 		}
 		commands.append(priceDefinitions(end));
 		commands.append(KAPPA + ":= " + kappa + ";\n");
-		commands.append("result").append(ASSIGNMENT).append(deriveResult)
-		.append(COMMAND_END).append(LINE_BREAK);
 		commands.append("equ").append(ASSIGNMENT)
 		.append(profitEquation(end)).append(COMMAND_END)
 		.append(LINE_BREAK);
 		commands.append("equ").append(COMMAND_END);
 		commands.append("]");
+		
+		//System.out.println(commands);
 		
 		mathPiperConnector.evaluate(commands.toString());
 		String res = mathPiperConnector.getResult();

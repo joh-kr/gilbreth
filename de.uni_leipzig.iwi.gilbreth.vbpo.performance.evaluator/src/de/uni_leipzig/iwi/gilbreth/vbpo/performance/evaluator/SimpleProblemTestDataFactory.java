@@ -105,7 +105,7 @@ public class SimpleProblemTestDataFactory extends AbstractTestDataFactory{
 	protected double[] ca(int o){
 		double[] ca = new double[o+1];
 		ca[0] = 0.0d; //zero product
-		for(int j = 0; j <= o; j++){
+		for(int j = 1; j <= o; j++){
 			ca[j] = 0.0d;
 		}
 		return ca;
