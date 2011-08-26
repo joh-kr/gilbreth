@@ -17,13 +17,11 @@ public abstract class Runner {
 	protected int finalTemp = 1;
 	private int workUnits = 100;
 	protected int eventInterval = maxIterations/workUnits;
+	protected boolean configured = false;
 
 	
 	
-	public Solution optimize(VbpoProblemDescription description){
-		
-		return null;
-	}
+	public abstract Solution optimize(VbpoProblemDescription description) throws Exception;
 	
 	
 	/**
@@ -43,6 +41,8 @@ public abstract class Runner {
 				this.delta = delta;
 				this.initialTemp = initialTemp;
 				this.finalTemp = finalTemp;
+				
+				this.configured = true;
 				
 			}
 
