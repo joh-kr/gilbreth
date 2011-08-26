@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="optimizationResult" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="779"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -188,6 +188,17 @@
 			<fieldDescription><![CDATA[assetName]]></fieldDescription>
 		</field>
 	</subDataset>
+	<subDataset name="SystemImpactDS">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="impact" class="java.lang.Double">
+			<fieldDescription><![CDATA[impact]]></fieldDescription>
+		</field>
+		<field name="systemName" class="java.lang.String">
+			<fieldDescription><![CDATA[systemName]]></fieldDescription>
+		</field>
+	</subDataset>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/Users/jo/Documents/Uni/promotion/gilbreth_workspace/gilbreth/VBPODataModel.editor/template/"]]></defaultValueExpression>
 	</parameter>
@@ -226,6 +237,9 @@
 	</field>
 	<field name="assetImpacts" class="java.util.Collection">
 		<fieldDescription><![CDATA[assetImpacts]]></fieldDescription>
+	</field>
+	<field name="systemImpacts" class="java.util.Collection">
+		<fieldDescription><![CDATA[systemImpacts]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -594,8 +608,8 @@
 			<componentElement>
 				<reportElement key="table 4" style="table 4" x="33" y="10" width="306" height="83"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="AssetImpactDS">
-						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{assetImpacts})]]></dataSourceExpression>
+					<datasetRun subDataset="SystemImpactDS">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{systemImpacts})]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="136">
 						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
@@ -604,7 +618,7 @@
 								<textElement>
 									<font fontName="Arial Black" size="12"/>
 								</textElement>
-								<text><![CDATA[Asset]]></text>
+								<text><![CDATA[System]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="23" rowSpan="1">
@@ -613,7 +627,7 @@
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
-								<textFieldExpression class="java.lang.String"><![CDATA[$F{assetName}]]></textFieldExpression>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{systemName}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -650,13 +664,13 @@
 				</chart>
 				<categoryDataset>
 					<dataset>
-						<datasetRun subDataset="AssetImpactDS">
-							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{assetImpacts})]]></dataSourceExpression>
+						<datasetRun subDataset="SystemImpactDS">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{systemImpacts})]]></dataSourceExpression>
 						</datasetRun>
 					</dataset>
 					<categorySeries>
-						<seriesExpression><![CDATA["Asset Impact"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{assetName}]]></categoryExpression>
+						<seriesExpression><![CDATA["System Impact"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{systemName}]]></categoryExpression>
 						<valueExpression><![CDATA[$F{impact}]]></valueExpression>
 					</categorySeries>
 				</categoryDataset>
@@ -665,7 +679,7 @@
 						<seriesColor seriesOrder="0" color="#6666FF"/>
 					</plot>
 					<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
-					<categoryAxisLabelExpression><![CDATA["Assets"]]></categoryAxisLabelExpression>
+					<categoryAxisLabelExpression><![CDATA["Systems"]]></categoryAxisLabelExpression>
 					<categoryAxisFormat>
 						<axisFormat>
 							<labelFont/>

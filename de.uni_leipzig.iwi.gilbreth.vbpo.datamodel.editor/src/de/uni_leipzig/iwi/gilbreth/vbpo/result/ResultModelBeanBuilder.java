@@ -26,6 +26,7 @@ import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.CustomerSegment;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Feature;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.Product;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
+import de.uni_leipzig.iwi.gilbreth.optimization.EntityContainer;
 import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
 import de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor.optimization.Lookup;
 import de.uni_leipzig.iwi.gilbreth.vbpo.result.beans.AssetImpact;
@@ -33,6 +34,7 @@ import de.uni_leipzig.iwi.gilbreth.vbpo.result.beans.FeatureImpact;
 import de.uni_leipzig.iwi.gilbreth.vbpo.result.beans.ProductFeatures;
 import de.uni_leipzig.iwi.gilbreth.vbpo.result.beans.ProductSegmentAssignment;
 import de.uni_leipzig.iwi.gilbreth.vbpo.result.beans.ResultBean;
+import de.uni_leipzig.iwi.gilbreth.vbpo.result.beans.SystemImpact;
 
 /**
  * Is responsible for building a ResultBean on the basis of a given VBPODataModel and
@@ -83,6 +85,7 @@ public class ResultModelBeanBuilder {
 		result.setProductFeatures(productFeatures());
 		result.setProductSegmentAssignments(createProductSegmentAssignments());
 		result.setAssetImpacts(assetImpacts());
+		result.setSystemImpacts(systemImpacts());
 		result.setFeatureImpacts(featureImpacts(result.getAssetImpacts()));
 		
 		return result;
@@ -266,17 +269,30 @@ public class ResultModelBeanBuilder {
 	 */
 	public Collection<AssetImpact> assetImpacts(){
 		Collection<AssetImpact> map = new ArrayList<AssetImpact>();
-		Collection<Solution.AssetContainer> assetContainers = solution.calculateAssetImportance();
+		Collection<EntityContainer> assetContainers = solution.calculateAssetImportance();
 		
-		Solution.AssetContainer assetContainer = null;
+		EntityContainer assetContainer = null;
 		Asset asset = null;
 		for(Iterator iter = assetContainers.iterator();iter.hasNext();){
-			assetContainer = (Solution.AssetContainer) iter.next();
+			assetContainer = (EntityContainer) iter.next();
 			asset = root.getFirm().getSSF().getContainedAssets().get(assetContainer.asset);
 			
 			map.add(new AssetImpact(asset.getName(), assetContainer.delta_profit));
 		}
 		
+		return map;
+	}
+	
+	public Collection<SystemImpact> systemImpacts(){
+		Collection<SystemImpact> map = new ArrayList<SystemImpact>();
+		Collection<EntityContainer> containers = solution.calculateSystemImportance();	
+		EntityContainer container = null;
+		de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System system = null;
+		for(Iterator iter = containers.iterator();iter.hasNext();){
+			container = (EntityContainer) iter.next();
+			system = root.getFirm().getSSF().getContainedSystems().get(container.asset);		
+			map.add(new SystemImpact(system.getName(), container.delta_profit));
+		}
 		return map;
 	}
 

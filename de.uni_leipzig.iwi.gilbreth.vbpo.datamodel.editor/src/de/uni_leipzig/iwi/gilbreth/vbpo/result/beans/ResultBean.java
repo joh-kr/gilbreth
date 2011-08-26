@@ -24,7 +24,7 @@ import java.util.Collection;
  * extracted from the optimization run.
  * 
  * @author Johannes MŸller
- * @version 0.2
+ * @version 0.3
  *
  */
 public class ResultBean {
@@ -39,6 +39,8 @@ public class ResultBean {
 	
 	private Collection<AssetImpact> assetImpacts;
 
+	private Collection<SystemImpact> systemImpacts;
+	
 	private long numberOfProducts;
 	
 	private long numberOfAssets;
@@ -143,6 +145,14 @@ public class ResultBean {
 
 	public void setAssetImpacts(Collection<AssetImpact> assetImpacts) {
 		this.assetImpacts = assetImpacts;
+	}
+
+	public Collection<SystemImpact> getSystemImpacts() {
+		return systemImpacts;
+	}
+
+	public void setSystemImpacts(Collection<SystemImpact> systemImpacts) {
+		this.systemImpacts = systemImpacts;
 	}
 }
 /*EOF*/
