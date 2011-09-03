@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="optimizationResult" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="779"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -205,6 +205,7 @@
 	<parameter name="IMG_DIR" class="java.lang.String">
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
+	<parameter name="LOGO" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -247,7 +248,7 @@
 	<title>
 		<band height="98" splitType="Stretch">
 			<staticText>
-				<reportElement x="21" y="14" width="508" height="48"/>
+				<reportElement x="21" y="6" width="508" height="48"/>
 				<textElement>
 					<font fontName="Arial Black" size="28"/>
 				</textElement>
@@ -256,6 +257,10 @@
 			<line>
 				<reportElement x="0" y="97" width="555" height="1"/>
 			</line>
+			<image>
+				<reportElement x="251" y="43" width="52" height="52"/>
+				<imageExpression class="java.io.InputStream"><![CDATA[$P{LOGO}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<detail>
@@ -272,7 +277,7 @@
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{numberOfProducts}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numberOfProducts}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="21" y="33" width="114" height="20"/>
@@ -286,7 +291,7 @@
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{numberOfSystems}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numberOfSystems}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="21" y="53" width="126" height="20"/>
@@ -300,7 +305,7 @@
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{numberOfCustomerSegments}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numberOfCustomerSegments}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="313" y="13" width="114" height="20"/>
@@ -314,7 +319,7 @@
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{numberOfAssets}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numberOfAssets}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="313" y="33" width="114" height="20"/>
@@ -328,7 +333,7 @@
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{numberOfFeatures}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numberOfFeatures}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="84" width="555" height="1"/>
@@ -351,6 +356,24 @@
 								</textElement>
 								<text><![CDATA[Product]]></text>
 							</staticText>
+							<genericElement>
+								<reportElement mode="Transparent" x="0" y="0" width="0" height="32">
+									<property name="controlParameter" value="true"/>
+								</reportElement>
+								<genericElementType namespace="http://jasperreports.sourceforge.net/jasperreports" name="sort"/>
+								<genericElementParameter name="sortColumnName">
+									<valueExpression><![CDATA["product"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortColumnType">
+									<valueExpression><![CDATA["Field"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerHorizontalAlign">
+									<valueExpression><![CDATA["Right"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerVerticalAlign">
+									<valueExpression><![CDATA["Middle"]]></valueExpression>
+								</genericElementParameter>
+							</genericElement>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
 							<textField pattern="">
@@ -391,6 +414,24 @@
 								</textElement>
 								<text><![CDATA[Price]]></text>
 							</staticText>
+							<genericElement>
+								<reportElement mode="Transparent" x="0" y="0" width="0" height="32">
+									<property name="controlParameter" value="true"/>
+								</reportElement>
+								<genericElementType namespace="http://jasperreports.sourceforge.net/jasperreports" name="sort"/>
+								<genericElementParameter name="sortColumnName">
+									<valueExpression><![CDATA["price"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortColumnType">
+									<valueExpression><![CDATA["Field"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerHorizontalAlign">
+									<valueExpression><![CDATA["Right"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerVerticalAlign">
+									<valueExpression><![CDATA["Middle"]]></valueExpression>
+								</genericElementParameter>
+							</genericElement>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
 							<textField pattern="¤ #,##0.00">
@@ -398,7 +439,7 @@
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
-								<textFieldExpression class="java.lang.Double"><![CDATA[$F{price}]]></textFieldExpression>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{price}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -428,6 +469,24 @@
 								</textElement>
 								<text><![CDATA[Segment]]></text>
 							</staticText>
+							<genericElement>
+								<reportElement mode="Transparent" x="0" y="0" width="0" height="30">
+									<property name="controlParameter" value="true"/>
+								</reportElement>
+								<genericElementType namespace="http://jasperreports.sourceforge.net/jasperreports" name="sort"/>
+								<genericElementParameter name="sortColumnName">
+									<valueExpression><![CDATA["segment"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortColumnType">
+									<valueExpression><![CDATA["Field"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerHorizontalAlign">
+									<valueExpression><![CDATA["Right"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerVerticalAlign">
+									<valueExpression><![CDATA["Middle"]]></valueExpression>
+								</genericElementParameter>
+							</genericElement>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="31" rowSpan="1">
 							<textField>
@@ -448,6 +507,24 @@
 								</textElement>
 								<text><![CDATA[Product]]></text>
 							</staticText>
+							<genericElement>
+								<reportElement mode="Transparent" x="0" y="0" width="0" height="30">
+									<property name="controlParameter" value="true"/>
+								</reportElement>
+								<genericElementType namespace="http://jasperreports.sourceforge.net/jasperreports" name="sort"/>
+								<genericElementParameter name="sortColumnName">
+									<valueExpression><![CDATA["product"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortColumnType">
+									<valueExpression><![CDATA["Field"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerHorizontalAlign">
+									<valueExpression><![CDATA["Right"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerVerticalAlign">
+									<valueExpression><![CDATA["Middle"]]></valueExpression>
+								</genericElementParameter>
+							</genericElement>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="31" rowSpan="1">
 							<textField>
@@ -468,6 +545,24 @@
 								</textElement>
 								<text><![CDATA[Price]]></text>
 							</staticText>
+							<genericElement>
+								<reportElement mode="Transparent" x="0" y="0" width="0" height="30">
+									<property name="controlParameter" value="true"/>
+								</reportElement>
+								<genericElementType namespace="http://jasperreports.sourceforge.net/jasperreports" name="sort"/>
+								<genericElementParameter name="sortColumnName">
+									<valueExpression><![CDATA["price"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortColumnType">
+									<valueExpression><![CDATA["Field"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerHorizontalAlign">
+									<valueExpression><![CDATA["Right"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerVerticalAlign">
+									<valueExpression><![CDATA["Middle"]]></valueExpression>
+								</genericElementParameter>
+							</genericElement>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="31" rowSpan="1">
 							<textField pattern="¤ #,##0.00">
@@ -475,7 +570,7 @@
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
-								<textFieldExpression class="java.lang.Double"><![CDATA[$F{price}]]></textFieldExpression>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{price}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -502,7 +597,7 @@
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{maxProfit}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maxProfit}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="129" splitType="Stretch">
@@ -528,6 +623,24 @@
 								</textElement>
 								<text><![CDATA[Feature]]></text>
 							</staticText>
+							<genericElement>
+								<reportElement mode="Transparent" x="0" y="0" width="0" height="30">
+									<property name="controlParameter" value="true"/>
+								</reportElement>
+								<genericElementType namespace="http://jasperreports.sourceforge.net/jasperreports" name="sort"/>
+								<genericElementParameter name="sortColumnName">
+									<valueExpression><![CDATA["featureName"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortColumnType">
+									<valueExpression><![CDATA["Field"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerHorizontalAlign">
+									<valueExpression><![CDATA["Right"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerVerticalAlign">
+									<valueExpression><![CDATA["Middle"]]></valueExpression>
+								</genericElementParameter>
+							</genericElement>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="23" rowSpan="1">
 							<textField>
@@ -548,6 +661,24 @@
 								</textElement>
 								<text><![CDATA[Impact (%)]]></text>
 							</staticText>
+							<genericElement>
+								<reportElement mode="Transparent" x="0" y="0" width="0" height="30">
+									<property name="controlParameter" value="true"/>
+								</reportElement>
+								<genericElementType namespace="http://jasperreports.sourceforge.net/jasperreports" name="sort"/>
+								<genericElementParameter name="sortColumnName">
+									<valueExpression><![CDATA["impact"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortColumnType">
+									<valueExpression><![CDATA["Field"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerHorizontalAlign">
+									<valueExpression><![CDATA["Right"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerVerticalAlign">
+									<valueExpression><![CDATA["Middle"]]></valueExpression>
+								</genericElementParameter>
+							</genericElement>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="23" rowSpan="1">
 							<textField pattern="#,##0.00 %">
@@ -555,7 +686,7 @@
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
-								<textFieldExpression class="java.lang.Double"><![CDATA[$F{impact}]]></textFieldExpression>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{impact}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -620,6 +751,24 @@
 								</textElement>
 								<text><![CDATA[System]]></text>
 							</staticText>
+							<genericElement>
+								<reportElement mode="Transparent" x="0" y="0" width="0" height="30">
+									<property name="controlParameter" value="true"/>
+								</reportElement>
+								<genericElementType namespace="http://jasperreports.sourceforge.net/jasperreports" name="sort"/>
+								<genericElementParameter name="sortColumnName">
+									<valueExpression><![CDATA["systemName"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortColumnType">
+									<valueExpression><![CDATA["Field"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerHorizontalAlign">
+									<valueExpression><![CDATA["Right"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerVerticalAlign">
+									<valueExpression><![CDATA["Middle"]]></valueExpression>
+								</genericElementParameter>
+							</genericElement>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="23" rowSpan="1">
 							<textField>
@@ -640,6 +789,24 @@
 								</textElement>
 								<text><![CDATA[Impact (%)]]></text>
 							</staticText>
+							<genericElement>
+								<reportElement mode="Transparent" x="0" y="0" width="0" height="30">
+									<property name="controlParameter" value="true"/>
+								</reportElement>
+								<genericElementType namespace="http://jasperreports.sourceforge.net/jasperreports" name="sort"/>
+								<genericElementParameter name="sortColumnName">
+									<valueExpression><![CDATA["impact"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortColumnType">
+									<valueExpression><![CDATA["Field"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerHorizontalAlign">
+									<valueExpression><![CDATA["Right"]]></valueExpression>
+								</genericElementParameter>
+								<genericElementParameter name="sortHandlerVerticalAlign">
+									<valueExpression><![CDATA["Middle"]]></valueExpression>
+								</genericElementParameter>
+							</genericElement>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="23" rowSpan="1">
 							<textField pattern="#,##0.00 %">
@@ -647,7 +814,7 @@
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
-								<textFieldExpression class="java.lang.Double"><![CDATA[$F{impact}]]></textFieldExpression>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{impact}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -704,7 +871,7 @@
 				<textElement>
 					<font fontName="Arial"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="0" width="555" height="1"/>
