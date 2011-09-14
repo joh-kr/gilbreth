@@ -48,6 +48,7 @@ public class JasperPrintCreator {
 	private static final String TEMPLATE_PATH = "plugin/de.uni_leipzig.iwi.gilbreth.vbpo.datamodel.editor/template";
 	private static final String SUBREPORT_TEMPLATE_PATH = "template" + File.separator;
 	private static final String TEMPLATE_NAME = "optimizationResult.jasper";
+	private static final String LOGO_NAME = "gilbreth_logo.jpg";
 	
 	
 	/**
@@ -68,9 +69,8 @@ public class JasperPrintCreator {
 		    Collection<ResultBean> result =  new ArrayList<ResultBean>();
 		    result.add(resultBean);
 			
-		    Map parameters = getParameters();
-
-
+		    Map<String, Object> parameters = getParameters();
+		    
 		    JasperReport jasperReport = null;
 		    jasperReport = (JasperReport) JRLoader.loadObject(inputStream);
 		   
@@ -98,10 +98,13 @@ public class JasperPrintCreator {
 	 * @throws IOException
 	 * @author Johannes MŸller
 	 */
-	private static Map getParameters() throws IOException{
-	    Map<String, String> parameters = new HashMap();
+	private static Map<String, Object> getParameters() throws IOException{
+	    Map<String, Object> parameters = new HashMap<String, Object>();
 	    parameters.put("SUBREPORT_DIR", SUBREPORT_TEMPLATE_PATH);
 	    parameters.put("IMG_DIR", SUBREPORT_TEMPLATE_PATH);
+	    
+	    URL logoUrl =  new URL("platform:/"+TEMPLATE_PATH+"/"+LOGO_NAME);
+	    parameters.put("LOGO", logoUrl.openConnection().getInputStream());
 	    
 	    return parameters;
 	}
