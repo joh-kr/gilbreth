@@ -2,6 +2,7 @@ package de.uni_leipzig.iwi.gilbreth.vbpo.performance.evaluator;
 
 import de.uni_leipzig.iwi.gilbreth.optimization.DomainSpecificPureSimulatedAnnealingRunner;
 import de.uni_leipzig.iwi.gilbreth.optimization.DomainSpecificSimulatedAnnealingRunner;
+import de.uni_leipzig.iwi.gilbreth.optimization.Opt4JSimulatedAnnealing;
 import de.uni_leipzig.iwi.gilbreth.optimization.Runner;
 
 
@@ -31,7 +32,8 @@ public class PerformanceEvaluator {
 
 			runner.setRunners(new Runner[]{
 					new DomainSpecificPureSimulatedAnnealingRunner(), 
-					new DomainSpecificSimulatedAnnealingRunner()});
+					new DomainSpecificSimulatedAnnealingRunner(),
+					new Opt4JSimulatedAnnealing()});
 	
 			long start = System.currentTimeMillis();
 			runner.start();
