@@ -1,0 +1,14 @@
+#{extends 'main.html' /} 
+#{set title:'ACA PE' /}
+
+#{form @Application.postRegisterInterviewee()}
+<p>
+	Name: <input type="text" name="name" value="${flash['name']}" />
+	#{ifError 'name'}<span class="error">#{error 'name'/}</span>#{/ifError}
+</p>
+<p>
+	Mail: <input type="text" name="mail" value="${flash['mail']}" />
+	#{ifError 'mail'}<span class="error">#{error 'mail'/}</span>#{/ifError}
+</p>
+<p><input type="submit" value="Start" /></p>
+#{/form}
