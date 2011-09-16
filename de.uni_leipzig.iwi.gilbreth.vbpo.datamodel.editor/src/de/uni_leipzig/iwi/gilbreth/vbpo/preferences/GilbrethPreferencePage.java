@@ -70,6 +70,13 @@ public class GilbrethPreferencePage
 				PreferenceConstants.P_FINAL_TEMPERATURE, 
 				"&Final Temperature:", 
 				getFieldEditorParent()));
+		addField(new RadioGroupFieldEditor(
+				PreferenceConstants.P_ALGORITHM,
+				 "Algorithm",
+				 1,
+				new String[][] { { "&Plain Simulated Annealing", PreferenceConstants.P_ALGORITHM_PLAIN_SIMAN }, {
+				"&Linear Optimized Prices", PreferenceConstants.P_ALGORITHM_LINOP_SIMAN }
+				}, getFieldEditorParent()));
 	}
 	
 	protected void checkState() {

@@ -27,6 +27,11 @@ public class PreferenceConstants {
 	
 	public static final String P_COOLING_TYPE = "coolingType";
 	
+	public static final String P_ALGORITHM = "algorithm";
+	
+	public static final String P_ALGORITHM_PLAIN_SIMAN = "ordinary";
+	
+	public static final String P_ALGORITHM_LINOP_SIMAN = "linearOptimization";
 	
 	
 }

@@ -39,7 +39,9 @@ import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VBPODataModel;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelFactory;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.VbpodatamodelPackage;
 import de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.WTP;
+import de.uni_leipzig.iwi.gilbreth.optimization.DomainSpecificSimulatedAnnealingRunner;
 import de.uni_leipzig.iwi.gilbreth.optimization.HeadlessStarter;
+import de.uni_leipzig.iwi.gilbreth.optimization.Runner;
 import de.uni_leipzig.iwi.gilbreth.optimization.Solution;
 import de.uni_leipzig.iwi.gilbreth.optimization.VbpoProblemDescription;
 import de.uni_leipzig.iwi.gilbreth.optimization.simulated_annealing.IterationChangedListener;
@@ -76,7 +78,7 @@ public class OptimizationInitializer {
 	private int numberOfAssets;
 	private int numberOfCompetitors;
 
-	private HeadlessStarter starter;
+	private Runner starter;
 	/**
 	 * the lookup holds hashtables which relate e.g. a product to a specific
 	 * position in an array of the solution.
@@ -86,11 +88,19 @@ public class OptimizationInitializer {
 	private VbpoProblemDescription description;
 
 	public OptimizationInitializer() {
-		this.starter = new HeadlessStarter();
-
 		// Configure the starter with the values of the preference page.
 		IPreferenceStore store = VBPODataModelEditorPlugin.getPlugin()
 				.getPreferenceStore();
+		
+		String algorithmType = store.getString(PreferenceConstants.P_ALGORITHM);
+		if(algorithmType.equals(PreferenceConstants.P_ALGORITHM_PLAIN_SIMAN)){
+			this.starter = new HeadlessStarter();
+		}else{
+			this.starter = new DomainSpecificSimulatedAnnealingRunner();
+		}
+		
+
+
 		this.starter.configure(
 				store.getInt(PreferenceConstants.P_MAX_ITERATIONS),
 				store.getInt(PreferenceConstants.P_CHANGE_ITERATIONS),
@@ -112,7 +122,12 @@ public class OptimizationInitializer {
 		// To include the zero product explicitly in the solution.
 		addZeroProduct();
 		createProblemDescription();
-		solution = starter.optimize(description);
+		try {
+			solution = starter.optimize(description);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// TODO temporarly removed because the result build crashes since the zero product 
 		// is not in the list anymore.
 		//removeZeroProduct();
@@ -287,7 +302,7 @@ public class OptimizationInitializer {
 		// its the best competitor for each segments. That has to be calculated
 		// before.
 
-		for (int i = 0; i < numberOfCompetitors; i++) {
+		for (int i = 0; i < numberOfCustomerSegments; i++) {
 			w[i] = bestCompetitiveOfferingFor(root.getCustomers()
 					.getCustomerSegments().get(i));
 		}
@@ -304,7 +319,7 @@ public class OptimizationInitializer {
 	 * @return
 	 */
 	private double bestCompetitiveOfferingFor(CustomerSegment segment) {
-		double customerSurplus = -Double.MAX_VALUE;
+		double customerSurplus = 0.0d;//-Double.MAX_VALUE;
 		double tempSurplus;
 		WTP wtp = null;
 		Competitor competitor = null;
@@ -318,7 +333,7 @@ public class OptimizationInitializer {
 				for (Iterator iterPrice = competitor.getPrices().iterator(); iterPrice
 						.hasNext();) {
 					competitorPrice = (Price) iterPrice.next();
-					if (competitorPrice.getProduct() == wtp.getProduct()) {
+					if (competitorPrice.getProduct().equals(wtp.getProduct())) {
 						tempSurplus = wtp.getPrice().doubleValue()
 								- competitorPrice.getPrice().doubleValue();
 						customerSurplus = customerSurplus < tempSurplus ? tempSurplus
@@ -327,7 +342,7 @@ public class OptimizationInitializer {
 				}
 			}
 		}
-
+		VBPODataModelEditorPlugin.getPlugin().log("Surplus of Segment " + segment.getName() + " is " + customerSurplus);
 		return customerSurplus;
 	}
 
