@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="optimizationResult" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="418"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -340,7 +340,7 @@
 			</line>
 		</band>
 		<band height="22"/>
-		<band height="86">
+		<band height="97">
 			<componentElement>
 				<reportElement key="table 3" style="table 3" positionType="Float" stretchType="RelativeToTallestObject" x="33" y="36" width="465" height="50" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -375,7 +375,7 @@
 								</genericElementParameter>
 							</genericElement>
 						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+						<jr:detailCell style="table 3_TD" height="57" rowSpan="1">
 							<textField pattern="">
 								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="7" y="0" width="74" height="30"/>
 								<textElement>
@@ -395,9 +395,9 @@
 								<text><![CDATA[Features]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+						<jr:detailCell style="table 3_TD" height="57" rowSpan="1">
 							<textField>
-								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="2" y="0" width="288" height="30"/>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="2" y="0" width="288" height="57"/>
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
@@ -433,7 +433,7 @@
 								</genericElementParameter>
 							</genericElement>
 						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+						<jr:detailCell style="table 3_TD" height="57" rowSpan="1">
 							<textField pattern="¤ #,##0.00">
 								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="90" height="30"/>
 								<textElement>
@@ -453,7 +453,7 @@
 				<text><![CDATA[Product Features and Prices]]></text>
 			</staticText>
 		</band>
-		<band height="94">
+		<band height="101">
 			<componentElement>
 				<reportElement key="table 2" style="table 2" stretchType="RelativeToTallestObject" x="33" y="44" width="465" height="50"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -735,9 +735,9 @@
 				</barPlot>
 			</barChart>
 		</band>
-		<band height="96">
+		<band height="133">
 			<componentElement>
-				<reportElement key="table 4" style="table 4" x="33" y="10" width="306" height="83"/>
+				<reportElement key="table 4" style="table 4" x="33" y="44" width="306" height="83"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="SystemImpactDS">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{systemImpacts})]]></dataSourceExpression>
@@ -820,6 +820,13 @@
 					</jr:column>
 				</jr:table>
 			</componentElement>
+			<staticText>
+				<reportElement x="11" y="11" width="466" height="20"/>
+				<textElement>
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[Impact of Systems to Profit]]></text>
+			</staticText>
 		</band>
 		<band height="211">
 			<barChart>

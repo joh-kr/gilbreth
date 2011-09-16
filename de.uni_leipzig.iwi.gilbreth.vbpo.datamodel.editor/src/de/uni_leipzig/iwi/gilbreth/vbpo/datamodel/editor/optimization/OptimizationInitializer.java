@@ -58,7 +58,7 @@ import de.uni_leipzig.iwi.gilbreth.vbpo.preferences.PreferenceConstants;
 public class OptimizationInitializer {
 
 	// To handle the zero product
-	private static String ZERO_PRODUCT = "ZeroProduct";
+	private static String ZERO_PRODUCT = "0";
 	
 	private VbpodatamodelFactory factory;
 	private Product zeroProduct;
@@ -143,6 +143,7 @@ public class OptimizationInitializer {
 				.iterator(); iter.hasNext();) {
 			p = (Product) iter.next();
 			containsZeroProduct = p.getName().equals(ZERO_PRODUCT);
+			if(containsZeroProduct) break;
 		}
 		if(!containsZeroProduct){
 			factory = VbpodatamodelPackage.eINSTANCE.getVbpodatamodelFactory();
