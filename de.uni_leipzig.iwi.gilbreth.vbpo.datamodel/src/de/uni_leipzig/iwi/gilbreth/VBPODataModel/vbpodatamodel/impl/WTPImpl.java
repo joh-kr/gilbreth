@@ -174,7 +174,7 @@ public class WTPImpl extends EObjectImpl implements WTP {
 	public String getName() {
 		String value = getPrice() == null ? "" : getPrice().toString();
 		String name = getProduct() == null ? "" : getProduct().getName();
-		return "Would pay " + value + " for " + name;
+		return "is " + value + " for " + name;
 	}
 
 	/**
