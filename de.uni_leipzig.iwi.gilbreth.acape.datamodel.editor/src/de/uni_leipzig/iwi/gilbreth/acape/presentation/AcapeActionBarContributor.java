@@ -49,6 +49,8 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
@@ -74,6 +76,15 @@ public class AcapeActionBarContributor
 	implements ISelectionChangedListener {
 	
 	private static String TEMPLATE_PATH = "template::Template::main";
+	
+	private static final String[] FILTER_NAMES = {
+	"FaMa Feature Model Files (*.fama)",
+	"FaMa Feature Model Files (*.xml)"};
+
+	// These filter extensions are used to filter which files are displayed.
+	private static final String[] FILTER_EXTS = { "*.fama", "*.xml"};
+	
+	private String featureModelFilePath = "";
 	
 	/**
 	 * This keeps track of the active editor.
@@ -170,6 +181,20 @@ public class AcapeActionBarContributor
 
 		};
 		
+		protected IAction importFeatureModelAction =
+			new Action(AcapeEditorPlugin.INSTANCE.getString("_UI_ImportFeatureModel_menu_item")){
+			@Override
+			public void run() {
+				// User has selected to open a single file
+				FileDialog dlg = new FileDialog(activeEditorPart.getEditorSite().getShell(), SWT.OPEN);
+				dlg.setFilterNames(FILTER_NAMES);
+				dlg.setFilterExtensions(FILTER_EXTS);
+				dlg.setText("Import Feature Model");
+				featureModelFilePath = dlg.open();
+
+			}
+		};
+		
 
 	/**
 	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
@@ -257,6 +282,9 @@ public class AcapeActionBarContributor
 
 		submenuManager.insertBefore("additions", startGenerationAction);
 		// Prepare for CreateSibling item addition or removal.
+		submenuManager.insertBefore("additions", importFeatureModelAction);
+		
+		
 		//
 		createSiblingMenuManager = new MenuManager(AcapeEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 		submenuManager.insertBefore("additions", createSiblingMenuManager);
