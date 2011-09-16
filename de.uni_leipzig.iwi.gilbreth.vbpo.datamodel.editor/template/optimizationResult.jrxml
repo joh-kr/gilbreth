@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="optimizationResult" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="418"/>
+	<property name="ireport.y" value="66"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -434,12 +434,12 @@
 							</genericElement>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="57" rowSpan="1">
-							<textField pattern="¤ #,##0.00">
+							<textField pattern="¤ #,##0">
 								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="90" height="30"/>
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
-								<textFieldExpression class="java.lang.String"><![CDATA[$F{price}]]></textFieldExpression>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{price}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -565,12 +565,12 @@
 							</genericElement>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="31" rowSpan="1">
-							<textField pattern="¤ #,##0.00">
+							<textField pattern="¤ #,##0">
 								<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="11" y="0" width="90" height="31"/>
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
-								<textFieldExpression class="java.lang.String"><![CDATA[$F{price}]]></textFieldExpression>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{price}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -597,7 +597,7 @@
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{maxProfit}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{maxProfit}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="129" splitType="Stretch">
@@ -686,7 +686,7 @@
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
-								<textFieldExpression class="java.lang.String"><![CDATA[$F{impact}]]></textFieldExpression>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{impact}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -814,7 +814,7 @@
 								<textElement>
 									<font fontName="Arial" size="12"/>
 								</textElement>
-								<textFieldExpression class="java.lang.String"><![CDATA[$F{impact}]]></textFieldExpression>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{impact}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
