@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vbpodatamodel:VBPODataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:vbpodatamodel="http://vbpodatamodel/1.0">
+  <firm>
+    <sPL>
+      <containedProducts name="0" comprisingSystem="//@firm/@sSF/@containedSystems.0" features="//@firm/@sPL/@containedFeatures.0" unitCost="0"/>
+      <containedProducts name="P1" comprisingSystem="//@firm/@sSF/@containedSystems.1" features="//@firm/@sPL/@containedFeatures.1" unitCost="0"/>
+      <containedProducts name="P2" description="" comprisingSystem="//@firm/@sSF/@containedSystems.2" features="//@firm/@sPL/@containedFeatures.3" unitCost="0"/>
+      <containedProducts name="P3" description="" comprisingSystem="//@firm/@sSF/@containedSystems.3" features="//@firm/@sPL/@containedFeatures.1 //@firm/@sPL/@containedFeatures.2" unitCost="0"/>
+      <containedProducts name="P4" comprisingSystem="//@firm/@sSF/@containedSystems.4" features="//@firm/@sPL/@containedFeatures.1 //@firm/@sPL/@containedFeatures.3 //@firm/@sPL/@containedFeatures.2" unitCost="0"/>
+      <containedProducts name="P5" description="" comprisingSystem="//@firm/@sSF/@containedSystems.5" features="//@firm/@sPL/@containedFeatures.5 //@firm/@sPL/@containedFeatures.1 //@firm/@sPL/@containedFeatures.10 //@firm/@sPL/@containedFeatures.4 //@firm/@sPL/@containedFeatures.3 //@firm/@sPL/@containedFeatures.11 //@firm/@sPL/@containedFeatures.2 //@firm/@sPL/@containedFeatures.9" unitCost="0"/>
+      <containedProducts name="P6" comprisingSystem="//@firm/@sSF/@containedSystems.6" features="//@firm/@sPL/@containedFeatures.1 //@firm/@sPL/@containedFeatures.7" unitCost="10"/>
+      <containedProducts name="P7" description="" comprisingSystem="//@firm/@sSF/@containedSystems.7" features="//@firm/@sPL/@containedFeatures.3 //@firm/@sPL/@containedFeatures.7" unitCost="10"/>
+      <containedProducts name="P8" description="" comprisingSystem="//@firm/@sSF/@containedSystems.8" features="//@firm/@sPL/@containedFeatures.1 //@firm/@sPL/@containedFeatures.2 //@firm/@sPL/@containedFeatures.7" unitCost="15"/>
+      <containedProducts name="P9" comprisingSystem="//@firm/@sSF/@containedSystems.9" features="//@firm/@sPL/@containedFeatures.1 //@firm/@sPL/@containedFeatures.3 //@firm/@sPL/@containedFeatures.2 //@firm/@sPL/@containedFeatures.7" unitCost="15"/>
+      <containedProducts name="P10" description="" comprisingSystem="//@firm/@sSF/@containedSystems.10" features="//@firm/@sPL/@containedFeatures.5 //@firm/@sPL/@containedFeatures.1 //@firm/@sPL/@containedFeatures.10 //@firm/@sPL/@containedFeatures.4 //@firm/@sPL/@containedFeatures.3 //@firm/@sPL/@containedFeatures.11 //@firm/@sPL/@containedFeatures.2 //@firm/@sPL/@containedFeatures.9 //@firm/@sPL/@containedFeatures.7" unitCost="20"/>
+      <containedFeatures name="0" realizingAssets="//@firm/@sSF/@containedAssets.0"/>
+      <containedFeatures name="Kundenverwaltung" realizingAssets="//@firm/@sSF/@containedAssets.1 //@firm/@sSF/@containedAssets.4"/>
+      <containedFeatures name="Vorschlagsystem" realizingAssets="//@firm/@sSF/@containedAssets.2 //@firm/@sSF/@containedAssets.4"/>
+      <containedFeatures name="Forum" realizingAssets="//@firm/@sSF/@containedAssets.3 //@firm/@sSF/@containedAssets.4"/>
+      <containedFeatures name="Katalogmanagement" realizingAssets="//@firm/@sSF/@containedAssets.4"/>
+      <containedFeatures name="Shop-Konfigurator" realizingAssets="//@firm/@sSF/@containedAssets.5"/>
+      <containedFeatures name="Hosting" realizingAssets="//@firm/@sSF/@containedAssets.9"/>
+      <containedFeatures name="Support" description="" realizingAssets="//@firm/@sSF/@containedAssets.8"/>
+      <containedFeatures name="Customizing" realizingAssets="//@firm/@sSF/@containedAssets.10"/>
+      <containedFeatures name="Zahlungsabwicklung" realizingAssets="//@firm/@sSF/@containedAssets.4"/>
+      <containedFeatures name="Kundenanalyse" realizingAssets="//@firm/@sSF/@containedAssets.6"/>
+      <containedFeatures name="Cross-Selling" realizingAssets="//@firm/@sSF/@containedAssets.7"/>
+    </sPL>
+    <sSF>
+      <containedSystems name="0" implementationCost="0" assets="//@firm/@sSF/@containedAssets.0"/>
+      <containedSystems name="1" description="" implementationCost="3.5" assets="//@firm/@sSF/@containedAssets.1 //@firm/@sSF/@containedAssets.4"/>
+      <containedSystems name="2" implementationCost="3" assets="//@firm/@sSF/@containedAssets.3 //@firm/@sSF/@containedAssets.4"/>
+      <containedSystems name="3" implementationCost="4.5" assets="//@firm/@sSF/@containedAssets.1 //@firm/@sSF/@containedAssets.2 //@firm/@sSF/@containedAssets.4"/>
+      <containedSystems name="4" implementationCost="7" assets="//@firm/@sSF/@containedAssets.1 //@firm/@sSF/@containedAssets.2 //@firm/@sSF/@containedAssets.3 //@firm/@sSF/@containedAssets.4"/>
+      <containedSystems name="5" description="" implementationCost="10" assets="//@firm/@sSF/@containedAssets.7 //@firm/@sSF/@containedAssets.3 //@firm/@sSF/@containedAssets.6 //@firm/@sSF/@containedAssets.2 //@firm/@sSF/@containedAssets.1 //@firm/@sSF/@containedAssets.5 //@firm/@sSF/@containedAssets.4 //@firm/@sSF/@containedAssets.8"/>
+      <containedSystems name="6" description="" implementationCost="3.5" assets="//@firm/@sSF/@containedAssets.1 //@firm/@sSF/@containedAssets.4 //@firm/@sSF/@containedAssets.8"/>
+      <containedSystems name="7" implementationCost="3" assets="//@firm/@sSF/@containedAssets.3 //@firm/@sSF/@containedAssets.4 //@firm/@sSF/@containedAssets.8"/>
+      <containedSystems name="8" implementationCost="4.5" assets="//@firm/@sSF/@containedAssets.1 //@firm/@sSF/@containedAssets.2 //@firm/@sSF/@containedAssets.4 //@firm/@sSF/@containedAssets.8"/>
+      <containedSystems name="9" implementationCost="7" assets="//@firm/@sSF/@containedAssets.1 //@firm/@sSF/@containedAssets.2 //@firm/@sSF/@containedAssets.3 //@firm/@sSF/@containedAssets.4 //@firm/@sSF/@containedAssets.8"/>
+      <containedSystems name="10" description="" implementationCost="10" assets="//@firm/@sSF/@containedAssets.7 //@firm/@sSF/@containedAssets.3 //@firm/@sSF/@containedAssets.6 //@firm/@sSF/@containedAssets.2 //@firm/@sSF/@containedAssets.1 //@firm/@sSF/@containedAssets.5 //@firm/@sSF/@containedAssets.4 //@firm/@sSF/@containedAssets.8"/>
+      <containedAssets name="0" reuseCost="0" setupCost="0"/>
+      <containedAssets name="Kundenverwaltung" description="" reuseCost="1.5" setupCost="30"/>
+      <containedAssets name="Komponente Vorschlagsystem" reuseCost="1.5" setupCost="40"/>
+      <containedAssets name="Komponente Forum" reuseCost="1.5" setupCost="10"/>
+      <containedAssets name="WebShopCore" description="" reuseCost="1" setupCost="100"/>
+      <containedAssets name="Shop-Konfigurator" reuseCost="1" setupCost="40"/>
+      <containedAssets name="Komponente Kundenanalyse" reuseCost="2" setupCost="20"/>
+      <containedAssets name="Komponente Cross-Selling" reuseCost="3" setupCost="20"/>
+      <containedAssets name="Support" reuseCost="0" setupCost="0"/>
+      <containedAssets name="Hosting" reuseCost="1" setupCost="100"/>
+      <containedAssets name="Customizing" reuseCost="0" setupCost="10"/>
+    </sSF>
+  </firm>
+  <competition>
+    <competitors name="C1">
+      <prices price="1.5" product="//@firm/@sPL/@containedProducts.1"/>
+      <prices price="2" product="//@firm/@sPL/@containedProducts.2"/>
+      <prices price="7" product="//@firm/@sPL/@containedProducts.4"/>
+    </competitors>
+  </competition>
+  <customers>
+    <customerSegments name="S1" size="23">
+      <wTPs price="1.8" product="//@firm/@sPL/@containedProducts.1"/>
+      <wTPs price="0.7" product="//@firm/@sPL/@containedProducts.2"/>
+      <wTPs price="2.5" product="//@firm/@sPL/@containedProducts.3"/>
+      <wTPs price="3" product="//@firm/@sPL/@containedProducts.4"/>
+      <wTPs price="6" product="//@firm/@sPL/@containedProducts.5"/>
+      <wTPs price="20" product="//@firm/@sPL/@containedProducts.6"/>
+      <wTPs price="9" product="//@firm/@sPL/@containedProducts.7"/>
+      <wTPs price="28" product="//@firm/@sPL/@containedProducts.8"/>
+      <wTPs price="35" product="//@firm/@sPL/@containedProducts.9"/>
+    </customerSegments>
+    <customerSegments name="S2" size="60">
+      <wTPs price="0.7" product="//@firm/@sPL/@containedProducts.1"/>
+      <wTPs price="0.4" product="//@firm/@sPL/@containedProducts.2"/>
+      <wTPs price="3" product="//@firm/@sPL/@containedProducts.3"/>
+      <wTPs price="3.2" product="//@firm/@sPL/@containedProducts.4"/>
+      <wTPs price="6.2" product="//@firm/@sPL/@containedProducts.5"/>
+    </customerSegments>
+  </customers>
+</vbpodatamodel:VBPODataModel>

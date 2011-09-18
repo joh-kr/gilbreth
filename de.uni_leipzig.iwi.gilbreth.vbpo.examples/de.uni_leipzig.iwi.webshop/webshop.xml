@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature-model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="feature-model-schema.xsd">
+	<feature name="WebShop">
+		<binaryRelation name="WebShopProductCatalog">
+			<cardinality max="1" min="1" />
+			<solitaryFeature name="ProductCatalog">
+				<binaryRelation name="ProductCatalogCatalogManagement">
+					<cardinality max="1" min="1"/>
+					<solitaryFeature name="CatalogManagement" />
+				</binaryRelation>
+			</solitaryFeature>
+		</binaryRelation>
+		<binaryRelation name="WebShopForum">
+			<cardinality max="1" min="0"/>
+			<solitaryFeature name="Forum" />
+		</binaryRelation>
+		<binaryRelation name="WebShopUserAuthentication">
+		<cardinality max="1" min="1"/>
+		<solitaryFeature name="UserAuthentication" >
+		<setRelation name="PasswordIDCard">
+			<cardinality max="1" min="1"/>
+			<groupedFeature name="Password" />
+			<groupedFeature name="IDCard" />
+		</setRelation>
+		</solitaryFeature>
+		</binaryRelation>
+		<binaryRelation name="WebShopPayment">
+			<cardinality max="1" min="1"/>
+			<solitaryFeature name="Payment">
+			<binaryRelation name="PaymentFraudDetection">
+				<cardinality max="1" min="0"/>
+				<solitaryFeature name="FraudDetection" />
+			</binaryRelation>
+			<binaryRelation name="PaymentPaymentMethod">
+				<cardinality max="1" min="1"/>
+				<solitaryFeature name="PaymentMethod">
+					<setRelation name="CreditDebitCardPurchaseOrder">
+						<cardinality max="3" min="1"/>
+						<groupedFeature name="CreditCard" />
+						<groupedFeature name="DebitCard" />
+						<groupedFeature name="PurchaseOrder" />
+					</setRelation>
+				</solitaryFeature>
+			</binaryRelation>
+			</solitaryFeature>
+		</binaryRelation>
+		<binaryRelation name="WebShopCustomerManagement">
+			<cardinality max="1" min="0"/>
+			<solitaryFeature name="CustomerManagement"> 
+				<binaryRelation name="CustomerManagementRecomenderSystem">
+					<cardinality max="1" min="0"/>
+					<solitaryFeature name="RecommenderSystem" />
+				</binaryRelation>
+			</solitaryFeature>
+		</binaryRelation>
+	</feature>
+	<requires name="CreditCardReqFraudDetection" feature="CreditCard" requires="FraudDetection"/>
+	<requires name="DebitCardReqFraudDetection" feature="DebitCard" requires="FraudDetection"/>
+	<excludes name="RecommenderSystemExcForum" feature="RecommenderSystem" excludes="Forum"/>
+</feature-model>

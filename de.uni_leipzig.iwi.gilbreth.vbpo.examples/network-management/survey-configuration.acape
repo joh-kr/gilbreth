@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<acape:ACAPEDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:acape="de.uni_leipzig.iwi.gilbreth.acape.metamodel">
+  <attributes name="Behavioral Traffic Analysis">
+    <levels name="P2P"/>
+    <levels name="IM"/>
+    <levels name="VoIP"/>
+    <levels name="None" description=""/>
+    <levels name="P2P and IM"/>
+    <levels name="P2P And VoIP"/>
+    <levels name="IM and VoIP"/>
+    <levels name="P2P, IM and VoIP"/>
+  </attributes>
+  <attributes name="Quality of Service">
+    <levels name="Present"/>
+    <levels name="Absent"/>
+  </attributes>
+  <attributes name="Throughput">
+    <levels name="75 GBit/s"/>
+    <levels name="4 Gbit/s"/>
+    <levels name="2 Gbit/s"/>
+    <levels name="400 mbit/s"/>
+  </attributes>
+  <attributes name="Network Links">
+    <levels name="2x 1000Base-T"/>
+    <levels name="3x 1000Base-T"/>
+    <levels name="1x 1000Base-T + 2x 1000Base-SX/LX"/>
+    <levels name="1x 1000Base-T + 1x 10GBase-SX/LX"/>
+    <levels name="1x 1000Base-T + 1x 10GBase-CX4"/>
+    <levels name="up to 10 SFP+"/>
+  </attributes>
+  <attributes name="Subscribers">
+    <levels name="max. 32,000"/>
+    <levels name="max. 250,000"/>
+    <levels name="max. 500,000"/>
+    <levels name="more than 500,000"/>
+  </attributes>
+  <attributes name="Policy Enforcement">
+    <levels name="Present"/>
+    <levels name="Absent"/>
+  </attributes>
+  <attributes name="Net Reporter">
+    <levels name="Present" description=""/>
+    <levels name="Absent" description=""/>
+  </attributes>
+  <priceSettings lowerBound="1000" upperBound="20000"/>
+</acape:ACAPEDataModel>

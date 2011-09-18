@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<acape:ACAPEDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:acape="de.uni_leipzig.iwi.gilbreth.acape.metamodel">
+  <attributes name="Payment Options">
+    <levels name="Credit Card"/>
+    <levels name="Debit Card"/>
+    <levels name="Purchase Order"/>
+  </attributes>
+  <attributes name="Authentication">
+    <levels name="ID Card"/>
+    <levels name="Password"/>
+  </attributes>
+  <attributes name="Forum" description="">
+    <levels name="Present"/>
+    <levels name="Absent"/>
+  </attributes>
+  <attributes name="Customer Management">
+    <levels name="Absent"/>
+    <levels name="Present"/>
+  </attributes>
+  <attributes name="Recommender System" description="">
+    <levels name="Absent"/>
+    <levels name="Present"/>
+  </attributes>
+  <attributes name="Fraud Dectection">
+    <levels name="Absent"/>
+    <levels name="Present"/>
+  </attributes>
+  <priceSettings lowerBound="100" upperBound="1000"/>
+  <constraints lhs="//@attributes.4" rhs="//@attributes.3"/>
+  <constraints type="Exclude" lhs="//@attributes.4" rhs="//@attributes.2"/>
+  <constraints lhs="//@attributes.5" rhs="//@attributes.0/@levels.0"/>
+  <constraints lhs="//@attributes.5" rhs="//@attributes.0/@levels.1"/>
+</acape:ACAPEDataModel>

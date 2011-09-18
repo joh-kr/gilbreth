@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vbpodatamodel:VBPODataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:vbpodatamodel="http://vbpodatamodel/1.0">
+  <firm>
+    <sPL>
+      <containedProducts name="0" comprisingSystem="//@firm/@sSF/@containedSystems.0" features="//@firm/@sPL/@containedFeatures.0" unitCost="0"/>
+      <containedProducts name="P1" comprisingSystem="//@firm/@sSF/@containedSystems.1" features="//@firm/@sPL/@containedFeatures.1" unitCost="1000"/>
+      <containedProducts name="P2" comprisingSystem="//@firm/@sSF/@containedSystems.2" features="//@firm/@sPL/@containedFeatures.2 //@firm/@sPL/@containedFeatures.3 //@firm/@sPL/@containedFeatures.4" unitCost="1000"/>
+      <containedProducts name="P3" comprisingSystem="//@firm/@sSF/@containedSystems.3" features="//@firm/@sPL/@containedFeatures.5 //@firm/@sPL/@containedFeatures.3 //@firm/@sPL/@containedFeatures.6" unitCost="1000"/>
+      <containedProducts name="P4" comprisingSystem="//@firm/@sSF/@containedSystems.4" features="//@firm/@sPL/@containedFeatures.7 //@firm/@sPL/@containedFeatures.10 //@firm/@sPL/@containedFeatures.4 //@firm/@sPL/@containedFeatures.8 //@firm/@sPL/@containedFeatures.3 //@firm/@sPL/@containedFeatures.6 //@firm/@sPL/@containedFeatures.9" unitCost="1000"/>
+      <containedFeatures name="0" realizingAssets="//@firm/@sSF/@containedAssets.0"/>
+      <containedFeatures name="Simple Base" realizingAssets="//@firm/@sSF/@containedAssets.11 //@firm/@sSF/@containedAssets.5 //@firm/@sSF/@containedAssets.8"/>
+      <containedFeatures name="Middle Base" realizingAssets="//@firm/@sSF/@containedAssets.11 //@firm/@sSF/@containedAssets.9 //@firm/@sSF/@containedAssets.6"/>
+      <containedFeatures name="QoS" realizingAssets="//@firm/@sSF/@containedAssets.4"/>
+      <containedFeatures name="VoIP-Erkennung" realizingAssets="//@firm/@sSF/@containedAssets.3"/>
+      <containedFeatures name="Normal Base" realizingAssets="//@firm/@sSF/@containedAssets.12 //@firm/@sSF/@containedAssets.6 //@firm/@sSF/@containedAssets.9"/>
+      <containedFeatures name="Policy Enforcement" realizingAssets="//@firm/@sSF/@containedAssets.13"/>
+      <containedFeatures name="Enterprise Base" realizingAssets="//@firm/@sSF/@containedAssets.12 //@firm/@sSF/@containedAssets.7 //@firm/@sSF/@containedAssets.10"/>
+      <containedFeatures name="IM-Erkennung" realizingAssets="//@firm/@sSF/@containedAssets.2"/>
+      <containedFeatures name="Net Reporter" realizingAssets="//@firm/@sSF/@containedAssets.14"/>
+      <containedFeatures name="P2P-Erkennung" realizingAssets="//@firm/@sSF/@containedAssets.1"/>
+    </sPL>
+    <sSF>
+      <containedSystems name="0" implementationCost="0" assets="//@firm/@sSF/@containedAssets.0"/>
+      <containedSystems name="S1" description="" implementationCost="2000" assets="//@firm/@sSF/@containedAssets.11 //@firm/@sSF/@containedAssets.5 //@firm/@sSF/@containedAssets.8"/>
+      <containedSystems name="S2" implementationCost="3000" assets="//@firm/@sSF/@containedAssets.11 //@firm/@sSF/@containedAssets.9 //@firm/@sSF/@containedAssets.6 //@firm/@sSF/@containedAssets.4 //@firm/@sSF/@containedAssets.3"/>
+      <containedSystems name="S3" description="" implementationCost="5000" assets="//@firm/@sSF/@containedAssets.12 //@firm/@sSF/@containedAssets.9 //@firm/@sSF/@containedAssets.6 //@firm/@sSF/@containedAssets.4 //@firm/@sSF/@containedAssets.13"/>
+      <containedSystems name="S4" implementationCost="5000" assets="//@firm/@sSF/@containedAssets.12 //@firm/@sSF/@containedAssets.10 //@firm/@sSF/@containedAssets.7 //@firm/@sSF/@containedAssets.2 //@firm/@sSF/@containedAssets.14 //@firm/@sSF/@containedAssets.1 //@firm/@sSF/@containedAssets.13 //@firm/@sSF/@containedAssets.4 //@firm/@sSF/@containedAssets.3"/>
+      <containedAssets name="0" reuseCost="0" setupCost="0"/>
+      <containedAssets name="P2P-Erkennung" reuseCost="500" setupCost="3000"/>
+      <containedAssets name="IM-Erkennung" reuseCost="500" setupCost="3000"/>
+      <containedAssets name="VoIP-Erkennung" reuseCost="1000" setupCost="5000"/>
+      <containedAssets name="QoS" reuseCost="2000" setupCost="10000"/>
+      <containedAssets name="Engine Slow" reuseCost="1000" setupCost="2500"/>
+      <containedAssets name="Engine Middle" description="" reuseCost="1000" setupCost="5000"/>
+      <containedAssets name="Engine Fast" reuseCost="1000" setupCost="7500"/>
+      <containedAssets name="Single Link" reuseCost="100" setupCost="500"/>
+      <containedAssets name="Double Link" reuseCost="100" setupCost="1000"/>
+      <containedAssets name="Multi Link" reuseCost="100" setupCost="2000"/>
+      <containedAssets name="Core Small" reuseCost="4000" setupCost="10000"/>
+      <containedAssets name="Core Big" reuseCost="5000" setupCost="10000"/>
+      <containedAssets name="Policy Enforcement" reuseCost="1000" setupCost="5000"/>
+      <containedAssets name="Net Reporter" reuseCost="500" setupCost="6000"/>
+    </sSF>
+  </firm>
+  <competition>
+    <competitors name="Siemens">
+      <prices price="2000" product="//@firm/@sPL/@containedProducts.1"/>
+      <prices price="50000" product="//@firm/@sPL/@containedProducts.3"/>
+    </competitors>
+  </competition>
+  <customers>
+    <customerSegments name="Kleine Unternehmen" size="2500">
+      <wTPs price="5000" product="//@firm/@sPL/@containedProducts.1"/>
+      <wTPs price="10000" product="//@firm/@sPL/@containedProducts.2"/>
+      <wTPs price="10000" product="//@firm/@sPL/@containedProducts.3"/>
+      <wTPs price="10000" product="//@firm/@sPL/@containedProducts.4"/>
+    </customerSegments>
+    <customerSegments name="Grosse Unternehmen" size="100">
+      <wTPs price="10000" product="//@firm/@sPL/@containedProducts.1"/>
+      <wTPs price="30000" product="//@firm/@sPL/@containedProducts.2"/>
+      <wTPs price="50000" product="//@firm/@sPL/@containedProducts.3"/>
+      <wTPs price="100000" product="//@firm/@sPL/@containedProducts.4"/>
+    </customerSegments>
+    <customerSegments name="Öffentliche Hand" size="25">
+      <wTPs price="5000" product="//@firm/@sPL/@containedProducts.2"/>
+      <wTPs price="10000" product="//@firm/@sPL/@containedProducts.3"/>
+      <wTPs price="15000" product="//@firm/@sPL/@containedProducts.4"/>
+    </customerSegments>
+  </customers>
+</vbpodatamodel:VBPODataModel>
