@@ -288,9 +288,26 @@ public class ResultModelBeanBuilder {
 		Collection<EntityContainer> containers = solution.calculateSystemImportance();	
 		EntityContainer container = null;
 		de.uni_leipzig.iwi.gilbreth.VBPODataModel.vbpodatamodel.System system = null;
+		Product product = null;
+		
 		for(Iterator iter = containers.iterator();iter.hasNext();){
 			container = (EntityContainer) iter.next();
-			system = root.getFirm().getSSF().getContainedSystems().get(container.asset);		
+			product = root.getFirm().getSPL().getContainedProducts().get(container.asset);
+			system = product.getComprisingSystem();
+			
+			// Products can reference a system twice. So we have to select the system of the product
+			// with the highest impact to be included in the result.
+			for(Iterator sysIter = map.iterator(); sysIter.hasNext();){
+				SystemImpact tempImpact = (SystemImpact)sysIter.next();
+				if(tempImpact.getSystemName().equals(system.getName())){
+					if(tempImpact.getImpact() < container.delta_profit){
+						map.remove(tempImpact);
+						break;
+					}
+				}
+			}
+
+			//system = root.getFirm().getSSF().getContainedSystems().get(container.asset);		
 			map.add(new SystemImpact(system.getName(), container.delta_profit));
 		}
 		return map;
